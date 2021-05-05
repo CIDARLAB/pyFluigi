@@ -1,6 +1,8 @@
-from networkx import nx
-import fluigi.parameters as parameters
 import os
+
+from networkx import nx
+
+import fluigi.parameters as parameters
 
 
 def printgraph(G, filename: str) -> None:
@@ -9,7 +11,8 @@ def printgraph(G, filename: str) -> None:
     print("output:", tt)
     nx.nx_agraph.to_agraph(G).write(tt)
 
-    os.system('dot -Tpdf {} -o {}.pdf'.format(tt, tt))
+    os.system("dot -Tpdf {} -o {}.pdf".format(tt, tt))
 
-def get_ouput_path(filename:str) -> str:
+
+def get_ouput_path(filename: str) -> str:
     return os.path.join(parameters.OUTPUT_DIR, filename)

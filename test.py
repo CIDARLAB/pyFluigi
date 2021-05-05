@@ -3,9 +3,9 @@
 from pnr.hola import adaptagrams as ag
 
 router = ag.Router(ag.PolyLineRouting)
-p1 = ag.Point(20,35)
-p2 = ag.Point(40,12)
-rect1 = ag.AvoidRectangle(p1,p2)
+p1 = ag.Point(20, 35)
+p2 = ag.Point(40, 12)
+rect1 = ag.AvoidRectangle(p1, p2)
 
 
 shaperef = ag.ShapeRef(router, rect1)
@@ -16,12 +16,12 @@ graph = ag.Graph()
 print(graph)
 
 
-node1 = graph.addNode(5,5)
-node2 = graph.addNode(5,5)
-node3 = graph.addNode(5,5)
-node4 = graph.addNode(5,5)
+node1 = graph.addNode(5, 5)
+node2 = graph.addNode(5, 5)
+node3 = graph.addNode(5, 5)
+node4 = graph.addNode(5, 5)
 
-print('Printing Positions:')
+print("Printing Positions:")
 
 
 print(node1.id())
@@ -70,9 +70,3 @@ print(bb.x, bb.y, bb.X, bb.Y)
 print(node4.id())
 bb = node4.getBoundingBox()
 print(bb.x, bb.y, bb.X, bb.Y)
-
-
-
-
-
-
