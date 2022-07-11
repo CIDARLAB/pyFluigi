@@ -5,6 +5,7 @@
 # the SWIG interface file instead.
 
 from sys import version_info as _swig_python_version_info
+
 if _swig_python_version_info < (2, 7, 0):
     raise RuntimeError("Python 2.7 or later required")
 
@@ -19,12 +20,17 @@ try:
 except ImportError:
     import __builtin__
 
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
     except __builtin__.Exception:
         strthis = ""
-    return "<%s.%s; %s >" % (self.__class__.__module__, self.__class__.__name__, strthis,)
+    return "<%s.%s; %s >" % (
+        self.__class__.__module__,
+        self.__class__.__name__,
+        strthis,
+    )
 
 
 def _swig_setattr_nondynamic_instance_variable(set):
@@ -37,6 +43,7 @@ def _swig_setattr_nondynamic_instance_variable(set):
             set(self, name, value)
         else:
             raise AttributeError("You cannot add instance attributes to %s" % self)
+
     return set_instance_attr
 
 
@@ -46,26 +53,33 @@ def _swig_setattr_nondynamic_class_variable(set):
             set(cls, name, value)
         else:
             raise AttributeError("You cannot add class attributes to %s" % cls)
+
     return set_class_attr
 
 
 def _swig_add_metaclass(metaclass):
     """Class decorator for adding a metaclass to a SWIG wrapped class - a slimmed down version of six.add_metaclass"""
+
     def wrapper(cls):
         return metaclass(cls.__name__, cls.__bases__, cls.__dict__.copy())
+
     return wrapper
 
 
 class _SwigNonDynamicMeta(type):
     """Meta class to enforce nondynamic attributes (no new attributes) for a class"""
+
     __setattr__ = _swig_setattr_nondynamic_class_variable(type.__setattr__)
 
 
 class SwigPyIterator(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    thisown = property(
+        lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag"
+    )
 
     def __init__(self, *args, **kwargs):
         raise AttributeError("No constructor defined - class is abstract")
+
     __repr__ = _swig_repr
     __swig_destroy__ = _place_and_route.delete_SwigPyIterator
 
@@ -116,19 +130,26 @@ class SwigPyIterator(object):
 
     def __sub__(self, *args):
         return _place_and_route.SwigPyIterator___sub__(self, *args)
+
     def __iter__(self):
         return self
+
 
 # Register SwigPyIterator in _place_and_route:
 _place_and_route.SwigPyIterator_swigregister(SwigPyIterator)
 
 SHARED_PTR_DISOWN = _place_and_route.SHARED_PTR_DISOWN
+
+
 class PortVector(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    thisown = property(
+        lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag"
+    )
     __repr__ = _swig_repr
 
     def iterator(self):
         return _place_and_route.PortVector_iterator(self)
+
     def __iter__(self):
         return self.iterator()
 
@@ -199,7 +220,9 @@ class PortVector(object):
         return _place_and_route.PortVector_erase(self, *args)
 
     def __init__(self, *args):
-        _place_and_route.PortVector_swiginit(self, _place_and_route.new_PortVector(*args))
+        _place_and_route.PortVector_swiginit(
+            self, _place_and_route.new_PortVector(*args)
+        )
 
     def push_back(self, x):
         return _place_and_route.PortVector_push_back(self, x)
@@ -224,17 +247,23 @@ class PortVector(object):
 
     def capacity(self):
         return _place_and_route.PortVector_capacity(self)
+
     __swig_destroy__ = _place_and_route.delete_PortVector
+
 
 # Register PortVector in _place_and_route:
 _place_and_route.PortVector_swigregister(PortVector)
 
+
 class PlacementCellVector(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    thisown = property(
+        lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag"
+    )
     __repr__ = _swig_repr
 
     def iterator(self):
         return _place_and_route.PlacementCellVector_iterator(self)
+
     def __iter__(self):
         return self.iterator()
 
@@ -305,7 +334,9 @@ class PlacementCellVector(object):
         return _place_and_route.PlacementCellVector_erase(self, *args)
 
     def __init__(self, *args):
-        _place_and_route.PlacementCellVector_swiginit(self, _place_and_route.new_PlacementCellVector(*args))
+        _place_and_route.PlacementCellVector_swiginit(
+            self, _place_and_route.new_PlacementCellVector(*args)
+        )
 
     def push_back(self, x):
         return _place_and_route.PlacementCellVector_push_back(self, x)
@@ -330,17 +361,23 @@ class PlacementCellVector(object):
 
     def capacity(self):
         return _place_and_route.PlacementCellVector_capacity(self)
+
     __swig_destroy__ = _place_and_route.delete_PlacementCellVector
+
 
 # Register PlacementCellVector in _place_and_route:
 _place_and_route.PlacementCellVector_swigregister(PlacementCellVector)
 
+
 class PortPointerVector(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    thisown = property(
+        lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag"
+    )
     __repr__ = _swig_repr
 
     def iterator(self):
         return _place_and_route.PortPointerVector_iterator(self)
+
     def __iter__(self):
         return self.iterator()
 
@@ -411,7 +448,9 @@ class PortPointerVector(object):
         return _place_and_route.PortPointerVector_erase(self, *args)
 
     def __init__(self, *args):
-        _place_and_route.PortPointerVector_swiginit(self, _place_and_route.new_PortPointerVector(*args))
+        _place_and_route.PortPointerVector_swiginit(
+            self, _place_and_route.new_PortPointerVector(*args)
+        )
 
     def push_back(self, x):
         return _place_and_route.PortPointerVector_push_back(self, x)
@@ -436,17 +475,23 @@ class PortPointerVector(object):
 
     def capacity(self):
         return _place_and_route.PortPointerVector_capacity(self)
+
     __swig_destroy__ = _place_and_route.delete_PortPointerVector
+
 
 # Register PortPointerVector in _place_and_route:
 _place_and_route.PortPointerVector_swigregister(PortPointerVector)
 
+
 class PlacementCellPointerVector(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    thisown = property(
+        lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag"
+    )
     __repr__ = _swig_repr
 
     def iterator(self):
         return _place_and_route.PlacementCellPointerVector_iterator(self)
+
     def __iter__(self):
         return self.iterator()
 
@@ -517,7 +562,9 @@ class PlacementCellPointerVector(object):
         return _place_and_route.PlacementCellPointerVector_erase(self, *args)
 
     def __init__(self, *args):
-        _place_and_route.PlacementCellPointerVector_swiginit(self, _place_and_route.new_PlacementCellPointerVector(*args))
+        _place_and_route.PlacementCellPointerVector_swiginit(
+            self, _place_and_route.new_PlacementCellPointerVector(*args)
+        )
 
     def push_back(self, x):
         return _place_and_route.PlacementCellPointerVector_push_back(self, x)
@@ -542,17 +589,23 @@ class PlacementCellPointerVector(object):
 
     def capacity(self):
         return _place_and_route.PlacementCellPointerVector_capacity(self)
+
     __swig_destroy__ = _place_and_route.delete_PlacementCellPointerVector
+
 
 # Register PlacementCellPointerVector in _place_and_route:
 _place_and_route.PlacementCellPointerVector_swigregister(PlacementCellPointerVector)
 
+
 class NetPointerVector(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    thisown = property(
+        lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag"
+    )
     __repr__ = _swig_repr
 
     def iterator(self):
         return _place_and_route.NetPointerVector_iterator(self)
+
     def __iter__(self):
         return self.iterator()
 
@@ -623,7 +676,9 @@ class NetPointerVector(object):
         return _place_and_route.NetPointerVector_erase(self, *args)
 
     def __init__(self, *args):
-        _place_and_route.NetPointerVector_swiginit(self, _place_and_route.new_NetPointerVector(*args))
+        _place_and_route.NetPointerVector_swiginit(
+            self, _place_and_route.new_NetPointerVector(*args)
+        )
 
     def push_back(self, x):
         return _place_and_route.NetPointerVector_push_back(self, x)
@@ -648,17 +703,23 @@ class NetPointerVector(object):
 
     def capacity(self):
         return _place_and_route.NetPointerVector_capacity(self)
+
     __swig_destroy__ = _place_and_route.delete_NetPointerVector
+
 
 # Register NetPointerVector in _place_and_route:
 _place_and_route.NetPointerVector_swigregister(NetPointerVector)
 
+
 class ConstraintPointerVector(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    thisown = property(
+        lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag"
+    )
     __repr__ = _swig_repr
 
     def iterator(self):
         return _place_and_route.ConstraintPointerVector_iterator(self)
+
     def __iter__(self):
         return self.iterator()
 
@@ -729,7 +790,9 @@ class ConstraintPointerVector(object):
         return _place_and_route.ConstraintPointerVector_erase(self, *args)
 
     def __init__(self, *args):
-        _place_and_route.ConstraintPointerVector_swiginit(self, _place_and_route.new_ConstraintPointerVector(*args))
+        _place_and_route.ConstraintPointerVector_swiginit(
+            self, _place_and_route.new_ConstraintPointerVector(*args)
+        )
 
     def push_back(self, x):
         return _place_and_route.ConstraintPointerVector_push_back(self, x)
@@ -754,17 +817,23 @@ class ConstraintPointerVector(object):
 
     def capacity(self):
         return _place_and_route.ConstraintPointerVector_capacity(self)
+
     __swig_destroy__ = _place_and_route.delete_ConstraintPointerVector
+
 
 # Register ConstraintPointerVector in _place_and_route:
 _place_and_route.ConstraintPointerVector_swigregister(ConstraintPointerVector)
 
+
 class PlacementCellGroups(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    thisown = property(
+        lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag"
+    )
     __repr__ = _swig_repr
 
     def iterator(self):
         return _place_and_route.PlacementCellGroups_iterator(self)
+
     def __iter__(self):
         return self.iterator()
 
@@ -835,7 +904,9 @@ class PlacementCellGroups(object):
         return _place_and_route.PlacementCellGroups_erase(self, *args)
 
     def __init__(self, *args):
-        _place_and_route.PlacementCellGroups_swiginit(self, _place_and_route.new_PlacementCellGroups(*args))
+        _place_and_route.PlacementCellGroups_swiginit(
+            self, _place_and_route.new_PlacementCellGroups(*args)
+        )
 
     def push_back(self, x):
         return _place_and_route.PlacementCellGroups_push_back(self, x)
@@ -860,17 +931,23 @@ class PlacementCellGroups(object):
 
     def capacity(self):
         return _place_and_route.PlacementCellGroups_capacity(self)
+
     __swig_destroy__ = _place_and_route.delete_PlacementCellGroups
+
 
 # Register PlacementCellGroups in _place_and_route:
 _place_and_route.PlacementCellGroups_swigregister(PlacementCellGroups)
 
+
 class ConstraintVector(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    thisown = property(
+        lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag"
+    )
     __repr__ = _swig_repr
 
     def iterator(self):
         return _place_and_route.ConstraintVector_iterator(self)
+
     def __iter__(self):
         return self.iterator()
 
@@ -941,7 +1018,9 @@ class ConstraintVector(object):
         return _place_and_route.ConstraintVector_erase(self, *args)
 
     def __init__(self, *args):
-        _place_and_route.ConstraintVector_swiginit(self, _place_and_route.new_ConstraintVector(*args))
+        _place_and_route.ConstraintVector_swiginit(
+            self, _place_and_route.new_ConstraintVector(*args)
+        )
 
     def push_back(self, x):
         return _place_and_route.ConstraintVector_push_back(self, x)
@@ -966,17 +1045,23 @@ class ConstraintVector(object):
 
     def capacity(self):
         return _place_and_route.ConstraintVector_capacity(self)
+
     __swig_destroy__ = _place_and_route.delete_ConstraintVector
+
 
 # Register ConstraintVector in _place_and_route:
 _place_and_route.ConstraintVector_swigregister(ConstraintVector)
 
+
 class NetVector(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    thisown = property(
+        lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag"
+    )
     __repr__ = _swig_repr
 
     def iterator(self):
         return _place_and_route.NetVector_iterator(self)
+
     def __iter__(self):
         return self.iterator()
 
@@ -1072,17 +1157,23 @@ class NetVector(object):
 
     def capacity(self):
         return _place_and_route.NetVector_capacity(self)
+
     __swig_destroy__ = _place_and_route.delete_NetVector
+
 
 # Register NetVector in _place_and_route:
 _place_and_route.NetVector_swigregister(NetVector)
 
+
 class OrientationMap(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    thisown = property(
+        lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag"
+    )
     __repr__ = _swig_repr
 
     def iterator(self):
         return _place_and_route.OrientationMap_iterator(self)
+
     def __iter__(self):
         return self.iterator()
 
@@ -1094,12 +1185,16 @@ class OrientationMap(object):
 
     def __len__(self):
         return _place_and_route.OrientationMap___len__(self)
+
     def __iter__(self):
         return self.key_iterator()
+
     def iterkeys(self):
         return self.key_iterator()
+
     def itervalues(self):
         return self.value_iterator()
+
     def iteritems(self):
         return self.iterator()
 
@@ -1137,7 +1232,9 @@ class OrientationMap(object):
         return _place_and_route.OrientationMap_asdict(self)
 
     def __init__(self, *args):
-        _place_and_route.OrientationMap_swiginit(self, _place_and_route.new_OrientationMap(*args))
+        _place_and_route.OrientationMap_swiginit(
+            self, _place_and_route.new_OrientationMap(*args)
+        )
 
     def empty(self):
         return _place_and_route.OrientationMap_empty(self)
@@ -1180,17 +1277,23 @@ class OrientationMap(object):
 
     def upper_bound(self, x):
         return _place_and_route.OrientationMap_upper_bound(self, x)
+
     __swig_destroy__ = _place_and_route.delete_OrientationMap
+
 
 # Register OrientationMap in _place_and_route:
 _place_and_route.OrientationMap_swigregister(OrientationMap)
 
+
 class SinksVector(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    thisown = property(
+        lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag"
+    )
     __repr__ = _swig_repr
 
     def iterator(self):
         return _place_and_route.SinksVector_iterator(self)
+
     def __iter__(self):
         return self.iterator()
 
@@ -1261,7 +1364,9 @@ class SinksVector(object):
         return _place_and_route.SinksVector_erase(self, *args)
 
     def __init__(self, *args):
-        _place_and_route.SinksVector_swiginit(self, _place_and_route.new_SinksVector(*args))
+        _place_and_route.SinksVector_swiginit(
+            self, _place_and_route.new_SinksVector(*args)
+        )
 
     def push_back(self, x):
         return _place_and_route.SinksVector_push_back(self, x)
@@ -1286,17 +1391,23 @@ class SinksVector(object):
 
     def capacity(self):
         return _place_and_route.SinksVector_capacity(self)
+
     __swig_destroy__ = _place_and_route.delete_SinksVector
+
 
 # Register SinksVector in _place_and_route:
 _place_and_route.SinksVector_swigregister(SinksVector)
 
+
 class MirrorGroupsVector(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    thisown = property(
+        lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag"
+    )
     __repr__ = _swig_repr
 
     def iterator(self):
         return _place_and_route.MirrorGroupsVector_iterator(self)
+
     def __iter__(self):
         return self.iterator()
 
@@ -1367,7 +1478,9 @@ class MirrorGroupsVector(object):
         return _place_and_route.MirrorGroupsVector_erase(self, *args)
 
     def __init__(self, *args):
-        _place_and_route.MirrorGroupsVector_swiginit(self, _place_and_route.new_MirrorGroupsVector(*args))
+        _place_and_route.MirrorGroupsVector_swiginit(
+            self, _place_and_route.new_MirrorGroupsVector(*args)
+        )
 
     def push_back(self, x):
         return _place_and_route.MirrorGroupsVector_push_back(self, x)
@@ -1392,7 +1505,9 @@ class MirrorGroupsVector(object):
 
     def capacity(self):
         return _place_and_route.MirrorGroupsVector_capacity(self)
+
     __swig_destroy__ = _place_and_route.delete_MirrorGroupsVector
+
 
 # Register MirrorGroupsVector in _place_and_route:
 _place_and_route.MirrorGroupsVector_swigregister(MirrorGroupsVector)
@@ -1407,197 +1522,385 @@ ConstraintType_MIRROR = _place_and_route.ConstraintType_MIRROR
 ConstraintType_RADIAL = _place_and_route.ConstraintType_RADIAL
 Orientation_HORIZONTAL = _place_and_route.Orientation_HORIZONTAL
 Orientation_VERTICAL = _place_and_route.Orientation_VERTICAL
+
+
 class Terminal(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    thisown = property(
+        lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag"
+    )
     __repr__ = _swig_repr
 
     def __init__(self, *args):
         _place_and_route.Terminal_swiginit(self, _place_and_route.new_Terminal(*args))
+
     __swig_destroy__ = _place_and_route.delete_Terminal
-    label = property(_place_and_route.Terminal_label_get, _place_and_route.Terminal_label_set)
+    label = property(
+        _place_and_route.Terminal_label_get, _place_and_route.Terminal_label_set
+    )
     x = property(_place_and_route.Terminal_x_get, _place_and_route.Terminal_x_set)
     y = property(_place_and_route.Terminal_y_get, _place_and_route.Terminal_y_set)
-    rel_x = property(_place_and_route.Terminal_rel_x_get, _place_and_route.Terminal_rel_x_set)
-    rel_y = property(_place_and_route.Terminal_rel_y_get, _place_and_route.Terminal_rel_y_set)
-    con_to_cer = property(_place_and_route.Terminal_con_to_cer_get, _place_and_route.Terminal_con_to_cer_set)
+    rel_x = property(
+        _place_and_route.Terminal_rel_x_get, _place_and_route.Terminal_rel_x_set
+    )
+    rel_y = property(
+        _place_and_route.Terminal_rel_y_get, _place_and_route.Terminal_rel_y_set
+    )
+    con_to_cer = property(
+        _place_and_route.Terminal_con_to_cer_get,
+        _place_and_route.Terminal_con_to_cer_set,
+    )
 
     def compute_absolute_positions(self, ref_x, ref_y):
         return _place_and_route.Terminal_compute_absolute_positions(self, ref_x, ref_y)
 
+
 # Register Terminal in _place_and_route:
 _place_and_route.Terminal_swigregister(Terminal)
 
+
 class PlacementCell(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    thisown = property(
+        lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag"
+    )
     __repr__ = _swig_repr
 
     def __init__(self, *args):
-        _place_and_route.PlacementCell_swiginit(self, _place_and_route.new_PlacementCell(*args))
+        _place_and_route.PlacementCell_swiginit(
+            self, _place_and_route.new_PlacementCell(*args)
+        )
+
     __swig_destroy__ = _place_and_route.delete_PlacementCell
-    id = property(_place_and_route.PlacementCell_id_get, _place_and_route.PlacementCell_id_set)
-    x = property(_place_and_route.PlacementCell_x_get, _place_and_route.PlacementCell_x_set)
-    y = property(_place_and_route.PlacementCell_y_get, _place_and_route.PlacementCell_y_set)
-    rotation = property(_place_and_route.PlacementCell_rotation_get, _place_and_route.PlacementCell_rotation_set)
-    x_span = property(_place_and_route.PlacementCell_x_span_get, _place_and_route.PlacementCell_x_span_set)
-    y_span = property(_place_and_route.PlacementCell_y_span_get, _place_and_route.PlacementCell_y_span_set)
-    component_spacing = property(_place_and_route.PlacementCell_component_spacing_get, _place_and_route.PlacementCell_component_spacing_set)
-    ports = property(_place_and_route.PlacementCell_ports_get, _place_and_route.PlacementCell_ports_set)
-    lock_x = property(_place_and_route.PlacementCell_lock_x_get, _place_and_route.PlacementCell_lock_x_set)
-    lock_y = property(_place_and_route.PlacementCell_lock_y_get, _place_and_route.PlacementCell_lock_y_set)
-    lock_rotation = property(_place_and_route.PlacementCell_lock_rotation_get, _place_and_route.PlacementCell_lock_rotation_set)
+    id = property(
+        _place_and_route.PlacementCell_id_get, _place_and_route.PlacementCell_id_set
+    )
+    x = property(
+        _place_and_route.PlacementCell_x_get, _place_and_route.PlacementCell_x_set
+    )
+    y = property(
+        _place_and_route.PlacementCell_y_get, _place_and_route.PlacementCell_y_set
+    )
+    rotation = property(
+        _place_and_route.PlacementCell_rotation_get,
+        _place_and_route.PlacementCell_rotation_set,
+    )
+    x_span = property(
+        _place_and_route.PlacementCell_x_span_get,
+        _place_and_route.PlacementCell_x_span_set,
+    )
+    y_span = property(
+        _place_and_route.PlacementCell_y_span_get,
+        _place_and_route.PlacementCell_y_span_set,
+    )
+    component_spacing = property(
+        _place_and_route.PlacementCell_component_spacing_get,
+        _place_and_route.PlacementCell_component_spacing_set,
+    )
+    ports = property(
+        _place_and_route.PlacementCell_ports_get,
+        _place_and_route.PlacementCell_ports_set,
+    )
+    lock_x = property(
+        _place_and_route.PlacementCell_lock_x_get,
+        _place_and_route.PlacementCell_lock_x_set,
+    )
+    lock_y = property(
+        _place_and_route.PlacementCell_lock_y_get,
+        _place_and_route.PlacementCell_lock_y_set,
+    )
+    lock_rotation = property(
+        _place_and_route.PlacementCell_lock_rotation_get,
+        _place_and_route.PlacementCell_lock_rotation_set,
+    )
 
     def __lt__(self, ob):
         return _place_and_route.PlacementCell___lt__(self, ob)
 
+
 # Register PlacementCell in _place_and_route:
 _place_and_route.PlacementCell_swigregister(PlacementCell)
 
+
 class Net(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    thisown = property(
+        lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag"
+    )
     __repr__ = _swig_repr
 
     def __init__(self, *args):
         _place_and_route.Net_swiginit(self, _place_and_route.new_Net(*args))
+
     __swig_destroy__ = _place_and_route.delete_Net
     id = property(_place_and_route.Net_id_get, _place_and_route.Net_id_set)
     source = property(_place_and_route.Net_source_get, _place_and_route.Net_source_set)
-    source_terminal = property(_place_and_route.Net_source_terminal_get, _place_and_route.Net_source_terminal_set)
-    channelSpacing = property(_place_and_route.Net_channelSpacing_get, _place_and_route.Net_channelSpacing_set)
-    channelWidth = property(_place_and_route.Net_channelWidth_get, _place_and_route.Net_channelWidth_set)
+    source_terminal = property(
+        _place_and_route.Net_source_terminal_get,
+        _place_and_route.Net_source_terminal_set,
+    )
+    channelSpacing = property(
+        _place_and_route.Net_channelSpacing_get, _place_and_route.Net_channelSpacing_set
+    )
+    channelWidth = property(
+        _place_and_route.Net_channelWidth_get, _place_and_route.Net_channelWidth_set
+    )
     sinks = property(_place_and_route.Net_sinks_get, _place_and_route.Net_sinks_set)
-    sink_terminals = property(_place_and_route.Net_sink_terminals_get, _place_and_route.Net_sink_terminals_set)
+    sink_terminals = property(
+        _place_and_route.Net_sink_terminals_get, _place_and_route.Net_sink_terminals_set
+    )
     routes = property(_place_and_route.Net_routes_get, _place_and_route.Net_routes_set)
+
 
 # Register Net in _place_and_route:
 _place_and_route.Net_swigregister(Net)
 
+
 class Constraint(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    thisown = property(
+        lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag"
+    )
     __repr__ = _swig_repr
 
     def __init__(self):
         _place_and_route.Constraint_swiginit(self, _place_and_route.new_Constraint())
+
     __swig_destroy__ = _place_and_route.delete_Constraint
-    type = property(_place_and_route.Constraint_type_get, _place_and_route.Constraint_type_set)
+    type = property(
+        _place_and_route.Constraint_type_get, _place_and_route.Constraint_type_set
+    )
+
 
 # Register Constraint in _place_and_route:
 _place_and_route.Constraint_swigregister(Constraint)
 
+
 class PositionConstraint(Constraint):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    thisown = property(
+        lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag"
+    )
     __repr__ = _swig_repr
 
     def __init__(self, x, y, cell):
-        _place_and_route.PositionConstraint_swiginit(self, _place_and_route.new_PositionConstraint(x, y, cell))
+        _place_and_route.PositionConstraint_swiginit(
+            self, _place_and_route.new_PositionConstraint(x, y, cell)
+        )
+
     __swig_destroy__ = _place_and_route.delete_PositionConstraint
-    xpos = property(_place_and_route.PositionConstraint_xpos_get, _place_and_route.PositionConstraint_xpos_set)
-    ypos = property(_place_and_route.PositionConstraint_ypos_get, _place_and_route.PositionConstraint_ypos_set)
-    cell = property(_place_and_route.PositionConstraint_cell_get, _place_and_route.PositionConstraint_cell_set)
+    xpos = property(
+        _place_and_route.PositionConstraint_xpos_get,
+        _place_and_route.PositionConstraint_xpos_set,
+    )
+    ypos = property(
+        _place_and_route.PositionConstraint_ypos_get,
+        _place_and_route.PositionConstraint_ypos_set,
+    )
+    cell = property(
+        _place_and_route.PositionConstraint_cell_get,
+        _place_and_route.PositionConstraint_cell_set,
+    )
+
 
 # Register PositionConstraint in _place_and_route:
 _place_and_route.PositionConstraint_swigregister(PositionConstraint)
 
+
 class RotationConstraint(Constraint):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    thisown = property(
+        lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag"
+    )
     __repr__ = _swig_repr
 
     def __init__(self, rotation, cell):
-        _place_and_route.RotationConstraint_swiginit(self, _place_and_route.new_RotationConstraint(rotation, cell))
+        _place_and_route.RotationConstraint_swiginit(
+            self, _place_and_route.new_RotationConstraint(rotation, cell)
+        )
+
     __swig_destroy__ = _place_and_route.delete_RotationConstraint
-    rotation = property(_place_and_route.RotationConstraint_rotation_get, _place_and_route.RotationConstraint_rotation_set)
-    cell = property(_place_and_route.RotationConstraint_cell_get, _place_and_route.RotationConstraint_cell_set)
+    rotation = property(
+        _place_and_route.RotationConstraint_rotation_get,
+        _place_and_route.RotationConstraint_rotation_set,
+    )
+    cell = property(
+        _place_and_route.RotationConstraint_cell_get,
+        _place_and_route.RotationConstraint_cell_set,
+    )
+
 
 # Register RotationConstraint in _place_and_route:
 _place_and_route.RotationConstraint_swigregister(RotationConstraint)
 
+
 class OrientationConstraint(Constraint):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    thisown = property(
+        lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag"
+    )
     __repr__ = _swig_repr
 
     def __init__(self, orientations):
-        _place_and_route.OrientationConstraint_swiginit(self, _place_and_route.new_OrientationConstraint(orientations))
+        _place_and_route.OrientationConstraint_swiginit(
+            self, _place_and_route.new_OrientationConstraint(orientations)
+        )
+
     __swig_destroy__ = _place_and_route.delete_OrientationConstraint
-    orientations = property(_place_and_route.OrientationConstraint_orientations_get, _place_and_route.OrientationConstraint_orientations_set)
+    orientations = property(
+        _place_and_route.OrientationConstraint_orientations_get,
+        _place_and_route.OrientationConstraint_orientations_set,
+    )
+
 
 # Register OrientationConstraint in _place_and_route:
 _place_and_route.OrientationConstraint_swigregister(OrientationConstraint)
 
+
 class LengthConstraint(Constraint):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    thisown = property(
+        lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag"
+    )
     __repr__ = _swig_repr
 
     def __init__(self, net, source_id, sink_id, length):
-        _place_and_route.LengthConstraint_swiginit(self, _place_and_route.new_LengthConstraint(net, source_id, sink_id, length))
+        _place_and_route.LengthConstraint_swiginit(
+            self, _place_and_route.new_LengthConstraint(net, source_id, sink_id, length)
+        )
+
     __swig_destroy__ = _place_and_route.delete_LengthConstraint
-    net = property(_place_and_route.LengthConstraint_net_get, _place_and_route.LengthConstraint_net_set)
-    source_id = property(_place_and_route.LengthConstraint_source_id_get, _place_and_route.LengthConstraint_source_id_set)
-    sink_id = property(_place_and_route.LengthConstraint_sink_id_get, _place_and_route.LengthConstraint_sink_id_set)
-    length = property(_place_and_route.LengthConstraint_length_get, _place_and_route.LengthConstraint_length_set)
+    net = property(
+        _place_and_route.LengthConstraint_net_get,
+        _place_and_route.LengthConstraint_net_set,
+    )
+    source_id = property(
+        _place_and_route.LengthConstraint_source_id_get,
+        _place_and_route.LengthConstraint_source_id_set,
+    )
+    sink_id = property(
+        _place_and_route.LengthConstraint_sink_id_get,
+        _place_and_route.LengthConstraint_sink_id_set,
+    )
+    length = property(
+        _place_and_route.LengthConstraint_length_get,
+        _place_and_route.LengthConstraint_length_set,
+    )
+
 
 # Register LengthConstraint in _place_and_route:
 _place_and_route.LengthConstraint_swigregister(LengthConstraint)
 
+
 class OrthogonalConstraint(Constraint):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    thisown = property(
+        lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag"
+    )
     __repr__ = _swig_repr
 
     def __init__(self, cells):
-        _place_and_route.OrthogonalConstraint_swiginit(self, _place_and_route.new_OrthogonalConstraint(cells))
+        _place_and_route.OrthogonalConstraint_swiginit(
+            self, _place_and_route.new_OrthogonalConstraint(cells)
+        )
+
     __swig_destroy__ = _place_and_route.delete_OrthogonalConstraint
-    cells = property(_place_and_route.OrthogonalConstraint_cells_get, _place_and_route.OrthogonalConstraint_cells_set)
+    cells = property(
+        _place_and_route.OrthogonalConstraint_cells_get,
+        _place_and_route.OrthogonalConstraint_cells_set,
+    )
+
 
 # Register OrthogonalConstraint in _place_and_route:
 _place_and_route.OrthogonalConstraint_swigregister(OrthogonalConstraint)
 
+
 class ArrayConstraint(Constraint):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    thisown = property(
+        lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag"
+    )
     __repr__ = _swig_repr
 
     def __init__(self, xdim, ydim, cells):
-        _place_and_route.ArrayConstraint_swiginit(self, _place_and_route.new_ArrayConstraint(xdim, ydim, cells))
+        _place_and_route.ArrayConstraint_swiginit(
+            self, _place_and_route.new_ArrayConstraint(xdim, ydim, cells)
+        )
+
     __swig_destroy__ = _place_and_route.delete_ArrayConstraint
-    xdim = property(_place_and_route.ArrayConstraint_xdim_get, _place_and_route.ArrayConstraint_xdim_set)
-    ydim = property(_place_and_route.ArrayConstraint_ydim_get, _place_and_route.ArrayConstraint_ydim_set)
-    cells = property(_place_and_route.ArrayConstraint_cells_get, _place_and_route.ArrayConstraint_cells_set)
+    xdim = property(
+        _place_and_route.ArrayConstraint_xdim_get,
+        _place_and_route.ArrayConstraint_xdim_set,
+    )
+    ydim = property(
+        _place_and_route.ArrayConstraint_ydim_get,
+        _place_and_route.ArrayConstraint_ydim_set,
+    )
+    cells = property(
+        _place_and_route.ArrayConstraint_cells_get,
+        _place_and_route.ArrayConstraint_cells_set,
+    )
+
 
 # Register ArrayConstraint in _place_and_route:
 _place_and_route.ArrayConstraint_swigregister(ArrayConstraint)
 
+
 class MirrorConstraint(Constraint):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    thisown = property(
+        lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag"
+    )
     __repr__ = _swig_repr
 
     def __init__(self, groups):
-        _place_and_route.MirrorConstraint_swiginit(self, _place_and_route.new_MirrorConstraint(groups))
+        _place_and_route.MirrorConstraint_swiginit(
+            self, _place_and_route.new_MirrorConstraint(groups)
+        )
+
     __swig_destroy__ = _place_and_route.delete_MirrorConstraint
-    groups = property(_place_and_route.MirrorConstraint_groups_get, _place_and_route.MirrorConstraint_groups_set)
+    groups = property(
+        _place_and_route.MirrorConstraint_groups_get,
+        _place_and_route.MirrorConstraint_groups_set,
+    )
+
 
 # Register MirrorConstraint in _place_and_route:
 _place_and_route.MirrorConstraint_swigregister(MirrorConstraint)
 
+
 class RadialConstraint(Constraint):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    thisown = property(
+        lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag"
+    )
     __repr__ = _swig_repr
 
     def __init__(self, groups, center):
-        _place_and_route.RadialConstraint_swiginit(self, _place_and_route.new_RadialConstraint(groups, center))
+        _place_and_route.RadialConstraint_swiginit(
+            self, _place_and_route.new_RadialConstraint(groups, center)
+        )
+
     __swig_destroy__ = _place_and_route.delete_RadialConstraint
-    groups = property(_place_and_route.RadialConstraint_groups_get, _place_and_route.RadialConstraint_groups_set)
-    center = property(_place_and_route.RadialConstraint_center_get, _place_and_route.RadialConstraint_center_set)
+    groups = property(
+        _place_and_route.RadialConstraint_groups_get,
+        _place_and_route.RadialConstraint_groups_set,
+    )
+    center = property(
+        _place_and_route.RadialConstraint_center_get,
+        _place_and_route.RadialConstraint_center_set,
+    )
+
 
 # Register RadialConstraint in _place_and_route:
 _place_and_route.RadialConstraint_swigregister(RadialConstraint)
 
+
 class Placer(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    thisown = property(
+        lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag"
+    )
     __repr__ = _swig_repr
 
     def __init__(self, *args):
         _place_and_route.Placer_swiginit(self, _place_and_route.new_Placer(*args))
+
     __swig_destroy__ = _place_and_route.delete_Placer
-    cells = property(_place_and_route.Placer_cells_get, _place_and_route.Placer_cells_set)
+    cells = property(
+        _place_and_route.Placer_cells_get, _place_and_route.Placer_cells_set
+    )
     nets = property(_place_and_route.Placer_nets_get, _place_and_route.Placer_nets_set)
-    constraints = property(_place_and_route.Placer_constraints_get, _place_and_route.Placer_constraints_set)
+    constraints = property(
+        _place_and_route.Placer_constraints_get, _place_and_route.Placer_constraints_set
+    )
 
     def place(self, max_x, max_y):
         return _place_and_route.Placer_place(self, max_x, max_y)
@@ -1605,15 +1908,20 @@ class Placer(object):
     def place_and_route(self):
         return _place_and_route.Placer_place_and_route(self)
 
+
 # Register Placer in _place_and_route:
 _place_and_route.Placer_swigregister(Placer)
 
+
 class VertexVector(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    thisown = property(
+        lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag"
+    )
     __repr__ = _swig_repr
 
     def iterator(self):
         return _place_and_route.VertexVector_iterator(self)
+
     def __iter__(self):
         return self.iterator()
 
@@ -1684,7 +1992,9 @@ class VertexVector(object):
         return _place_and_route.VertexVector_erase(self, *args)
 
     def __init__(self, *args):
-        _place_and_route.VertexVector_swiginit(self, _place_and_route.new_VertexVector(*args))
+        _place_and_route.VertexVector_swiginit(
+            self, _place_and_route.new_VertexVector(*args)
+        )
 
     def push_back(self, x):
         return _place_and_route.VertexVector_push_back(self, x)
@@ -1709,17 +2019,23 @@ class VertexVector(object):
 
     def capacity(self):
         return _place_and_route.VertexVector_capacity(self)
+
     __swig_destroy__ = _place_and_route.delete_VertexVector
+
 
 # Register VertexVector in _place_and_route:
 _place_and_route.VertexVector_swigregister(VertexVector)
 
+
 class RouteVector(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    thisown = property(
+        lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag"
+    )
     __repr__ = _swig_repr
 
     def iterator(self):
         return _place_and_route.RouteVector_iterator(self)
+
     def __iter__(self):
         return self.iterator()
 
@@ -1790,7 +2106,9 @@ class RouteVector(object):
         return _place_and_route.RouteVector_erase(self, *args)
 
     def __init__(self, *args):
-        _place_and_route.RouteVector_swiginit(self, _place_and_route.new_RouteVector(*args))
+        _place_and_route.RouteVector_swiginit(
+            self, _place_and_route.new_RouteVector(*args)
+        )
 
     def push_back(self, x):
         return _place_and_route.RouteVector_push_back(self, x)
@@ -1815,17 +2133,23 @@ class RouteVector(object):
 
     def capacity(self):
         return _place_and_route.RouteVector_capacity(self)
+
     __swig_destroy__ = _place_and_route.delete_RouteVector
+
 
 # Register RouteVector in _place_and_route:
 _place_and_route.RouteVector_swigregister(RouteVector)
 
+
 class RoutePointerVector(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    thisown = property(
+        lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag"
+    )
     __repr__ = _swig_repr
 
     def iterator(self):
         return _place_and_route.RoutePointerVector_iterator(self)
+
     def __iter__(self):
         return self.iterator()
 
@@ -1896,7 +2220,9 @@ class RoutePointerVector(object):
         return _place_and_route.RoutePointerVector_erase(self, *args)
 
     def __init__(self, *args):
-        _place_and_route.RoutePointerVector_swiginit(self, _place_and_route.new_RoutePointerVector(*args))
+        _place_and_route.RoutePointerVector_swiginit(
+            self, _place_and_route.new_RoutePointerVector(*args)
+        )
 
     def push_back(self, x):
         return _place_and_route.RoutePointerVector_push_back(self, x)
@@ -1921,17 +2247,23 @@ class RoutePointerVector(object):
 
     def capacity(self):
         return _place_and_route.RoutePointerVector_capacity(self)
+
     __swig_destroy__ = _place_and_route.delete_RoutePointerVector
+
 
 # Register RoutePointerVector in _place_and_route:
 _place_and_route.RoutePointerVector_swigregister(RoutePointerVector)
 
+
 class CellVector(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    thisown = property(
+        lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag"
+    )
     __repr__ = _swig_repr
 
     def iterator(self):
         return _place_and_route.CellVector_iterator(self)
+
     def __iter__(self):
         return self.iterator()
 
@@ -2002,7 +2334,9 @@ class CellVector(object):
         return _place_and_route.CellVector_erase(self, *args)
 
     def __init__(self, *args):
-        _place_and_route.CellVector_swiginit(self, _place_and_route.new_CellVector(*args))
+        _place_and_route.CellVector_swiginit(
+            self, _place_and_route.new_CellVector(*args)
+        )
 
     def push_back(self, x):
         return _place_and_route.CellVector_push_back(self, x)
@@ -2027,73 +2361,105 @@ class CellVector(object):
 
     def capacity(self):
         return _place_and_route.CellVector_capacity(self)
+
     __swig_destroy__ = _place_and_route.delete_CellVector
+
 
 # Register CellVector in _place_and_route:
 _place_and_route.CellVector_swigregister(CellVector)
 
+
 class Vertex(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    thisown = property(
+        lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag"
+    )
     __repr__ = _swig_repr
     x = property(_place_and_route.Vertex_x_get, _place_and_route.Vertex_x_set)
     y = property(_place_and_route.Vertex_y_get, _place_and_route.Vertex_y_set)
 
     def __init__(self):
         _place_and_route.Vertex_swiginit(self, _place_and_route.new_Vertex())
+
     __swig_destroy__ = _place_and_route.delete_Vertex
+
 
 # Register Vertex in _place_and_route:
 _place_and_route.Vertex_swigregister(Vertex)
 
+
 class Route(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    thisown = property(
+        lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag"
+    )
     __repr__ = _swig_repr
 
     def __init__(self, *args):
         _place_and_route.Route_swiginit(self, _place_and_route.new_Route(*args))
+
     __swig_destroy__ = _place_and_route.delete_Route
     id = property(_place_and_route.Route_id_get, _place_and_route.Route_id_set)
     start = property(_place_and_route.Route_start_get, _place_and_route.Route_start_set)
     end = property(_place_and_route.Route_end_get, _place_and_route.Route_end_set)
-    channelWidth = property(_place_and_route.Route_channelWidth_get, _place_and_route.Route_channelWidth_set)
-    channelSpacing = property(_place_and_route.Route_channelSpacing_get, _place_and_route.Route_channelSpacing_set)
-    waypoints = property(_place_and_route.Route_waypoints_get, _place_and_route.Route_waypoints_set)
+    channelWidth = property(
+        _place_and_route.Route_channelWidth_get, _place_and_route.Route_channelWidth_set
+    )
+    channelSpacing = property(
+        _place_and_route.Route_channelSpacing_get,
+        _place_and_route.Route_channelSpacing_set,
+    )
+    waypoints = property(
+        _place_and_route.Route_waypoints_get, _place_and_route.Route_waypoints_set
+    )
 
     def getWaypoints(self):
         return _place_and_route.Route_getWaypoints(self)
 
+
 # Register Route in _place_and_route:
 _place_and_route.Route_swigregister(Route)
 
+
 class Cell(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    thisown = property(
+        lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag"
+    )
     __repr__ = _swig_repr
     x = property(_place_and_route.Cell_x_get, _place_and_route.Cell_x_set)
     y = property(_place_and_route.Cell_y_get, _place_and_route.Cell_y_set)
-    x_span = property(_place_and_route.Cell_x_span_get, _place_and_route.Cell_x_span_set)
-    y_span = property(_place_and_route.Cell_y_span_get, _place_and_route.Cell_y_span_set)
+    x_span = property(
+        _place_and_route.Cell_x_span_get, _place_and_route.Cell_x_span_set
+    )
+    y_span = property(
+        _place_and_route.Cell_y_span_get, _place_and_route.Cell_y_span_set
+    )
 
     def __init__(self):
         _place_and_route.Cell_swiginit(self, _place_and_route.new_Cell())
+
     __swig_destroy__ = _place_and_route.delete_Cell
+
 
 # Register Cell in _place_and_route:
 _place_and_route.Cell_swigregister(Cell)
 
+
 class Router(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    thisown = property(
+        lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag"
+    )
     __repr__ = _swig_repr
 
     def __init__(self, obstacles):
         _place_and_route.Router_swiginit(self, _place_and_route.new_Router(obstacles))
+
     __swig_destroy__ = _place_and_route.delete_Router
-    obstacles = property(_place_and_route.Router_obstacles_get, _place_and_route.Router_obstacles_set)
+    obstacles = property(
+        _place_and_route.Router_obstacles_get, _place_and_route.Router_obstacles_set
+    )
 
     def route(self, routes, min_x, min_y, max_x, max_y):
         return _place_and_route.Router_route(self, routes, min_x, min_y, max_x, max_y)
 
+
 # Register Router in _place_and_route:
 _place_and_route.Router_swigregister(Router)
-
-
-

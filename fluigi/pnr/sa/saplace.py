@@ -1,10 +1,12 @@
 from __future__ import annotations
-from fluigi.pnr.sa.utils import (
-    select_random_component,
-    update_terminals,
-    AlgDataStorage,
-    storage,
-)
+
+import random
+import sys
+import time
+from math import exp, floor
+
+import numpy
+
 from fluigi.parameters import (
     DEFAULT_MOVES_PER_TEMP_PER_MODULE,
     DEVICE_X_DIM,
@@ -13,11 +15,12 @@ from fluigi.parameters import (
     SIGMA_MULTIPLIER,
 )
 from fluigi.pnr.sa.salayout import SALayout
-from math import exp, floor
-import random
-import time
-import sys
-import numpy
+from fluigi.pnr.sa.utils import (
+    AlgDataStorage,
+    select_random_component,
+    storage,
+    update_terminals,
+)
 
 
 class SAPlace:

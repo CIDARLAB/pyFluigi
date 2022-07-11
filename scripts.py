@@ -1,5 +1,5 @@
-import subprocess
 import datetime
+import subprocess
 
 
 def test():

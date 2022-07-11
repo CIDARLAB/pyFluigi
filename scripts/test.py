@@ -1,6 +1,7 @@
-from parchmint import Device
-import sys
 import json
+import sys
+
+from parchmint import Device
 
 file_path = sys.argv[1]
 

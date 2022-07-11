@@ -4,11 +4,11 @@ from pymint.mintdevice import MINTDevice
 def assign_single_port_terminals(mint_device: MINTDevice):
     # Loop through each of the connections
     for connection in mint_device.device.connections:
-        
+
         # Check if the connection has a source
         if connection.source is None:
             raise ValueError("Source of connection {} is None".format(connection.ID))
-        
+
         # Check if the source component has a single port
         source_component = mint_device.device.get_component(connection.source.component)
 

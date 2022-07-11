@@ -1,11 +1,13 @@
-from fluigi.pnr.layout import Layout
+# from jpype.types import *
+import json
+
 from pymint.mintdevice import MINTDevice
+
+from fluigi.pnr.layout import Layout
 
 # import jpype
 # import jpype.imports
 
-# from jpype.types import *
-import json
 
 # jpype.startJVM(classpath=['/home/krishna/CIDAR/pyfluigi/pnr/fluigi-java/Fluigi-jar-with-dependencies.jar'])
 

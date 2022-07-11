@@ -1,41 +1,38 @@
-from fluigi.conversions import add_spacing
-from fluigi.pnr.utils import assign_component_ports, reduce_device_size, size_nodes
-from fluigi.pnr.sa.saplace import SAPlace
-from fluigi.pnr.sa.salayout import SALayout
-from pymint import MINTDevice
-import fluigi.utils as utils
-from fluigi.primitives import (
-    pull_defaults,
-    pull_dimensions,
-    pull_terminals,
-    # stop_java_vm,
-)
-from fluigi.pnr.layout import Layout, PlaceAndRouteAlgorithms, RouterAlgorithms
-import sys
+import faulthandler
+import json
 import os
 import subprocess
+import sys
 from pathlib import Path
-import fluigi.parameters as parameters
-from parchmint import Device
-import json
-import networkx as nx
-from fluigi.pnr.terminalassignment import assign_single_port_terminals
 
+import networkx as nx
+from parchmint import Device
+from pymint import MINTDevice
+
+import fluigi.parameters as parameters
+import fluigi.utils as utils
+from fluigi.conversions import add_spacing
+from fluigi.pnr.dropx import place_and_route_dropx
+from fluigi.pnr.layout import Layout, PlaceAndRouteAlgorithms, RouterAlgorithms
 from fluigi.pnr.placement.graph import (
+    generateHOLALayout,
     generatePlanarLayout,
     generateSpectralLayout,
     generateSpringLayout,
-    generateHOLALayout,
 )
-
 from fluigi.pnr.placement.simulatedannealing import (
     generate_simulated_annealing_layout,
     generate_simulated_annealing_layout_v2,
 )
-
-from fluigi.pnr.dropx import place_and_route_dropx
-
-import faulthandler
+from fluigi.pnr.sa.salayout import SALayout
+from fluigi.pnr.sa.saplace import SAPlace
+from fluigi.pnr.terminalassignment import assign_single_port_terminals
+from fluigi.pnr.utils import assign_component_ports, reduce_device_size, size_nodes
+from fluigi.primitives import (  # stop_java_vm,
+    pull_defaults,
+    pull_dimensions,
+    pull_terminals,
+)
 
 faulthandler.enable()
 

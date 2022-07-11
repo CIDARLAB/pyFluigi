@@ -5,6 +5,7 @@
 # the SWIG interface file instead.
 
 from sys import version_info as _swig_python_version_info
+
 if _swig_python_version_info < (2, 7, 0):
     raise RuntimeError("Python 2.7 or later required")
 
@@ -19,12 +20,17 @@ try:
 except ImportError:
     import __builtin__
 
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
     except __builtin__.Exception:
         strthis = ""
-    return "<%s.%s; %s >" % (self.__class__.__module__, self.__class__.__name__, strthis,)
+    return "<%s.%s; %s >" % (
+        self.__class__.__module__,
+        self.__class__.__name__,
+        strthis,
+    )
 
 
 def _swig_setattr_nondynamic_instance_variable(set):
@@ -37,6 +43,7 @@ def _swig_setattr_nondynamic_instance_variable(set):
             set(self, name, value)
         else:
             raise AttributeError("You cannot add instance attributes to %s" % self)
+
     return set_instance_attr
 
 
@@ -46,26 +53,33 @@ def _swig_setattr_nondynamic_class_variable(set):
             set(cls, name, value)
         else:
             raise AttributeError("You cannot add class attributes to %s" % cls)
+
     return set_class_attr
 
 
 def _swig_add_metaclass(metaclass):
     """Class decorator for adding a metaclass to a SWIG wrapped class - a slimmed down version of six.add_metaclass"""
+
     def wrapper(cls):
         return metaclass(cls.__name__, cls.__bases__, cls.__dict__.copy())
+
     return wrapper
 
 
 class _SwigNonDynamicMeta(type):
     """Meta class to enforce nondynamic attributes (no new attributes) for a class"""
+
     __setattr__ = _swig_setattr_nondynamic_class_variable(type.__setattr__)
 
 
 class SwigPyIterator(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    thisown = property(
+        lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag"
+    )
 
     def __init__(self, *args, **kwargs):
         raise AttributeError("No constructor defined - class is abstract")
+
     __repr__ = _swig_repr
     __swig_destroy__ = _aarf.delete_SwigPyIterator
 
@@ -116,19 +130,26 @@ class SwigPyIterator(object):
 
     def __sub__(self, *args):
         return _aarf.SwigPyIterator___sub__(self, *args)
+
     def __iter__(self):
         return self
+
 
 # Register SwigPyIterator in _aarf:
 _aarf.SwigPyIterator_swigregister(SwigPyIterator)
 
 SHARED_PTR_DISOWN = _aarf.SHARED_PTR_DISOWN
+
+
 class VertexVector(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    thisown = property(
+        lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag"
+    )
     __repr__ = _swig_repr
 
     def iterator(self):
         return _aarf.VertexVector_iterator(self)
+
     def __iter__(self):
         return self.iterator()
 
@@ -224,17 +245,23 @@ class VertexVector(object):
 
     def capacity(self):
         return _aarf.VertexVector_capacity(self)
+
     __swig_destroy__ = _aarf.delete_VertexVector
+
 
 # Register VertexVector in _aarf:
 _aarf.VertexVector_swigregister(VertexVector)
 
+
 class RouteVector(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    thisown = property(
+        lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag"
+    )
     __repr__ = _swig_repr
 
     def iterator(self):
         return _aarf.RouteVector_iterator(self)
+
     def __iter__(self):
         return self.iterator()
 
@@ -330,17 +357,23 @@ class RouteVector(object):
 
     def capacity(self):
         return _aarf.RouteVector_capacity(self)
+
     __swig_destroy__ = _aarf.delete_RouteVector
+
 
 # Register RouteVector in _aarf:
 _aarf.RouteVector_swigregister(RouteVector)
 
+
 class CellVector(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    thisown = property(
+        lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag"
+    )
     __repr__ = _swig_repr
 
     def iterator(self):
         return _aarf.CellVector_iterator(self)
+
     def __iter__(self):
         return self.iterator()
 
@@ -436,40 +469,55 @@ class CellVector(object):
 
     def capacity(self):
         return _aarf.CellVector_capacity(self)
+
     __swig_destroy__ = _aarf.delete_CellVector
+
 
 # Register CellVector in _aarf:
 _aarf.CellVector_swigregister(CellVector)
 
+
 class Vertex(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    thisown = property(
+        lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag"
+    )
     __repr__ = _swig_repr
     x = property(_aarf.Vertex_x_get, _aarf.Vertex_x_set)
     y = property(_aarf.Vertex_y_get, _aarf.Vertex_y_set)
 
     def __init__(self):
         _aarf.Vertex_swiginit(self, _aarf.new_Vertex())
+
     __swig_destroy__ = _aarf.delete_Vertex
+
 
 # Register Vertex in _aarf:
 _aarf.Vertex_swigregister(Vertex)
 
+
 class Route(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    thisown = property(
+        lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag"
+    )
     __repr__ = _swig_repr
 
     def __init__(self, *args):
         _aarf.Route_swiginit(self, _aarf.new_Route(*args))
+
     __swig_destroy__ = _aarf.delete_Route
     start = property(_aarf.Route_start_get, _aarf.Route_start_set)
     end = property(_aarf.Route_end_get, _aarf.Route_end_set)
     waypoints = property(_aarf.Route_waypoints_get, _aarf.Route_waypoints_set)
 
+
 # Register Route in _aarf:
 _aarf.Route_swigregister(Route)
 
+
 class Cell(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    thisown = property(
+        lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag"
+    )
     __repr__ = _swig_repr
     x = property(_aarf.Cell_x_get, _aarf.Cell_x_set)
     y = property(_aarf.Cell_y_get, _aarf.Cell_y_set)
@@ -478,27 +526,37 @@ class Cell(object):
 
     def __init__(self):
         _aarf.Cell_swiginit(self, _aarf.new_Cell())
+
     __swig_destroy__ = _aarf.delete_Cell
+
 
 # Register Cell in _aarf:
 _aarf.Cell_swigregister(Cell)
 
+
 class Router(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    thisown = property(
+        lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag"
+    )
     __repr__ = _swig_repr
 
     def __init__(self, obstacles, channelWidth, channelSpacing):
-        _aarf.Router_swiginit(self, _aarf.new_Router(obstacles, channelWidth, channelSpacing))
+        _aarf.Router_swiginit(
+            self, _aarf.new_Router(obstacles, channelWidth, channelSpacing)
+        )
+
     __swig_destroy__ = _aarf.delete_Router
     obstacles = property(_aarf.Router_obstacles_get, _aarf.Router_obstacles_set)
-    channelWidth = property(_aarf.Router_channelWidth_get, _aarf.Router_channelWidth_set)
-    channelSpacing = property(_aarf.Router_channelSpacing_get, _aarf.Router_channelSpacing_set)
+    channelWidth = property(
+        _aarf.Router_channelWidth_get, _aarf.Router_channelWidth_set
+    )
+    channelSpacing = property(
+        _aarf.Router_channelSpacing_get, _aarf.Router_channelSpacing_set
+    )
 
     def route(self, sources, targets):
         return _aarf.Router_route(self, sources, targets)
 
+
 # Register Router in _aarf:
 _aarf.Router_swigregister(Router)
-
-
-
