@@ -10,7 +10,7 @@ ENV   PYTHONFAULTHANDLER=1 \
   PIP_NO_CACHE_DIR=off \
   PIP_DISABLE_PIP_VERSION_CHECK=on \
   PIP_DEFAULT_TIMEOUT=100 \
-  POETRY_VERSION=1.3.1
+  POETRY_VERSION=1.2.0
 
 
 # [Optional] Uncomment this section to install additional OS packages.
@@ -24,23 +24,23 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
       python3-pygraphviz apt-utils
 
 
-RUN pip install "poetry==$POETRY_VERSION"
+# RUN pip install "poetry==$POETRY_VERSION"
 
-# # Pyenv for our baseline python environment for poetry later on.
-RUN git clone https://github.com/yyuu/pyenv.git .pyenv
-RUN git clone https://github.com/yyuu/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
+# # # Pyenv for our baseline python environment for poetry later on.
+# RUN git clone https://github.com/yyuu/pyenv.git .pyenv
+# RUN git clone https://github.com/yyuu/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
 
-ENV PYENV_ROOT $HOME/.pyenv
-ENV PATH $PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH
+# ENV PYENV_ROOT $HOME/.pyenv
+# ENV PATH $PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH
 
-ENV PATH /root/.pyenv/bin:$PATH
-RUN command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-RUN eval "$(pyenv init -)"
+# ENV PATH /root/.pyenv/bin:$PATH
+# RUN command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+# RUN eval "$(pyenv init -)"
 
-RUN pyenv install 3.8.0
-RUN pyenv global 3.8.0
+# RUN pyenv install 3.8.0
+# RUN pyenv global 3.8.0
 
-RUN poetry config virtualenvs.create false
+# RUN poetry config virtualenvs.create false
 RUN pip install --upgrade pip
 RUN pip install setuptools pygraphviz
 
