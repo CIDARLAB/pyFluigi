@@ -43,7 +43,8 @@
 		"streetsidesoftware.code-spell-checker",
 		"yzhang.markdown-all-in-one",
 		"VisualStudioExptTeam.vscodeintellicode",
-		"GitHub.vscode-pull-request-github"
+		"GitHub.vscode-pull-request-github",
+		"ms-python.python"
 	],
 	"features": {
 		"ghcr.io/devcontainers-contrib/features/black:2": {},
