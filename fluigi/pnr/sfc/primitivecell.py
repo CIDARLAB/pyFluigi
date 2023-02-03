@@ -149,13 +149,13 @@ class PrimitiveCell:
            side (ComponentSide): The side of the composite cell to activate
         """
         if side is ComponentSide.NORTH:
-            self._north_port = True
+            self._north_port = False
         elif side is ComponentSide.EAST:
-            self._east_port = True
+            self._east_port = False
         elif side is ComponentSide.SOUTH:
-            self._south_port = True
+            self._south_port = False
         else:
-            self._west_port = True
+            self._west_port = False
     
     
     def print_cell(self):
