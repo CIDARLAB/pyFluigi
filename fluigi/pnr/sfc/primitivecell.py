@@ -1,9 +1,6 @@
 from __future__ import annotations
 from enum import Enum
 from typing import List
-from parchmint.component import Component
-from parchmint.port import Port
-import math
 
 
 class ComponentSide(Enum):
