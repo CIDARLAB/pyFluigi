@@ -1,15 +1,16 @@
 from __future__ import annotations
+
 from enum import Enum
-from typing import List, Dict, NamedTuple
-from fluigi.pnr.sfc.port_spread import generate_bin_map, try_shift_left, try_shift_right
-from fluigi.pnr.sfc.utils import get_closest_side
+from queue import Queue
+from typing import Dict, List, NamedTuple
+
 from parchmint.component import Component
 from parchmint.port import Port
-from queue import Queue
 
-
+from fluigi.pnr.sfc.port_spread import generate_bin_map, try_shift_left, try_shift_right
+from fluigi.pnr.sfc.primitivecell import ComponentSide, PrimitiveCell
 from fluigi.pnr.sfc.spacer_insert import SpacerInsert, generate_spacers
-from fluigi.pnr.sfc.primitivecell import PrimitiveCell, ComponentSide
+from fluigi.pnr.sfc.utils import get_closest_side
 
 
 class CompositeCell:

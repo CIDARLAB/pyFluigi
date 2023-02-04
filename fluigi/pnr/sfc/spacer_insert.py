@@ -1,9 +1,9 @@
 from typing import List, NamedTuple
-from fluigi.parameters import SPACER_THRESHOLD
 
-from fluigi.pnr.sfc.primitivecell import ComponentSide, PrimitiveCell
 from parchmint.port import Port
 
+from fluigi.parameters import SPACER_THRESHOLD
+from fluigi.pnr.sfc.primitivecell import ComponentSide, PrimitiveCell
 
 
 class SpacerInsert(NamedTuple):

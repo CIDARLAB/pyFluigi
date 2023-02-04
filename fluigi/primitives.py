@@ -1,9 +1,11 @@
+import json
 from typing import Optional
+
+import requests
 from parchmint.device import Device, ValveType
 from parchmint.port import Port
-import json
+
 import fluigi.parameters as parameters
-import requests
 
 # All the imports for the java pipe
 # import jpype

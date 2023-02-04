@@ -1,6 +1,5 @@
 from fluigi.pnr.place_and_route import *
 
-
 terminals1 = []
 terminals2 = []
 

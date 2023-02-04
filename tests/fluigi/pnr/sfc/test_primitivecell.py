@@ -1,5 +1,6 @@
-from fluigi.pnr.sfc.compositecell import ComponentSide, PrimitiveCell
 import pytest
+
+from fluigi.pnr.sfc.compositecell import ComponentSide, PrimitiveCell
 
 
 def test_primitive_cell():

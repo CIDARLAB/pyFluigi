@@ -1,12 +1,13 @@
 import json
 from pathlib import Path
 from typing import List
+
 import click
+import pyfiglet
 from lfr.parameters import LIB_DIR as LFR_LIB_DIR
 from parchmint.device import Device
-import pyfiglet
-from fluigi import parameters
 
+from fluigi import parameters
 from fluigi.utils import render_svg
 
 

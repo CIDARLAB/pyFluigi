@@ -1,5 +1,6 @@
-from parchmint.component import Component
 import pytest
+from parchmint.component import Component
+
 
 @pytest.fixture
 def component():

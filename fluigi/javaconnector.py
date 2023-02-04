@@ -1,9 +1,8 @@
-from fluigi.parameters import FLUIGI_JAVA_PNR_JAR_PATH
 import jpype
-
 import jpype.imports
-
 from jpype.types import *
+
+from fluigi.parameters import FLUIGI_JAVA_PNR_JAR_PATH
 
 # jpype.startJVM(classpath=['./pnr/fluigi-java/Fluigi-jar-with-dependencies.jar'])
 jar_path = FLUIGI_JAVA_PNR_JAR_PATH.resolve()
@@ -11,7 +10,6 @@ jpype.startJVM(classpath=[jar_path])
 
 import java
 from org.cidarlab.fluigi.fluigi import *
-
 
 test = dict()
 test['flowChannelWidth'] = int(100)

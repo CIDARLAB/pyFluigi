@@ -1,5 +1,13 @@
 from __future__ import annotations
 
+import sys
+
+from fluigi.parameters import AREA_PENALTY, OVERLAP_PENALTY, WIRE_PENALTY
+from fluigi.pnr.layout import Layout
+from fluigi.pnr.place_and_route import Net as CNet
+from fluigi.pnr.place_and_route import PlacementCell as CCell
+from fluigi.pnr.place_and_route import Terminal as CTerminal
+from fluigi.pnr.sa.layoutgrid import LayoutGrid
 from fluigi.pnr.sa.utils import (
     bottom_edge,
     calc_position,
@@ -7,15 +15,9 @@ from fluigi.pnr.sa.utils import (
     manhattan_dist,
     overlap_area,
     right_edge,
-    top_edge,
     storage,
+    top_edge,
 )
-from fluigi.pnr.sa.layoutgrid import LayoutGrid
-from fluigi.parameters import AREA_PENALTY, OVERLAP_PENALTY, WIRE_PENALTY
-from fluigi.pnr.place_and_route import PlacementCell as CCell, Terminal as CTerminal
-from fluigi.pnr.place_and_route import Net as CNet
-from fluigi.pnr.layout import Layout
-import sys
 
 
 class SALayout(Layout):

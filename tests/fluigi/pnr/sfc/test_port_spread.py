@@ -1,8 +1,9 @@
 import pytest
+from parchmint.port import Port
+
 from fluigi.pnr.sfc.port_spread import generate_bin_map
 from fluigi.pnr.sfc.primitivecell import ComponentSide
 
-from parchmint.port import Port
 
 @pytest.fixture
 def north_ports():
@@ -24,10 +25,16 @@ def test_try_shift_right():
 def test_generate_bin_map(north_ports, component):
     # Test the bin map generation for the north ports
     # For different kinds of spread arrays
+    
     # This is a 10 spread array
     spread_array = [True, True, True, True, True, True, True, True, True, True]
     bin_map = generate_bin_map(spread_array, north_ports, component, ComponentSide.NORTH)
     assert bin_map == {0: 2, 1: 5, 2: 7, 3: 10}
+
+    # This is a 5 spread array
+    spread_array = [True, True, True, True, True, True]
+    bin_map = generate_bin_map(spread_array, north_ports, component, ComponentSide.NORTH)
+    assert bin_map == {0: 1, 1: 3, 2: 4, 3: 6}
 
 
 def test_furthest_feasible_point():

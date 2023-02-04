@@ -1103,14 +1103,13 @@ dmypy = ["psutil (>=4.0)"]
 
 [[package]]
 name = "mypy-extensions"
-version = "0.4.3"
+version = "0.4.4"
 description = "Experimental type system extensions for programs checked with the mypy typechecker."
 category = "dev"
 optional = false
-python-versions = "*"
+python-versions = ">=2.7"
 files = [
-    {file = "mypy_extensions-0.4.3-py2.py3-none-any.whl", hash = "sha256:090fedd75945a69ae91ce1303b5824f428daf5a028d2f6ab8a299250a846f15d"},
-    {file = "mypy_extensions-0.4.3.tar.gz", hash = "sha256:2d82818f5bb3e369420cb3c4060a7970edba416647068eb4c5343488a6c604a8"},
+    {file = "mypy_extensions-0.4.4.tar.gz", hash = "sha256:c8b707883a96efe9b4bb3aaf0dcc07e7e217d7d8368eec4db4049ee9e142f4fd"},
 ]
 
 [[package]]
@@ -2445,4 +2444,4 @@ testing = ["flake8 (<5)", "func-timeout", "jaraco.functools", "jaraco.itertools"
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8,<3.11"
-content-hash = "341a6773042750433d4b285b9a0aebce94f7b1ce1d124748a97331447923a93f"
+content-hash = "369388abcd0dfe9ff110d4071327297f6617228f3cce05d9fc68e100f1409823"

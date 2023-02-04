@@ -1,8 +1,9 @@
-from fluigi.pnr.sfc.primitivecell import ComponentSide
-from fluigi.pnr.sfc.utils import get_closest_side, to_polar
+import pytest
 from parchmint.component import Component
 from parchmint.port import Port
-import pytest
+
+from fluigi.pnr.sfc.primitivecell import ComponentSide
+from fluigi.pnr.sfc.utils import get_closest_side, to_polar
 
 
 @pytest.fixture

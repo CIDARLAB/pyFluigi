@@ -1,11 +1,13 @@
+import os
 import pathlib
 from typing import Tuple
-import networkx as nx
-import fluigi.parameters as parameters
-import os
+
 import cairo
-from fluigi.parameters import DEVICE_X_DIM, DEVICE_Y_DIM, PT_TO_UM
+import networkx as nx
 from parchmint import Device, Target
+
+import fluigi.parameters as parameters
+from fluigi.parameters import DEVICE_X_DIM, DEVICE_Y_DIM, PT_TO_UM
 
 
 def printgraph(G, filename: str) -> None:

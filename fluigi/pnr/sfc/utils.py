@@ -1,8 +1,11 @@
+import math
 from typing import List, Optional, Tuple
-from fluigi.pnr.sfc.primitivecell import ComponentSide
+
 from parchmint.component import Component
 from parchmint.port import Port
-import math
+
+from fluigi.pnr.sfc.primitivecell import ComponentSide
+
 
 def to_polar(rectangle: Tuple[int, int, int, int], point: Tuple[int, int]) -> Tuple[float, float]:
     """ Converts a point from cartesian to polar coordinates for the component 

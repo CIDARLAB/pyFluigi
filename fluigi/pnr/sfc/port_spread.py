@@ -1,9 +1,10 @@
+import math
 from typing import Dict, List
+
 from parchmint.component import Component
 from parchmint.port import Port
-from fluigi.pnr.sfc.primitivecell import ComponentSide
-import math
 
+from fluigi.pnr.sfc.primitivecell import ComponentSide
 
 
 def try_shift_left(spread_array: List[bool], binning_data: Dict[int, int]):

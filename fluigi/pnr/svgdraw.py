@@ -1,7 +1,8 @@
 from __future__ import annotations
-import cairo
-from fluigi.parameters import OUTPUT_DIR, DEVICE_X_DIM, DEVICE_Y_DIM
 
+import cairo
+
+from fluigi.parameters import DEVICE_X_DIM, DEVICE_Y_DIM, OUTPUT_DIR
 
 PT_TO_UM = 1 / 352.778
 

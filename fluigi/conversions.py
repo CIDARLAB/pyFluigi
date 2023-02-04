@@ -1,15 +1,12 @@
 import json
 from pathlib import Path
-from fluigi import utils
-import fluigi.parameters as parameters
+
 from pymint.mintdevice import MINTDevice
+
+import fluigi.parameters as parameters
+from fluigi import utils
 from fluigi.pnr.utils import assign_component_ports
-from fluigi.primitives import (
-    pull_defaults,
-    pull_dimensions,
-    pull_terminals,
-    size_nodes,
-)
+from fluigi.primitives import pull_defaults, pull_dimensions, pull_terminals, size_nodes
 
 
 def add_spacing(current_device: MINTDevice) -> None:
