@@ -46,20 +46,42 @@ def try_shift_right(spread_array: List[bool], binning_data: Dict[int, int]):
 
 
 def generate_bin_map(spread_array: List[bool], port_list: List[Port], component: Component, side: ComponentSide) -> Dict[int, int]:
+    """ Generate the bin map for the ports, basically bins the coordinates of the ports to locations on the spread array
+    which is a boolean array representing the side of the component. The bin map is a dictionary with the index of the
+    port in the port list as the key and the ideal spread array location as the value.
+
+
+    Args:
+        spread_array (List[bool]): Spread array representing the side of the component
+        port_list (List[Port]): List of ports on the component for the given side
+        component (Component): Component object
+        side (ComponentSide): Side of the component for which the ports are being binned used to determine the co-ordinate to bin
+
+    Returns:
+        Dict[int, int]: Dictionary with the index of the port in the port list as the key and the ideal spread array location as the value
+    """
     # the bin map has left to right ordered
     # ports with with the positon binned
     bin_map = {}
     for index, port in enumerate(port_list):
         if side is ComponentSide.NORTH or side is ComponentSide.SOUTH:
             # compare for dimension x when generating the map
-            bin_map[index] = int(
-                math.floor(port.x / component.xspan * len(spread_array))
-            )
+            coordinate = port.x
         else:
             # compare for dimension y when generating the map
-            bin_map[index] = int(
-                math.floor(port.y / component.yspan * len(spread_array))
-            )
+            coordinate = port.y
+        
+        location = int(
+            math.floor(coordinate/ component.xspan * len(spread_array))
+        )
+
+        # check if the location is size of the spread 
+        # array (when its an integer overflow)
+        if location == len(spread_array):
+            location = len(spread_array) - 1
+        
+        bin_map[index] = location
+
 
     return bin_map
 
