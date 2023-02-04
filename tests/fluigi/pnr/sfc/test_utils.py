@@ -77,8 +77,8 @@ def test_get_closest_side(component, cardinal_ports, diagonal_ports):
     
     assert get_closest_side(component, port_northeast_corner) == ComponentSide.NORTH
     assert get_closest_side(component, port_southeast_corner) == ComponentSide.EAST
-    assert get_closest_side(component, port_southwest_corner) == ComponentSide.WEST
-    assert get_closest_side(component, port_northwest_corner) == ComponentSide.NORTH
+    assert get_closest_side(component, port_southwest_corner) == ComponentSide.SOUTH
+    assert get_closest_side(component, port_northwest_corner) == ComponentSide.WEST
 
 
 
