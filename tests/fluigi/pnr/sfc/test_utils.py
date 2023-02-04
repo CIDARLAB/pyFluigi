@@ -4,18 +4,6 @@ from parchmint.component import Component
 from parchmint.port import Port
 import pytest
 
-@pytest.fixture
-def component():
-    # Create a component
-    component = Component(
-        name="test_component",
-        ID="test_component",
-        xpos=0,
-        ypos=0,
-        xspan=1000,
-        yspan=1000,
-    )
-    return component
 
 @pytest.fixture
 def cardinal_ports():

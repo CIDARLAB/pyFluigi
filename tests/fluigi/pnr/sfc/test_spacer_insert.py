@@ -1,10 +1,5 @@
 from fluigi.pnr.sfc.spacer_insert import get_spacer_size
 
-def test_try_shift_left():
-    raise NotImplementedError()
-
-def test_try_shift_right():
-    raise NotImplementedError()
 
 def test_get_spacer_size():
     # Note - SPACER_THRESHOLD is 5000 

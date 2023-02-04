@@ -25,8 +25,6 @@ def try_shift_left(spread_array: List[bool], binning_data: Dict[int, int]):
                 pass
 
 
-
-
 def try_shift_right(spread_array: List[bool], binning_data: Dict[int, int]):
     # look at the binning for the item
     # of that index see if it needs to
