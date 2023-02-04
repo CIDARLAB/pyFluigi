@@ -1,10 +1,24 @@
-from typing import List, Optional
+from typing import List, Optional, Tuple
 from fluigi.pnr.sfc.primitivecell import ComponentSide
 from parchmint.component import Component
 from parchmint.port import Port
 import math
 
-def to_polar(rectangle, point):
+def to_polar(rectangle: Tuple[int, int, int, int], point: Tuple[int, int]) -> Tuple[float, float]:
+    """ Converts a point from cartesian to polar coordinates for the component 
+    center as the origin
+
+    Converts a point from cartesian to polar coordinates for the component center 
+    as the origin, and flips the y axis to make the translation. This is a quick 
+    way of figuring out the angle of the point relative to the center of the component
+
+    Args:
+        rectangle (Tuple[int, int, int, int]): Tuple of x1, y1, x2, y2 coordinates
+        point (Tuple[int, int]): Tuple of x, y coordinates
+
+    Returns:
+        Tuple[float, float]: r, theta in polar coordinates
+    """    
     x1, y1, x2, y2 = rectangle
     x, y = point
     center_x, center_y = (x1 + x2) / 2, (y1 + y2) / 2

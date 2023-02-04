@@ -1,7 +1,9 @@
 from typing import List, NamedTuple
+from fluigi.parameters import SPACER_THRESHOLD
 
 from fluigi.pnr.sfc.primitivecell import ComponentSide, PrimitiveCell
 from parchmint.port import Port
+
 
 
 class SpacerInsert(NamedTuple):
@@ -67,6 +69,7 @@ def insert_vertical_spacer_column(
         cell_list[insert_index][-1].activate_port(ComponentSide.EAST
 )
 
+
 def insert_horizontal_spacer_column(
     cell_list: List[List[PrimitiveCell]],
     insert_index: int,
@@ -94,7 +97,11 @@ def insert_horizontal_spacer_column(
 
 
 def get_spacer_size(min_dimension: float, max_dimension: float, current_gap: int = 0) -> int:
+    gap = max_dimension - min_dimension
+    if gap < SPACER_THRESHOLD:
+        return 0
     # Return 1 for now
+    size = gap // SPACER_THRESHOLD
     size = 1 - current_gap
     if size < 0:
         return 0

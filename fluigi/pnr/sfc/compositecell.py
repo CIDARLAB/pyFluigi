@@ -1,12 +1,14 @@
 from __future__ import annotations
 from enum import Enum
 from typing import List, Dict, NamedTuple
+from fluigi.pnr.sfc.port_spread import generate_bin_map, try_shift_left, try_shift_right
+from fluigi.pnr.sfc.utils import get_closest_side
 from parchmint.component import Component
 from parchmint.port import Port
 from queue import Queue
 
 
-from fluigi.pnr.sfc.spacer_insert import SpacerInsert
+from fluigi.pnr.sfc.spacer_insert import SpacerInsert, generate_spacers
 from fluigi.pnr.sfc.primitivecell import PrimitiveCell, ComponentSide
 
 
@@ -158,7 +160,12 @@ class CompositeCell:
                 east_ports.append(port)
             elif closest_side is ComponentSide.SOUTH:
                 south_ports.append(port)
+            elif closest_side is ComponentSide.WEST:
+                west_ports.append(port)
             else:
+                north_ports.append(port)
+                east_ports.append(port)
+                south_ports.append(port)
                 west_ports.append(port)
 
         # Now sort the ports based on their x and y coordinates.
