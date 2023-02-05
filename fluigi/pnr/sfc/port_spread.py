@@ -36,23 +36,35 @@ def try_shift_right(spread_array: List[bool], ideal_locations: Dict[int, int]):
                 break
 
 
-def try_shift_left(spread_array: List[bool], binning_data: Dict[int, int]):
+def try_shift_left(spread_array: List[bool], ideal_locations: Dict[int, int]):
     # look at the binning for the item
     # of that index see if it needs to
     # go more right. If yes then push it
     # to the left-most feasible point
+
+    ports_sorted_list = list(ideal_locations.keys())
+    ports_sorted_list.sort(reverse=True)
+
     for cursor in range(len(spread_array) - 1, -1, -1):
         if spread_array[cursor] is True:
             # Get the bin_location from the binning data
-            bin_location = binning_data[cursor]
+            # Get the bin_location from the binning data
+            # Check if no port data is available for th
+            current_port_id = ports_sorted_list.pop(0)
+            ideal_location = ideal_locations[current_port_id]
+
             # Shift to the furthest point to the left
             # Check if this is a left shift
-            if bin_location < cursor:
+            if ideal_location < cursor:
                 # Shift to the furthest point to the left
-                shift_furthest_fesible_point(spread_array, cursor, bin_location)
+                shift_furthest_fesible_point(spread_array, cursor, ideal_location)
             else:
                 # No need to shift
                 pass
+
+            # If the memo is empty then break
+            if len(ports_sorted_list) == 0:
+                break
 
 
 def generate_bin_map(spread_array: List[bool], port_list: List[Port], component: Component, side: ComponentSide) -> Dict[int, int]:

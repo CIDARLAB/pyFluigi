@@ -49,7 +49,7 @@ class CompositeCell:
         )
         try_shift_left(
             spread_array=spread_array,
-            binning_data=bin_data,
+            ideal_locations=bin_data,
         )
         try_shift_right(
             spread_array=spread_array,
@@ -57,7 +57,7 @@ class CompositeCell:
         )
         try_shift_left(
             spread_array=spread_array,
-            binning_data=bin_data,
+            ideal_locations=bin_data,
         )
 
     @staticmethod

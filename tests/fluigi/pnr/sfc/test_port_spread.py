@@ -30,7 +30,29 @@ def east_ports():
 
 
 def test_try_shift_left():
-    raise NotImplementedError()
+    # Create a spread array of 10 with 0, 4 and 9 as True
+    spread_array = [True, False, False, False, True, False, False, False, True]
+    binning_data = {0: 0, 1: 4, 2: 8}
+    try_shift_left(spread_array, binning_data)
+
+    # nothing should change
+    assert spread_array == [True, False, False, False, True, False, False, False, True]
+
+    # Create a spread array of 10 with 3, 4 and 5 as True
+    spread_array = [False, False, False, True, True, True, False, False, False]
+    binning_data = {0: 0, 1: 4, 2: 8}
+    try_shift_left(spread_array, binning_data)
+
+    # Everything to the left of 3 should shift to the left
+    assert spread_array == [True, False, False, False, True, True, False, False, False]
+
+    # Create a spread array of 10 with 3, 4, 5, 8 as True
+    spread_array = [True, False, False, True, True, True, False, False, False]
+    binning_data = {0: 0, 1: 4, 2: 8}
+    try_shift_left(spread_array, binning_data)
+    
+    # Everything to the right of 4 should shift to the left
+    assert spread_array == [True, True, False, False, True, True, False, False, False]
 
 
 def test_try_shift_right():
@@ -47,7 +69,7 @@ def test_try_shift_right():
     binning_data = {0: 0, 1: 4, 2: 8}
     try_shift_right(spread_array, binning_data)
 
-    # Everything to the right of 4 should shift to the left
+    # Everything to the right of 4 should shift to the Right
     assert spread_array == [False, False, False, True, True, False, False, False, True]
 
     # Create a spread array of 10 with 3, 4, 5, 8 as True
