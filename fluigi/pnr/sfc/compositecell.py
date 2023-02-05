@@ -7,58 +7,15 @@ from typing import Dict, List, NamedTuple
 from parchmint.component import Component
 from parchmint.port import Port
 
-from fluigi.pnr.sfc.port_spread import generate_bin_map, try_shift_left, try_shift_right
+from fluigi.pnr.sfc.port_spread import spread_ports
 from fluigi.pnr.sfc.primitivecell import ComponentSide, PrimitiveCell
-from fluigi.pnr.sfc.spacer_insert import SpacerInsert, generate_spacers
+from fluigi.pnr.sfc.spacer_insert import generate_spacers
 from fluigi.pnr.sfc.utils import get_closest_side
 
 
 class CompositeCell:
     def __init__(self, cell_list: List[List[PrimitiveCell]]) -> None:
         self._cells = cell_list
-
-    @staticmethod
-    def spread_ports(
-        cell_list: List[List[PrimitiveCell]],
-        side: ComponentSide,
-        component: Component,
-        ports_list: List[Port],
-    ) -> None:
-        # First create an a reporesentative array of the active ports on the composite cell side of interest with the ports locations being 1
-        # [ ][ ][1][1][1][ ][ ]
-        # start with the outer most ports and try to figure hwere I can bin the ports along the array according to their relative locations
-        # along the edge
-
-        # Extract the ports side of interest from the composite cell
-        spread_array = []
-        if side is ComponentSide.NORTH:
-            spread_array = [cell.north_port for cell in cell_list[0]]
-        elif side is ComponentSide.EAST:
-            spread_array = [row[-1].east_port for row in cell_list]
-        elif side is ComponentSide.SOUTH:
-            spread_array = [cell.south_port for cell in cell_list[-1]]
-        else:
-            spread_array = [row[0].west_port for row in cell_list]
-
-        # Create a list of the ports locations
-        bin_data = generate_bin_map(
-            spread_array=spread_array,
-            port_list=ports_list,
-            component=component,
-            side=side,
-        )
-        try_shift_left(
-            spread_array=spread_array,
-            ideal_locations=bin_data,
-        )
-        try_shift_right(
-            spread_array=spread_array,
-            ideal_locations=bin_data,
-        )
-        try_shift_left(
-            spread_array=spread_array,
-            ideal_locations=bin_data,
-        )
 
     @staticmethod
     def activate_ports(
@@ -243,7 +200,7 @@ class CompositeCell:
             # Spread the ports outwards based on the relative distances
             # between the ports. THRESHOLD doesn't matter here since we
             # aren't yet doing the expansion with spacer blocks
-            CompositeCell.spread_ports(
+            spread_ports(
                 cell_list=cell_list, side=side, component=component, ports_list=ports
             )
 

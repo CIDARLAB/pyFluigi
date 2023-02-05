@@ -48,7 +48,7 @@ def test_try_shift_left():
 
     # Create a spread array of 10 with 3, 4, 5, 8 as True
     spread_array = [True, False, False, True, True, True, False, False, False]
-    binning_data = {0: 0, 1: 4, 2: 8}
+    binning_data = {0: 0, 1:0, 2: 4, 3: 8}
     try_shift_left(spread_array, binning_data)
     
     # Everything to the right of 4 should shift to the left
@@ -74,7 +74,7 @@ def test_try_shift_right():
 
     # Create a spread array of 10 with 3, 4, 5, 8 as True
     spread_array = [False, False, False, True, True, True, False, False, True]
-    binning_data = {0: 0, 1: 4, 2: 8}
+    binning_data = {0: 0, 1: 4, 2: 8, 3: 8}
     try_shift_right(spread_array, binning_data)
     
     # Everything to the right of 4 should shift to the left
@@ -138,3 +138,7 @@ def test_shift_furthest_fesible_point():
     spread_array = [False, False, False, True, True, True, False, False, False]
     shift_furthest_fesible_point(spread_array, 5, 8)
     assert spread_array == [False, False, False, True, True, False, False, False, True]
+
+
+def test_spread_ports():
+    raise NotImplementedError("Test not implemented yet")
