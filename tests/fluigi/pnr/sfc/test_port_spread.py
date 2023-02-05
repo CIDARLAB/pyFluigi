@@ -62,6 +62,15 @@ def test_generate_bin_map(north_ports, east_ports, component):
 
 
 def test_shift_furthest_fesible_point():
+    # Checkt to make sure that it raises a Value Error if the start index is False
+    with pytest.raises(ValueError):
+        spread_array = [False, False, True, False, False, False, False, False, False, True]
+        shift_furthest_fesible_point(spread_array, 0, 9)
+
+    # Check to make sure that the same index for start and taget make no changes to the array
+    spread_array = [False, False, True, False, False, False, False, False, False, True]
+    shift_furthest_fesible_point(spread_array, 2, 2)
+
     # Create a spread array with only 1 true value
     spread_array = [False, False, True, False, False, False, False, False, False, True]
     shift_furthest_fesible_point(spread_array, 2, 9)
@@ -71,3 +80,9 @@ def test_shift_furthest_fesible_point():
     spread_array = [True, False, True, False, False, False, False, False, False, True]
     shift_furthest_fesible_point(spread_array, 0, 9)
     assert spread_array == [False, True, True, False, False, False, False, False, False, True]
+
+    # Create a spread array with only 1 true value
+    spread_array = [True, False, True, False, False, False, False, False, False, True]
+    # Shift the furthest feasible point to the left
+    shift_furthest_fesible_point(spread_array, 9, 0)
+    assert spread_array == [True, False, True, True, False, False, False, False, False, False]
