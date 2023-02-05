@@ -50,6 +50,14 @@ def test_try_shift_right():
     # Everything to the right of 4 should shift to the left
     assert spread_array == [False, False, False, True, True, False, False, False, True]
 
+    # Create a spread array of 10 with 3, 4, 5, 8 as True
+    spread_array = [False, False, False, True, True, True, False, False, True]
+    binning_data = {0: 0, 1: 4, 2: 8}
+    try_shift_right(spread_array, binning_data)
+    
+    # Everything to the right of 4 should shift to the left
+    assert spread_array == [False, False, False, True, True, False, False, True, True]
+
 
 
 
