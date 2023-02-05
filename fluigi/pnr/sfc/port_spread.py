@@ -7,26 +7,36 @@ from parchmint.port import Port
 from fluigi.pnr.sfc.primitivecell import ComponentSide
 
 
-def try_shift_left(spread_array: List[bool], binning_data: Dict[int, int]):
+def try_shift_right(spread_array: List[bool], ideal_locations: Dict[int, int]):
     # look at the binning for the item
     # of that index see if it needs to
     # go more left. If yes then push it
     # to the left-most feasible point
+    ports_sorted_list = list(ideal_locations.keys())
+    ports_sorted_list.sort()
+
     for cursor in range(len(spread_array)):
         if spread_array[cursor] is True:
             # Get the bin_location from the binning data
-            bin_location = binning_data[cursor]
+            # Check if no port data is available for th
+            current_port_id = ports_sorted_list.pop(0)
+            ideal_location = ideal_locations[current_port_id]
+            
             # Shift to the furthest point to the left
             # Check if this is a left shift
-            if bin_location < cursor:
+            if ideal_location > cursor:
                 # Shift to the furthest point to the left
-                shift_furthest_fesible_point(spread_array, cursor, bin_location)
+                shift_furthest_fesible_point(spread_array, cursor, ideal_location)
             else:
                 # No need to shift
                 pass
 
+            # If the memo is empty then break
+            if len(ports_sorted_list) == 0:
+                break
 
-def try_shift_right(spread_array: List[bool], binning_data: Dict[int, int]):
+
+def try_shift_left(spread_array: List[bool], binning_data: Dict[int, int]):
     # look at the binning for the item
     # of that index see if it needs to
     # go more right. If yes then push it
@@ -37,7 +47,7 @@ def try_shift_right(spread_array: List[bool], binning_data: Dict[int, int]):
             bin_location = binning_data[cursor]
             # Shift to the furthest point to the left
             # Check if this is a left shift
-            if bin_location > cursor:
+            if bin_location < cursor:
                 # Shift to the furthest point to the left
                 shift_furthest_fesible_point(spread_array, cursor, bin_location)
             else:
@@ -128,8 +138,10 @@ def shift_furthest_fesible_point(array: List[bool], start_index: int, target_ind
                 array[start_index] = False
                 found_flag = True
                 break
-
+        
         if found_flag is False:
+            # If the flag is not set then the point can be shifted
+            # to the target index
             array[target_index] = True
             array[start_index] = False
 
@@ -146,9 +158,12 @@ def shift_furthest_fesible_point(array: List[bool], start_index: int, target_ind
                 found_flag = True
                 break
 
-            if found_flag is False:
-                array[target_index] = True
-                array[start_index] = False
+        if found_flag is False:
+            # If the flag is not set then the point can be shifted
+            # to the target index
+            array[target_index] = True
+            array[start_index] = False
+
 
     return
 

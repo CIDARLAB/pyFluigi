@@ -1,7 +1,7 @@
 import pytest
 from parchmint.port import Port
 
-from fluigi.pnr.sfc.port_spread import generate_bin_map, shift_furthest_fesible_point
+from fluigi.pnr.sfc.port_spread import generate_bin_map, shift_furthest_fesible_point, try_shift_left, try_shift_right
 from fluigi.pnr.sfc.primitivecell import ComponentSide
 
 
@@ -32,8 +32,26 @@ def east_ports():
 def test_try_shift_left():
     raise NotImplementedError()
 
+
 def test_try_shift_right():
-    raise NotImplementedError()
+    # Create a spread array of 10 with 0, 4 and 9 as True
+    spread_array = [True, False, False, False, True, False, False, False, True]
+    binning_data = {0: 0, 1: 4, 2: 8}
+    try_shift_right(spread_array, binning_data)
+
+    # nothing should change
+    assert spread_array == [True, False, False, False, True, False, False, False, True]
+
+    # Create a spread array of 10 with 3, 4 and 5 as True
+    spread_array = [False, False, False, True, True, True, False, False, False]
+    binning_data = {0: 0, 1: 4, 2: 8}
+    try_shift_right(spread_array, binning_data)
+
+    # Everything to the right of 4 should shift to the left
+    assert spread_array == [False, False, False, True, True, False, False, False, True]
+
+
+
 
 def test_generate_bin_map(north_ports, east_ports, component):
     # Test the bin map generation for the north ports
@@ -86,3 +104,7 @@ def test_shift_furthest_fesible_point():
     # Shift the furthest feasible point to the left
     shift_furthest_fesible_point(spread_array, 9, 0)
     assert spread_array == [True, False, True, True, False, False, False, False, False, False]
+
+    spread_array = [False, False, False, True, True, True, False, False, False]
+    shift_furthest_fesible_point(spread_array, 5, 8)
+    assert spread_array == [False, False, False, True, True, False, False, False, True]

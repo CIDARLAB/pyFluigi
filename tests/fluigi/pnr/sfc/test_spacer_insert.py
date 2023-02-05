@@ -7,6 +7,14 @@ def test_get_spacer_size():
     assert get_spacer_size(200, 1000) == 0
     assert get_spacer_size(1000, 7000) == 1
 
-def test_shift_furthest_feasible_point():
+def test_generate_spacers():
     raise NotImplementedError()
+
+def test_insert_vertical_spacer_column():
+    raise NotImplementedError()
+
+def test_insert_horizontal_spacer_column():
+    raise NotImplementedError()
+
+
 
