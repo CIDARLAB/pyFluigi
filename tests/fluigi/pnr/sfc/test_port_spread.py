@@ -1,7 +1,7 @@
 import pytest
 from parchmint.port import Port
 
-from fluigi.pnr.sfc.port_spread import generate_bin_map
+from fluigi.pnr.sfc.port_spread import generate_bin_map, shift_furthest_fesible_point
 from fluigi.pnr.sfc.primitivecell import ComponentSide
 
 
@@ -61,6 +61,13 @@ def test_generate_bin_map(north_ports, east_ports, component):
 
 
 
-def test_furthest_feasible_point():
-    raise NotImplementedError()
+def test_shift_furthest_fesible_point():
+    # Create a spread array with only 1 true value
+    spread_array = [False, False, True, False, False, False, False, False, False, True]
+    shift_furthest_fesible_point(spread_array, 2, 9)
+    assert spread_array == [False, False, False, False, False, False, False, False, True, True]
 
+    # Create a spread array with only 1 true value
+    spread_array = [True, False, True, False, False, False, False, False, False, True]
+    shift_furthest_fesible_point(spread_array, 0, 9)
+    assert spread_array == [False, True, True, False, False, False, False, False, False, True]

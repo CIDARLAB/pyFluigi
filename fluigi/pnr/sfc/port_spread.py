@@ -97,6 +97,15 @@ def shift_furthest_fesible_point(array: List[bool], start_index: int, target_ind
         start_index (int): start_index is the index of the point that needs to be shifted
         target_index (int): target_index is the index of the point to which the start_index needs to be shifted
     """
+    # Check to make sure that the start and target index are not out of bounds
+    if start_index < 0 or start_index >= len(array):
+        raise IndexError("Start index out of bounds")
+    if target_index < 0 or target_index >= len(array):
+        raise IndexError("Target index out of bounds")
+
+    # Make sure that the start index is true
+    if array[start_index] is False:
+        raise ValueError("Start index is not set to true, invalid shift operation")
 
     # Here the start_index is where the number actually is
     # and the target_index is where the bin_map reckons the
@@ -118,6 +127,7 @@ def shift_furthest_fesible_point(array: List[bool], start_index: int, target_ind
                 array[cursor + 1] = True
                 array[start_index] = False
                 found_flag = True
+                break
 
         if found_flag is False:
             array[target_index] = True
@@ -134,6 +144,7 @@ def shift_furthest_fesible_point(array: List[bool], start_index: int, target_ind
                 array[cursor - 1] = True
                 array[start_index] = False
                 found_flag = True
+                break
 
             if found_flag is False:
                 array[target_index] = True
