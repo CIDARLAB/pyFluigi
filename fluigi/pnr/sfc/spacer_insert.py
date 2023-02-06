@@ -43,12 +43,12 @@ class SpacerInsert(NamedTuple):
     port_bottomright_fate: bool
 
 
-def insert_vertical_spacer_column(
+def insert_horizontal_spacer_column(
     cell_list: List[List[PrimitiveCell]],
     insert_index: int,
     set_west_port: bool = False,
     set_east_port: bool = False,
-):
+) -> None:
     # Insert a column of spacers at the insert_index
     for row_index, row in enumerate(cell_list):
         row.insert(
@@ -70,12 +70,12 @@ def insert_vertical_spacer_column(
 )
 
 
-def insert_horizontal_spacer_column(
+def insert_vertical_spacer_column(
     cell_list: List[List[PrimitiveCell]],
     insert_index: int,
     set_north_port: bool = False,
     set_south_port: bool = False,
-):
+) -> None:
     # Insert a column of spacers at the insert_index
     for row_index, row in enumerate(cell_list):
         row.insert(

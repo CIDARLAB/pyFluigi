@@ -141,4 +141,4 @@ def test_shift_furthest_fesible_point():
 
 
 def test_spread_ports():
-    raise NotImplementedError("Test not implemented yet")
+    raise NotImplementedError()
