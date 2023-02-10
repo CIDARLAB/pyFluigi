@@ -58,7 +58,7 @@ class CompositeCell:
         return self._cells
 
     @staticmethod
-    def activate_ports(
+    def __initialize_ports(
         cell_list: List[List[PrimitiveCell]],
         side: ComponentSide,
         size: int,
@@ -254,7 +254,7 @@ class CompositeCell:
 
         # Now loop through all the sides and activate the ports
         for side, size, ports in staging_list:
-            CompositeCell.activate_ports(cell_list, side, size, ports)
+            CompositeCell.__initialize_ports(cell_list, side, size, ports)
 
             # Spread the ports outwards based on the relative distances
             # between the ports. THRESHOLD doesn't matter here since we
