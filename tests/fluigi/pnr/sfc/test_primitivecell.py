@@ -39,3 +39,15 @@ def test_deactivate_port():
     assert not cell.south_port
     assert cell.east_port
     assert cell.west_port
+
+def test_equals():
+    # Create two primitive cells
+    # Compare the two cells
+    # Compare the output to the expected output
+    cell1 = PrimitiveCell(5, 0, 0, [ComponentSide.NORTH, ComponentSide.EAST, ComponentSide.SOUTH, ComponentSide.WEST])
+    cell2 = PrimitiveCell(5, 0, 0, [ComponentSide.NORTH, ComponentSide.EAST, ComponentSide.SOUTH, ComponentSide.WEST])
+    assert cell1 == cell2
+
+    # Test for not equal
+    cell3 = PrimitiveCell(5, 0, 0, [ComponentSide.NORTH, ComponentSide.EAST, ComponentSide.SOUTH])
+    assert not cell1 == cell3

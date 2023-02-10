@@ -122,7 +122,23 @@ class PrimitiveCell:
         """
         return self._west_port
 
-        
+    def __eq__(self, __o: object) -> bool:
+        """ Returns true if the two cells are equal
+
+        Args:
+            __o (object): The object to compare to
+
+        Returns:
+            bool: True if the two cells are equal
+        """
+        if isinstance(__o, PrimitiveCell):
+            return (
+                self._x_coord == __o.x_offset and self._y_coord == __o.y_offset 
+                and self._dimension == __o.dimension and self._north_port == __o.north_port 
+                and self._east_port == __o.east_port and self._south_port == __o.south_port 
+                and self._west_port == __o.west_port
+            )
+        return False
     
     def activate_port(self, side: ComponentSide) -> None:
         """ Sets the cell at the given coordinates to active

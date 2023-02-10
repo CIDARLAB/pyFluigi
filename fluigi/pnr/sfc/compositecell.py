@@ -17,6 +17,36 @@ class CompositeCell:
     def __init__(self, cell_list: List[List[PrimitiveCell]]) -> None:
         self._cells = cell_list
 
+    def __eq__(self, __o: object) -> bool:
+        if isinstance(__o, CompositeCell):
+            # Check if types are correct
+            if len(self._cells) == len(__o.cells):
+                # Check if the dimensions are the same
+                for i in range(len(self._cells)):
+                    if len(self._cells[i]) != len(__o.cells[i]):
+                        return False
+                # Check if the cells are the same
+                for i in range(len(self._cells)):
+                    for j in range(len(self._cells[i])):
+                        if self._cells[i][j] != __o.cells[i][j]:
+                            return False
+                
+                # If we get here, then the cells are the same
+                return True
+            else:
+                return False
+        else:
+            return False
+    
+    @property
+    def cells(self) -> List[List[PrimitiveCell]]:
+        """ Returns the cells in the composite cell
+
+        Returns:
+            List[List[PrimitiveCell]]: The cells in the composite cell
+        """        
+        return self._cells
+
     @staticmethod
     def activate_ports(
         cell_list: List[List[PrimitiveCell]],
@@ -24,7 +54,17 @@ class CompositeCell:
         size: int,
         ports_list: List[Port],
     ) -> None:
+        """Activates the ports on a cell list
 
+        Args:
+            cell_list (List[List[PrimitiveCell]]): cell list thats being activated
+            side (ComponentSide): side of the composite cell that the ports are on
+            size (int): size of the composite cell
+            ports_list (List[Port]): list of ports that are being activated
+
+        Raises:
+            Exception: If the size is even and the number of ports is odd
+        """        
         # First figure the size of the composite cell so that we know which index we have to loop
         # through to activate the ports
         is_vertical = False
@@ -97,6 +137,15 @@ class CompositeCell:
 
     @staticmethod
     def from_parchmint_component(component: Component) -> CompositeCell:
+        """ Generates a composite cell from a component
+
+        Args:
+            component (Component): Component to generate the composite cell from
+
+        Returns:
+            CompositeCell: Composite cell generated from the component
+        """
+        
         # Create a list of lists of primitive cells
         cell_list: List[List[PrimitiveCell]] = []
 
