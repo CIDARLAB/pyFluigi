@@ -69,12 +69,11 @@ def insert_horizontal_spacer_column(
     # Insert n Rows of spacers at the insert_index
     for new_index in range(spacer_insert.number_of_spacers):
         new_row = []
-        for row_index, row in enumerate(cell_list):
-            new_row.insert(
-                insert_index,
+        for column_index in range(len(cell_list[0])):
+            new_row.append(
                 PrimitiveCell(
-                    x_coord=insert_index + new_index +1,
-                    y_coord=row_index,
+                    x_coord=column_index,
+                    y_coord=insert_index + new_index +1,
                     size=cell_list[0][0].dimension,
                     ports_exists=[],
                 ),
@@ -96,6 +95,11 @@ def insert_horizontal_spacer_column(
     if set_after_east_port is True:
         # Set the east port of the inserted column's right cell
         cell_list[insert_index + spacer_insert.number_of_spacers+ 1][-1].activate_port(ComponentSide.EAST)
+
+    # Rewrite the y coordinates of the cells in the rows after the insertion
+    for row_index in range(insert_index + spacer_insert.number_of_spacers + 1, len(cell_list)):
+        for cell in cell_list[row_index]:
+            cell.y_offset += spacer_insert.number_of_spacers
 
 
 def insert_vertical_spacer_column(

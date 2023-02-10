@@ -68,6 +68,15 @@ class PrimitiveCell:
         """
         return self._x_coord
 
+    @x_offset.setter
+    def x_offset(self, x_coord: int):
+        """ Sets the x coordinate of the cell
+
+        Args:
+            x_coord (int): The x coordinate of the cell
+        """
+        self._x_coord = x_coord
+
     @property
     def y_offset(self) -> int:
         """ Returns the y coordinate of the cell
@@ -76,6 +85,16 @@ class PrimitiveCell:
             int: The y coordinate of the cell
         """
         return self._y_coord
+    
+    @y_offset.setter
+    def y_offset(self, y_coord: int):
+        """ Sets the y coordinate of the cell
+
+        Args:
+            y_coord (int): The y coordinate of the cell
+        """
+        self._y_coord = y_coord
+        
     
     @property
     def dimension(self) -> int:

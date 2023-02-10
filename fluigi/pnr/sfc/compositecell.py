@@ -16,13 +16,15 @@ from fluigi.pnr.sfc.utils import get_closest_side
 class CompositeCell:
     def __init__(self, cell_list: List[List[PrimitiveCell]]) -> None:
         # Check to ensure all primitive cell indexes are correct
-        for i in range(len(cell_list)):
-            for j in range(len(cell_list[i])):
-                temp_cell = cell_list[i][j]
-                if  (temp_cell.y_offset, temp_cell.x_offset)!= (i, j):
+        for row_index in range(len(cell_list)):
+            for column_index in range(len(cell_list[row_index])):
+                temp_cell = cell_list[row_index][column_index]
+                if (temp_cell.y_offset, temp_cell.x_offset) != (row_index, column_index):
                     raise ValueError(
-                        f"Cell at index ({i}, {j}) has index {( temp_cell.y_offset, temp_cell.x_offset)}"
+                        f"Cell at index ({temp_cell.y_offset}, {temp_cell.x_offset}) has an incorrect index of {cell_list[row_index][column_index]}"
                     )
+
+
         self._cells = cell_list
 
     def __eq__(self, __o: object) -> bool:
@@ -280,3 +282,13 @@ class CompositeCell:
         for row in self._cells:
             for cell in row:
                 cell.print_cell()
+
+    def print_cell_indexes(self):
+        """Prints the composite cell indexes"""
+
+        for row in self._cells:
+            row_str = ""
+            for cell in row:
+                row_str += f'({cell.x_offset}, {cell.y_offset})'
+            print(row_str)
+
