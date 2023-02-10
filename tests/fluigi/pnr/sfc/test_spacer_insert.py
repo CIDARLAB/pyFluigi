@@ -17,7 +17,7 @@ def test_generate_spacers():
 def test_insert_vertical_spacer_column():
     raise NotImplementedError()
 
-def test_insert_horizontal_spacer_column(cell_test1, cell_test2, cell_test3):
+def test_insert_horizontal_spacer_column(cell_test1, cell_test2, cell_test3, cell_test4):
     
 
     ccell1 = CompositeCell(cell_test1)
@@ -35,7 +35,18 @@ def test_insert_horizontal_spacer_column(cell_test1, cell_test2, cell_test3):
     )
     insert_horizontal_spacer_column(ccell1.cells, 2, spacer_insert)
 
-    assert ccell1 == ccell_ref
+    ccell_ref2 = CompositeCell(cell_test4)
+    spacer_insert2 = SpacerInsert(
+        relative_insert_coordinate=2, # Doesn't matter
+        number_of_spacers=2,
+        port_topleft_fate= True,
+        port_bottomright_fate= True,
+        port_topright_fate= True,
+        port_bottomleft_fate= True,
+    )
+    insert_horizontal_spacer_column(ccell1.cells, 2, spacer_insert2)
+
+    assert ccell1 == ccell_ref2
 
 
 
