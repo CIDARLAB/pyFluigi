@@ -80,6 +80,42 @@ def cell_test4():
     cell_list3[5][-1].activate_port(ComponentSide.EAST)
     return cell_list3
 
+@pytest.fixture
+def cell_test5():
+    gnp = generate_new_primitive
+    cell_list1 = [
+        [gnp(0,0),gnp(1,0),gnp(2,0),gnp(3,0),gnp(4,0),gnp(5,0),gnp(6,0)],
+        [gnp(0,1),gnp(1,1),gnp(2,1),gnp(3,1),gnp(4,1),gnp(5,1),gnp(6,1)],
+        [gnp(0,2),gnp(1,2),gnp(2,2),gnp(3,2),gnp(4,2),gnp(5,2),gnp(6,2)],
+        [gnp(0,3),gnp(1,3),gnp(2,3),gnp(3,3),gnp(4,3),gnp(5,3),gnp(6,3)],
+        [gnp(0,4),gnp(1,4),gnp(2,4),gnp(3,4),gnp(4,4),gnp(5,4),gnp(6,4)],
+    ]
+
+    return cell_list1
+
+
+
+@pytest.fixture
+def cell_test6():
+    gnp = generate_new_primitive
+    cell_list1 = [
+        [gnp(0,0),gnp(1,0),gnp(2,0),gnp(3,0),gnp(4,0),gnp(5,0),gnp(6,0),gnp(7,0),gnp(8,0)],
+        [gnp(0,1),gnp(1,1),gnp(2,1),gnp(3,1),gnp(4,1),gnp(5,1),gnp(6,1),gnp(7,1),gnp(8,1)],
+        [gnp(0,2),gnp(1,2),gnp(2,2),gnp(3,2),gnp(4,2),gnp(5,2),gnp(6,2),gnp(7,2),gnp(8,2)],
+        [gnp(0,3),gnp(1,3),gnp(2,3),gnp(3,3),gnp(4,3),gnp(5,3),gnp(6,3),gnp(7,3),gnp(8,3)],
+        [gnp(0,4),gnp(1,4),gnp(2,4),gnp(3,4),gnp(4,4),gnp(5,4),gnp(6,4),gnp(7,4),gnp(8,4)],
+    ]
+
+    # Set the ports for the new insertion (NORTH, SOUTH of row 2, 5)
+    cell_list1[0][2].activate_port(ComponentSide.NORTH)
+    cell_list1[-1][2].activate_port(ComponentSide.SOUTH)
+    cell_list1[0][5].activate_port(ComponentSide.NORTH)
+    cell_list1[-1][5].activate_port(ComponentSide.SOUTH)
+
+    return cell_list1
+
+
+
 
 def generate_new_primitive(x, y):
     return PrimitiveCell(x_coord=x, y_coord=y, size=100, ports_exists=[])

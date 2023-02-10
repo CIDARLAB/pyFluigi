@@ -53,6 +53,16 @@ def insert_horizontal_spacer_column(
     Note: This fuction ignores the relative_insert_coordinate of the spacer_insert, it uses the insert_index
     to insert the column of spacers as the absolute coordinate.
 
+    This is how the insertion is done for index 2:
+
+     [ ][ ][ ][ ][ ][ ][ ]
+     [ ][ ][ ][ ][ ][ ][ ]
+     [ ][ ][ ][ ][ ][ ][ ]
+    >--------------------- <
+     [ ][ ][ ][ ][ ][ ][ ]
+     [ ][ ][ ][ ][ ][ ][ ]
+     [ ][ ][ ][ ][ ][ ][ ]
+
     Args:
         cell_list (List[List[PrimitiveCell]]): Cell list to insert the spacers into
         insert_index (int): The absolute y coordinate of the insertion
@@ -105,28 +115,77 @@ def insert_horizontal_spacer_column(
 def insert_vertical_spacer_column(
     cell_list: List[List[PrimitiveCell]],
     insert_index: int,
-    set_north_port: bool = False,
-    set_south_port: bool = False,
+    spacer_insert: SpacerInsert,
 ) -> None:
+    """Inserts a column of spacers into the cell list. The column is inserted at the insert_index
+
+    Note: This fuction ignores the relative_insert_coordinate of the spacer_insert, it uses the insert_index
+
+    This is where the insertion works for index 2:
+
+             v
+    [ ][ ][ ]|[ ][ ][ ][ ][ ]
+    [ ][ ][ ]|[ ][ ][ ][ ][ ]
+    [ ][ ][ ]|[ ][ ][ ][ ][ ]
+    [ ][ ][ ]|[ ][ ][ ][ ][ ]
+    [ ][ ][ ]|[ ][ ][ ][ ][ ]
+             ^
+
+    Args:
+        cell_list (List[List[PrimitiveCell]]): Cell list to insert the spacers into
+        insert_index (int): The absolute x coordinate of the insertion
+        spacer_insert (SpacerInsert): The spacer insert object that holds the information about the insertion
+    """    
+
+    # Extract the port setting information from the spacer insert
+    #  [ ][ ][BN][AN][ ][ ][ ]
+    #  [ ][ ][BS][AS][ ][ ][ ]
+    # Extract the port setting information from the spacer insert
+    set_before_north_port: bool = spacer_insert.port_topleft_fate
+    set_after_north_port: bool = spacer_insert.port_topright_fate
+    set_before_south_port: bool = spacer_insert.port_bottomleft_fate
+    set_after_south_port: bool = spacer_insert.port_bottomright_fate
+
+    # Get the ydim of the cells in the cell list
+    ydim = len(cell_list)
     # Insert a column of spacers at the insert_index
-    for row_index, row in enumerate(cell_list):
-        row.insert(
-            insert_index,
-            PrimitiveCell(
-                x_coord=insert_index,
-                y_coord=row_index,
-                size=cell_list[0][0].dimension,
-                ports_exists=[],
-            ),
-        )
-    if set_north_port is True:
+    for new_index in range(spacer_insert.number_of_spacers):
+        new_column = []
+        for column_index in range(ydim):
+            new_column.append(
+                PrimitiveCell(
+                    x_coord=insert_index + new_index + 1,
+                    y_coord=column_index,
+                    size=cell_list[0][0].dimension,
+                    ports_exists=[],
+                ),
+            )
+        # Enumerate over the rows in the cell list, so that we can insert each element of the new_column into every row
+        for column_index, row in enumerate(cell_list):
+            row.insert(insert_index + new_index + 1, new_column[column_index])
+        
+                
+    if set_before_north_port is True:
         # Set the north port of the inserted column's top cell
         cell_list[0][insert_index].activate_port(ComponentSide.NORTH)
 
-    if set_south_port is True:
+    if set_before_south_port is True:
         # Set the south port of the inserted column's bottom cell
         cell_list[-1][insert_index].activate_port(ComponentSide.SOUTH)
 
+    if set_after_north_port is True:
+        # Set the north port of the inserted column's top cell
+        cell_list[0][insert_index + spacer_insert.number_of_spacers + 1].activate_port(ComponentSide.NORTH)
+
+    if set_after_south_port is True:
+        # Set the south port of the inserted column's bottom cell
+        cell_list[-1][insert_index + spacer_insert.number_of_spacers + 1].activate_port(ComponentSide.SOUTH)
+
+    # Rewrite the x coordinates of the cells in the rows after the insertion
+    for row_index, row in enumerate(cell_list):
+        for column_index, cell in enumerate(row):
+            if column_index > insert_index + spacer_insert.number_of_spacers:
+                cell.x_offset = cell.x_offset + spacer_insert.number_of_spacers
 
 def get_spacer_size(min_dimension: float, max_dimension: float, current_gap: int = 0) -> int:
     gap = max_dimension - min_dimension
