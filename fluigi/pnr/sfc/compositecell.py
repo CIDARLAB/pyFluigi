@@ -15,6 +15,14 @@ from fluigi.pnr.sfc.utils import get_closest_side
 
 class CompositeCell:
     def __init__(self, cell_list: List[List[PrimitiveCell]]) -> None:
+        # Check to ensure all primitive cell indexes are correct
+        for i in range(len(cell_list)):
+            for j in range(len(cell_list[i])):
+                temp_cell = cell_list[i][j]
+                if  (temp_cell.y_offset, temp_cell.x_offset)!= (i, j):
+                    raise ValueError(
+                        f"Cell at index ({i}, {j}) has index {( temp_cell.y_offset, temp_cell.x_offset)}"
+                    )
         self._cells = cell_list
 
     def __eq__(self, __o: object) -> bool:

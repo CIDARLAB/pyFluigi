@@ -2,7 +2,7 @@ from fluigi.pnr.sfc.compositecell import CompositeCell
 from fluigi.pnr.sfc.primitivecell import PrimitiveCell
 from fluigi.pnr.sfc.spacer_insert import SpacerInsert, get_spacer_size, insert_horizontal_spacer_column, insert_vertical_spacer_column
 from parchmint.port import Port
-from tests.conftest import generate_new_primitive
+from tests.conftest import generate_new_primitive, cell_test1, cell_test2, cell_test3
 
 
 def test_get_spacer_size():
@@ -43,14 +43,16 @@ def test_insert_horizontal_spacer_column():
     spacer_insert = SpacerInsert(
         relative_insert_coordinate=2, # Doesn't matter
         number_of_spacers=2,
-        port_topleft_fate= True,
-        port_bottomright_fate= True,
-        port_topright_fate= True,
-        port_bottomleft_fate= True,
+        port_topleft_fate= False,
+        port_bottomright_fate= False,
+        port_topright_fate= False,
+        port_bottomleft_fate= False,
     )
     insert_horizontal_spacer_column(cell_list, 2, spacer_insert)
 
-    assert CompositeCell(cell_list) == CompositeCell(cell_list_test)
+    ccell1 = CompositeCell(cell_list)
+    ccell2 = CompositeCell(cell_list_test)
+    assert ccell1 == ccell2
 
 
 

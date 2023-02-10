@@ -85,11 +85,11 @@ def insert_horizontal_spacer_column(
         # Set the west port of the inserted column's left cell
         cell_list[insert_index][0].activate_port(ComponentSide.WEST)
 
-    if set_before_west_port is True:
+    if set_after_west_port is True:
         # Set the east port of the inserted column's right cell
         cell_list[insert_index][-1].activate_port(ComponentSide.EAST)
     
-    if set_after_west_port is True:
+    if set_before_east_port is True:
         # Set the west port of the inserted column's left cell
         cell_list[insert_index + spacer_insert.number_of_spacers+ 1][0].activate_port(ComponentSide.WEST)
     
