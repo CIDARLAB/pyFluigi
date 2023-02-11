@@ -19,25 +19,17 @@ def size_nodes(mint_device: MINTDevice) -> None:
                 continue
             # Get channelWidth from there and update the node
             # connection_ref = device.G[gedge[0]][gedge[1]]
-            connection = mint_device.device.graph.get_edge_data(gedge[0], gedge[1])[0][
-                "connection_ref"
-            ]
+            connection = mint_device.device.graph.get_edge_data(gedge[0], gedge[1])[0]["connection_ref"]
             channel_width = connection.params.get_param("channelWidth")
             component.xspan = channel_width
             component.yspan = channel_width
 
 
-def check_ref_and_assign_port(
-    source_ref, connection, device: Device, global_port_assign_map
-):
+def check_ref_and_assign_port(source_ref, connection, device: Device, global_port_assign_map):
     source_name = source_ref.component
     source = device.get_component(source_name)
     if source_ref.port is None:
-        print(
-            "No port assigned to connection ref - {}:{}:{}".format(
-                connection.ID, source.ID, source_ref.port
-            )
-        )
+        print("No port assigned to connection ref - {}:{}:{}".format(connection.ID, source.ID, source_ref.port))
         if len(source.ports) == 1:
             print("Auto Port Assign Scheme - Target contains only 1 port option")
             source_ref.port = source.ports[0].label
@@ -52,11 +44,7 @@ def check_ref_and_assign_port(
             source_ref.port = str(source.ports[port_index].label)
             port_index += 1
         else:
-            print(
-                "Error - Auto Port scheme does not work for target containing {} ports ".format(
-                    len(source.ports)
-                )
-            )
+            print("Error - Auto Port scheme does not work for target containing {} ports ".format(len(source.ports)))
 
         print("Assigned port - {}".format(source_ref.port))
 
@@ -66,22 +54,14 @@ def assign_component_ports(mint_device: MINTDevice) -> None:
     global_port_assign_map = dict()
     for connection in mint_device.device.connections:
         source_ref = connection.source
-        check_ref_and_assign_port(
-            source_ref, connection, mint_device.device, global_port_assign_map
-        )
+        check_ref_and_assign_port(source_ref, connection, mint_device.device, global_port_assign_map)
         for sink_ref in connection.sinks:
-            check_ref_and_assign_port(
-                sink_ref, connection, mint_device.device, global_port_assign_map
-            )
+            check_ref_and_assign_port(sink_ref, connection, mint_device.device, global_port_assign_map)
 
 
 def reduce_device_size(device: Device, design_padding: int) -> None:
 
-    print(
-        "Reducing the Size of the device and adding device padding: {} um".format(
-            design_padding
-        )
-    )
+    print("Reducing the Size of the device and adding device padding: {} um".format(design_padding))
     # Step 1 - First find the min_x, min_y, max_x, max_y of the design
     min_x = sys.maxsize
     min_y = sys.maxsize

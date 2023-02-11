@@ -204,9 +204,7 @@ class AlgDataStorage:
         self.pad_data()
         text = ",".join(self._data.keys()) + "\n"
         for i in range(self._size):
-            text += (
-                ",".join([str(self._data[key][i]) for key in self._data.keys()])
-            ) + "\n"
+            text += (",".join([str(self._data[key][i]) for key in self._data.keys()])) + "\n"
         f = open("SA-Data.csv", "w")
         f.write(text)
         f.close()

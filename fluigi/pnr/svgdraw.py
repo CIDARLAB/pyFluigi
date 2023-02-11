@@ -13,9 +13,7 @@ class SVGDraw(object):
         self._layout = layout
 
     def generate_output(self) -> None:
-        surface = cairo.SVGSurface(
-            str(self._file_path), DEVICE_X_DIM * PT_TO_UM, DEVICE_Y_DIM * PT_TO_UM
-        )
+        surface = cairo.SVGSurface(str(self._file_path), DEVICE_X_DIM * PT_TO_UM, DEVICE_Y_DIM * PT_TO_UM)
         ctx = cairo.Context(surface)
         ctx.scale(PT_TO_UM, PT_TO_UM)
 

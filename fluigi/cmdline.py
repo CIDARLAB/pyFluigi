@@ -29,9 +29,7 @@ def print_version(ctx, param, value):
 
 
 @click.group()
-@click.option(
-    "--version", is_flag=True, callback=print_version, expose_value=False, is_eager=True
-)
+@click.option("--version", is_flag=True, callback=print_version, expose_value=False, is_eager=True)
 def default_cli():
     ascii_banner = pyfiglet.figlet_format("Fluigi")
     print(ascii_banner)
@@ -51,9 +49,7 @@ def default_cli():
     default="dropx",
     help="Technology Platform for LFR to compile the design into",
 )
-@click.option(
-    "--library-path", default="", help="Library to use", type=click.Path(exists=True)
-)
+@click.option("--library-path", default="", help="Library to use", type=click.Path(exists=True))
 @click.option(
     "--pre-load",
     multiple=True,
@@ -104,10 +100,7 @@ def synthesize(
     "--no-annotations",
     type=click.BOOL,
     default=False,
-    help=(
-        "Force the compiler to skip reading postprocess annotations like #MAP and"
-        " #CONSTRAIN"
-    ),
+    help=("Force the compiler to skip reading postprocess annotations like #MAP and" " #CONSTRAIN"),
 )
 @click.option("--no-gen", type=click.BOOL, default=False)
 @click.option(
@@ -146,9 +139,7 @@ def lfr_compile(
     if library_path == "":
         library_path = str(LFR_LIB_DIR)
 
-    print(
-        input_files, outpath, technology, library_path, no_gen, no_annotations, pre_load
-    )
+    print(input_files, outpath, technology, library_path, no_gen, no_annotations, pre_load)
 
     compile_lfr(
         input_files=input_files,

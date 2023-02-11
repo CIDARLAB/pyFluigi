@@ -51,9 +51,7 @@ class LayoutGrid:
 
     def apply_move(self) -> None:
         if self.c is None:
-            raise Exception(
-                "Could not apply move becuase current component is set to None"
-            )
+            raise Exception("Could not apply move becuase current component is set to None")
         move(self.c, -self.x_offset_memory, -self.y_offset_memory)
 
         self.remove_component(self.c)
@@ -68,9 +66,7 @@ class LayoutGrid:
 
     def undo_move(self) -> None:
         if self.c is None:
-            raise Exception(
-                "Could not apply move becuase current component is set to None"
-            )
+            raise Exception("Could not apply move becuase current component is set to None")
 
         move(self.c, -self.x_offset_memory, -self.y_offset_memory)
 

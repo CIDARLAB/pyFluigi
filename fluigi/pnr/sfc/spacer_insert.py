@@ -67,7 +67,7 @@ def insert_horizontal_spacer_column(
         cell_list (List[List[PrimitiveCell]]): Cell list to insert the spacers into
         insert_index (int): The absolute y coordinate of the insertion
         spacer_insert (SpacerInsert): The spacer insert object that holds the information about the insertion
-    """    
+    """
     # Extract the port setting information from the spacer insert
     #  [ ][ ][BW][AW][ ][ ][ ]
     #  [ ][ ][BE][AE][ ][ ][ ]
@@ -83,28 +83,28 @@ def insert_horizontal_spacer_column(
             new_row.append(
                 PrimitiveCell(
                     x_coord=column_index,
-                    y_coord=insert_index + new_index +1,
+                    y_coord=insert_index + new_index + 1,
                     size=cell_list[0][0].dimension,
                     ports_exists=[],
                 ),
             )
         cell_list.insert(insert_index + new_index + 1, new_row)
 
-    if  set_before_west_port is True:
+    if set_before_west_port is True:
         # Set the west port of the inserted column's left cell
         cell_list[insert_index][0].activate_port(ComponentSide.WEST)
 
     if set_after_west_port is True:
         # Set the east port of the inserted column's right cell
         cell_list[insert_index][-1].activate_port(ComponentSide.EAST)
-    
+
     if set_before_east_port is True:
         # Set the west port of the inserted column's left cell
-        cell_list[insert_index + spacer_insert.number_of_spacers+ 1][0].activate_port(ComponentSide.WEST)
-    
+        cell_list[insert_index + spacer_insert.number_of_spacers + 1][0].activate_port(ComponentSide.WEST)
+
     if set_after_east_port is True:
         # Set the east port of the inserted column's right cell
-        cell_list[insert_index + spacer_insert.number_of_spacers+ 1][-1].activate_port(ComponentSide.EAST)
+        cell_list[insert_index + spacer_insert.number_of_spacers + 1][-1].activate_port(ComponentSide.EAST)
 
     # Rewrite the y coordinates of the cells in the rows after the insertion
     for row_index in range(insert_index + spacer_insert.number_of_spacers + 1, len(cell_list)):
@@ -135,7 +135,7 @@ def insert_vertical_spacer_column(
         cell_list (List[List[PrimitiveCell]]): Cell list to insert the spacers into
         insert_index (int): The absolute x coordinate of the insertion
         spacer_insert (SpacerInsert): The spacer insert object that holds the information about the insertion
-    """    
+    """
 
     # Extract the port setting information from the spacer insert
     #  [ ][ ][BN][AN][ ][ ][ ]
@@ -163,8 +163,7 @@ def insert_vertical_spacer_column(
         # Enumerate over the rows in the cell list, so that we can insert each element of the new_column into every row
         for column_index, row in enumerate(cell_list):
             row.insert(insert_index + new_index + 1, new_column[column_index])
-        
-                
+
     if set_before_north_port is True:
         # Set the north port of the inserted column's top cell
         cell_list[0][insert_index].activate_port(ComponentSide.NORTH)
@@ -187,6 +186,7 @@ def insert_vertical_spacer_column(
             if column_index > insert_index + spacer_insert.number_of_spacers:
                 cell.x_offset = cell.x_offset + spacer_insert.number_of_spacers
 
+
 def get_spacer_size(min_dimension: float, max_dimension: float, current_gap: int = 0) -> int:
     gap = max_dimension - min_dimension
     if gap < SPACER_THRESHOLD:
@@ -196,8 +196,8 @@ def get_spacer_size(min_dimension: float, max_dimension: float, current_gap: int
     size = 1 - current_gap
     if size < 0:
         return 0
-    else :
-        return size 
+    else:
+        return size
 
 
 def generate_spacers(
@@ -291,7 +291,7 @@ def generate_spacers(
     # Loop through the attention arrays and at every index, and check for insertion
     for scanner_index in range(len(cell_list)):
         # load the status of the ports into the ground truth variables (right)
-        if is_horizontal: # TODO- Add case for vertical
+        if is_horizontal:  # TODO- Add case for vertical
             top_right_ground_truth = cell_list[0][scanner_index].north_port
             bottom_right_ground_truth = cell_list[-1][scanner_index].south_port
         else:
@@ -305,17 +305,13 @@ def generate_spacers(
             try:
                 top_right_port = north_port_list_fifo.pop(0)
             except IndexError:
-                raise IndexError(
-                    "North Port List is empty, but there is a port in the cell list"
-                )
+                raise IndexError("North Port List is empty, but there is a port in the cell list")
 
         if bottom_right_ground_truth is True:
             try:
                 bottom_right_port = south_port_list_fifo.pop(0)
             except IndexError:
-                raise IndexError(
-                    "South Port List is empty, but there is a port in the cell list"
-                )
+                raise IndexError("South Port List is empty, but there is a port in the cell list")
 
         # Set the min/max port sides and coordinates if both ports exist
         if top_right_ground_truth is True and bottom_right_ground_truth is False:
@@ -537,7 +533,9 @@ def generate_spacers(
             ):
                 # Generate all the spacer information from the state
                 pass
-                spacer_size = get_spacer_size(previous_port_max_coordinate, current_port_min_coordinate, current_gap_size)
+                spacer_size = get_spacer_size(
+                    previous_port_max_coordinate, current_port_min_coordinate, current_gap_size
+                )
                 # Create the spacer insertion
                 # Fates:
                 #    Top Left    [T][T]   Top Right
@@ -568,7 +566,9 @@ def generate_spacers(
             ):
                 # Generate all the spacer information from the state
                 pass
-                spacer_size = get_spacer_size(previous_port_max_coordinate, current_port_min_coordinate, current_gap_size)
+                spacer_size = get_spacer_size(
+                    previous_port_max_coordinate, current_port_min_coordinate, current_gap_size
+                )
                 # Create the spacer insertion
                 # Fates:
                 #    Top Left    [F][T]   Top Right
@@ -591,11 +591,9 @@ def generate_spacers(
             # Step 4.2: Insert spacers for the current column
             # Skip if the top and bottom are the same x coordinate
             spacer_size = get_spacer_size(
-                get_port_coordinate(top_right_port),
-                get_port_coordinate(bottom_right_port),
-                current_gap_size
+                get_port_coordinate(top_right_port), get_port_coordinate(bottom_right_port), current_gap_size
             )
-            if  spacer_size == 0 :
+            if spacer_size == 0:
                 # Update the state information
                 previous_port_max_coordinate = current_port_max_coordinate
                 top_left_ground_truth = True
@@ -626,9 +624,7 @@ def generate_spacers(
                     top_left_fate = True
                     bottom_left_fate = False
                 spacer_size = get_spacer_size(
-                    get_port_coordinate(top_right_port), 
-                    get_port_coordinate(bottom_right_port), 
-                    current_gap_size
+                    get_port_coordinate(top_right_port), get_port_coordinate(bottom_right_port), current_gap_size
                 )
                 # Create the spacer insertion
                 if spacer_size > 0:
@@ -650,4 +646,3 @@ def generate_spacers(
 
         else:
             raise ValueError("Invalid state Encountered, need to fix algorithm logic")
-

@@ -24,7 +24,6 @@ from fluigi.pnr.sa.utils import get_terminal
 # from fluigi.pnr.aarf import Vertex, Route
 
 
-
 class RouterAlgorithms(Enum):
     AARF = 0
     GRID = 1
@@ -59,11 +58,7 @@ class Layout:
                     path.append((vertex.x, vertex.y))
 
                 connection.add_waypoints_path(None, None, path)
-                print(
-                    "Updating connection: {} with path {}".format(
-                        connection.ID, str(path)
-                    )
-                )
+                print("Updating connection: {} with path {}".format(connection.ID, str(path)))
 
     def ensureLegalCoordinates(self):
         # Make sure all the cell coordinates are positive
@@ -159,11 +154,7 @@ class Layout:
                         t = get_terminal(pcell, sink.port)
                         sink_terminals.append(t)
                     except Exception:
-                        print(
-                            "Could not find Terminal for source port: {} for connection: {}".format(
-                                source.id, id
-                            )
-                        )
+                        print("Could not find Terminal for source port: {} for connection: {}".format(source.id, id))
 
                 else:
                     if len(pcell.ports) == 1:
@@ -268,9 +259,7 @@ class Layout:
         print("Routed route:")
         for route in all_routes:
             print(
-                "Route: Start - ({}, {}) End - ({}, {})".format(
-                    route.start.x, route.start.y, route.end.x, route.end.y
-                )
+                "Route: Start - ({}, {}) End - ({}, {})".format(route.start.x, route.start.y, route.end.x, route.end.y)
             )
             print("Waypoints:")
             for waypoint in route.waypoints:

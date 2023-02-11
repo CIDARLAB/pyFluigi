@@ -50,13 +50,8 @@ class SAPlace:
         self.init_temp()
         temp = self.initial_temp
 
-        while (
-            temp >= 0.005 * self.layout.cur_cost / len(self.list_components)
-            and self.layout.cur_cost > 2
-        ):
-            for i in range(
-                len(self.list_components) * DEFAULT_MOVES_PER_TEMP_PER_MODULE
-            ):
+        while temp >= 0.005 * self.layout.cur_cost / len(self.list_components) and self.layout.cur_cost > 2:
+            for i in range(len(self.list_components) * DEFAULT_MOVES_PER_TEMP_PER_MODULE):
                 # TODO - Shouldnt this be a random component
                 randc = self.list_components[i % len(self.list_components)]
                 if random.random() > 0.5:
@@ -90,9 +85,7 @@ class SAPlace:
                     self.layout.grid.undo_move()
                     self.layout.undo_update_cost()
 
-            self.rate_accept = self.rate_accept / float(
-                len(self.list_components) * DEFAULT_MOVES_PER_TEMP_PER_MODULE
-            )
+            self.rate_accept = self.rate_accept / float(len(self.list_components) * DEFAULT_MOVES_PER_TEMP_PER_MODULE)
 
             self.range_x = int(floor(self.range_x) * (1.0 - 0.44 + self.rate_accept))
             self.range_y = int(floor(self.range_y) * (1.0 - 0.44 + self.rate_accept))

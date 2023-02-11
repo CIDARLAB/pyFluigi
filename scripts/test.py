@@ -36,15 +36,7 @@ for component in device.components:
 print("Checking to see if connection have floating terminals")
 for connection in device.connections:
     if connection.source.port is None:
-        print(
-            "Connection - {} | Source - {} - No port found".format(
-                connection.ID, connection.source.component
-            )
-        )
+        print("Connection - {} | Source - {} - No port found".format(connection.ID, connection.source.component))
     for sink in connection.sinks:
         if sink.port is None:
-            print(
-                "Connection - {} | Sink - {} - No port found".format(
-                    connection.ID, sink.component
-                )
-            )
+            print("Connection - {} | Sink - {} - No port found".format(connection.ID, sink.component))

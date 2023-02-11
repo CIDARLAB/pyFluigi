@@ -3,11 +3,11 @@ from __future__ import annotations
 from enum import Enum
 from queue import Queue
 from typing import Dict, List, NamedTuple
-from fluigi.parameters import SPACER_THRESHOLD
 
 from parchmint.component import Component
 from parchmint.port import Port
 
+from fluigi.parameters import SPACER_THRESHOLD
 from fluigi.pnr.sfc.port_spread import spread_ports
 from fluigi.pnr.sfc.primitivecell import ComponentSide, PrimitiveCell
 from fluigi.pnr.sfc.spacer_insert import generate_spacers
@@ -16,14 +16,14 @@ from fluigi.pnr.sfc.utils import get_closest_side
 
 class CompositeCell:
     def __init__(self, cell_list: List[List[PrimitiveCell]]) -> None:
-        """ Initializes the composite cell
+        """Initializes the composite cell
 
         Args:
             cell_list (List[List[PrimitiveCell]]): List of lists of primitive cells that make up the composite cell
 
         Raises:
             ValueError: If the cell list is empty / the coordinates of the cells are incorrect
-        """        
+        """
         # Check to ensure all primitive cell indexes are correct
         for row_index in range(len(cell_list)):
             for column_index in range(len(cell_list[row_index])):
@@ -32,7 +32,6 @@ class CompositeCell:
                     raise ValueError(
                         f"Cell at index ({temp_cell.y_offset}, {temp_cell.x_offset}) has an incorrect index of {cell_list[row_index][column_index]}"
                     )
-
 
         self._cells = cell_list
 
@@ -49,31 +48,31 @@ class CompositeCell:
                     for j in range(len(self._cells[i])):
                         if self._cells[i][j] != __o.cells[i][j]:
                             return False
-                
+
                 # If we get here, then the cells are the same
                 return True
             else:
                 return False
         else:
             return False
-    
+
     @property
     def cells(self) -> List[List[PrimitiveCell]]:
-        """ Returns the cells in the composite cell
+        """Returns the cells in the composite cell
 
         Returns:
             List[List[PrimitiveCell]]: The cells in the composite cell
-        """        
+        """
         return self._cells
 
-    def activate_port(self, x: int, y:int, side:ComponentSide) -> None:
-        """ Activates a port on the composite cell
+    def activate_port(self, x: int, y: int, side: ComponentSide) -> None:
+        """Activates a port on the composite cell
 
         Args:
-            x (int): x coordinate of the port. 
-            y (int): y coordinate of the port. 
+            x (int): x coordinate of the port.
+            y (int): y coordinate of the port.
             side (ComponentSide): side of the port.
-        """        
+        """
         self._cells[y][x].activate_port(side)
 
     @staticmethod
@@ -92,7 +91,7 @@ class CompositeCell:
 
         Raises:
             Exception: If the size is even and the number of ports is odd
-        """        
+        """
         # First figure the size of the composite cell so that we know which index we have to loop
         # through to activate the ports
         is_vertical = False
@@ -161,13 +160,13 @@ class CompositeCell:
         else:
             # Odd number of ports and even size of composite cell
             # Not applicatble since we avoid this scenario
-            raise Exception(
-                "Odd number of ports and even size of composite cell is not applicable"
-            )
+            raise Exception("Odd number of ports and even size of composite cell is not applicable")
 
     @staticmethod
-    def from_parchmint_component(component: Component, spread_ports_enabled:bool = True, insert_spacers_enabled:bool = True) -> CompositeCell:
-        """ Generates a composite cell from a component
+    def from_parchmint_component(
+        component: Component, spread_ports_enabled: bool = True, insert_spacers_enabled: bool = True
+    ) -> CompositeCell:
+        """Generates a composite cell from a component
 
         Args:
             component (Component): Component to generate the composite cell from
@@ -175,14 +174,13 @@ class CompositeCell:
         Returns:
             CompositeCell: Composite cell generated from the component
         """
-        
+
         # TODO - Figure out if this the right way to do this.
-        # Currently setting the dimension to be the threshold / 
-        # We should change the spacer function to be a relaxer 
+        # Currently setting the dimension to be the threshold /
+        # We should change the spacer function to be a relaxer
         # eveywhere
 
         computed_dimension = SPACER_THRESHOLD
-
 
         # Create a list of lists of primitive cells
         cell_list: List[List[PrimitiveCell]] = []
@@ -289,21 +287,15 @@ class CompositeCell:
                 # Spread the ports outwards based on the relative distances
                 # between the ports. THRESHOLD doesn't matter here since we
                 # aren't yet doing the expansion with spacer blocks
-                spread_ports(
-                    cell_list=cell_list, side=side, component=component, ports_list=ports
-                )
+                spread_ports(cell_list=cell_list, side=side, component=component, ports_list=ports)
 
         if insert_spacers_enabled:
             # Generate 'spacer' blocks with the space
             # modulo THRESHOLD based on inter port
             # distances
             # Generate the spacers for the different sides
-            generate_spacers(
-                cell_list, top_port_list=north_ports, bottom_port_list=south_ports, is_horizontal=True
-            )
-            generate_spacers(
-                cell_list, top_port_list=east_ports, bottom_port_list=west_ports, is_horizontal=False
-            )
+            generate_spacers(cell_list, top_port_list=north_ports, bottom_port_list=south_ports, is_horizontal=True)
+            generate_spacers(cell_list, top_port_list=east_ports, bottom_port_list=west_ports, is_horizontal=False)
 
         ret = CompositeCell(cell_list)
         return ret
@@ -321,6 +313,5 @@ class CompositeCell:
         for row in self._cells:
             row_str = ""
             for cell in row:
-                row_str += f'({cell.x_offset}, {cell.y_offset})'
+                row_str += f"({cell.x_offset}, {cell.y_offset})"
             print(row_str)
-

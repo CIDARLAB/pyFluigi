@@ -16,9 +16,7 @@ def printgraph(G, filename: str) -> None:
     nx.nx_agraph.to_agraph(G).write(str(tt.absolute()))
 
     os.system(
-        "dot -Tpdf {} -o {}.pdf".format(
-            str(tt.absolute()), pathlib.Path(parameters.OUTPUT_DIR).joinpath(tt.stem)
-        )
+        "dot -Tpdf {} -o {}.pdf".format(str(tt.absolute()), pathlib.Path(parameters.OUTPUT_DIR).joinpath(tt.stem))
     )
 
 
@@ -78,11 +76,7 @@ def render_svg(d: Device, suffix: str) -> None:
     ctx.scale(PT_TO_UM, PT_TO_UM)
 
     for component in d.components:
-        print(
-            "Old position {} ({}):{}, {}".format(
-                component.ID, component.entity, component.xpos, component.ypos
-            )
-        )
+        print("Old position {} ({}):{}, {}".format(component.ID, component.entity, component.xpos, component.ypos))
         component.rotate_component()
         print("new position:{}, {}".format(component.xpos, component.ypos))
         if component.params.exists("position"):
@@ -96,11 +90,7 @@ def render_svg(d: Device, suffix: str) -> None:
             ctx.fill()
 
         else:
-            print(
-                "Could not render component:{} since no position information was found".format(
-                    component.ID
-                )
-            )
+            print("Could not render component:{} since no position information was found".format(component.ID))
 
     for component in d.components:
         if component.params.exists("position"):
@@ -113,11 +103,7 @@ def render_svg(d: Device, suffix: str) -> None:
             ctx.set_line_width(100)
             ctx.stroke()
         else:
-            print(
-                "Could not render component:{} since no position information was found".format(
-                    component.ID
-                )
-            )
+            print("Could not render component:{} since no position information was found".format(component.ID))
 
     ctx.set_source_rgb(0, 0, 1)
 
@@ -179,11 +165,7 @@ def render_svg(d: Device, suffix: str) -> None:
                 ctx.arc(xpos + port.x, ypos + port.y, 100, 0, 2 * 3.14)
                 ctx.fill()
         else:
-            print(
-                "Could not render port of component :{} since no position information was found".format(
-                    component.ID
-                )
-            )
+            print("Could not render port of component :{} since no position information was found".format(component.ID))
 
     surface.finish()
 

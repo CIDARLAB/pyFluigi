@@ -33,9 +33,7 @@ def get_defaults(mint: str):
     try:
         # python_object = json.loads(output.stdout.decode('utf-8'))
         params = {"mint": mint}
-        r = requests.get(
-            "{}/defaults".format(parameters.PRIMITIVE_SERVER_URI), params=params
-        )
+        r = requests.get("{}/defaults".format(parameters.PRIMITIVE_SERVER_URI), params=params)
         python_object = r.json()
         return python_object
     except Exception as e:
@@ -94,9 +92,7 @@ def get_valve_type(mint: str) -> Optional[str]:
     try:
         # python_object = json.loads(output.stdout.decode('utf-8'))
         params = {"mint": mint}
-        r = requests.get(
-            "{}/valve_type".format(parameters.PRIMITIVE_SERVER_URI), params=params
-        )
+        r = requests.get("{}/valve_type".format(parameters.PRIMITIVE_SERVER_URI), params=params)
         python_object = r.json()
         return python_object
     except Exception as e:
@@ -111,11 +107,7 @@ def pull_defaults(device: Device):
         # print("comonent name {}".format(component.name))
         defaults = get_defaults(component.entity)
         if defaults is None:
-            print(
-                "Warning: Could not pull default values for {} of type :{}".format(
-                    component.name, component.entity
-                )
-            )
+            print("Warning: Could not pull default values for {} of type :{}".format(component.name, component.entity))
             continue
 
         # Fills out all the missing params
@@ -148,11 +140,7 @@ def pull_dimensions(device: Device):
         dims = get_dimensions(component.entity, component.params)
 
         if dims is None:
-            print(
-                "Warning: Could not pull default values for {} of type :{}".format(
-                    component.name, component.entity
-                )
-            )
+            print("Warning: Could not pull default values for {} of type :{}".format(component.name, component.entity))
             continue
 
         # Assign the xspan and yspan
@@ -166,20 +154,11 @@ def pull_terminals(device: Device):
     for component in device.components:
         terminals = get_terminals(component.entity, component.params)
         if terminals is None:
-            print(
-                "Warning: Could not pull terminal data for {} of type: {}".format(
-                    component.name, component.entity
-                )
-            )
+            print("Warning: Could not pull terminal data for {} of type: {}".format(component.name, component.entity))
         else:
             # Print warning if the terminal is outside of the x and y span of the component
             for terminal in terminals:
-                if (
-                    terminal.x < 0
-                    or terminal.x > component.xspan
-                    or terminal.y < 0
-                    or terminal.y > component.yspan
-                ):
+                if terminal.x < 0 or terminal.x > component.xspan or terminal.y < 0 or terminal.y > component.yspan:
                     print(
                         "Warning: Terminal {} ({}, {}) of component {} is outside of the span of the component ({}, {})".format(
                             terminal.label,
@@ -200,11 +179,7 @@ def pull_valve_types(device: Device):
     for component in device.get_valves():
         type_info = get_valve_type(component.entity)
         if type_info is None:
-            print(
-                "Warning: Could not pull valve type data for {} of type: {}".format(
-                    component.name, component.entity
-                )
-            )
+            print("Warning: Could not pull valve type data for {} of type: {}".format(component.name, component.entity))
         else:
             if type_info == "NORMALLY_OPEN":
                 device.update_valve_type(component, ValveType.NORMALLY_OPEN)

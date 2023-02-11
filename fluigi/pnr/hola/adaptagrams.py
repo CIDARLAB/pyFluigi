@@ -7,32 +7,39 @@
 from sys import version_info as _swig_python_version_info
 
 if _swig_python_version_info >= (2, 7, 0):
+
     def swig_import_helper():
         import importlib
-        pkg = __name__.rpartition('.')[0]
-        mname = '.'.join((pkg, '_adaptagrams')).lstrip('.')
+
+        pkg = __name__.rpartition(".")[0]
+        mname = ".".join((pkg, "_adaptagrams")).lstrip(".")
         try:
             return importlib.import_module(mname)
         except ImportError:
-            return importlib.import_module('_adaptagrams')
+            return importlib.import_module("_adaptagrams")
+
     _adaptagrams = swig_import_helper()
     del swig_import_helper
 elif _swig_python_version_info >= (2, 6, 0):
+
     def swig_import_helper():
         import imp
         from os.path import dirname
+
         fp = None
         try:
-            fp, pathname, description = imp.find_module('_adaptagrams', [dirname(__file__)])
+            fp, pathname, description = imp.find_module("_adaptagrams", [dirname(__file__)])
         except ImportError:
             import _adaptagrams
+
             return _adaptagrams
         try:
-            _mod = imp.load_module('_adaptagrams', fp, pathname, description)
+            _mod = imp.load_module("_adaptagrams", fp, pathname, description)
         finally:
             if fp is not None:
                 fp.close()
         return _mod
+
     _adaptagrams = swig_import_helper()
     del swig_import_helper
 else:
@@ -49,17 +56,18 @@ try:
 except ImportError:
     import __builtin__
 
+
 def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
-    if (name == "thisown"):
+    if name == "thisown":
         return self.this.own(value)
-    if (name == "this"):
-        if type(value).__name__ == 'SwigPyObject':
+    if name == "this":
+        if type(value).__name__ == "SwigPyObject":
             self.__dict__[name] = value
             return
     method = class_type.__swig_setmethods__.get(name, None)
     if method:
         return method(self, value)
-    if (not static):
+    if not static:
         if _newclass:
             object.__setattr__(self, name, value)
         else:
@@ -73,7 +81,7 @@ def _swig_setattr(self, class_type, name, value):
 
 
 def _swig_getattr(self, class_type, name):
-    if (name == "thisown"):
+    if name == "thisown":
         return self.this.own()
     method = class_type.__swig_getmethods__.get(name, None)
     if method:
@@ -86,18 +94,26 @@ def _swig_repr(self):
         strthis = "proxy of " + self.this.__repr__()
     except __builtin__.Exception:
         strthis = ""
-    return "<%s.%s; %s >" % (self.__class__.__module__, self.__class__.__name__, strthis,)
+    return "<%s.%s; %s >" % (
+        self.__class__.__module__,
+        self.__class__.__name__,
+        strthis,
+    )
+
 
 try:
     _object = object
     _newclass = 1
 except __builtin__.Exception:
+
     class _object:
         pass
+
     _newclass = 0
 
 try:
     import weakref
+
     weakref_proxy = weakref.proxy
 except __builtin__.Exception:
     weakref_proxy = lambda x: x
@@ -111,6 +127,7 @@ class SwigPyIterator(_object):
 
     def __init__(self, *args, **kwargs):
         raise AttributeError("No constructor defined - class is abstract")
+
     __repr__ = _swig_repr
     __swig_destroy__ = _adaptagrams.delete_SwigPyIterator
     __del__ = lambda self: None
@@ -162,12 +179,17 @@ class SwigPyIterator(_object):
 
     def __sub__(self, *args):
         return _adaptagrams.SwigPyIterator___sub__(self, *args)
+
     def __iter__(self):
         return self
+
+
 SwigPyIterator_swigregister = _adaptagrams.SwigPyIterator_swigregister
 SwigPyIterator_swigregister(SwigPyIterator)
 
 SHARED_PTR_DISOWN = _adaptagrams.SHARED_PTR_DISOWN
+
+
 class Chars(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, Chars, name, value)
@@ -177,6 +199,7 @@ class Chars(_object):
 
     def iterator(self):
         return _adaptagrams.Chars_iterator(self)
+
     def __iter__(self):
         return self.iterator()
 
@@ -276,10 +299,14 @@ class Chars(_object):
 
     def capacity(self):
         return _adaptagrams.Chars_capacity(self)
+
     __swig_destroy__ = _adaptagrams.delete_Chars
     __del__ = lambda self: None
+
+
 Chars_swigregister = _adaptagrams.Chars_swigregister
 Chars_swigregister(Chars)
+
 
 class Unsigneds(_object):
     __swig_setmethods__ = {}
@@ -290,6 +317,7 @@ class Unsigneds(_object):
 
     def iterator(self):
         return _adaptagrams.Unsigneds_iterator(self)
+
     def __iter__(self):
         return self.iterator()
 
@@ -389,10 +417,14 @@ class Unsigneds(_object):
 
     def capacity(self):
         return _adaptagrams.Unsigneds_capacity(self)
+
     __swig_destroy__ = _adaptagrams.delete_Unsigneds
     __del__ = lambda self: None
+
+
 Unsigneds_swigregister = _adaptagrams.Unsigneds_swigregister
 Unsigneds_swigregister(Unsigneds)
+
 
 class Doubles(_object):
     __swig_setmethods__ = {}
@@ -403,6 +435,7 @@ class Doubles(_object):
 
     def iterator(self):
         return _adaptagrams.Doubles_iterator(self)
+
     def __iter__(self):
         return self.iterator()
 
@@ -502,10 +535,14 @@ class Doubles(_object):
 
     def capacity(self):
         return _adaptagrams.Doubles_capacity(self)
+
     __swig_destroy__ = _adaptagrams.delete_Doubles
     __del__ = lambda self: None
+
+
 Doubles_swigregister = _adaptagrams.Doubles_swigregister
 Doubles_swigregister(Doubles)
+
 
 class UnsatisfiableConstraintInfoPtrs(_object):
     __swig_setmethods__ = {}
@@ -516,6 +553,7 @@ class UnsatisfiableConstraintInfoPtrs(_object):
 
     def iterator(self):
         return _adaptagrams.UnsatisfiableConstraintInfoPtrs_iterator(self)
+
     def __iter__(self):
         return self.iterator()
 
@@ -615,10 +653,14 @@ class UnsatisfiableConstraintInfoPtrs(_object):
 
     def capacity(self):
         return _adaptagrams.UnsatisfiableConstraintInfoPtrs_capacity(self)
+
     __swig_destroy__ = _adaptagrams.delete_UnsatisfiableConstraintInfoPtrs
     __del__ = lambda self: None
+
+
 UnsatisfiableConstraintInfoPtrs_swigregister = _adaptagrams.UnsatisfiableConstraintInfoPtrs_swigregister
 UnsatisfiableConstraintInfoPtrs_swigregister(UnsatisfiableConstraintInfoPtrs)
+
 
 class ColaEdge(_object):
     __swig_setmethods__ = {}
@@ -633,6 +675,7 @@ class ColaEdge(_object):
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+
     __swig_setmethods__["first"] = _adaptagrams.ColaEdge_first_set
     __swig_getmethods__["first"] = _adaptagrams.ColaEdge_first_get
     if _newclass:
@@ -641,24 +684,32 @@ class ColaEdge(_object):
     __swig_getmethods__["second"] = _adaptagrams.ColaEdge_second_get
     if _newclass:
         second = _swig_property(_adaptagrams.ColaEdge_second_get, _adaptagrams.ColaEdge_second_set)
+
     def __len__(self):
         return 2
+
     def __repr__(self):
         return str((self.first, self.second))
-    def __getitem__(self, index): 
+
+    def __getitem__(self, index):
         if not (index % 2):
             return self.first
         else:
             return self.second
+
     def __setitem__(self, index, val):
         if not (index % 2):
             self.first = val
         else:
             self.second = val
+
     __swig_destroy__ = _adaptagrams.delete_ColaEdge
     __del__ = lambda self: None
+
+
 ColaEdge_swigregister = _adaptagrams.ColaEdge_swigregister
 ColaEdge_swigregister(ColaEdge)
+
 
 class ColaEdges(_object):
     __swig_setmethods__ = {}
@@ -669,6 +720,7 @@ class ColaEdges(_object):
 
     def iterator(self):
         return _adaptagrams.ColaEdges_iterator(self)
+
     def __iter__(self):
         return self.iterator()
 
@@ -768,10 +820,14 @@ class ColaEdges(_object):
 
     def capacity(self):
         return _adaptagrams.ColaEdges_capacity(self)
+
     __swig_destroy__ = _adaptagrams.delete_ColaEdges
     __del__ = lambda self: None
+
+
 ColaEdges_swigregister = _adaptagrams.ColaEdges_swigregister
 ColaEdges_swigregister(ColaEdges)
+
 
 class RectanglePtrs(_object):
     __swig_setmethods__ = {}
@@ -782,6 +838,7 @@ class RectanglePtrs(_object):
 
     def iterator(self):
         return _adaptagrams.RectanglePtrs_iterator(self)
+
     def __iter__(self):
         return self.iterator()
 
@@ -881,10 +938,14 @@ class RectanglePtrs(_object):
 
     def capacity(self):
         return _adaptagrams.RectanglePtrs_capacity(self)
+
     __swig_destroy__ = _adaptagrams.delete_RectanglePtrs
     __del__ = lambda self: None
+
+
 RectanglePtrs_swigregister = _adaptagrams.RectanglePtrs_swigregister
 RectanglePtrs_swigregister(RectanglePtrs)
+
 
 class CompoundConstraintPtrs(_object):
     __swig_setmethods__ = {}
@@ -895,6 +956,7 @@ class CompoundConstraintPtrs(_object):
 
     def iterator(self):
         return _adaptagrams.CompoundConstraintPtrs_iterator(self)
+
     def __iter__(self):
         return self.iterator()
 
@@ -994,10 +1056,14 @@ class CompoundConstraintPtrs(_object):
 
     def capacity(self):
         return _adaptagrams.CompoundConstraintPtrs_capacity(self)
+
     __swig_destroy__ = _adaptagrams.delete_CompoundConstraintPtrs
     __del__ = lambda self: None
+
+
 CompoundConstraintPtrs_swigregister = _adaptagrams.CompoundConstraintPtrs_swigregister
 CompoundConstraintPtrs_swigregister(CompoundConstraintPtrs)
+
 
 class ColaLocks(_object):
     __swig_setmethods__ = {}
@@ -1008,6 +1074,7 @@ class ColaLocks(_object):
 
     def iterator(self):
         return _adaptagrams.ColaLocks_iterator(self)
+
     def __iter__(self):
         return self.iterator()
 
@@ -1107,10 +1174,14 @@ class ColaLocks(_object):
 
     def capacity(self):
         return _adaptagrams.ColaLocks_capacity(self)
+
     __swig_destroy__ = _adaptagrams.delete_ColaLocks
     __del__ = lambda self: None
+
+
 ColaLocks_swigregister = _adaptagrams.ColaLocks_swigregister
 ColaLocks_swigregister(ColaLocks)
+
 
 class ColaResizes(_object):
     __swig_setmethods__ = {}
@@ -1121,6 +1192,7 @@ class ColaResizes(_object):
 
     def iterator(self):
         return _adaptagrams.ColaResizes_iterator(self)
+
     def __iter__(self):
         return self.iterator()
 
@@ -1220,10 +1292,14 @@ class ColaResizes(_object):
 
     def capacity(self):
         return _adaptagrams.ColaResizes_capacity(self)
+
     __swig_destroy__ = _adaptagrams.delete_ColaResizes
     __del__ = lambda self: None
+
+
 ColaResizes_swigregister = _adaptagrams.ColaResizes_swigregister
 ColaResizes_swigregister(ColaResizes)
+
 
 class ColaDesiredPositions(_object):
     __swig_setmethods__ = {}
@@ -1234,6 +1310,7 @@ class ColaDesiredPositions(_object):
 
     def iterator(self):
         return _adaptagrams.ColaDesiredPositions_iterator(self)
+
     def __iter__(self):
         return self.iterator()
 
@@ -1333,10 +1410,14 @@ class ColaDesiredPositions(_object):
 
     def capacity(self):
         return _adaptagrams.ColaDesiredPositions_capacity(self)
+
     __swig_destroy__ = _adaptagrams.delete_ColaDesiredPositions
     __del__ = lambda self: None
+
+
 ColaDesiredPositions_swigregister = _adaptagrams.ColaDesiredPositions_swigregister
 ColaDesiredPositions_swigregister(ColaDesiredPositions)
+
 
 class TopologyEdgePointPtrs(_object):
     __swig_setmethods__ = {}
@@ -1347,6 +1428,7 @@ class TopologyEdgePointPtrs(_object):
 
     def iterator(self):
         return _adaptagrams.TopologyEdgePointPtrs_iterator(self)
+
     def __iter__(self):
         return self.iterator()
 
@@ -1446,10 +1528,14 @@ class TopologyEdgePointPtrs(_object):
 
     def capacity(self):
         return _adaptagrams.TopologyEdgePointPtrs_capacity(self)
+
     __swig_destroy__ = _adaptagrams.delete_TopologyEdgePointPtrs
     __del__ = lambda self: None
+
+
 TopologyEdgePointPtrs_swigregister = _adaptagrams.TopologyEdgePointPtrs_swigregister
 TopologyEdgePointPtrs_swigregister(TopologyEdgePointPtrs)
+
 
 class TopologyEdgePointConstPtrs(_object):
     __swig_setmethods__ = {}
@@ -1460,6 +1546,7 @@ class TopologyEdgePointConstPtrs(_object):
 
     def iterator(self):
         return _adaptagrams.TopologyEdgePointConstPtrs_iterator(self)
+
     def __iter__(self):
         return self.iterator()
 
@@ -1559,10 +1646,14 @@ class TopologyEdgePointConstPtrs(_object):
 
     def capacity(self):
         return _adaptagrams.TopologyEdgePointConstPtrs_capacity(self)
+
     __swig_destroy__ = _adaptagrams.delete_TopologyEdgePointConstPtrs
     __del__ = lambda self: None
+
+
 TopologyEdgePointConstPtrs_swigregister = _adaptagrams.TopologyEdgePointConstPtrs_swigregister
 TopologyEdgePointConstPtrs_swigregister(TopologyEdgePointConstPtrs)
+
 
 class TopologyEdgePtrs(_object):
     __swig_setmethods__ = {}
@@ -1573,6 +1664,7 @@ class TopologyEdgePtrs(_object):
 
     def iterator(self):
         return _adaptagrams.TopologyEdgePtrs_iterator(self)
+
     def __iter__(self):
         return self.iterator()
 
@@ -1672,10 +1764,14 @@ class TopologyEdgePtrs(_object):
 
     def capacity(self):
         return _adaptagrams.TopologyEdgePtrs_capacity(self)
+
     __swig_destroy__ = _adaptagrams.delete_TopologyEdgePtrs
     __del__ = lambda self: None
+
+
 TopologyEdgePtrs_swigregister = _adaptagrams.TopologyEdgePtrs_swigregister
 TopologyEdgePtrs_swigregister(TopologyEdgePtrs)
+
 
 class TopologyNodePtrs(_object):
     __swig_setmethods__ = {}
@@ -1686,6 +1782,7 @@ class TopologyNodePtrs(_object):
 
     def iterator(self):
         return _adaptagrams.TopologyNodePtrs_iterator(self)
+
     def __iter__(self):
         return self.iterator()
 
@@ -1785,10 +1882,14 @@ class TopologyNodePtrs(_object):
 
     def capacity(self):
         return _adaptagrams.TopologyNodePtrs_capacity(self)
+
     __swig_destroy__ = _adaptagrams.delete_TopologyNodePtrs
     __del__ = lambda self: None
+
+
 TopologyNodePtrs_swigregister = _adaptagrams.TopologyNodePtrs_swigregister
 TopologyNodePtrs_swigregister(TopologyNodePtrs)
+
 
 class ColaClusters(_object):
     __swig_setmethods__ = {}
@@ -1799,6 +1900,7 @@ class ColaClusters(_object):
 
     def iterator(self):
         return _adaptagrams.ColaClusters_iterator(self)
+
     def __iter__(self):
         return self.iterator()
 
@@ -1898,10 +2000,14 @@ class ColaClusters(_object):
 
     def capacity(self):
         return _adaptagrams.ColaClusters_capacity(self)
+
     __swig_destroy__ = _adaptagrams.delete_ColaClusters
     __del__ = lambda self: None
+
+
 ColaClusters_swigregister = _adaptagrams.ColaClusters_swigregister
 ColaClusters_swigregister(ColaClusters)
+
 
 class AvoidPoints(_object):
     __swig_setmethods__ = {}
@@ -1912,6 +2018,7 @@ class AvoidPoints(_object):
 
     def iterator(self):
         return _adaptagrams.AvoidPoints_iterator(self)
+
     def __iter__(self):
         return self.iterator()
 
@@ -2011,10 +2118,14 @@ class AvoidPoints(_object):
 
     def capacity(self):
         return _adaptagrams.AvoidPoints_capacity(self)
+
     __swig_destroy__ = _adaptagrams.delete_AvoidPoints
     __del__ = lambda self: None
+
+
 AvoidPoints_swigregister = _adaptagrams.AvoidPoints_swigregister
 AvoidPoints_swigregister(AvoidPoints)
+
 
 class AvoidCheckpoints(_object):
     __swig_setmethods__ = {}
@@ -2025,6 +2136,7 @@ class AvoidCheckpoints(_object):
 
     def iterator(self):
         return _adaptagrams.AvoidCheckpoints_iterator(self)
+
     def __iter__(self):
         return self.iterator()
 
@@ -2124,10 +2236,14 @@ class AvoidCheckpoints(_object):
 
     def capacity(self):
         return _adaptagrams.AvoidCheckpoints_capacity(self)
+
     __swig_destroy__ = _adaptagrams.delete_AvoidCheckpoints
     __del__ = lambda self: None
+
+
 AvoidCheckpoints_swigregister = _adaptagrams.AvoidCheckpoints_swigregister
 AvoidCheckpoints_swigregister(AvoidCheckpoints)
+
 
 class OrderedAlignmentPtrs(_object):
     __swig_setmethods__ = {}
@@ -2138,6 +2254,7 @@ class OrderedAlignmentPtrs(_object):
 
     def iterator(self):
         return _adaptagrams.OrderedAlignmentPtrs_iterator(self)
+
     def __iter__(self):
         return self.iterator()
 
@@ -2237,10 +2354,14 @@ class OrderedAlignmentPtrs(_object):
 
     def capacity(self):
         return _adaptagrams.OrderedAlignmentPtrs_capacity(self)
+
     __swig_destroy__ = _adaptagrams.delete_OrderedAlignmentPtrs
     __del__ = lambda self: None
+
+
 OrderedAlignmentPtrs_swigregister = _adaptagrams.OrderedAlignmentPtrs_swigregister
 OrderedAlignmentPtrs_swigregister(OrderedAlignmentPtrs)
+
 
 class TreePtrs(_object):
     __swig_setmethods__ = {}
@@ -2251,6 +2372,7 @@ class TreePtrs(_object):
 
     def iterator(self):
         return _adaptagrams.TreePtrs_iterator(self)
+
     def __iter__(self):
         return self.iterator()
 
@@ -2350,10 +2472,14 @@ class TreePtrs(_object):
 
     def capacity(self):
         return _adaptagrams.TreePtrs_capacity(self)
+
     __swig_destroy__ = _adaptagrams.delete_TreePtrs
     __del__ = lambda self: None
+
+
 TreePtrs_swigregister = _adaptagrams.TreePtrs_swigregister
 TreePtrs_swigregister(TreePtrs)
+
 
 class ChainPtrs(_object):
     __swig_setmethods__ = {}
@@ -2364,6 +2490,7 @@ class ChainPtrs(_object):
 
     def iterator(self):
         return _adaptagrams.ChainPtrs_iterator(self)
+
     def __iter__(self):
         return self.iterator()
 
@@ -2463,10 +2590,14 @@ class ChainPtrs(_object):
 
     def capacity(self):
         return _adaptagrams.ChainPtrs_capacity(self)
+
     __swig_destroy__ = _adaptagrams.delete_ChainPtrs
     __del__ = lambda self: None
+
+
 ChainPtrs_swigregister = _adaptagrams.ChainPtrs_swigregister
 ChainPtrs_swigregister(ChainPtrs)
+
 
 class DialectNodes(_object):
     __swig_setmethods__ = {}
@@ -2477,6 +2608,7 @@ class DialectNodes(_object):
 
     def iterator(self):
         return _adaptagrams.DialectNodes_iterator(self)
+
     def __iter__(self):
         return self.iterator()
 
@@ -2576,10 +2708,14 @@ class DialectNodes(_object):
 
     def capacity(self):
         return _adaptagrams.DialectNodes_capacity(self)
+
     __swig_destroy__ = _adaptagrams.delete_DialectNodes
     __del__ = lambda self: None
+
+
 DialectNodes_swigregister = _adaptagrams.DialectNodes_swigregister
 DialectNodes_swigregister(DialectNodes)
+
 
 class DialectNodeLookup(_object):
     __swig_setmethods__ = {}
@@ -2590,6 +2726,7 @@ class DialectNodeLookup(_object):
 
     def iterator(self):
         return _adaptagrams.DialectNodeLookup_iterator(self)
+
     def __iter__(self):
         return self.iterator()
 
@@ -2601,12 +2738,16 @@ class DialectNodeLookup(_object):
 
     def __len__(self):
         return _adaptagrams.DialectNodeLookup___len__(self)
+
     def __iter__(self):
         return self.key_iterator()
+
     def iterkeys(self):
         return self.key_iterator()
+
     def itervalues(self):
         return self.value_iterator()
+
     def iteritems(self):
         return self.iterator()
 
@@ -2691,10 +2832,14 @@ class DialectNodeLookup(_object):
 
     def upper_bound(self, x):
         return _adaptagrams.DialectNodeLookup_upper_bound(self, x)
+
     __swig_destroy__ = _adaptagrams.delete_DialectNodeLookup
     __del__ = lambda self: None
+
+
 DialectNodeLookup_swigregister = _adaptagrams.DialectNodeLookup_swigregister
 DialectNodeLookup_swigregister(DialectNodeLookup)
+
 
 class DialectNodeDeques(_object):
     __swig_setmethods__ = {}
@@ -2705,6 +2850,7 @@ class DialectNodeDeques(_object):
 
     def iterator(self):
         return _adaptagrams.DialectNodeDeques_iterator(self)
+
     def __iter__(self):
         return self.iterator()
 
@@ -2804,26 +2950,40 @@ class DialectNodeDeques(_object):
 
     def capacity(self):
         return _adaptagrams.DialectNodeDeques_capacity(self)
+
     __swig_destroy__ = _adaptagrams.delete_DialectNodeDeques
     __del__ = lambda self: None
+
+
 DialectNodeDeques_swigregister = _adaptagrams.DialectNodeDeques_swigregister
 DialectNodeDeques_swigregister(DialectNodeDeques)
 
 
 def doubleArraySet(a, i, val):
     return _adaptagrams.doubleArraySet(a, i, val)
+
+
 doubleArraySet = _adaptagrams.doubleArraySet
+
 
 def doubleArrayGet(a, i):
     return _adaptagrams.doubleArrayGet(a, i)
+
+
 doubleArrayGet = _adaptagrams.doubleArrayGet
+
 
 def newDoubleArray(size):
     return _adaptagrams.newDoubleArray(size)
+
+
 newDoubleArray = _adaptagrams.newDoubleArray
+
 
 def deleteDoubleArray(a):
     return _adaptagrams.deleteDoubleArray(a)
+
+
 deleteDoubleArray = _adaptagrams.deleteDoubleArray
 HORIZONTAL = _adaptagrams.HORIZONTAL
 XDIM = _adaptagrams.XDIM
@@ -2831,9 +2991,14 @@ VERTICAL = _adaptagrams.VERTICAL
 YDIM = _adaptagrams.YDIM
 UNSET = _adaptagrams.UNSET
 
+
 def conjugate(d):
     return _adaptagrams.conjugate(d)
+
+
 conjugate = _adaptagrams.conjugate
+
+
 class RectangleIntersections(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, RectangleIntersections, name, value)
@@ -2843,7 +3008,9 @@ class RectangleIntersections(_object):
     __swig_setmethods__["intersects"] = _adaptagrams.RectangleIntersections_intersects_set
     __swig_getmethods__["intersects"] = _adaptagrams.RectangleIntersections_intersects_get
     if _newclass:
-        intersects = _swig_property(_adaptagrams.RectangleIntersections_intersects_get, _adaptagrams.RectangleIntersections_intersects_set)
+        intersects = _swig_property(
+            _adaptagrams.RectangleIntersections_intersects_get, _adaptagrams.RectangleIntersections_intersects_set
+        )
     __swig_setmethods__["top"] = _adaptagrams.RectangleIntersections_top_set
     __swig_getmethods__["top"] = _adaptagrams.RectangleIntersections_top_get
     if _newclass:
@@ -2851,47 +3018,69 @@ class RectangleIntersections(_object):
     __swig_setmethods__["bottom"] = _adaptagrams.RectangleIntersections_bottom_set
     __swig_getmethods__["bottom"] = _adaptagrams.RectangleIntersections_bottom_get
     if _newclass:
-        bottom = _swig_property(_adaptagrams.RectangleIntersections_bottom_get, _adaptagrams.RectangleIntersections_bottom_set)
+        bottom = _swig_property(
+            _adaptagrams.RectangleIntersections_bottom_get, _adaptagrams.RectangleIntersections_bottom_set
+        )
     __swig_setmethods__["left"] = _adaptagrams.RectangleIntersections_left_set
     __swig_getmethods__["left"] = _adaptagrams.RectangleIntersections_left_get
     if _newclass:
-        left = _swig_property(_adaptagrams.RectangleIntersections_left_get, _adaptagrams.RectangleIntersections_left_set)
+        left = _swig_property(
+            _adaptagrams.RectangleIntersections_left_get, _adaptagrams.RectangleIntersections_left_set
+        )
     __swig_setmethods__["right"] = _adaptagrams.RectangleIntersections_right_set
     __swig_getmethods__["right"] = _adaptagrams.RectangleIntersections_right_get
     if _newclass:
-        right = _swig_property(_adaptagrams.RectangleIntersections_right_get, _adaptagrams.RectangleIntersections_right_set)
+        right = _swig_property(
+            _adaptagrams.RectangleIntersections_right_get, _adaptagrams.RectangleIntersections_right_set
+        )
     __swig_setmethods__["topX"] = _adaptagrams.RectangleIntersections_topX_set
     __swig_getmethods__["topX"] = _adaptagrams.RectangleIntersections_topX_get
     if _newclass:
-        topX = _swig_property(_adaptagrams.RectangleIntersections_topX_get, _adaptagrams.RectangleIntersections_topX_set)
+        topX = _swig_property(
+            _adaptagrams.RectangleIntersections_topX_get, _adaptagrams.RectangleIntersections_topX_set
+        )
     __swig_setmethods__["topY"] = _adaptagrams.RectangleIntersections_topY_set
     __swig_getmethods__["topY"] = _adaptagrams.RectangleIntersections_topY_get
     if _newclass:
-        topY = _swig_property(_adaptagrams.RectangleIntersections_topY_get, _adaptagrams.RectangleIntersections_topY_set)
+        topY = _swig_property(
+            _adaptagrams.RectangleIntersections_topY_get, _adaptagrams.RectangleIntersections_topY_set
+        )
     __swig_setmethods__["bottomX"] = _adaptagrams.RectangleIntersections_bottomX_set
     __swig_getmethods__["bottomX"] = _adaptagrams.RectangleIntersections_bottomX_get
     if _newclass:
-        bottomX = _swig_property(_adaptagrams.RectangleIntersections_bottomX_get, _adaptagrams.RectangleIntersections_bottomX_set)
+        bottomX = _swig_property(
+            _adaptagrams.RectangleIntersections_bottomX_get, _adaptagrams.RectangleIntersections_bottomX_set
+        )
     __swig_setmethods__["bottomY"] = _adaptagrams.RectangleIntersections_bottomY_set
     __swig_getmethods__["bottomY"] = _adaptagrams.RectangleIntersections_bottomY_get
     if _newclass:
-        bottomY = _swig_property(_adaptagrams.RectangleIntersections_bottomY_get, _adaptagrams.RectangleIntersections_bottomY_set)
+        bottomY = _swig_property(
+            _adaptagrams.RectangleIntersections_bottomY_get, _adaptagrams.RectangleIntersections_bottomY_set
+        )
     __swig_setmethods__["leftX"] = _adaptagrams.RectangleIntersections_leftX_set
     __swig_getmethods__["leftX"] = _adaptagrams.RectangleIntersections_leftX_get
     if _newclass:
-        leftX = _swig_property(_adaptagrams.RectangleIntersections_leftX_get, _adaptagrams.RectangleIntersections_leftX_set)
+        leftX = _swig_property(
+            _adaptagrams.RectangleIntersections_leftX_get, _adaptagrams.RectangleIntersections_leftX_set
+        )
     __swig_setmethods__["leftY"] = _adaptagrams.RectangleIntersections_leftY_set
     __swig_getmethods__["leftY"] = _adaptagrams.RectangleIntersections_leftY_get
     if _newclass:
-        leftY = _swig_property(_adaptagrams.RectangleIntersections_leftY_get, _adaptagrams.RectangleIntersections_leftY_set)
+        leftY = _swig_property(
+            _adaptagrams.RectangleIntersections_leftY_get, _adaptagrams.RectangleIntersections_leftY_set
+        )
     __swig_setmethods__["rightX"] = _adaptagrams.RectangleIntersections_rightX_set
     __swig_getmethods__["rightX"] = _adaptagrams.RectangleIntersections_rightX_get
     if _newclass:
-        rightX = _swig_property(_adaptagrams.RectangleIntersections_rightX_get, _adaptagrams.RectangleIntersections_rightX_set)
+        rightX = _swig_property(
+            _adaptagrams.RectangleIntersections_rightX_get, _adaptagrams.RectangleIntersections_rightX_set
+        )
     __swig_setmethods__["rightY"] = _adaptagrams.RectangleIntersections_rightY_set
     __swig_getmethods__["rightY"] = _adaptagrams.RectangleIntersections_rightY_get
     if _newclass:
-        rightY = _swig_property(_adaptagrams.RectangleIntersections_rightY_get, _adaptagrams.RectangleIntersections_rightY_set)
+        rightY = _swig_property(
+            _adaptagrams.RectangleIntersections_rightY_get, _adaptagrams.RectangleIntersections_rightY_set
+        )
 
     def __init__(self):
         this = _adaptagrams.new_RectangleIntersections()
@@ -2908,10 +3097,14 @@ class RectangleIntersections(_object):
 
     def nearest(self, x, y, xi, yi):
         return _adaptagrams.RectangleIntersections_nearest(self, x, y, xi, yi)
+
     __swig_destroy__ = _adaptagrams.delete_RectangleIntersections
     __del__ = lambda self: None
+
+
 RectangleIntersections_swigregister = _adaptagrams.RectangleIntersections_swigregister
 RectangleIntersections_swigregister(RectangleIntersections)
+
 
 class Rectangle(_object):
     __swig_setmethods__ = {}
@@ -3028,6 +3221,7 @@ class Rectangle(_object):
 
     def routeAround(self, x1, y1, x2, y2, xs, ys):
         return _adaptagrams.Rectangle_routeAround(self, x1, y1, x2, y2, xs, ys)
+
     __swig_setmethods__["xBorder"] = _adaptagrams.Rectangle_xBorder_set
     __swig_getmethods__["xBorder"] = _adaptagrams.Rectangle_xBorder_get
     if _newclass:
@@ -3036,6 +3230,8 @@ class Rectangle(_object):
     __swig_getmethods__["yBorder"] = _adaptagrams.Rectangle_yBorder_get
     if _newclass:
         yBorder = _swig_property(_adaptagrams.Rectangle_yBorder_get, _adaptagrams.Rectangle_yBorder_set)
+
+
 Rectangle_swigregister = _adaptagrams.Rectangle_swigregister
 Rectangle_swigregister(Rectangle)
 cvar = _adaptagrams.cvar
@@ -3043,23 +3239,39 @@ cvar = _adaptagrams.cvar
 
 def __lshift__(os, r):
     return _adaptagrams.__lshift__(os, r)
+
+
 __lshift__ = _adaptagrams.__lshift__
+
 
 def generateXConstraints(rs, vars, cs, useNeighbourLists):
     return _adaptagrams.generateXConstraints(rs, vars, cs, useNeighbourLists)
+
+
 generateXConstraints = _adaptagrams.generateXConstraints
+
 
 def generateYConstraints(rs, vars, cs):
     return _adaptagrams.generateYConstraints(rs, vars, cs)
+
+
 generateYConstraints = _adaptagrams.generateYConstraints
+
 
 def removeoverlaps(*args):
     return _adaptagrams.removeoverlaps(*args)
+
+
 removeoverlaps = _adaptagrams.removeoverlaps
+
 
 def noRectangleOverlaps(rs):
     return _adaptagrams.noRectangleOverlaps(rs)
+
+
 noRectangleOverlaps = _adaptagrams.noRectangleOverlaps
+
+
 class delete_object(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, delete_object, name, value)
@@ -3073,10 +3285,14 @@ class delete_object(_object):
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+
     __swig_destroy__ = _adaptagrams.delete_delete_object
     __del__ = lambda self: None
+
+
 delete_object_swigregister = _adaptagrams.delete_object_swigregister
 delete_object_swigregister(delete_object)
+
 
 class VariableIDMap(_object):
     __swig_setmethods__ = {}
@@ -3091,6 +3307,7 @@ class VariableIDMap(_object):
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+
     __swig_destroy__ = _adaptagrams.delete_VariableIDMap
     __del__ = lambda self: None
 
@@ -3105,11 +3322,14 @@ class VariableIDMap(_object):
 
     def printCreationCode(self, fp):
         return _adaptagrams.VariableIDMap_printCreationCode(self, fp)
+
+
 VariableIDMap_swigregister = _adaptagrams.VariableIDMap_swigregister
 VariableIDMap_swigregister(VariableIDMap)
 freeWeight = cvar.freeWeight
 DEFAULT_CONSTRAINT_PRIORITY = cvar.DEFAULT_CONSTRAINT_PRIORITY
 PRIORITY_NONOVERLAP = cvar.PRIORITY_NONOVERLAP
+
 
 class CompoundConstraint(_object):
     __swig_setmethods__ = {}
@@ -3119,6 +3339,7 @@ class CompoundConstraint(_object):
 
     def __init__(self, *args, **kwargs):
         raise AttributeError("No constructor defined - class is abstract")
+
     __repr__ = _swig_repr
 
     def generateVariables(self, dim, vars):
@@ -3165,25 +3386,34 @@ class CompoundConstraint(_object):
 
     def shouldCombineSubConstraints(self):
         return _adaptagrams.CompoundConstraint_shouldCombineSubConstraints(self)
+
+
 CompoundConstraint_swigregister = _adaptagrams.CompoundConstraint_swigregister
 CompoundConstraint_swigregister(CompoundConstraint)
 
 
 def generateVariablesAndConstraints(ccs, dim, vars, cs, bbs):
     return _adaptagrams.generateVariablesAndConstraints(ccs, dim, vars, cs, bbs)
+
+
 generateVariablesAndConstraints = _adaptagrams.generateVariablesAndConstraints
+
 
 def generateVariables(ccs, dim, vars):
     return _adaptagrams.generateVariables(ccs, dim, vars)
+
+
 generateVariables = _adaptagrams.generateVariables
+
+
 class BoundaryConstraint(CompoundConstraint):
     __swig_setmethods__ = {}
     for _s in [CompoundConstraint]:
-        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+        __swig_setmethods__.update(getattr(_s, "__swig_setmethods__", {}))
     __setattr__ = lambda self, name, value: _swig_setattr(self, BoundaryConstraint, name, value)
     __swig_getmethods__ = {}
     for _s in [CompoundConstraint]:
-        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+        __swig_getmethods__.update(getattr(_s, "__swig_getmethods__", {}))
     __getattr__ = lambda self, name: _swig_getattr(self, BoundaryConstraint, name)
     __repr__ = _swig_repr
 
@@ -3214,25 +3444,33 @@ class BoundaryConstraint(CompoundConstraint):
 
     def printCreationCode(self, fp):
         return _adaptagrams.BoundaryConstraint_printCreationCode(self, fp)
+
     __swig_setmethods__["position"] = _adaptagrams.BoundaryConstraint_position_set
     __swig_getmethods__["position"] = _adaptagrams.BoundaryConstraint_position_get
     if _newclass:
-        position = _swig_property(_adaptagrams.BoundaryConstraint_position_get, _adaptagrams.BoundaryConstraint_position_set)
+        position = _swig_property(
+            _adaptagrams.BoundaryConstraint_position_get, _adaptagrams.BoundaryConstraint_position_set
+        )
     __swig_setmethods__["variable"] = _adaptagrams.BoundaryConstraint_variable_set
     __swig_getmethods__["variable"] = _adaptagrams.BoundaryConstraint_variable_get
     if _newclass:
-        variable = _swig_property(_adaptagrams.BoundaryConstraint_variable_get, _adaptagrams.BoundaryConstraint_variable_set)
+        variable = _swig_property(
+            _adaptagrams.BoundaryConstraint_variable_get, _adaptagrams.BoundaryConstraint_variable_set
+        )
+
+
 BoundaryConstraint_swigregister = _adaptagrams.BoundaryConstraint_swigregister
 BoundaryConstraint_swigregister(BoundaryConstraint)
+
 
 class AlignmentConstraint(CompoundConstraint):
     __swig_setmethods__ = {}
     for _s in [CompoundConstraint]:
-        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+        __swig_setmethods__.update(getattr(_s, "__swig_setmethods__", {}))
     __setattr__ = lambda self, name, value: _swig_setattr(self, AlignmentConstraint, name, value)
     __swig_getmethods__ = {}
     for _s in [CompoundConstraint]:
-        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+        __swig_getmethods__.update(getattr(_s, "__swig_getmethods__", {}))
     __getattr__ = lambda self, name: _swig_getattr(self, AlignmentConstraint, name)
     __repr__ = _swig_repr
 
@@ -3278,25 +3516,33 @@ class AlignmentConstraint(CompoundConstraint):
 
     def updateShapeOffsetsForDifferentCentres(self, offsets, forward=True):
         return _adaptagrams.AlignmentConstraint_updateShapeOffsetsForDifferentCentres(self, offsets, forward)
+
     __swig_setmethods__["indicator"] = _adaptagrams.AlignmentConstraint_indicator_set
     __swig_getmethods__["indicator"] = _adaptagrams.AlignmentConstraint_indicator_get
     if _newclass:
-        indicator = _swig_property(_adaptagrams.AlignmentConstraint_indicator_get, _adaptagrams.AlignmentConstraint_indicator_set)
+        indicator = _swig_property(
+            _adaptagrams.AlignmentConstraint_indicator_get, _adaptagrams.AlignmentConstraint_indicator_set
+        )
     __swig_setmethods__["variable"] = _adaptagrams.AlignmentConstraint_variable_set
     __swig_getmethods__["variable"] = _adaptagrams.AlignmentConstraint_variable_get
     if _newclass:
-        variable = _swig_property(_adaptagrams.AlignmentConstraint_variable_get, _adaptagrams.AlignmentConstraint_variable_set)
+        variable = _swig_property(
+            _adaptagrams.AlignmentConstraint_variable_get, _adaptagrams.AlignmentConstraint_variable_set
+        )
+
+
 AlignmentConstraint_swigregister = _adaptagrams.AlignmentConstraint_swigregister
 AlignmentConstraint_swigregister(AlignmentConstraint)
+
 
 class SeparationConstraint(CompoundConstraint):
     __swig_setmethods__ = {}
     for _s in [CompoundConstraint]:
-        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+        __swig_setmethods__.update(getattr(_s, "__swig_setmethods__", {}))
     __setattr__ = lambda self, name, value: _swig_setattr(self, SeparationConstraint, name, value)
     __swig_getmethods__ = {}
     for _s in [CompoundConstraint]:
-        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+        __swig_getmethods__.update(getattr(_s, "__swig_getmethods__", {}))
     __getattr__ = lambda self, name: _swig_getattr(self, SeparationConstraint, name)
     __repr__ = _swig_repr
 
@@ -3330,6 +3576,7 @@ class SeparationConstraint(CompoundConstraint):
 
     def printCreationCode(self, fp):
         return _adaptagrams.SeparationConstraint_printCreationCode(self, fp)
+
     __swig_setmethods__["gap"] = _adaptagrams.SeparationConstraint_gap_set
     __swig_getmethods__["gap"] = _adaptagrams.SeparationConstraint_gap_get
     if _newclass:
@@ -3337,22 +3584,29 @@ class SeparationConstraint(CompoundConstraint):
     __swig_setmethods__["equality"] = _adaptagrams.SeparationConstraint_equality_set
     __swig_getmethods__["equality"] = _adaptagrams.SeparationConstraint_equality_get
     if _newclass:
-        equality = _swig_property(_adaptagrams.SeparationConstraint_equality_get, _adaptagrams.SeparationConstraint_equality_set)
+        equality = _swig_property(
+            _adaptagrams.SeparationConstraint_equality_get, _adaptagrams.SeparationConstraint_equality_set
+        )
     __swig_setmethods__["vpscConstraint"] = _adaptagrams.SeparationConstraint_vpscConstraint_set
     __swig_getmethods__["vpscConstraint"] = _adaptagrams.SeparationConstraint_vpscConstraint_get
     if _newclass:
-        vpscConstraint = _swig_property(_adaptagrams.SeparationConstraint_vpscConstraint_get, _adaptagrams.SeparationConstraint_vpscConstraint_set)
+        vpscConstraint = _swig_property(
+            _adaptagrams.SeparationConstraint_vpscConstraint_get, _adaptagrams.SeparationConstraint_vpscConstraint_set
+        )
+
+
 SeparationConstraint_swigregister = _adaptagrams.SeparationConstraint_swigregister
 SeparationConstraint_swigregister(SeparationConstraint)
+
 
 class OrthogonalEdgeConstraint(CompoundConstraint):
     __swig_setmethods__ = {}
     for _s in [CompoundConstraint]:
-        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+        __swig_setmethods__.update(getattr(_s, "__swig_setmethods__", {}))
     __setattr__ = lambda self, name, value: _swig_setattr(self, OrthogonalEdgeConstraint, name, value)
     __swig_getmethods__ = {}
     for _s in [CompoundConstraint]:
-        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+        __swig_getmethods__.update(getattr(_s, "__swig_getmethods__", {}))
     __getattr__ = lambda self, name: _swig_getattr(self, OrthogonalEdgeConstraint, name)
     __repr__ = _swig_repr
 
@@ -3380,29 +3634,40 @@ class OrthogonalEdgeConstraint(CompoundConstraint):
 
     def toString(self):
         return _adaptagrams.OrthogonalEdgeConstraint_toString(self)
+
     __swig_setmethods__["left"] = _adaptagrams.OrthogonalEdgeConstraint_left_set
     __swig_getmethods__["left"] = _adaptagrams.OrthogonalEdgeConstraint_left_get
     if _newclass:
-        left = _swig_property(_adaptagrams.OrthogonalEdgeConstraint_left_get, _adaptagrams.OrthogonalEdgeConstraint_left_set)
+        left = _swig_property(
+            _adaptagrams.OrthogonalEdgeConstraint_left_get, _adaptagrams.OrthogonalEdgeConstraint_left_set
+        )
     __swig_setmethods__["right"] = _adaptagrams.OrthogonalEdgeConstraint_right_set
     __swig_getmethods__["right"] = _adaptagrams.OrthogonalEdgeConstraint_right_get
     if _newclass:
-        right = _swig_property(_adaptagrams.OrthogonalEdgeConstraint_right_get, _adaptagrams.OrthogonalEdgeConstraint_right_set)
+        right = _swig_property(
+            _adaptagrams.OrthogonalEdgeConstraint_right_get, _adaptagrams.OrthogonalEdgeConstraint_right_set
+        )
     __swig_setmethods__["vpscConstraint"] = _adaptagrams.OrthogonalEdgeConstraint_vpscConstraint_set
     __swig_getmethods__["vpscConstraint"] = _adaptagrams.OrthogonalEdgeConstraint_vpscConstraint_get
     if _newclass:
-        vpscConstraint = _swig_property(_adaptagrams.OrthogonalEdgeConstraint_vpscConstraint_get, _adaptagrams.OrthogonalEdgeConstraint_vpscConstraint_set)
+        vpscConstraint = _swig_property(
+            _adaptagrams.OrthogonalEdgeConstraint_vpscConstraint_get,
+            _adaptagrams.OrthogonalEdgeConstraint_vpscConstraint_set,
+        )
+
+
 OrthogonalEdgeConstraint_swigregister = _adaptagrams.OrthogonalEdgeConstraint_swigregister
 OrthogonalEdgeConstraint_swigregister(OrthogonalEdgeConstraint)
+
 
 class MultiSeparationConstraint(CompoundConstraint):
     __swig_setmethods__ = {}
     for _s in [CompoundConstraint]:
-        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+        __swig_setmethods__.update(getattr(_s, "__swig_setmethods__", {}))
     __setattr__ = lambda self, name, value: _swig_setattr(self, MultiSeparationConstraint, name, value)
     __swig_getmethods__ = {}
     for _s in [CompoundConstraint]:
-        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+        __swig_getmethods__.update(getattr(_s, "__swig_getmethods__", {}))
     __getattr__ = lambda self, name: _swig_getattr(self, MultiSeparationConstraint, name)
     __repr__ = _swig_repr
 
@@ -3433,33 +3698,45 @@ class MultiSeparationConstraint(CompoundConstraint):
 
     def printCreationCode(self, fp):
         return _adaptagrams.MultiSeparationConstraint_printCreationCode(self, fp)
+
     __swig_setmethods__["cs"] = _adaptagrams.MultiSeparationConstraint_cs_set
     __swig_getmethods__["cs"] = _adaptagrams.MultiSeparationConstraint_cs_get
     if _newclass:
-        cs = _swig_property(_adaptagrams.MultiSeparationConstraint_cs_get, _adaptagrams.MultiSeparationConstraint_cs_set)
+        cs = _swig_property(
+            _adaptagrams.MultiSeparationConstraint_cs_get, _adaptagrams.MultiSeparationConstraint_cs_set
+        )
     __swig_setmethods__["indicator"] = _adaptagrams.MultiSeparationConstraint_indicator_set
     __swig_getmethods__["indicator"] = _adaptagrams.MultiSeparationConstraint_indicator_get
     if _newclass:
-        indicator = _swig_property(_adaptagrams.MultiSeparationConstraint_indicator_get, _adaptagrams.MultiSeparationConstraint_indicator_set)
+        indicator = _swig_property(
+            _adaptagrams.MultiSeparationConstraint_indicator_get, _adaptagrams.MultiSeparationConstraint_indicator_set
+        )
     __swig_setmethods__["sep"] = _adaptagrams.MultiSeparationConstraint_sep_set
     __swig_getmethods__["sep"] = _adaptagrams.MultiSeparationConstraint_sep_get
     if _newclass:
-        sep = _swig_property(_adaptagrams.MultiSeparationConstraint_sep_get, _adaptagrams.MultiSeparationConstraint_sep_set)
+        sep = _swig_property(
+            _adaptagrams.MultiSeparationConstraint_sep_get, _adaptagrams.MultiSeparationConstraint_sep_set
+        )
     __swig_setmethods__["equality"] = _adaptagrams.MultiSeparationConstraint_equality_set
     __swig_getmethods__["equality"] = _adaptagrams.MultiSeparationConstraint_equality_get
     if _newclass:
-        equality = _swig_property(_adaptagrams.MultiSeparationConstraint_equality_get, _adaptagrams.MultiSeparationConstraint_equality_set)
+        equality = _swig_property(
+            _adaptagrams.MultiSeparationConstraint_equality_get, _adaptagrams.MultiSeparationConstraint_equality_set
+        )
+
+
 MultiSeparationConstraint_swigregister = _adaptagrams.MultiSeparationConstraint_swigregister
 MultiSeparationConstraint_swigregister(MultiSeparationConstraint)
+
 
 class DistributionConstraint(CompoundConstraint):
     __swig_setmethods__ = {}
     for _s in [CompoundConstraint]:
-        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+        __swig_setmethods__.update(getattr(_s, "__swig_setmethods__", {}))
     __setattr__ = lambda self, name, value: _swig_setattr(self, DistributionConstraint, name, value)
     __swig_getmethods__ = {}
     for _s in [CompoundConstraint]:
-        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+        __swig_getmethods__.update(getattr(_s, "__swig_getmethods__", {}))
     __getattr__ = lambda self, name: _swig_getattr(self, DistributionConstraint, name)
     __repr__ = _swig_repr
 
@@ -3490,6 +3767,7 @@ class DistributionConstraint(CompoundConstraint):
 
     def printCreationCode(self, fp):
         return _adaptagrams.DistributionConstraint_printCreationCode(self, fp)
+
     __swig_setmethods__["cs"] = _adaptagrams.DistributionConstraint_cs_set
     __swig_getmethods__["cs"] = _adaptagrams.DistributionConstraint_cs_get
     if _newclass:
@@ -3497,22 +3775,27 @@ class DistributionConstraint(CompoundConstraint):
     __swig_setmethods__["indicator"] = _adaptagrams.DistributionConstraint_indicator_set
     __swig_getmethods__["indicator"] = _adaptagrams.DistributionConstraint_indicator_get
     if _newclass:
-        indicator = _swig_property(_adaptagrams.DistributionConstraint_indicator_get, _adaptagrams.DistributionConstraint_indicator_set)
+        indicator = _swig_property(
+            _adaptagrams.DistributionConstraint_indicator_get, _adaptagrams.DistributionConstraint_indicator_set
+        )
     __swig_setmethods__["sep"] = _adaptagrams.DistributionConstraint_sep_set
     __swig_getmethods__["sep"] = _adaptagrams.DistributionConstraint_sep_get
     if _newclass:
         sep = _swig_property(_adaptagrams.DistributionConstraint_sep_get, _adaptagrams.DistributionConstraint_sep_set)
+
+
 DistributionConstraint_swigregister = _adaptagrams.DistributionConstraint_swigregister
 DistributionConstraint_swigregister(DistributionConstraint)
+
 
 class FixedRelativeConstraint(CompoundConstraint):
     __swig_setmethods__ = {}
     for _s in [CompoundConstraint]:
-        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+        __swig_setmethods__.update(getattr(_s, "__swig_setmethods__", {}))
     __setattr__ = lambda self, name, value: _swig_setattr(self, FixedRelativeConstraint, name, value)
     __swig_getmethods__ = {}
     for _s in [CompoundConstraint]:
-        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+        __swig_getmethods__.update(getattr(_s, "__swig_getmethods__", {}))
     __getattr__ = lambda self, name: _swig_getattr(self, FixedRelativeConstraint, name)
     __repr__ = _swig_repr
 
@@ -3540,17 +3823,20 @@ class FixedRelativeConstraint(CompoundConstraint):
 
     def updateVarIDsWithMapping(self, idMap, forward=True):
         return _adaptagrams.FixedRelativeConstraint_updateVarIDsWithMapping(self, idMap, forward)
+
+
 FixedRelativeConstraint_swigregister = _adaptagrams.FixedRelativeConstraint_swigregister
 FixedRelativeConstraint_swigregister(FixedRelativeConstraint)
+
 
 class PageBoundaryConstraints(CompoundConstraint):
     __swig_setmethods__ = {}
     for _s in [CompoundConstraint]:
-        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+        __swig_setmethods__.update(getattr(_s, "__swig_setmethods__", {}))
     __setattr__ = lambda self, name, value: _swig_setattr(self, PageBoundaryConstraints, name, value)
     __swig_getmethods__ = {}
     for _s in [CompoundConstraint]:
-        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+        __swig_getmethods__.update(getattr(_s, "__swig_getmethods__", {}))
     __getattr__ = lambda self, name: _swig_getattr(self, PageBoundaryConstraints, name)
     __repr__ = _swig_repr
 
@@ -3587,8 +3873,11 @@ class PageBoundaryConstraints(CompoundConstraint):
 
     def printCreationCode(self, fp):
         return _adaptagrams.PageBoundaryConstraints_printCreationCode(self, fp)
+
+
 PageBoundaryConstraints_swigregister = _adaptagrams.PageBoundaryConstraints_swigregister
 PageBoundaryConstraints_swigregister(PageBoundaryConstraints)
+
 
 class UnsatisfiableConstraintInfo(_object):
     __swig_setmethods__ = {}
@@ -3603,33 +3892,51 @@ class UnsatisfiableConstraintInfo(_object):
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+
     __swig_setmethods__["leftVarIndex"] = _adaptagrams.UnsatisfiableConstraintInfo_leftVarIndex_set
     __swig_getmethods__["leftVarIndex"] = _adaptagrams.UnsatisfiableConstraintInfo_leftVarIndex_get
     if _newclass:
-        leftVarIndex = _swig_property(_adaptagrams.UnsatisfiableConstraintInfo_leftVarIndex_get, _adaptagrams.UnsatisfiableConstraintInfo_leftVarIndex_set)
+        leftVarIndex = _swig_property(
+            _adaptagrams.UnsatisfiableConstraintInfo_leftVarIndex_get,
+            _adaptagrams.UnsatisfiableConstraintInfo_leftVarIndex_set,
+        )
     __swig_setmethods__["rightVarIndex"] = _adaptagrams.UnsatisfiableConstraintInfo_rightVarIndex_set
     __swig_getmethods__["rightVarIndex"] = _adaptagrams.UnsatisfiableConstraintInfo_rightVarIndex_get
     if _newclass:
-        rightVarIndex = _swig_property(_adaptagrams.UnsatisfiableConstraintInfo_rightVarIndex_get, _adaptagrams.UnsatisfiableConstraintInfo_rightVarIndex_set)
+        rightVarIndex = _swig_property(
+            _adaptagrams.UnsatisfiableConstraintInfo_rightVarIndex_get,
+            _adaptagrams.UnsatisfiableConstraintInfo_rightVarIndex_set,
+        )
     __swig_setmethods__["separation"] = _adaptagrams.UnsatisfiableConstraintInfo_separation_set
     __swig_getmethods__["separation"] = _adaptagrams.UnsatisfiableConstraintInfo_separation_get
     if _newclass:
-        separation = _swig_property(_adaptagrams.UnsatisfiableConstraintInfo_separation_get, _adaptagrams.UnsatisfiableConstraintInfo_separation_set)
+        separation = _swig_property(
+            _adaptagrams.UnsatisfiableConstraintInfo_separation_get,
+            _adaptagrams.UnsatisfiableConstraintInfo_separation_set,
+        )
     __swig_setmethods__["equality"] = _adaptagrams.UnsatisfiableConstraintInfo_equality_set
     __swig_getmethods__["equality"] = _adaptagrams.UnsatisfiableConstraintInfo_equality_get
     if _newclass:
-        equality = _swig_property(_adaptagrams.UnsatisfiableConstraintInfo_equality_get, _adaptagrams.UnsatisfiableConstraintInfo_equality_set)
+        equality = _swig_property(
+            _adaptagrams.UnsatisfiableConstraintInfo_equality_get, _adaptagrams.UnsatisfiableConstraintInfo_equality_set
+        )
     __swig_setmethods__["cc"] = _adaptagrams.UnsatisfiableConstraintInfo_cc_set
     __swig_getmethods__["cc"] = _adaptagrams.UnsatisfiableConstraintInfo_cc_get
     if _newclass:
-        cc = _swig_property(_adaptagrams.UnsatisfiableConstraintInfo_cc_get, _adaptagrams.UnsatisfiableConstraintInfo_cc_set)
+        cc = _swig_property(
+            _adaptagrams.UnsatisfiableConstraintInfo_cc_get, _adaptagrams.UnsatisfiableConstraintInfo_cc_set
+        )
 
     def toString(self):
         return _adaptagrams.UnsatisfiableConstraintInfo_toString(self)
+
     __swig_destroy__ = _adaptagrams.delete_UnsatisfiableConstraintInfo
     __del__ = lambda self: None
+
+
 UnsatisfiableConstraintInfo_swigregister = _adaptagrams.UnsatisfiableConstraintInfo_swigregister
 UnsatisfiableConstraintInfo_swigregister(UnsatisfiableConstraintInfo)
+
 
 class Lock(_object):
     __swig_setmethods__ = {}
@@ -3650,8 +3957,11 @@ class Lock(_object):
 
     def pos(self, dim):
         return _adaptagrams.Lock_pos(self, dim)
+
+
 Lock_swigregister = _adaptagrams.Lock_swigregister
 Lock_swigregister(Lock)
+
 
 class Resize(_object):
     __swig_setmethods__ = {}
@@ -3672,8 +3982,11 @@ class Resize(_object):
 
     def getTarget(self):
         return _adaptagrams.Resize_getTarget(self)
+
+
 Resize_swigregister = _adaptagrams.Resize_swigregister
 Resize_swigregister(Resize)
+
 
 class DesiredPosition(_object):
     __swig_setmethods__ = {}
@@ -3704,10 +4017,14 @@ class DesiredPosition(_object):
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+
     __swig_destroy__ = _adaptagrams.delete_DesiredPosition
     __del__ = lambda self: None
+
+
 DesiredPosition_swigregister = _adaptagrams.DesiredPosition_swigregister
 DesiredPosition_swigregister(DesiredPosition)
+
 
 class PreIteration(_object):
     __swig_setmethods__ = {}
@@ -3722,6 +4039,7 @@ class PreIteration(_object):
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+
     __swig_setmethods__["locks"] = _adaptagrams.PreIteration_locks_set
     __swig_getmethods__["locks"] = _adaptagrams.PreIteration_locks_get
     if _newclass:
@@ -3734,8 +4052,11 @@ class PreIteration(_object):
     __swig_getmethods__["changed"] = _adaptagrams.PreIteration_changed_get
     if _newclass:
         changed = _swig_property(_adaptagrams.PreIteration_changed_get, _adaptagrams.PreIteration_changed_set)
+
+
 PreIteration_swigregister = _adaptagrams.PreIteration_swigregister
 PreIteration_swigregister(PreIteration)
+
 
 class TestConvergence(_object):
     __swig_setmethods__ = {}
@@ -3746,7 +4067,9 @@ class TestConvergence(_object):
     __swig_setmethods__["old_stress"] = _adaptagrams.TestConvergence_old_stress_set
     __swig_getmethods__["old_stress"] = _adaptagrams.TestConvergence_old_stress_get
     if _newclass:
-        old_stress = _swig_property(_adaptagrams.TestConvergence_old_stress_get, _adaptagrams.TestConvergence_old_stress_set)
+        old_stress = _swig_property(
+            _adaptagrams.TestConvergence_old_stress_get, _adaptagrams.TestConvergence_old_stress_set
+        )
 
     def __init__(self, tol=1e-4, maxiterations=100):
         if self.__class__ == TestConvergence:
@@ -3758,6 +4081,7 @@ class TestConvergence(_object):
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+
     __swig_destroy__ = _adaptagrams.delete_TestConvergence
     __del__ = lambda self: None
 
@@ -3766,6 +4090,7 @@ class TestConvergence(_object):
 
     def reset(self):
         return _adaptagrams.TestConvergence_reset(self)
+
     __swig_getmethods__["tolerance"] = _adaptagrams.TestConvergence_tolerance_get
     if _newclass:
         tolerance = _swig_property(_adaptagrams.TestConvergence_tolerance_get)
@@ -3775,13 +4100,19 @@ class TestConvergence(_object):
     __swig_setmethods__["iterations"] = _adaptagrams.TestConvergence_iterations_set
     __swig_getmethods__["iterations"] = _adaptagrams.TestConvergence_iterations_get
     if _newclass:
-        iterations = _swig_property(_adaptagrams.TestConvergence_iterations_get, _adaptagrams.TestConvergence_iterations_set)
+        iterations = _swig_property(
+            _adaptagrams.TestConvergence_iterations_get, _adaptagrams.TestConvergence_iterations_set
+        )
+
     def __disown__(self):
         self.this.disown()
         _adaptagrams.disown_TestConvergence(self)
         return weakref_proxy(self)
+
+
 TestConvergence_swigregister = _adaptagrams.TestConvergence_swigregister
 TestConvergence_swigregister(TestConvergence)
+
 
 class ConstrainedMajorizationLayout(_object):
     __swig_setmethods__ = {}
@@ -3804,7 +4135,9 @@ class ConstrainedMajorizationLayout(_object):
         return _adaptagrams.ConstrainedMajorizationLayout_setConstraintsVector(self, ccs)
 
     def setUnsatisfiableConstraintInfo(self, unsatisfiableX, unsatisfiableY):
-        return _adaptagrams.ConstrainedMajorizationLayout_setUnsatisfiableConstraintInfo(self, unsatisfiableX, unsatisfiableY)
+        return _adaptagrams.ConstrainedMajorizationLayout_setUnsatisfiableConstraintInfo(
+            self, unsatisfiableX, unsatisfiableY
+        )
 
     def setStickyNodes(self, stickyWeight, startX, startY):
         return _adaptagrams.ConstrainedMajorizationLayout_setStickyNodes(self, stickyWeight, startX, startY)
@@ -3822,10 +4155,13 @@ class ConstrainedMajorizationLayout(_object):
         return _adaptagrams.ConstrainedMajorizationLayout_setNonOverlappingClusters(self)
 
     def setStraightenEdges(self, straightenEdges, bendWeight=0.01, potBendWeight=0.1, xSkipping=True):
-        return _adaptagrams.ConstrainedMajorizationLayout_setStraightenEdges(self, straightenEdges, bendWeight, potBendWeight, xSkipping)
+        return _adaptagrams.ConstrainedMajorizationLayout_setStraightenEdges(
+            self, straightenEdges, bendWeight, potBendWeight, xSkipping
+        )
 
     def moveBoundingBoxes(self):
         return _adaptagrams.ConstrainedMajorizationLayout_moveBoundingBoxes(self)
+
     __swig_destroy__ = _adaptagrams.delete_ConstrainedMajorizationLayout
     __del__ = lambda self: None
 
@@ -3843,13 +4179,19 @@ class ConstrainedMajorizationLayout(_object):
 
     def computeStress(self):
         return _adaptagrams.ConstrainedMajorizationLayout_computeStress(self)
+
+
 ConstrainedMajorizationLayout_swigregister = _adaptagrams.ConstrainedMajorizationLayout_swigregister
 ConstrainedMajorizationLayout_swigregister(ConstrainedMajorizationLayout)
 
 
 def bounds(rs):
     return _adaptagrams.bounds(rs)
+
+
 bounds = _adaptagrams.bounds
+
+
 class TopologyAddonInterface(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, TopologyAddonInterface, name, value)
@@ -3863,6 +4205,7 @@ class TopologyAddonInterface(_object):
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+
     __swig_destroy__ = _adaptagrams.delete_TopologyAddonInterface
     __del__ = lambda self: None
 
@@ -3873,7 +4216,9 @@ class TopologyAddonInterface(_object):
         return _adaptagrams.TopologyAddonInterface_freeAssociatedObjects(self)
 
     def handleResizes(self, resizeList, n, X, Y, ccs, boundingBoxes, clusterHierarchy):
-        return _adaptagrams.TopologyAddonInterface_handleResizes(self, resizeList, n, X, Y, ccs, boundingBoxes, clusterHierarchy)
+        return _adaptagrams.TopologyAddonInterface_handleResizes(
+            self, resizeList, n, X, Y, ccs, boundingBoxes, clusterHierarchy
+        )
 
     def computePathLengths(self, G):
         return _adaptagrams.TopologyAddonInterface_computePathLengths(self, G)
@@ -3885,15 +4230,22 @@ class TopologyAddonInterface(_object):
         return _adaptagrams.TopologyAddonInterface_useTopologySolver(self)
 
     def makeFeasible(self, generateNonOverlapConstraints, boundingBoxes, clusterHierarchy):
-        return _adaptagrams.TopologyAddonInterface_makeFeasible(self, generateNonOverlapConstraints, boundingBoxes, clusterHierarchy)
+        return _adaptagrams.TopologyAddonInterface_makeFeasible(
+            self, generateNonOverlapConstraints, boundingBoxes, clusterHierarchy
+        )
 
     def moveTo(self, dim, vs, cs, coords, clusterHierarchy):
         return _adaptagrams.TopologyAddonInterface_moveTo(self, dim, vs, cs, coords, clusterHierarchy)
 
     def applyForcesAndConstraints(self, layout, dim, g, vs, cs, coords, des, oldStress):
-        return _adaptagrams.TopologyAddonInterface_applyForcesAndConstraints(self, layout, dim, g, vs, cs, coords, des, oldStress)
+        return _adaptagrams.TopologyAddonInterface_applyForcesAndConstraints(
+            self, layout, dim, g, vs, cs, coords, des, oldStress
+        )
+
+
 TopologyAddonInterface_swigregister = _adaptagrams.TopologyAddonInterface_swigregister
 TopologyAddonInterface_swigregister(TopologyAddonInterface)
+
 
 class ConstrainedFDLayout(_object):
     __swig_setmethods__ = {}
@@ -3908,6 +4260,7 @@ class ConstrainedFDLayout(_object):
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+
     __swig_destroy__ = _adaptagrams.delete_ConstrainedFDLayout
     __del__ = lambda self: None
 
@@ -3958,8 +4311,11 @@ class ConstrainedFDLayout(_object):
 
     def computeStress(self):
         return _adaptagrams.ConstrainedFDLayout_computeStress(self)
+
+
 ConstrainedFDLayout_swigregister = _adaptagrams.ConstrainedFDLayout_swigregister
 ConstrainedFDLayout_swigregister(ConstrainedFDLayout)
+
 
 class ProjectionResult(_object):
     __swig_setmethods__ = {}
@@ -3970,11 +4326,15 @@ class ProjectionResult(_object):
     __swig_setmethods__["errorLevel"] = _adaptagrams.ProjectionResult_errorLevel_set
     __swig_getmethods__["errorLevel"] = _adaptagrams.ProjectionResult_errorLevel_get
     if _newclass:
-        errorLevel = _swig_property(_adaptagrams.ProjectionResult_errorLevel_get, _adaptagrams.ProjectionResult_errorLevel_set)
+        errorLevel = _swig_property(
+            _adaptagrams.ProjectionResult_errorLevel_get, _adaptagrams.ProjectionResult_errorLevel_set
+        )
     __swig_setmethods__["unsatinfo"] = _adaptagrams.ProjectionResult_unsatinfo_set
     __swig_getmethods__["unsatinfo"] = _adaptagrams.ProjectionResult_unsatinfo_get
     if _newclass:
-        unsatinfo = _swig_property(_adaptagrams.ProjectionResult_unsatinfo_get, _adaptagrams.ProjectionResult_unsatinfo_set)
+        unsatinfo = _swig_property(
+            _adaptagrams.ProjectionResult_unsatinfo_get, _adaptagrams.ProjectionResult_unsatinfo_set
+        )
 
     def __init__(self):
         this = _adaptagrams.new_ProjectionResult()
@@ -3982,35 +4342,57 @@ class ProjectionResult(_object):
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+
     __swig_destroy__ = _adaptagrams.delete_ProjectionResult
     __del__ = lambda self: None
+
+
 ProjectionResult_swigregister = _adaptagrams.ProjectionResult_swigregister
 ProjectionResult_swigregister(ProjectionResult)
 
 
 def projectOntoCCs(dim, rs, ccs, preventOverlaps, accept=0, debugLevel=0):
     return _adaptagrams.projectOntoCCs(dim, rs, ccs, preventOverlaps, accept, debugLevel)
+
+
 projectOntoCCs = _adaptagrams.projectOntoCCs
+
 
 def solve(vs, cs, rs, debugLevel=0):
     return _adaptagrams.solve(vs, cs, rs, debugLevel)
+
+
 solve = _adaptagrams.solve
+
 
 def simpleCMLFactory(rs, es, clusterHierarchy, idealLength, useNeighbourStress=False):
     return _adaptagrams.simpleCMLFactory(rs, es, clusterHierarchy, idealLength, useNeighbourStress)
+
+
 simpleCMLFactory = _adaptagrams.simpleCMLFactory
+
 
 def dijkstra(s, n, d, es, eLengths):
     return _adaptagrams.dijkstra(s, n, d, es, eLengths)
+
+
 dijkstra = _adaptagrams.dijkstra
+
 
 def setupVarsAndConstraints(n, ccs, dim, boundingBoxes, clusterHierarchy, vs, cs, coords):
     return _adaptagrams.setupVarsAndConstraints(n, ccs, dim, boundingBoxes, clusterHierarchy, vs, cs, coords)
+
+
 setupVarsAndConstraints = _adaptagrams.setupVarsAndConstraints
+
 
 def setVariableDesiredPositions(vs, cs, des, coords):
     return _adaptagrams.setVariableDesiredPositions(vs, cs, des, coords)
+
+
 setVariableDesiredPositions = _adaptagrams.setVariableDesiredPositions
+
+
 class Cluster(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, Cluster, name, value)
@@ -4019,6 +4401,7 @@ class Cluster(_object):
 
     def __init__(self, *args, **kwargs):
         raise AttributeError("No constructor defined - class is abstract")
+
     __repr__ = _swig_repr
 
     def computeBoundary(self, rs):
@@ -4068,6 +4451,7 @@ class Cluster(_object):
 
     def computeVarRect(self, vs, dim):
         return _adaptagrams.Cluster_computeVarRect(self, vs, dim)
+
     __swig_setmethods__["bounds"] = _adaptagrams.Cluster_bounds_set
     __swig_getmethods__["bounds"] = _adaptagrams.Cluster_bounds_get
     if _newclass:
@@ -4103,7 +4487,9 @@ class Cluster(_object):
     __swig_setmethods__["internalEdgeWeightFactor"] = _adaptagrams.Cluster_internalEdgeWeightFactor_set
     __swig_getmethods__["internalEdgeWeightFactor"] = _adaptagrams.Cluster_internalEdgeWeightFactor_get
     if _newclass:
-        internalEdgeWeightFactor = _swig_property(_adaptagrams.Cluster_internalEdgeWeightFactor_get, _adaptagrams.Cluster_internalEdgeWeightFactor_set)
+        internalEdgeWeightFactor = _swig_property(
+            _adaptagrams.Cluster_internalEdgeWeightFactor_get, _adaptagrams.Cluster_internalEdgeWeightFactor_set
+        )
     __swig_setmethods__["nodes"] = _adaptagrams.Cluster_nodes_set
     __swig_getmethods__["nodes"] = _adaptagrams.Cluster_nodes_get
     if _newclass:
@@ -4120,17 +4506,20 @@ class Cluster(_object):
     __swig_getmethods__["hullY"] = _adaptagrams.Cluster_hullY_get
     if _newclass:
         hullY = _swig_property(_adaptagrams.Cluster_hullY_get, _adaptagrams.Cluster_hullY_set)
+
+
 Cluster_swigregister = _adaptagrams.Cluster_swigregister
 Cluster_swigregister(Cluster)
+
 
 class RootCluster(Cluster):
     __swig_setmethods__ = {}
     for _s in [Cluster]:
-        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+        __swig_setmethods__.update(getattr(_s, "__swig_setmethods__", {}))
     __setattr__ = lambda self, name, value: _swig_setattr(self, RootCluster, name, value)
     __swig_getmethods__ = {}
     for _s in [Cluster]:
-        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+        __swig_getmethods__.update(getattr(_s, "__swig_getmethods__", {}))
     __getattr__ = lambda self, name: _swig_getattr(self, RootCluster, name)
     __repr__ = _swig_repr
 
@@ -4158,17 +4547,20 @@ class RootCluster(Cluster):
 
     def setAllowsMultipleParents(self, value):
         return _adaptagrams.RootCluster_setAllowsMultipleParents(self, value)
+
+
 RootCluster_swigregister = _adaptagrams.RootCluster_swigregister
 RootCluster_swigregister(RootCluster)
+
 
 class RectangularCluster(Cluster):
     __swig_setmethods__ = {}
     for _s in [Cluster]:
-        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+        __swig_setmethods__.update(getattr(_s, "__swig_setmethods__", {}))
     __setattr__ = lambda self, name, value: _swig_setattr(self, RectangularCluster, name, value)
     __swig_getmethods__ = {}
     for _s in [Cluster]:
-        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+        __swig_getmethods__.update(getattr(_s, "__swig_getmethods__", {}))
     __getattr__ = lambda self, name: _swig_getattr(self, RectangularCluster, name)
     __repr__ = _swig_repr
 
@@ -4223,17 +4615,20 @@ class RectangularCluster(Cluster):
 
     def generateFixedRectangleConstraints(self, idleConstraints, rc, vars):
         return _adaptagrams.RectangularCluster_generateFixedRectangleConstraints(self, idleConstraints, rc, vars)
+
+
 RectangularCluster_swigregister = _adaptagrams.RectangularCluster_swigregister
 RectangularCluster_swigregister(RectangularCluster)
+
 
 class ConvexCluster(Cluster):
     __swig_setmethods__ = {}
     for _s in [Cluster]:
-        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+        __swig_setmethods__.update(getattr(_s, "__swig_setmethods__", {}))
     __setattr__ = lambda self, name, value: _swig_setattr(self, ConvexCluster, name, value)
     __swig_getmethods__ = {}
     for _s in [Cluster]:
-        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+        __swig_getmethods__.update(getattr(_s, "__swig_getmethods__", {}))
     __getattr__ = lambda self, name: _swig_getattr(self, ConvexCluster, name)
     __repr__ = _swig_repr
 
@@ -4245,6 +4640,7 @@ class ConvexCluster(Cluster):
 
     def outputToSVG(self, fp):
         return _adaptagrams.ConvexCluster_outputToSVG(self, fp)
+
     __swig_setmethods__["hullRIDs"] = _adaptagrams.ConvexCluster_hullRIDs_set
     __swig_getmethods__["hullRIDs"] = _adaptagrams.ConvexCluster_hullRIDs_get
     if _newclass:
@@ -4252,7 +4648,9 @@ class ConvexCluster(Cluster):
     __swig_setmethods__["hullCorners"] = _adaptagrams.ConvexCluster_hullCorners_set
     __swig_getmethods__["hullCorners"] = _adaptagrams.ConvexCluster_hullCorners_get
     if _newclass:
-        hullCorners = _swig_property(_adaptagrams.ConvexCluster_hullCorners_get, _adaptagrams.ConvexCluster_hullCorners_set)
+        hullCorners = _swig_property(
+            _adaptagrams.ConvexCluster_hullCorners_get, _adaptagrams.ConvexCluster_hullCorners_set
+        )
 
     def __init__(self):
         this = _adaptagrams.new_ConvexCluster()
@@ -4260,13 +4658,19 @@ class ConvexCluster(Cluster):
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+
+
 ConvexCluster_swigregister = _adaptagrams.ConvexCluster_swigregister
 ConvexCluster_swigregister(ConvexCluster)
 
 
 def convex(*args):
     return _adaptagrams.convex(*args)
+
+
 convex = _adaptagrams.convex
+
+
 class InvalidConstraint(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, InvalidConstraint, name, value)
@@ -4280,14 +4684,20 @@ class InvalidConstraint(_object):
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+
     __swig_setmethods__["constraint"] = _adaptagrams.InvalidConstraint_constraint_set
     __swig_getmethods__["constraint"] = _adaptagrams.InvalidConstraint_constraint_get
     if _newclass:
-        constraint = _swig_property(_adaptagrams.InvalidConstraint_constraint_get, _adaptagrams.InvalidConstraint_constraint_set)
+        constraint = _swig_property(
+            _adaptagrams.InvalidConstraint_constraint_get, _adaptagrams.InvalidConstraint_constraint_set
+        )
     __swig_destroy__ = _adaptagrams.delete_InvalidConstraint
     __del__ = lambda self: None
+
+
 InvalidConstraint_swigregister = _adaptagrams.InvalidConstraint_swigregister
 InvalidConstraint_swigregister(InvalidConstraint)
+
 
 class InvalidVariableIndexException(_object):
     __swig_setmethods__ = {}
@@ -4305,91 +4715,154 @@ class InvalidVariableIndexException(_object):
 
     def what(self):
         return _adaptagrams.InvalidVariableIndexException_what(self)
+
     __swig_setmethods__["constraint"] = _adaptagrams.InvalidVariableIndexException_constraint_set
     __swig_getmethods__["constraint"] = _adaptagrams.InvalidVariableIndexException_constraint_get
     if _newclass:
-        constraint = _swig_property(_adaptagrams.InvalidVariableIndexException_constraint_get, _adaptagrams.InvalidVariableIndexException_constraint_set)
+        constraint = _swig_property(
+            _adaptagrams.InvalidVariableIndexException_constraint_get,
+            _adaptagrams.InvalidVariableIndexException_constraint_set,
+        )
     __swig_setmethods__["index"] = _adaptagrams.InvalidVariableIndexException_index_set
     __swig_getmethods__["index"] = _adaptagrams.InvalidVariableIndexException_index_get
     if _newclass:
-        index = _swig_property(_adaptagrams.InvalidVariableIndexException_index_get, _adaptagrams.InvalidVariableIndexException_index_set)
+        index = _swig_property(
+            _adaptagrams.InvalidVariableIndexException_index_get, _adaptagrams.InvalidVariableIndexException_index_set
+        )
     __swig_destroy__ = _adaptagrams.delete_InvalidVariableIndexException
     __del__ = lambda self: None
+
+
 InvalidVariableIndexException_swigregister = _adaptagrams.InvalidVariableIndexException_swigregister
 InvalidVariableIndexException_swigregister(InvalidVariableIndexException)
 
 
 def euclideanDist(a, b):
     return _adaptagrams.euclideanDist(a, b)
+
+
 euclideanDist = _adaptagrams.euclideanDist
+
 
 def manhattanDist(a, b):
     return _adaptagrams.manhattanDist(a, b)
+
+
 manhattanDist = _adaptagrams.manhattanDist
+
 
 def totalLength(poly):
     return _adaptagrams.totalLength(poly)
+
+
 totalLength = _adaptagrams.totalLength
+
 
 def angle(a, b, c):
     return _adaptagrams.angle(a, b, c)
+
+
 angle = _adaptagrams.angle
+
 
 def segmentIntersect(a, b, c, d):
     return _adaptagrams.segmentIntersect(a, b, c, d)
+
+
 segmentIntersect = _adaptagrams.segmentIntersect
+
 
 def segmentShapeIntersect(e1, e2, s1, s2, seenIntersectionAtEndpoint):
     return _adaptagrams.segmentShapeIntersect(e1, e2, s1, s2, seenIntersectionAtEndpoint)
+
+
 segmentShapeIntersect = _adaptagrams.segmentShapeIntersect
+
 
 def inPoly(poly, q, countBorder=True):
     return _adaptagrams.inPoly(poly, q, countBorder)
+
+
 inPoly = _adaptagrams.inPoly
+
 
 def inPolyGen(poly, q):
     return _adaptagrams.inPolyGen(poly, q)
+
+
 inPolyGen = _adaptagrams.inPolyGen
+
 
 def inValidRegion(IgnoreRegions, a0, a1, a2, b):
     return _adaptagrams.inValidRegion(IgnoreRegions, a0, a1, a2, b)
+
+
 inValidRegion = _adaptagrams.inValidRegion
+
 
 def cornerSide(c1, c2, c3, p):
     return _adaptagrams.cornerSide(c1, c2, c3, p)
+
+
 cornerSide = _adaptagrams.cornerSide
+
 
 def pointOnLine(a, b, c, tolerance=0.0):
     return _adaptagrams.pointOnLine(a, b, c, tolerance)
+
+
 pointOnLine = _adaptagrams.pointOnLine
+
 
 def colinear(a, b, c, tolerance=0.0):
     return _adaptagrams.colinear(a, b, c, tolerance)
+
+
 colinear = _adaptagrams.colinear
+
 
 def inBetween(a, b, c):
     return _adaptagrams.inBetween(a, b, c)
+
+
 inBetween = _adaptagrams.inBetween
+
 
 def vecDir(a, b, c, maybeZero=0.0):
     return _adaptagrams.vecDir(a, b, c, maybeZero)
+
+
 vecDir = _adaptagrams.vecDir
+
 
 def projection(a, b, c):
     return _adaptagrams.projection(a, b, c)
+
+
 projection = _adaptagrams.projection
+
 
 def segmentIntersectPoint(a1, a2, b1, b2, x, y):
     return _adaptagrams.segmentIntersectPoint(a1, a2, b1, b2, x, y)
+
+
 segmentIntersectPoint = _adaptagrams.segmentIntersectPoint
+
 
 def rayIntersectPoint(a1, a2, b1, b2, x, y):
     return _adaptagrams.rayIntersectPoint(a1, a2, b1, b2, x, y)
+
+
 rayIntersectPoint = _adaptagrams.rayIntersectPoint
+
 
 def rotationalAngle(p):
     return _adaptagrams.rotationalAngle(p)
+
+
 rotationalAngle = _adaptagrams.rotationalAngle
+
+
 class Point(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, Point, name, value)
@@ -4406,6 +4879,7 @@ class Point(_object):
 
     def equals(self, rhs, epsilon=0.0001):
         return _adaptagrams.Point_equals(self, rhs, epsilon)
+
     __swig_setmethods__["x"] = _adaptagrams.Point_x_set
     __swig_getmethods__["x"] = _adaptagrams.Point_x_get
     if _newclass:
@@ -4424,11 +4898,14 @@ class Point(_object):
         vn = _swig_property(_adaptagrams.Point_vn_get, _adaptagrams.Point_vn_set)
     __swig_destroy__ = _adaptagrams.delete_Point
     __del__ = lambda self: None
+
+
 Point_swigregister = _adaptagrams.Point_swigregister
 Point_swigregister(Point)
 DONT_INTERSECT = cvar.DONT_INTERSECT
 DO_INTERSECT = cvar.DO_INTERSECT
 PARALLEL = cvar.PARALLEL
+
 
 class AvoidBox(_object):
     __swig_setmethods__ = {}
@@ -4460,12 +4937,16 @@ class AvoidBox(_object):
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+
     __swig_destroy__ = _adaptagrams.delete_AvoidBox
     __del__ = lambda self: None
+
+
 AvoidBox_swigregister = _adaptagrams.AvoidBox_swigregister
 AvoidBox_swigregister(AvoidBox)
 kUnassignedVertexNumber = cvar.kUnassignedVertexNumber
 kShapeConnectionPin = cvar.kShapeConnectionPin
+
 
 class PolygonInterface(_object):
     __swig_setmethods__ = {}
@@ -4475,6 +4956,7 @@ class PolygonInterface(_object):
 
     def __init__(self, *args, **kwargs):
         raise AttributeError("No constructor defined - class is abstract")
+
     __repr__ = _swig_repr
     __swig_destroy__ = _adaptagrams.delete_PolygonInterface
     __del__ = lambda self: None
@@ -4502,8 +4984,11 @@ class PolygonInterface(_object):
 
     def offsetPolygon(self, offset):
         return _adaptagrams.PolygonInterface_offsetPolygon(self, offset)
+
+
 PolygonInterface_swigregister = _adaptagrams.PolygonInterface_swigregister
 PolygonInterface_swigregister(PolygonInterface)
+
 
 class AvoidEdge(_object):
     __swig_setmethods__ = {}
@@ -4526,19 +5011,23 @@ class AvoidEdge(_object):
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+
     __swig_destroy__ = _adaptagrams.delete_AvoidEdge
     __del__ = lambda self: None
+
+
 AvoidEdge_swigregister = _adaptagrams.AvoidEdge_swigregister
 AvoidEdge_swigregister(AvoidEdge)
+
 
 class Polygon(PolygonInterface):
     __swig_setmethods__ = {}
     for _s in [PolygonInterface]:
-        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+        __swig_setmethods__.update(getattr(_s, "__swig_setmethods__", {}))
     __setattr__ = lambda self, name, value: _swig_setattr(self, Polygon, name, value)
     __swig_getmethods__ = {}
     for _s in [PolygonInterface]:
-        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+        __swig_getmethods__.update(getattr(_s, "__swig_getmethods__", {}))
     __getattr__ = lambda self, name: _swig_getattr(self, Polygon, name)
     __repr__ = _swig_repr
 
@@ -4575,6 +5064,7 @@ class Polygon(PolygonInterface):
 
     def translate(self, xDist, yDist):
         return _adaptagrams.Polygon_translate(self, xDist, yDist)
+
     __swig_setmethods__["_id"] = _adaptagrams.Polygon__id_set
     __swig_getmethods__["_id"] = _adaptagrams.Polygon__id_get
     if _newclass:
@@ -4590,23 +5080,29 @@ class Polygon(PolygonInterface):
     __swig_setmethods__["checkpointsOnRoute"] = _adaptagrams.Polygon_checkpointsOnRoute_set
     __swig_getmethods__["checkpointsOnRoute"] = _adaptagrams.Polygon_checkpointsOnRoute_get
     if _newclass:
-        checkpointsOnRoute = _swig_property(_adaptagrams.Polygon_checkpointsOnRoute_get, _adaptagrams.Polygon_checkpointsOnRoute_set)
+        checkpointsOnRoute = _swig_property(
+            _adaptagrams.Polygon_checkpointsOnRoute_get, _adaptagrams.Polygon_checkpointsOnRoute_set
+        )
 
     def checkpointsOnSegment(self, segmentLowerIndex, indexModifier=0):
         return _adaptagrams.Polygon_checkpointsOnSegment(self, segmentLowerIndex, indexModifier)
+
     __swig_destroy__ = _adaptagrams.delete_Polygon
     __del__ = lambda self: None
+
+
 Polygon_swigregister = _adaptagrams.Polygon_swigregister
 Polygon_swigregister(Polygon)
+
 
 class ReferencingPolygon(PolygonInterface):
     __swig_setmethods__ = {}
     for _s in [PolygonInterface]:
-        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+        __swig_setmethods__.update(getattr(_s, "__swig_setmethods__", {}))
     __setattr__ = lambda self, name, value: _swig_setattr(self, ReferencingPolygon, name, value)
     __swig_getmethods__ = {}
     for _s in [PolygonInterface]:
-        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+        __swig_getmethods__.update(getattr(_s, "__swig_getmethods__", {}))
     __getattr__ = lambda self, name: _swig_getattr(self, ReferencingPolygon, name)
     __repr__ = _swig_repr
 
@@ -4631,6 +5127,7 @@ class ReferencingPolygon(PolygonInterface):
 
     def at(self, index):
         return _adaptagrams.ReferencingPolygon_at(self, index)
+
     __swig_setmethods__["_id"] = _adaptagrams.ReferencingPolygon__id_set
     __swig_getmethods__["_id"] = _adaptagrams.ReferencingPolygon__id_get
     if _newclass:
@@ -4642,20 +5139,25 @@ class ReferencingPolygon(PolygonInterface):
     __swig_setmethods__["psPoints"] = _adaptagrams.ReferencingPolygon_psPoints_set
     __swig_getmethods__["psPoints"] = _adaptagrams.ReferencingPolygon_psPoints_get
     if _newclass:
-        psPoints = _swig_property(_adaptagrams.ReferencingPolygon_psPoints_get, _adaptagrams.ReferencingPolygon_psPoints_set)
+        psPoints = _swig_property(
+            _adaptagrams.ReferencingPolygon_psPoints_get, _adaptagrams.ReferencingPolygon_psPoints_set
+        )
     __swig_destroy__ = _adaptagrams.delete_ReferencingPolygon
     __del__ = lambda self: None
+
+
 ReferencingPolygon_swigregister = _adaptagrams.ReferencingPolygon_swigregister
 ReferencingPolygon_swigregister(ReferencingPolygon)
+
 
 class AvoidRectangle(Polygon):
     __swig_setmethods__ = {}
     for _s in [Polygon]:
-        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+        __swig_setmethods__.update(getattr(_s, "__swig_setmethods__", {}))
     __setattr__ = lambda self, name, value: _swig_setattr(self, AvoidRectangle, name, value)
     __swig_getmethods__ = {}
     for _s in [Polygon]:
-        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+        __swig_getmethods__.update(getattr(_s, "__swig_getmethods__", {}))
     __getattr__ = lambda self, name: _swig_getattr(self, AvoidRectangle, name)
     __repr__ = _swig_repr
 
@@ -4665,8 +5167,11 @@ class AvoidRectangle(Polygon):
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+
     __swig_destroy__ = _adaptagrams.delete_AvoidRectangle
     __del__ = lambda self: None
+
+
 AvoidRectangle_swigregister = _adaptagrams.AvoidRectangle_swigregister
 AvoidRectangle_swigregister(AvoidRectangle)
 
@@ -4680,6 +5185,8 @@ ConnEndPoint = _adaptagrams.ConnEndPoint
 ConnEndShapePin = _adaptagrams.ConnEndShapePin
 ConnEndJunction = _adaptagrams.ConnEndJunction
 ConnEndEmpty = _adaptagrams.ConnEndEmpty
+
+
 class ConnEnd(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, ConnEnd, name, value)
@@ -4711,10 +5218,14 @@ class ConnEnd(_object):
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+
     __swig_destroy__ = _adaptagrams.delete_ConnEnd
     __del__ = lambda self: None
+
+
 ConnEnd_swigregister = _adaptagrams.ConnEnd_swigregister
 ConnEnd_swigregister(ConnEnd)
+
 
 class LineRep(_object):
     __swig_setmethods__ = {}
@@ -4737,8 +5248,11 @@ class LineRep(_object):
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+
     __swig_destroy__ = _adaptagrams.delete_LineRep
     __del__ = lambda self: None
+
+
 LineRep_swigregister = _adaptagrams.LineRep_swigregister
 LineRep_swigregister(LineRep)
 
@@ -4759,7 +5273,9 @@ improveHyperedgeRoutesMovingJunctions = _adaptagrams.improveHyperedgeRoutesMovin
 penaliseOrthogonalSharedPathsAtConnEnds = _adaptagrams.penaliseOrthogonalSharedPathsAtConnEnds
 nudgeOrthogonalTouchingColinearSegments = _adaptagrams.nudgeOrthogonalTouchingColinearSegments
 performUnifyingNudgingPreprocessingStep = _adaptagrams.performUnifyingNudgingPreprocessingStep
-improveHyperedgeRoutesMovingAddingAndDeletingJunctions = _adaptagrams.improveHyperedgeRoutesMovingAddingAndDeletingJunctions
+improveHyperedgeRoutesMovingAddingAndDeletingJunctions = (
+    _adaptagrams.improveHyperedgeRoutesMovingAddingAndDeletingJunctions
+)
 nudgeSharedPathsWithCommonEndPoint = _adaptagrams.nudgeSharedPathsWithCommonEndPoint
 lastRoutingOptionMarker = _adaptagrams.lastRoutingOptionMarker
 TransactionPhaseOrthogonalVisibilityGraphScanX = _adaptagrams.TransactionPhaseOrthogonalVisibilityGraphScanX
@@ -4770,6 +5286,8 @@ TransactionPhaseRerouteSearch = _adaptagrams.TransactionPhaseRerouteSearch
 TransactionPhaseOrthogonalNudgingX = _adaptagrams.TransactionPhaseOrthogonalNudgingX
 TransactionPhaseOrthogonalNudgingY = _adaptagrams.TransactionPhaseOrthogonalNudgingY
 TransactionPhaseCompleted = _adaptagrams.TransactionPhaseCompleted
+
+
 class ConnRerouteFlagDelegate(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, ConnRerouteFlagDelegate, name, value)
@@ -4783,6 +5301,7 @@ class ConnRerouteFlagDelegate(_object):
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+
     __swig_destroy__ = _adaptagrams.delete_ConnRerouteFlagDelegate
     __del__ = lambda self: None
 
@@ -4794,11 +5313,14 @@ class ConnRerouteFlagDelegate(_object):
 
     def alertConns(self):
         return _adaptagrams.ConnRerouteFlagDelegate_alertConns(self)
+
+
 ConnRerouteFlagDelegate_swigregister = _adaptagrams.ConnRerouteFlagDelegate_swigregister
 ConnRerouteFlagDelegate_swigregister(ConnRerouteFlagDelegate)
 runningTo = cvar.runningTo
 runningFrom = cvar.runningFrom
 runningToAndFrom = cvar.runningToAndFrom
+
 
 class AvoidTopologyAddonInterface(_object):
     __swig_setmethods__ = {}
@@ -4813,6 +5335,7 @@ class AvoidTopologyAddonInterface(_object):
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+
     __swig_destroy__ = _adaptagrams.delete_AvoidTopologyAddonInterface
     __del__ = lambda self: None
 
@@ -4827,10 +5350,13 @@ class AvoidTopologyAddonInterface(_object):
 
     def outputDeletionCode(self, fp):
         return _adaptagrams.AvoidTopologyAddonInterface_outputDeletionCode(self, fp)
+
+
 AvoidTopologyAddonInterface_swigregister = _adaptagrams.AvoidTopologyAddonInterface_swigregister
 AvoidTopologyAddonInterface_swigregister(AvoidTopologyAddonInterface)
 zeroParamValue = cvar.zeroParamValue
 chooseSensibleParamValue = cvar.chooseSensibleParamValue
+
 
 class Router(_object):
     __swig_setmethods__ = {}
@@ -4849,6 +5375,7 @@ class Router(_object):
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+
     __swig_destroy__ = _adaptagrams.delete_Router
     __del__ = lambda self: None
     __swig_setmethods__["m_obstacles"] = _adaptagrams.Router_m_obstacles_set
@@ -4886,7 +5413,9 @@ class Router(_object):
     __swig_setmethods__["enclosingClusters"] = _adaptagrams.Router_enclosingClusters_set
     __swig_getmethods__["enclosingClusters"] = _adaptagrams.Router_enclosingClusters_get
     if _newclass:
-        enclosingClusters = _swig_property(_adaptagrams.Router_enclosingClusters_get, _adaptagrams.Router_enclosingClusters_set)
+        enclosingClusters = _swig_property(
+            _adaptagrams.Router_enclosingClusters_get, _adaptagrams.Router_enclosingClusters_set
+        )
     __swig_setmethods__["PartialTime"] = _adaptagrams.Router_PartialTime_set
     __swig_getmethods__["PartialTime"] = _adaptagrams.Router_PartialTime_get
     if _newclass:
@@ -4898,7 +5427,9 @@ class Router(_object):
     __swig_setmethods__["ClusteredRouting"] = _adaptagrams.Router_ClusteredRouting_set
     __swig_getmethods__["ClusteredRouting"] = _adaptagrams.Router_ClusteredRouting_get
     if _newclass:
-        ClusteredRouting = _swig_property(_adaptagrams.Router_ClusteredRouting_get, _adaptagrams.Router_ClusteredRouting_set)
+        ClusteredRouting = _swig_property(
+            _adaptagrams.Router_ClusteredRouting_get, _adaptagrams.Router_ClusteredRouting_set
+        )
     __swig_setmethods__["IgnoreRegions"] = _adaptagrams.Router_IgnoreRegions_set
     __swig_getmethods__["IgnoreRegions"] = _adaptagrams.Router_IgnoreRegions_get
     if _newclass:
@@ -4906,27 +5437,39 @@ class Router(_object):
     __swig_setmethods__["UseLeesAlgorithm"] = _adaptagrams.Router_UseLeesAlgorithm_set
     __swig_getmethods__["UseLeesAlgorithm"] = _adaptagrams.Router_UseLeesAlgorithm_get
     if _newclass:
-        UseLeesAlgorithm = _swig_property(_adaptagrams.Router_UseLeesAlgorithm_get, _adaptagrams.Router_UseLeesAlgorithm_set)
+        UseLeesAlgorithm = _swig_property(
+            _adaptagrams.Router_UseLeesAlgorithm_get, _adaptagrams.Router_UseLeesAlgorithm_set
+        )
     __swig_setmethods__["InvisibilityGrph"] = _adaptagrams.Router_InvisibilityGrph_set
     __swig_getmethods__["InvisibilityGrph"] = _adaptagrams.Router_InvisibilityGrph_get
     if _newclass:
-        InvisibilityGrph = _swig_property(_adaptagrams.Router_InvisibilityGrph_get, _adaptagrams.Router_InvisibilityGrph_set)
+        InvisibilityGrph = _swig_property(
+            _adaptagrams.Router_InvisibilityGrph_get, _adaptagrams.Router_InvisibilityGrph_set
+        )
     __swig_setmethods__["SelectiveReroute"] = _adaptagrams.Router_SelectiveReroute_set
     __swig_getmethods__["SelectiveReroute"] = _adaptagrams.Router_SelectiveReroute_get
     if _newclass:
-        SelectiveReroute = _swig_property(_adaptagrams.Router_SelectiveReroute_get, _adaptagrams.Router_SelectiveReroute_set)
+        SelectiveReroute = _swig_property(
+            _adaptagrams.Router_SelectiveReroute_get, _adaptagrams.Router_SelectiveReroute_set
+        )
     __swig_setmethods__["PartialFeedback"] = _adaptagrams.Router_PartialFeedback_set
     __swig_getmethods__["PartialFeedback"] = _adaptagrams.Router_PartialFeedback_get
     if _newclass:
-        PartialFeedback = _swig_property(_adaptagrams.Router_PartialFeedback_get, _adaptagrams.Router_PartialFeedback_set)
+        PartialFeedback = _swig_property(
+            _adaptagrams.Router_PartialFeedback_get, _adaptagrams.Router_PartialFeedback_set
+        )
     __swig_setmethods__["RubberBandRouting"] = _adaptagrams.Router_RubberBandRouting_set
     __swig_getmethods__["RubberBandRouting"] = _adaptagrams.Router_RubberBandRouting_get
     if _newclass:
-        RubberBandRouting = _swig_property(_adaptagrams.Router_RubberBandRouting_get, _adaptagrams.Router_RubberBandRouting_set)
+        RubberBandRouting = _swig_property(
+            _adaptagrams.Router_RubberBandRouting_get, _adaptagrams.Router_RubberBandRouting_set
+        )
     __swig_setmethods__["st_checked_edges"] = _adaptagrams.Router_st_checked_edges_set
     __swig_getmethods__["st_checked_edges"] = _adaptagrams.Router_st_checked_edges_get
     if _newclass:
-        st_checked_edges = _swig_property(_adaptagrams.Router_st_checked_edges_get, _adaptagrams.Router_st_checked_edges_set)
+        st_checked_edges = _swig_property(
+            _adaptagrams.Router_st_checked_edges_get, _adaptagrams.Router_st_checked_edges_set
+        )
 
     def setTransactionUse(self, transactions):
         return _adaptagrams.Router_setTransactionUse(self, transactions)
@@ -4980,7 +5523,9 @@ class Router(_object):
         return _adaptagrams.Router_objectIdIsUnused(self, id)
 
     def shouldContinueTransactionWithProgress(self, elapsedTime, phaseNumber, totalPhases, proportion):
-        return _adaptagrams.Router_shouldContinueTransactionWithProgress(self, elapsedTime, phaseNumber, totalPhases, proportion)
+        return _adaptagrams.Router_shouldContinueTransactionWithProgress(
+            self, elapsedTime, phaseNumber, totalPhases, proportion
+        )
 
     def newAndDeletedObjectListsFromHyperedgeImprovement(self):
         return _adaptagrams.Router_newAndDeletedObjectListsFromHyperedgeImprovement(self)
@@ -5068,16 +5613,21 @@ class Router(_object):
 
     def outputDiagram(self, *args):
         return _adaptagrams.Router_outputDiagram(self, *args)
+
     def __disown__(self):
         self.this.disown()
         _adaptagrams.disown_Router(self)
         return weakref_proxy(self)
+
+
 Router_swigregister = _adaptagrams.Router_swigregister
 Router_swigregister(Router)
 
 ConnType_None = _adaptagrams.ConnType_None
 ConnType_PolyLine = _adaptagrams.ConnType_PolyLine
 ConnType_Orthogonal = _adaptagrams.ConnType_Orthogonal
+
+
 class Checkpoint(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, Checkpoint, name, value)
@@ -5091,6 +5641,7 @@ class Checkpoint(_object):
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+
     __swig_setmethods__["point"] = _adaptagrams.Checkpoint_point_set
     __swig_getmethods__["point"] = _adaptagrams.Checkpoint_point_get
     if _newclass:
@@ -5098,15 +5649,22 @@ class Checkpoint(_object):
     __swig_setmethods__["arrivalDirections"] = _adaptagrams.Checkpoint_arrivalDirections_set
     __swig_getmethods__["arrivalDirections"] = _adaptagrams.Checkpoint_arrivalDirections_get
     if _newclass:
-        arrivalDirections = _swig_property(_adaptagrams.Checkpoint_arrivalDirections_get, _adaptagrams.Checkpoint_arrivalDirections_set)
+        arrivalDirections = _swig_property(
+            _adaptagrams.Checkpoint_arrivalDirections_get, _adaptagrams.Checkpoint_arrivalDirections_set
+        )
     __swig_setmethods__["departureDirections"] = _adaptagrams.Checkpoint_departureDirections_set
     __swig_getmethods__["departureDirections"] = _adaptagrams.Checkpoint_departureDirections_get
     if _newclass:
-        departureDirections = _swig_property(_adaptagrams.Checkpoint_departureDirections_get, _adaptagrams.Checkpoint_departureDirections_set)
+        departureDirections = _swig_property(
+            _adaptagrams.Checkpoint_departureDirections_get, _adaptagrams.Checkpoint_departureDirections_set
+        )
     __swig_destroy__ = _adaptagrams.delete_Checkpoint
     __del__ = lambda self: None
+
+
 Checkpoint_swigregister = _adaptagrams.Checkpoint_swigregister
 Checkpoint_swigregister(Checkpoint)
+
 
 class ConnRef(_object):
     __swig_setmethods__ = {}
@@ -5220,8 +5778,11 @@ class ConnRef(_object):
 
     def possibleDstPinPoints(self):
         return _adaptagrams.ConnRef_possibleDstPinPoints(self)
+
+
 ConnRef_swigregister = _adaptagrams.ConnRef_swigregister
 ConnRef_swigregister(ConnRef)
+
 
 class PtOrder(_object):
     __swig_setmethods__ = {}
@@ -5236,6 +5797,7 @@ class PtOrder(_object):
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+
     __swig_destroy__ = _adaptagrams.delete_PtOrder
     __del__ = lambda self: None
 
@@ -5250,8 +5812,11 @@ class PtOrder(_object):
 
     def sortedPoints(self, dim):
         return _adaptagrams.PtOrder_sortedPoints(self, dim)
+
+
 PtOrder_swigregister = _adaptagrams.PtOrder_swigregister
 PtOrder_swigregister(PtOrder)
+
 
 class ConnectorCrossings(_object):
     __swig_setmethods__ = {}
@@ -5272,6 +5837,7 @@ class ConnectorCrossings(_object):
 
     def countForSegment(self, cIndex, finalSegment):
         return _adaptagrams.ConnectorCrossings_countForSegment(self, cIndex, finalSegment)
+
     __swig_setmethods__["poly"] = _adaptagrams.ConnectorCrossings_poly_set
     __swig_getmethods__["poly"] = _adaptagrams.ConnectorCrossings_poly_get
     if _newclass:
@@ -5279,7 +5845,9 @@ class ConnectorCrossings(_object):
     __swig_setmethods__["polyIsConn"] = _adaptagrams.ConnectorCrossings_polyIsConn_set
     __swig_getmethods__["polyIsConn"] = _adaptagrams.ConnectorCrossings_polyIsConn_get
     if _newclass:
-        polyIsConn = _swig_property(_adaptagrams.ConnectorCrossings_polyIsConn_get, _adaptagrams.ConnectorCrossings_polyIsConn_set)
+        polyIsConn = _swig_property(
+            _adaptagrams.ConnectorCrossings_polyIsConn_get, _adaptagrams.ConnectorCrossings_polyIsConn_set
+        )
     __swig_setmethods__["conn"] = _adaptagrams.ConnectorCrossings_conn_set
     __swig_getmethods__["conn"] = _adaptagrams.ConnectorCrossings_conn_get
     if _newclass:
@@ -5287,45 +5855,70 @@ class ConnectorCrossings(_object):
     __swig_setmethods__["checkForBranchingSegments"] = _adaptagrams.ConnectorCrossings_checkForBranchingSegments_set
     __swig_getmethods__["checkForBranchingSegments"] = _adaptagrams.ConnectorCrossings_checkForBranchingSegments_get
     if _newclass:
-        checkForBranchingSegments = _swig_property(_adaptagrams.ConnectorCrossings_checkForBranchingSegments_get, _adaptagrams.ConnectorCrossings_checkForBranchingSegments_set)
+        checkForBranchingSegments = _swig_property(
+            _adaptagrams.ConnectorCrossings_checkForBranchingSegments_get,
+            _adaptagrams.ConnectorCrossings_checkForBranchingSegments_set,
+        )
     __swig_setmethods__["polyConnRef"] = _adaptagrams.ConnectorCrossings_polyConnRef_set
     __swig_getmethods__["polyConnRef"] = _adaptagrams.ConnectorCrossings_polyConnRef_get
     if _newclass:
-        polyConnRef = _swig_property(_adaptagrams.ConnectorCrossings_polyConnRef_get, _adaptagrams.ConnectorCrossings_polyConnRef_set)
+        polyConnRef = _swig_property(
+            _adaptagrams.ConnectorCrossings_polyConnRef_get, _adaptagrams.ConnectorCrossings_polyConnRef_set
+        )
     __swig_setmethods__["connConnRef"] = _adaptagrams.ConnectorCrossings_connConnRef_set
     __swig_getmethods__["connConnRef"] = _adaptagrams.ConnectorCrossings_connConnRef_get
     if _newclass:
-        connConnRef = _swig_property(_adaptagrams.ConnectorCrossings_connConnRef_get, _adaptagrams.ConnectorCrossings_connConnRef_set)
+        connConnRef = _swig_property(
+            _adaptagrams.ConnectorCrossings_connConnRef_get, _adaptagrams.ConnectorCrossings_connConnRef_set
+        )
     __swig_setmethods__["crossingCount"] = _adaptagrams.ConnectorCrossings_crossingCount_set
     __swig_getmethods__["crossingCount"] = _adaptagrams.ConnectorCrossings_crossingCount_get
     if _newclass:
-        crossingCount = _swig_property(_adaptagrams.ConnectorCrossings_crossingCount_get, _adaptagrams.ConnectorCrossings_crossingCount_set)
+        crossingCount = _swig_property(
+            _adaptagrams.ConnectorCrossings_crossingCount_get, _adaptagrams.ConnectorCrossings_crossingCount_set
+        )
     __swig_setmethods__["crossingFlags"] = _adaptagrams.ConnectorCrossings_crossingFlags_set
     __swig_getmethods__["crossingFlags"] = _adaptagrams.ConnectorCrossings_crossingFlags_get
     if _newclass:
-        crossingFlags = _swig_property(_adaptagrams.ConnectorCrossings_crossingFlags_get, _adaptagrams.ConnectorCrossings_crossingFlags_set)
+        crossingFlags = _swig_property(
+            _adaptagrams.ConnectorCrossings_crossingFlags_get, _adaptagrams.ConnectorCrossings_crossingFlags_set
+        )
     __swig_setmethods__["crossingPoints"] = _adaptagrams.ConnectorCrossings_crossingPoints_set
     __swig_getmethods__["crossingPoints"] = _adaptagrams.ConnectorCrossings_crossingPoints_get
     if _newclass:
-        crossingPoints = _swig_property(_adaptagrams.ConnectorCrossings_crossingPoints_get, _adaptagrams.ConnectorCrossings_crossingPoints_set)
+        crossingPoints = _swig_property(
+            _adaptagrams.ConnectorCrossings_crossingPoints_get, _adaptagrams.ConnectorCrossings_crossingPoints_set
+        )
     __swig_setmethods__["pointOrders"] = _adaptagrams.ConnectorCrossings_pointOrders_set
     __swig_getmethods__["pointOrders"] = _adaptagrams.ConnectorCrossings_pointOrders_get
     if _newclass:
-        pointOrders = _swig_property(_adaptagrams.ConnectorCrossings_pointOrders_get, _adaptagrams.ConnectorCrossings_pointOrders_set)
+        pointOrders = _swig_property(
+            _adaptagrams.ConnectorCrossings_pointOrders_get, _adaptagrams.ConnectorCrossings_pointOrders_set
+        )
     __swig_setmethods__["sharedPaths"] = _adaptagrams.ConnectorCrossings_sharedPaths_set
     __swig_getmethods__["sharedPaths"] = _adaptagrams.ConnectorCrossings_sharedPaths_get
     if _newclass:
-        sharedPaths = _swig_property(_adaptagrams.ConnectorCrossings_sharedPaths_get, _adaptagrams.ConnectorCrossings_sharedPaths_set)
+        sharedPaths = _swig_property(
+            _adaptagrams.ConnectorCrossings_sharedPaths_get, _adaptagrams.ConnectorCrossings_sharedPaths_set
+        )
     __swig_setmethods__["firstSharedPathAtEndLength"] = _adaptagrams.ConnectorCrossings_firstSharedPathAtEndLength_set
     __swig_getmethods__["firstSharedPathAtEndLength"] = _adaptagrams.ConnectorCrossings_firstSharedPathAtEndLength_get
     if _newclass:
-        firstSharedPathAtEndLength = _swig_property(_adaptagrams.ConnectorCrossings_firstSharedPathAtEndLength_get, _adaptagrams.ConnectorCrossings_firstSharedPathAtEndLength_set)
+        firstSharedPathAtEndLength = _swig_property(
+            _adaptagrams.ConnectorCrossings_firstSharedPathAtEndLength_get,
+            _adaptagrams.ConnectorCrossings_firstSharedPathAtEndLength_set,
+        )
     __swig_setmethods__["secondSharedPathAtEndLength"] = _adaptagrams.ConnectorCrossings_secondSharedPathAtEndLength_set
     __swig_getmethods__["secondSharedPathAtEndLength"] = _adaptagrams.ConnectorCrossings_secondSharedPathAtEndLength_get
     if _newclass:
-        secondSharedPathAtEndLength = _swig_property(_adaptagrams.ConnectorCrossings_secondSharedPathAtEndLength_get, _adaptagrams.ConnectorCrossings_secondSharedPathAtEndLength_set)
+        secondSharedPathAtEndLength = _swig_property(
+            _adaptagrams.ConnectorCrossings_secondSharedPathAtEndLength_get,
+            _adaptagrams.ConnectorCrossings_secondSharedPathAtEndLength_set,
+        )
     __swig_destroy__ = _adaptagrams.delete_ConnectorCrossings
     __del__ = lambda self: None
+
+
 ConnectorCrossings_swigregister = _adaptagrams.ConnectorCrossings_swigregister
 ConnectorCrossings_swigregister(ConnectorCrossings)
 CROSSING_NONE = cvar.CROSSING_NONE
@@ -5337,11 +5930,18 @@ CROSSING_SHARES_FIXED_SEGMENT = cvar.CROSSING_SHARES_FIXED_SEGMENT
 
 def splitBranchingSegments(poly, polyIsConn, conn, tolerance=0):
     return _adaptagrams.splitBranchingSegments(poly, polyIsConn, conn, tolerance)
+
+
 splitBranchingSegments = _adaptagrams.splitBranchingSegments
+
 
 def validateBendPoint(aInf, bInf, cInf):
     return _adaptagrams.validateBendPoint(aInf, bInf, cInf)
+
+
 validateBendPoint = _adaptagrams.validateBendPoint
+
+
 class Obstacle(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, Obstacle, name, value)
@@ -5350,6 +5950,7 @@ class Obstacle(_object):
 
     def __init__(self, *args, **kwargs):
         raise AttributeError("No constructor defined - class is abstract")
+
     __repr__ = _swig_repr
 
     def id(self):
@@ -5381,6 +5982,8 @@ class Obstacle(_object):
 
     def attachedConnectors(self):
         return _adaptagrams.Obstacle_attachedConnectors(self)
+
+
 Obstacle_swigregister = _adaptagrams.Obstacle_swigregister
 Obstacle_swigregister(Obstacle)
 
@@ -5389,14 +5992,16 @@ TransformationType_CW180 = _adaptagrams.TransformationType_CW180
 TransformationType_CW270 = _adaptagrams.TransformationType_CW270
 TransformationType_FlipX = _adaptagrams.TransformationType_FlipX
 TransformationType_FlipY = _adaptagrams.TransformationType_FlipY
+
+
 class ShapeRef(Obstacle):
     __swig_setmethods__ = {}
     for _s in [Obstacle]:
-        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+        __swig_setmethods__.update(getattr(_s, "__swig_setmethods__", {}))
     __setattr__ = lambda self, name, value: _swig_setattr(self, ShapeRef, name, value)
     __swig_getmethods__ = {}
     for _s in [Obstacle]:
-        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+        __swig_getmethods__.update(getattr(_s, "__swig_getmethods__", {}))
     __getattr__ = lambda self, name: _swig_getattr(self, ShapeRef, name)
     __repr__ = _swig_repr
 
@@ -5415,17 +6020,20 @@ class ShapeRef(Obstacle):
 
     def position(self):
         return _adaptagrams.ShapeRef_position(self)
+
+
 ShapeRef_swigregister = _adaptagrams.ShapeRef_swigregister
 ShapeRef_swigregister(ShapeRef)
+
 
 class JunctionRef(Obstacle):
     __swig_setmethods__ = {}
     for _s in [Obstacle]:
-        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+        __swig_setmethods__.update(getattr(_s, "__swig_setmethods__", {}))
     __setattr__ = lambda self, name, value: _swig_setattr(self, JunctionRef, name, value)
     __swig_getmethods__ = {}
     for _s in [Obstacle]:
-        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+        __swig_getmethods__.update(getattr(_s, "__swig_getmethods__", {}))
     __getattr__ = lambda self, name: _swig_getattr(self, JunctionRef, name)
     __repr__ = _swig_repr
 
@@ -5456,8 +6064,11 @@ class JunctionRef(Obstacle):
 
     def preferOrthogonalDimension(self, dim):
         return _adaptagrams.JunctionRef_preferOrthogonalDimension(self, dim)
+
+
 JunctionRef_swigregister = _adaptagrams.JunctionRef_swigregister
 JunctionRef_swigregister(JunctionRef)
+
 
 class ClusterRef(_object):
     __swig_setmethods__ = {}
@@ -5493,8 +6104,11 @@ class ClusterRef(_object):
 
     def makeInactive(self):
         return _adaptagrams.ClusterRef_makeInactive(self)
+
+
 ClusterRef_swigregister = _adaptagrams.ClusterRef_swigregister
 ClusterRef_swigregister(ClusterRef)
+
 
 class ShapeConnectionPin(_object):
     __swig_setmethods__ = {}
@@ -5527,6 +6141,8 @@ class ShapeConnectionPin(_object):
 
     def ids(self):
         return _adaptagrams.ShapeConnectionPin_ids(self)
+
+
 ShapeConnectionPin_swigregister = _adaptagrams.ShapeConnectionPin_swigregister
 ShapeConnectionPin_swigregister(ShapeConnectionPin)
 CONNECTIONPIN_UNSET = cvar.CONNECTIONPIN_UNSET
@@ -5538,6 +6154,7 @@ ATTACH_POS_LEFT = cvar.ATTACH_POS_LEFT
 ATTACH_POS_RIGHT = cvar.ATTACH_POS_RIGHT
 ATTACH_POS_MIN_OFFSET = cvar.ATTACH_POS_MIN_OFFSET
 ATTACH_POS_MAX_OFFSET = cvar.ATTACH_POS_MAX_OFFSET
+
 
 class CmpConnPinPtr(_object):
     __swig_setmethods__ = {}
@@ -5552,10 +6169,14 @@ class CmpConnPinPtr(_object):
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+
     __swig_destroy__ = _adaptagrams.delete_CmpConnPinPtr
     __del__ = lambda self: None
+
+
 CmpConnPinPtr_swigregister = _adaptagrams.CmpConnPinPtr_swigregister
 CmpConnPinPtr_swigregister(CmpConnPinPtr)
+
 
 class Node(_object):
     __swig_setmethods__ = {}
@@ -5592,17 +6213,24 @@ class Node(_object):
 
     def getVarConst(self):
         return _adaptagrams.Node_getVarConst(self)
+
     __swig_setmethods__["var"] = _adaptagrams.Node_var_set
     __swig_getmethods__["var"] = _adaptagrams.Node_var_get
     if _newclass:
         var = _swig_property(_adaptagrams.Node_var_get, _adaptagrams.Node_var_set)
+
+
 Node_swigregister = _adaptagrams.Node_swigregister
 Node_swigregister(Node)
 
 
 def setNodeVariables(ns, vs):
     return _adaptagrams.setNodeVariables(ns, vs)
+
+
 setNodeVariables = _adaptagrams.setNodeVariables
+
+
 class EdgePoint(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, EdgePoint, name, value)
@@ -5621,7 +6249,9 @@ class EdgePoint(_object):
     __swig_setmethods__["rectIntersect"] = _adaptagrams.EdgePoint_rectIntersect_set
     __swig_getmethods__["rectIntersect"] = _adaptagrams.EdgePoint_rectIntersect_get
     if _newclass:
-        rectIntersect = _swig_property(_adaptagrams.EdgePoint_rectIntersect_get, _adaptagrams.EdgePoint_rectIntersect_set)
+        rectIntersect = _swig_property(
+            _adaptagrams.EdgePoint_rectIntersect_get, _adaptagrams.EdgePoint_rectIntersect_set
+        )
 
     def createBendConstraint(self, scanDim):
         return _adaptagrams.EdgePoint_createBendConstraint(self, scanDim)
@@ -5659,8 +6289,11 @@ class EdgePoint(_object):
 
     def prune(self, scanDim):
         return _adaptagrams.EdgePoint_prune(self, scanDim)
+
+
 EdgePoint_swigregister = _adaptagrams.EdgePoint_swigregister
 EdgePoint_swigregister(EdgePoint)
+
 
 class Edge(_object):
     __swig_setmethods__ = {}
@@ -5699,21 +6332,27 @@ class Edge(_object):
 
     def cycle(self):
         return _adaptagrams.Edge_cycle(self)
+
+
 Edge_swigregister = _adaptagrams.Edge_swigregister
 Edge_swigregister(Edge)
 
 
 def crossProduct(x0, y0, x1, y1, x2, y2):
     return _adaptagrams.crossProduct(x0, y0, x1, y1, x2, y2)
+
+
 crossProduct = _adaptagrams.crossProduct
+
+
 class ColaTopologyAddon(TopologyAddonInterface):
     __swig_setmethods__ = {}
     for _s in [TopologyAddonInterface]:
-        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+        __swig_setmethods__.update(getattr(_s, "__swig_setmethods__", {}))
     __setattr__ = lambda self, name, value: _swig_setattr(self, ColaTopologyAddon, name, value)
     __swig_getmethods__ = {}
     for _s in [TopologyAddonInterface]:
-        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+        __swig_getmethods__.update(getattr(_s, "__swig_getmethods__", {}))
     __getattr__ = lambda self, name: _swig_getattr(self, ColaTopologyAddon, name)
     __repr__ = _swig_repr
 
@@ -5734,7 +6373,9 @@ class ColaTopologyAddon(TopologyAddonInterface):
         return _adaptagrams.ColaTopologyAddon_freeAssociatedObjects(self)
 
     def handleResizes(self, resizeList, n, X, Y, ccs, boundingBoxes, clusterHierarchy):
-        return _adaptagrams.ColaTopologyAddon_handleResizes(self, resizeList, n, X, Y, ccs, boundingBoxes, clusterHierarchy)
+        return _adaptagrams.ColaTopologyAddon_handleResizes(
+            self, resizeList, n, X, Y, ccs, boundingBoxes, clusterHierarchy
+        )
 
     def computePathLengths(self, G):
         return _adaptagrams.ColaTopologyAddon_computePathLengths(self, G)
@@ -5746,36 +6387,50 @@ class ColaTopologyAddon(TopologyAddonInterface):
         return _adaptagrams.ColaTopologyAddon_useTopologySolver(self)
 
     def makeFeasible(self, generateNonOverlapConstraints, boundingBoxes, clusterHierarchy):
-        return _adaptagrams.ColaTopologyAddon_makeFeasible(self, generateNonOverlapConstraints, boundingBoxes, clusterHierarchy)
+        return _adaptagrams.ColaTopologyAddon_makeFeasible(
+            self, generateNonOverlapConstraints, boundingBoxes, clusterHierarchy
+        )
 
     def moveTo(self, dim, vs, cs, coords, clusterHierarchy):
         return _adaptagrams.ColaTopologyAddon_moveTo(self, dim, vs, cs, coords, clusterHierarchy)
 
     def applyForcesAndConstraints(self, layout, dim, g, vs, cs, coords, des, oldStress):
-        return _adaptagrams.ColaTopologyAddon_applyForcesAndConstraints(self, layout, dim, g, vs, cs, coords, des, oldStress)
+        return _adaptagrams.ColaTopologyAddon_applyForcesAndConstraints(
+            self, layout, dim, g, vs, cs, coords, des, oldStress
+        )
+
     __swig_setmethods__["topologyNodes"] = _adaptagrams.ColaTopologyAddon_topologyNodes_set
     __swig_getmethods__["topologyNodes"] = _adaptagrams.ColaTopologyAddon_topologyNodes_get
     if _newclass:
-        topologyNodes = _swig_property(_adaptagrams.ColaTopologyAddon_topologyNodes_get, _adaptagrams.ColaTopologyAddon_topologyNodes_set)
+        topologyNodes = _swig_property(
+            _adaptagrams.ColaTopologyAddon_topologyNodes_get, _adaptagrams.ColaTopologyAddon_topologyNodes_set
+        )
     __swig_setmethods__["topologyRoutes"] = _adaptagrams.ColaTopologyAddon_topologyRoutes_set
     __swig_getmethods__["topologyRoutes"] = _adaptagrams.ColaTopologyAddon_topologyRoutes_get
     if _newclass:
-        topologyRoutes = _swig_property(_adaptagrams.ColaTopologyAddon_topologyRoutes_get, _adaptagrams.ColaTopologyAddon_topologyRoutes_set)
+        topologyRoutes = _swig_property(
+            _adaptagrams.ColaTopologyAddon_topologyRoutes_get, _adaptagrams.ColaTopologyAddon_topologyRoutes_set
+        )
     __swig_setmethods__["debugSVGViewBox"] = _adaptagrams.ColaTopologyAddon_debugSVGViewBox_set
     __swig_getmethods__["debugSVGViewBox"] = _adaptagrams.ColaTopologyAddon_debugSVGViewBox_get
     if _newclass:
-        debugSVGViewBox = _swig_property(_adaptagrams.ColaTopologyAddon_debugSVGViewBox_get, _adaptagrams.ColaTopologyAddon_debugSVGViewBox_set)
+        debugSVGViewBox = _swig_property(
+            _adaptagrams.ColaTopologyAddon_debugSVGViewBox_get, _adaptagrams.ColaTopologyAddon_debugSVGViewBox_set
+        )
+
+
 ColaTopologyAddon_swigregister = _adaptagrams.ColaTopologyAddon_swigregister
 ColaTopologyAddon_swigregister(ColaTopologyAddon)
+
 
 class AvoidTopologyAddon(AvoidTopologyAddonInterface):
     __swig_setmethods__ = {}
     for _s in [AvoidTopologyAddonInterface]:
-        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+        __swig_setmethods__.update(getattr(_s, "__swig_setmethods__", {}))
     __setattr__ = lambda self, name, value: _swig_setattr(self, AvoidTopologyAddon, name, value)
     __swig_getmethods__ = {}
     for _s in [AvoidTopologyAddonInterface]:
-        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+        __swig_getmethods__.update(getattr(_s, "__swig_getmethods__", {}))
     __getattr__ = lambda self, name: _swig_getattr(self, AvoidTopologyAddon, name)
     __repr__ = _swig_repr
 
@@ -5785,6 +6440,7 @@ class AvoidTopologyAddon(AvoidTopologyAddonInterface):
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+
     __swig_destroy__ = _adaptagrams.delete_AvoidTopologyAddon
     __del__ = lambda self: None
 
@@ -5799,6 +6455,8 @@ class AvoidTopologyAddon(AvoidTopologyAddonInterface):
 
     def outputDeletionCode(self, fp):
         return _adaptagrams.AvoidTopologyAddon_outputDeletionCode(self, fp)
+
+
 AvoidTopologyAddon_swigregister = _adaptagrams.AvoidTopologyAddon_swigregister
 AvoidTopologyAddon_swigregister(AvoidTopologyAddon)
 
@@ -5823,25 +6481,42 @@ ACANOTSOUTH = _adaptagrams.ACANOTSOUTH
 ACANOTWEST = _adaptagrams.ACANOTWEST
 ACAALLSEP = _adaptagrams.ACAALLSEP
 
+
 def negateSepFlag(sf):
     return _adaptagrams.negateSepFlag(sf)
+
+
 negateSepFlag = _adaptagrams.negateSepFlag
+
 
 def sepToAlignFlag(sf):
     return _adaptagrams.sepToAlignFlag(sf)
+
+
 sepToAlignFlag = _adaptagrams.sepToAlignFlag
+
 
 def perpAlignFlag(af):
     return _adaptagrams.perpAlignFlag(af)
+
+
 perpAlignFlag = _adaptagrams.perpAlignFlag
+
 
 def vectorToSepFlag(dx, dy):
     return _adaptagrams.vectorToSepFlag(dx, dy)
+
+
 vectorToSepFlag = _adaptagrams.vectorToSepFlag
+
 
 def propsedSepConflictsWithExistingPosition(pro, ex):
     return _adaptagrams.propsedSepConflictsWithExistingPosition(pro, ex)
+
+
 propsedSepConflictsWithExistingPosition = _adaptagrams.propsedSepConflictsWithExistingPosition
+
+
 class OrderedAlignment(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, OrderedAlignment, name, value)
@@ -5855,6 +6530,7 @@ class OrderedAlignment(_object):
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+
     __swig_destroy__ = _adaptagrams.delete_OrderedAlignment
     __del__ = lambda self: None
     __swig_setmethods__["af"] = _adaptagrams.OrderedAlignment_af_set
@@ -5880,34 +6556,50 @@ class OrderedAlignment(_object):
     __swig_setmethods__["offsetSrc"] = _adaptagrams.OrderedAlignment_offsetSrc_set
     __swig_getmethods__["offsetSrc"] = _adaptagrams.OrderedAlignment_offsetSrc_get
     if _newclass:
-        offsetSrc = _swig_property(_adaptagrams.OrderedAlignment_offsetSrc_get, _adaptagrams.OrderedAlignment_offsetSrc_set)
+        offsetSrc = _swig_property(
+            _adaptagrams.OrderedAlignment_offsetSrc_get, _adaptagrams.OrderedAlignment_offsetSrc_set
+        )
     __swig_setmethods__["offsetTgt"] = _adaptagrams.OrderedAlignment_offsetTgt_set
     __swig_getmethods__["offsetTgt"] = _adaptagrams.OrderedAlignment_offsetTgt_get
     if _newclass:
-        offsetTgt = _swig_property(_adaptagrams.OrderedAlignment_offsetTgt_get, _adaptagrams.OrderedAlignment_offsetTgt_set)
+        offsetTgt = _swig_property(
+            _adaptagrams.OrderedAlignment_offsetTgt_get, _adaptagrams.OrderedAlignment_offsetTgt_set
+        )
     __swig_setmethods__["separation"] = _adaptagrams.OrderedAlignment_separation_set
     __swig_getmethods__["separation"] = _adaptagrams.OrderedAlignment_separation_get
     if _newclass:
-        separation = _swig_property(_adaptagrams.OrderedAlignment_separation_get, _adaptagrams.OrderedAlignment_separation_set)
+        separation = _swig_property(
+            _adaptagrams.OrderedAlignment_separation_get, _adaptagrams.OrderedAlignment_separation_set
+        )
     __swig_setmethods__["alignment"] = _adaptagrams.OrderedAlignment_alignment_set
     __swig_getmethods__["alignment"] = _adaptagrams.OrderedAlignment_alignment_get
     if _newclass:
-        alignment = _swig_property(_adaptagrams.OrderedAlignment_alignment_get, _adaptagrams.OrderedAlignment_alignment_set)
+        alignment = _swig_property(
+            _adaptagrams.OrderedAlignment_alignment_get, _adaptagrams.OrderedAlignment_alignment_set
+        )
     __swig_setmethods__["edgeIndex"] = _adaptagrams.OrderedAlignment_edgeIndex_set
     __swig_getmethods__["edgeIndex"] = _adaptagrams.OrderedAlignment_edgeIndex_get
     if _newclass:
-        edgeIndex = _swig_property(_adaptagrams.OrderedAlignment_edgeIndex_get, _adaptagrams.OrderedAlignment_edgeIndex_set)
+        edgeIndex = _swig_property(
+            _adaptagrams.OrderedAlignment_edgeIndex_get, _adaptagrams.OrderedAlignment_edgeIndex_set
+        )
     __swig_setmethods__["penalty"] = _adaptagrams.OrderedAlignment_penalty_set
     __swig_getmethods__["penalty"] = _adaptagrams.OrderedAlignment_penalty_get
     if _newclass:
         penalty = _swig_property(_adaptagrams.OrderedAlignment_penalty_get, _adaptagrams.OrderedAlignment_penalty_set)
+
+
 OrderedAlignment_swigregister = _adaptagrams.OrderedAlignment_swigregister
 OrderedAlignment_swigregister(OrderedAlignment)
 
 
 def sortOrdAlignsByPenalty(lhs, rhs):
     return _adaptagrams.sortOrdAlignsByPenalty(lhs, rhs)
+
+
 sortOrdAlignsByPenalty = _adaptagrams.sortOrdAlignsByPenalty
+
+
 class ACALayout(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, ACALayout, name, value)
@@ -6017,13 +6709,18 @@ class ACALayout(_object):
 
     def writeAlignmentTable(self):
         return _adaptagrams.ACALayout_writeAlignmentTable(self)
+
     __swig_setmethods__["aStateBeforeChop"] = _adaptagrams.ACALayout_aStateBeforeChop_set
     __swig_getmethods__["aStateBeforeChop"] = _adaptagrams.ACALayout_aStateBeforeChop_get
     if _newclass:
-        aStateBeforeChop = _swig_property(_adaptagrams.ACALayout_aStateBeforeChop_get, _adaptagrams.ACALayout_aStateBeforeChop_set)
+        aStateBeforeChop = _swig_property(
+            _adaptagrams.ACALayout_aStateBeforeChop_get, _adaptagrams.ACALayout_aStateBeforeChop_set
+        )
 
     def writeStateForNodeIds(self, id1, id2):
         return _adaptagrams.ACALayout_writeStateForNodeIds(self, id1, id2)
+
+
 ACALayout_swigregister = _adaptagrams.ACALayout_swigregister
 ACALayout_swigregister(ACALayout)
 
@@ -6034,21 +6731,35 @@ LinkShape_TRC = _adaptagrams.LinkShape_TRC
 LinkShape_V = _adaptagrams.LinkShape_V
 LinkShape_BRC = _adaptagrams.LinkShape_BRC
 
+
 def bentLinkShapeCwFromStartingPt(start):
     return _adaptagrams.bentLinkShapeCwFromStartingPt(start)
+
+
 bentLinkShapeCwFromStartingPt = _adaptagrams.bentLinkShapeCwFromStartingPt
+
 
 def lookupMinimalBendSeqs(A, d0, Z, d1):
     return _adaptagrams.lookupMinimalBendSeqs(A, d0, Z, d1)
+
+
 lookupMinimalBendSeqs = _adaptagrams.lookupMinimalBendSeqs
+
 
 def possibleCardinalDirections(node1, node2):
     return _adaptagrams.possibleCardinalDirections(node1, node2)
+
+
 possibleCardinalDirections = _adaptagrams.possibleCardinalDirections
+
 
 def shapeOfLink(link):
     return _adaptagrams.shapeOfLink(link)
+
+
 shapeOfLink = _adaptagrams.shapeOfLink
+
+
 class BendSequence(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, BendSequence, name, value)
@@ -6065,6 +6776,7 @@ class BendSequence(_object):
 
     def size(self):
         return _adaptagrams.BendSequence_size(self)
+
     __swig_setmethods__["bendTypes"] = _adaptagrams.BendSequence_bendTypes_set
     __swig_getmethods__["bendTypes"] = _adaptagrams.BendSequence_bendTypes_get
     if _newclass:
@@ -6080,19 +6792,26 @@ class BendSequence(_object):
     __swig_setmethods__["incomingDirec"] = _adaptagrams.BendSequence_incomingDirec_set
     __swig_getmethods__["incomingDirec"] = _adaptagrams.BendSequence_incomingDirec_get
     if _newclass:
-        incomingDirec = _swig_property(_adaptagrams.BendSequence_incomingDirec_get, _adaptagrams.BendSequence_incomingDirec_set)
+        incomingDirec = _swig_property(
+            _adaptagrams.BendSequence_incomingDirec_get, _adaptagrams.BendSequence_incomingDirec_set
+        )
     __swig_setmethods__["outgoingDirec"] = _adaptagrams.BendSequence_outgoingDirec_set
     __swig_getmethods__["outgoingDirec"] = _adaptagrams.BendSequence_outgoingDirec_get
     if _newclass:
-        outgoingDirec = _swig_property(_adaptagrams.BendSequence_outgoingDirec_get, _adaptagrams.BendSequence_outgoingDirec_set)
+        outgoingDirec = _swig_property(
+            _adaptagrams.BendSequence_outgoingDirec_get, _adaptagrams.BendSequence_outgoingDirec_set
+        )
     __swig_destroy__ = _adaptagrams.delete_BendSequence
     __del__ = lambda self: None
+
+
 BendSequence_swigregister = _adaptagrams.BendSequence_swigregister
 BendSequence_swigregister(BendSequence)
 bentLinkShapeCw = cvar.bentLinkShapeCw
 applyBendToDir = cvar.applyBendToDir
 cwIncomingDirForBend = cvar.cwIncomingDirForBend
 minimalBendSeqs = cvar.minimalBendSeqs
+
 
 class AestheticBend(_object):
     __swig_setmethods__ = {}
@@ -6110,6 +6829,7 @@ class AestheticBend(_object):
 
     def addBendToEdge(self):
         return _adaptagrams.AestheticBend_addBendToEdge(self)
+
     __swig_setmethods__["edge"] = _adaptagrams.AestheticBend_edge_set
     __swig_getmethods__["edge"] = _adaptagrams.AestheticBend_edge_get
     if _newclass:
@@ -6128,8 +6848,11 @@ class AestheticBend(_object):
         nbrNode2 = _swig_property(_adaptagrams.AestheticBend_nbrNode2_get, _adaptagrams.AestheticBend_nbrNode2_set)
     __swig_destroy__ = _adaptagrams.delete_AestheticBend
     __del__ = lambda self: None
+
+
 AestheticBend_swigregister = _adaptagrams.AestheticBend_swigregister
 AestheticBend_swigregister(AestheticBend)
+
 
 class Chain(_object):
     __swig_setmethods__ = {}
@@ -6171,8 +6894,11 @@ class Chain(_object):
 
     def addAestheticBendsToEdges(self):
         return _adaptagrams.Chain_addAestheticBendsToEdges(self)
+
     __swig_destroy__ = _adaptagrams.delete_Chain
     __del__ = lambda self: None
+
+
 Chain_swigregister = _adaptagrams.Chain_swigregister
 Chain_swigregister(Chain)
 Chain.npos = _adaptagrams.cvar.Chain_npos
@@ -6180,6 +6906,8 @@ Chain.npos = _adaptagrams.cvar.Chain_npos
 
 def buildAllChainsInGraph(graph):
     return _adaptagrams.buildAllChainsInGraph(graph)
+
+
 buildAllChainsInGraph = _adaptagrams.buildAllChainsInGraph
 GapType_CENTRE = _adaptagrams.GapType_CENTRE
 GapType_BDRY = _adaptagrams.GapType_BDRY
@@ -6195,24 +6923,39 @@ SepType_NONE = _adaptagrams.SepType_NONE
 SepType_EQ = _adaptagrams.SepType_EQ
 SepType_INEQ = _adaptagrams.SepType_INEQ
 
+
 def sepDirIsCardinal(sd):
     return _adaptagrams.sepDirIsCardinal(sd)
+
+
 sepDirIsCardinal = _adaptagrams.sepDirIsCardinal
+
 
 def sepDirToCardinalDir(sd):
     return _adaptagrams.sepDirToCardinalDir(sd)
+
+
 sepDirToCardinalDir = _adaptagrams.sepDirToCardinalDir
+
 
 def cardinalDirToSepDir(dir):
     return _adaptagrams.cardinalDirToSepDir(dir)
+
+
 cardinalDirToSepDir = _adaptagrams.cardinalDirToSepDir
+
 
 def lateralWeakening(sd):
     return _adaptagrams.lateralWeakening(sd)
+
+
 lateralWeakening = _adaptagrams.lateralWeakening
+
 
 def cardinalStrengthening(sd):
     return _adaptagrams.cardinalStrengthening(sd)
+
+
 cardinalStrengthening = _adaptagrams.cardinalStrengthening
 SepTransform_ROTATE90CW = _adaptagrams.SepTransform_ROTATE90CW
 SepTransform_ROTATE90ACW = _adaptagrams.SepTransform_ROTATE90ACW
@@ -6221,6 +6964,8 @@ SepTransform_FLIPV = _adaptagrams.SepTransform_FLIPV
 SepTransform_FLIPH = _adaptagrams.SepTransform_FLIPH
 SepTransform_FLIPMD = _adaptagrams.SepTransform_FLIPMD
 SepTransform_FLIPOD = _adaptagrams.SepTransform_FLIPOD
+
+
 class SepPair(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, SepPair, name, value)
@@ -6234,6 +6979,7 @@ class SepPair(_object):
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+
     __swig_setmethods__["src"] = _adaptagrams.SepPair_src_set
     __swig_getmethods__["src"] = _adaptagrams.SepPair_src_get
     if _newclass:
@@ -6273,7 +7019,9 @@ class SepPair(_object):
     __swig_setmethods__["flippedRetrieval"] = _adaptagrams.SepPair_flippedRetrieval_set
     __swig_getmethods__["flippedRetrieval"] = _adaptagrams.SepPair_flippedRetrieval_get
     if _newclass:
-        flippedRetrieval = _swig_property(_adaptagrams.SepPair_flippedRetrieval_get, _adaptagrams.SepPair_flippedRetrieval_set)
+        flippedRetrieval = _swig_property(
+            _adaptagrams.SepPair_flippedRetrieval_get, _adaptagrams.SepPair_flippedRetrieval_set
+        )
 
     def addSep(self, gt, sd, st, gap):
         return _adaptagrams.SepPair_addSep(self, gt, sd, st, gap)
@@ -6310,10 +7058,14 @@ class SepPair(_object):
 
     def generateSeparationConstraint(self, dim, cgr, m, vs):
         return _adaptagrams.SepPair_generateSeparationConstraint(self, dim, cgr, m, vs)
+
     __swig_destroy__ = _adaptagrams.delete_SepPair
     __del__ = lambda self: None
+
+
 SepPair_swigregister = _adaptagrams.SepPair_swigregister
 SepPair_swigregister(SepPair)
+
 
 class SepPairSubConstraintInfo(_object):
     __swig_setmethods__ = {}
@@ -6328,6 +7080,7 @@ class SepPairSubConstraintInfo(_object):
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+
     __swig_setmethods__["sp"] = _adaptagrams.SepPairSubConstraintInfo_sp_set
     __swig_getmethods__["sp"] = _adaptagrams.SepPairSubConstraintInfo_sp_get
     if _newclass:
@@ -6335,20 +7088,25 @@ class SepPairSubConstraintInfo(_object):
     __swig_setmethods__["dim"] = _adaptagrams.SepPairSubConstraintInfo_dim_set
     __swig_getmethods__["dim"] = _adaptagrams.SepPairSubConstraintInfo_dim_get
     if _newclass:
-        dim = _swig_property(_adaptagrams.SepPairSubConstraintInfo_dim_get, _adaptagrams.SepPairSubConstraintInfo_dim_set)
+        dim = _swig_property(
+            _adaptagrams.SepPairSubConstraintInfo_dim_get, _adaptagrams.SepPairSubConstraintInfo_dim_set
+        )
     __swig_destroy__ = _adaptagrams.delete_SepPairSubConstraintInfo
     __del__ = lambda self: None
+
+
 SepPairSubConstraintInfo_swigregister = _adaptagrams.SepPairSubConstraintInfo_swigregister
 SepPairSubConstraintInfo_swigregister(SepPairSubConstraintInfo)
+
 
 class SepMatrix(CompoundConstraint):
     __swig_setmethods__ = {}
     for _s in [CompoundConstraint]:
-        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+        __swig_setmethods__.update(getattr(_s, "__swig_setmethods__", {}))
     __setattr__ = lambda self, name, value: _swig_setattr(self, SepMatrix, name, value)
     __swig_getmethods__ = {}
     for _s in [CompoundConstraint]:
-        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+        __swig_getmethods__.update(getattr(_s, "__swig_getmethods__", {}))
     __getattr__ = lambda self, name: _swig_getattr(self, SepMatrix, name)
     __repr__ = _swig_repr
 
@@ -6358,6 +7116,7 @@ class SepMatrix(CompoundConstraint):
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+
     __swig_destroy__ = _adaptagrams.delete_SepMatrix
     __del__ = lambda self: None
 
@@ -6450,9 +7209,12 @@ class SepMatrix(CompoundConstraint):
 
     def getCurrSubConstraintAlternatives(self, vs):
         return _adaptagrams.SepMatrix_getCurrSubConstraintAlternatives(self, vs)
+
+
 SepMatrix_swigregister = _adaptagrams.SepMatrix_swigregister
 SepMatrix_swigregister(SepMatrix)
 PRIORITY_SEPMATRIX = cvar.PRIORITY_SEPMATRIX
+
 
 class SepCo(_object):
     __swig_setmethods__ = {}
@@ -6482,6 +7244,7 @@ class SepCo(_object):
 
     def toString(self):
         return _adaptagrams.SepCo_toString(self)
+
     __swig_setmethods__["dim"] = _adaptagrams.SepCo_dim_set
     __swig_getmethods__["dim"] = _adaptagrams.SepCo_dim_get
     if _newclass:
@@ -6504,8 +7267,11 @@ class SepCo(_object):
         exact = _swig_property(_adaptagrams.SepCo_exact_get, _adaptagrams.SepCo_exact_set)
     __swig_destroy__ = _adaptagrams.delete_SepCo
     __del__ = lambda self: None
+
+
 SepCo_swigregister = _adaptagrams.SepCo_swigregister
 SepCo_swigregister(SepCo)
+
 
 class Projection(_object):
     __swig_setmethods__ = {}
@@ -6529,6 +7295,7 @@ class Projection(_object):
 
     def toString(self):
         return _adaptagrams.Projection_toString(self)
+
     __swig_setmethods__["sepCoSet"] = _adaptagrams.Projection_sepCoSet_set
     __swig_getmethods__["sepCoSet"] = _adaptagrams.Projection_sepCoSet_get
     if _newclass:
@@ -6539,8 +7306,11 @@ class Projection(_object):
         dim = _swig_property(_adaptagrams.Projection_dim_get, _adaptagrams.Projection_dim_set)
     __swig_destroy__ = _adaptagrams.delete_Projection
     __del__ = lambda self: None
+
+
 Projection_swigregister = _adaptagrams.Projection_swigregister
 Projection_swigregister(Projection)
+
 
 class ProjSeq(_object):
     __swig_setmethods__ = {}
@@ -6579,10 +7349,14 @@ class ProjSeq(_object):
 
     def violation(self):
         return _adaptagrams.ProjSeq_violation(self)
+
     __swig_destroy__ = _adaptagrams.delete_ProjSeq
     __del__ = lambda self: None
+
+
 ProjSeq_swigregister = _adaptagrams.ProjSeq_swigregister
 ProjSeq_swigregister(ProjSeq)
+
 
 class Side(_object):
     __swig_setmethods__ = {}
@@ -6651,13 +7425,18 @@ class Side(_object):
 
     def getTreePlacements(self):
         return _adaptagrams.Side_getTreePlacements(self)
+
     __swig_destroy__ = _adaptagrams.delete_Side
     __del__ = lambda self: None
+
+
 Side_swigregister = _adaptagrams.Side_swigregister
 Side_swigregister(Side)
 
 NexusPolarity_ENTER_FROM = _adaptagrams.NexusPolarity_ENTER_FROM
 NexusPolarity_EXIT_TO = _adaptagrams.NexusPolarity_EXIT_TO
+
+
 class Nexus(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, Nexus, name, value)
@@ -6680,10 +7459,14 @@ class Nexus(_object):
 
     def toString(self):
         return _adaptagrams.Nexus_toString(self)
+
     __swig_destroy__ = _adaptagrams.delete_Nexus
     __del__ = lambda self: None
+
+
 Nexus_swigregister = _adaptagrams.Nexus_swigregister
 Nexus_swigregister(Nexus)
+
 
 class FaceSet(_object):
     __swig_setmethods__ = {}
@@ -6716,10 +7499,14 @@ class FaceSet(_object):
 
     def getNumTreesByGrowthDir(self, scaleBySize=False):
         return _adaptagrams.FaceSet_getNumTreesByGrowthDir(self, scaleBySize)
+
     __swig_destroy__ = _adaptagrams.delete_FaceSet
     __del__ = lambda self: None
+
+
 FaceSet_swigregister = _adaptagrams.FaceSet_swigregister
 FaceSet_swigregister(FaceSet)
+
 
 class Face(_object):
     __swig_setmethods__ = {}
@@ -6803,10 +7590,14 @@ class Face(_object):
 
     def getNumTreesByGrowthDir(self, counts, scaleBySize=False):
         return _adaptagrams.Face_getNumTreesByGrowthDir(self, counts, scaleBySize)
+
     __swig_destroy__ = _adaptagrams.delete_Face
     __del__ = lambda self: None
+
+
 Face_swigregister = _adaptagrams.Face_swigregister
 Face_swigregister(Face)
+
 
 class BoundingBox(_object):
     __swig_setmethods__ = {}
@@ -6845,6 +7636,7 @@ class BoundingBox(_object):
 
     def perimeter(self):
         return _adaptagrams.BoundingBox_perimeter(self)
+
     __swig_setmethods__["x"] = _adaptagrams.BoundingBox_x_set
     __swig_getmethods__["x"] = _adaptagrams.BoundingBox_x_get
     if _newclass:
@@ -6863,8 +7655,11 @@ class BoundingBox(_object):
         Y = _swig_property(_adaptagrams.BoundingBox_Y_get, _adaptagrams.BoundingBox_Y_set)
     __swig_destroy__ = _adaptagrams.delete_BoundingBox
     __del__ = lambda self: None
+
+
 BoundingBox_swigregister = _adaptagrams.BoundingBox_swigregister
 BoundingBox_swigregister(BoundingBox)
+
 
 class ColaOptions(_object):
     __swig_setmethods__ = {}
@@ -6875,19 +7670,27 @@ class ColaOptions(_object):
     __swig_setmethods__["idealEdgeLength"] = _adaptagrams.ColaOptions_idealEdgeLength_set
     __swig_getmethods__["idealEdgeLength"] = _adaptagrams.ColaOptions_idealEdgeLength_get
     if _newclass:
-        idealEdgeLength = _swig_property(_adaptagrams.ColaOptions_idealEdgeLength_get, _adaptagrams.ColaOptions_idealEdgeLength_set)
+        idealEdgeLength = _swig_property(
+            _adaptagrams.ColaOptions_idealEdgeLength_get, _adaptagrams.ColaOptions_idealEdgeLength_set
+        )
     __swig_setmethods__["preventOverlaps"] = _adaptagrams.ColaOptions_preventOverlaps_set
     __swig_getmethods__["preventOverlaps"] = _adaptagrams.ColaOptions_preventOverlaps_get
     if _newclass:
-        preventOverlaps = _swig_property(_adaptagrams.ColaOptions_preventOverlaps_get, _adaptagrams.ColaOptions_preventOverlaps_set)
+        preventOverlaps = _swig_property(
+            _adaptagrams.ColaOptions_preventOverlaps_get, _adaptagrams.ColaOptions_preventOverlaps_set
+        )
     __swig_setmethods__["solidifyAlignedEdges"] = _adaptagrams.ColaOptions_solidifyAlignedEdges_set
     __swig_getmethods__["solidifyAlignedEdges"] = _adaptagrams.ColaOptions_solidifyAlignedEdges_get
     if _newclass:
-        solidifyAlignedEdges = _swig_property(_adaptagrams.ColaOptions_solidifyAlignedEdges_get, _adaptagrams.ColaOptions_solidifyAlignedEdges_set)
+        solidifyAlignedEdges = _swig_property(
+            _adaptagrams.ColaOptions_solidifyAlignedEdges_get, _adaptagrams.ColaOptions_solidifyAlignedEdges_set
+        )
     __swig_setmethods__["solidEdgeExemptions"] = _adaptagrams.ColaOptions_solidEdgeExemptions_set
     __swig_getmethods__["solidEdgeExemptions"] = _adaptagrams.ColaOptions_solidEdgeExemptions_get
     if _newclass:
-        solidEdgeExemptions = _swig_property(_adaptagrams.ColaOptions_solidEdgeExemptions_get, _adaptagrams.ColaOptions_solidEdgeExemptions_set)
+        solidEdgeExemptions = _swig_property(
+            _adaptagrams.ColaOptions_solidEdgeExemptions_get, _adaptagrams.ColaOptions_solidEdgeExemptions_set
+        )
     __swig_setmethods__["xAxis"] = _adaptagrams.ColaOptions_xAxis_set
     __swig_getmethods__["xAxis"] = _adaptagrams.ColaOptions_xAxis_get
     if _newclass:
@@ -6899,27 +7702,39 @@ class ColaOptions(_object):
     __swig_setmethods__["makeFeasible"] = _adaptagrams.ColaOptions_makeFeasible_set
     __swig_getmethods__["makeFeasible"] = _adaptagrams.ColaOptions_makeFeasible_get
     if _newclass:
-        makeFeasible = _swig_property(_adaptagrams.ColaOptions_makeFeasible_get, _adaptagrams.ColaOptions_makeFeasible_set)
+        makeFeasible = _swig_property(
+            _adaptagrams.ColaOptions_makeFeasible_get, _adaptagrams.ColaOptions_makeFeasible_set
+        )
     __swig_setmethods__["makeFeasible_xBorder"] = _adaptagrams.ColaOptions_makeFeasible_xBorder_set
     __swig_getmethods__["makeFeasible_xBorder"] = _adaptagrams.ColaOptions_makeFeasible_xBorder_get
     if _newclass:
-        makeFeasible_xBorder = _swig_property(_adaptagrams.ColaOptions_makeFeasible_xBorder_get, _adaptagrams.ColaOptions_makeFeasible_xBorder_set)
+        makeFeasible_xBorder = _swig_property(
+            _adaptagrams.ColaOptions_makeFeasible_xBorder_get, _adaptagrams.ColaOptions_makeFeasible_xBorder_set
+        )
     __swig_setmethods__["makeFeasible_yBorder"] = _adaptagrams.ColaOptions_makeFeasible_yBorder_set
     __swig_getmethods__["makeFeasible_yBorder"] = _adaptagrams.ColaOptions_makeFeasible_yBorder_get
     if _newclass:
-        makeFeasible_yBorder = _swig_property(_adaptagrams.ColaOptions_makeFeasible_yBorder_get, _adaptagrams.ColaOptions_makeFeasible_yBorder_set)
+        makeFeasible_yBorder = _swig_property(
+            _adaptagrams.ColaOptions_makeFeasible_yBorder_get, _adaptagrams.ColaOptions_makeFeasible_yBorder_set
+        )
     __swig_setmethods__["useNeighbourStress"] = _adaptagrams.ColaOptions_useNeighbourStress_set
     __swig_getmethods__["useNeighbourStress"] = _adaptagrams.ColaOptions_useNeighbourStress_get
     if _newclass:
-        useNeighbourStress = _swig_property(_adaptagrams.ColaOptions_useNeighbourStress_get, _adaptagrams.ColaOptions_useNeighbourStress_set)
+        useNeighbourStress = _swig_property(
+            _adaptagrams.ColaOptions_useNeighbourStress_get, _adaptagrams.ColaOptions_useNeighbourStress_set
+        )
     __swig_setmethods__["nbrStressIELScalar"] = _adaptagrams.ColaOptions_nbrStressIELScalar_set
     __swig_getmethods__["nbrStressIELScalar"] = _adaptagrams.ColaOptions_nbrStressIELScalar_get
     if _newclass:
-        nbrStressIELScalar = _swig_property(_adaptagrams.ColaOptions_nbrStressIELScalar_get, _adaptagrams.ColaOptions_nbrStressIELScalar_set)
+        nbrStressIELScalar = _swig_property(
+            _adaptagrams.ColaOptions_nbrStressIELScalar_get, _adaptagrams.ColaOptions_nbrStressIELScalar_set
+        )
     __swig_setmethods__["useMajorization"] = _adaptagrams.ColaOptions_useMajorization_set
     __swig_getmethods__["useMajorization"] = _adaptagrams.ColaOptions_useMajorization_get
     if _newclass:
-        useMajorization = _swig_property(_adaptagrams.ColaOptions_useMajorization_get, _adaptagrams.ColaOptions_useMajorization_set)
+        useMajorization = _swig_property(
+            _adaptagrams.ColaOptions_useMajorization_get, _adaptagrams.ColaOptions_useMajorization_set
+        )
     __swig_setmethods__["useScaling"] = _adaptagrams.ColaOptions_useScaling_set
     __swig_getmethods__["useScaling"] = _adaptagrams.ColaOptions_useScaling_get
     if _newclass:
@@ -6931,7 +7746,9 @@ class ColaOptions(_object):
     __swig_setmethods__["nodeClusters"] = _adaptagrams.ColaOptions_nodeClusters_set
     __swig_getmethods__["nodeClusters"] = _adaptagrams.ColaOptions_nodeClusters_get
     if _newclass:
-        nodeClusters = _swig_property(_adaptagrams.ColaOptions_nodeClusters_get, _adaptagrams.ColaOptions_nodeClusters_set)
+        nodeClusters = _swig_property(
+            _adaptagrams.ColaOptions_nodeClusters_get, _adaptagrams.ColaOptions_nodeClusters_set
+        )
     __swig_setmethods__["eLengths"] = _adaptagrams.ColaOptions_eLengths_set
     __swig_getmethods__["eLengths"] = _adaptagrams.ColaOptions_eLengths_get
     if _newclass:
@@ -6943,7 +7760,9 @@ class ColaOptions(_object):
     __swig_setmethods__["preIteration"] = _adaptagrams.ColaOptions_preIteration_set
     __swig_getmethods__["preIteration"] = _adaptagrams.ColaOptions_preIteration_get
     if _newclass:
-        preIteration = _swig_property(_adaptagrams.ColaOptions_preIteration_get, _adaptagrams.ColaOptions_preIteration_set)
+        preIteration = _swig_property(
+            _adaptagrams.ColaOptions_preIteration_get, _adaptagrams.ColaOptions_preIteration_set
+        )
     __swig_setmethods__["logger"] = _adaptagrams.ColaOptions_logger_set
     __swig_getmethods__["logger"] = _adaptagrams.ColaOptions_logger_get
     if _newclass:
@@ -6955,10 +7774,14 @@ class ColaOptions(_object):
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+
     __swig_destroy__ = _adaptagrams.delete_ColaOptions
     __del__ = lambda self: None
+
+
 ColaOptions_swigregister = _adaptagrams.ColaOptions_swigregister
 ColaOptions_swigregister(ColaOptions)
+
 
 class ColaGraphRep(_object):
     __swig_setmethods__ = {}
@@ -6993,10 +7816,14 @@ class ColaGraphRep(_object):
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+
     __swig_destroy__ = _adaptagrams.delete_ColaGraphRep
     __del__ = lambda self: None
+
+
 ColaGraphRep_swigregister = _adaptagrams.ColaGraphRep_swigregister
 ColaGraphRep_swigregister(ColaGraphRep)
+
 
 class NodeIdCmp(_object):
     __swig_setmethods__ = {}
@@ -7014,10 +7841,14 @@ class NodeIdCmp(_object):
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+
     __swig_destroy__ = _adaptagrams.delete_NodeIdCmp
     __del__ = lambda self: None
+
+
 NodeIdCmp_swigregister = _adaptagrams.NodeIdCmp_swigregister
 NodeIdCmp_swigregister(NodeIdCmp)
+
 
 class Graph(_object):
     __swig_setmethods__ = {}
@@ -7032,6 +7863,7 @@ class Graph(_object):
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+
     __swig_destroy__ = _adaptagrams.delete_Graph
     __del__ = lambda self: None
 
@@ -7220,16 +8052,24 @@ class Graph(_object):
 
     def setCorrespondingConstraints(self, H):
         return _adaptagrams.Graph_setCorrespondingConstraints(self, H)
+
     __swig_setmethods__["m_debugOutputPath"] = _adaptagrams.Graph_m_debugOutputPath_set
     __swig_getmethods__["m_debugOutputPath"] = _adaptagrams.Graph_m_debugOutputPath_get
     if _newclass:
-        m_debugOutputPath = _swig_property(_adaptagrams.Graph_m_debugOutputPath_get, _adaptagrams.Graph_m_debugOutputPath_set)
+        m_debugOutputPath = _swig_property(
+            _adaptagrams.Graph_m_debugOutputPath_get, _adaptagrams.Graph_m_debugOutputPath_set
+        )
     __swig_setmethods__["m_projectionDebugLevel"] = _adaptagrams.Graph_m_projectionDebugLevel_set
     __swig_getmethods__["m_projectionDebugLevel"] = _adaptagrams.Graph_m_projectionDebugLevel_get
     if _newclass:
-        m_projectionDebugLevel = _swig_property(_adaptagrams.Graph_m_projectionDebugLevel_get, _adaptagrams.Graph_m_projectionDebugLevel_set)
+        m_projectionDebugLevel = _swig_property(
+            _adaptagrams.Graph_m_projectionDebugLevel_get, _adaptagrams.Graph_m_projectionDebugLevel_set
+        )
+
+
 Graph_swigregister = _adaptagrams.Graph_swigregister
 Graph_swigregister(Graph)
+
 
 class DialectNode(_object):
     __swig_setmethods__ = {}
@@ -7239,6 +8079,7 @@ class DialectNode(_object):
 
     def __init__(self, *args, **kwargs):
         raise AttributeError("No constructor defined")
+
     __repr__ = _swig_repr
     if _newclass:
         allocate = staticmethod(_adaptagrams.DialectNode_allocate)
@@ -7247,6 +8088,7 @@ class DialectNode(_object):
 
     def makeGhost(self):
         return _adaptagrams.DialectNode_makeGhost(self)
+
     __swig_destroy__ = _adaptagrams.delete_DialectNode
     __del__ = lambda self: None
 
@@ -7351,25 +8193,32 @@ class DialectNode(_object):
 
     def writeSvg(self, useExternalId=False):
         return _adaptagrams.DialectNode_writeSvg(self, useExternalId)
+
+
 DialectNode_swigregister = _adaptagrams.DialectNode_swigregister
 DialectNode_swigregister(DialectNode)
 
+
 def DialectNode_allocate(*args):
     return _adaptagrams.DialectNode_allocate(*args)
+
+
 DialectNode_allocate = _adaptagrams.DialectNode_allocate
+
 
 class GhostNode(DialectNode):
     __swig_setmethods__ = {}
     for _s in [DialectNode]:
-        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+        __swig_setmethods__.update(getattr(_s, "__swig_setmethods__", {}))
     __setattr__ = lambda self, name, value: _swig_setattr(self, GhostNode, name, value)
     __swig_getmethods__ = {}
     for _s in [DialectNode]:
-        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+        __swig_getmethods__.update(getattr(_s, "__swig_getmethods__", {}))
     __getattr__ = lambda self, name: _swig_getattr(self, GhostNode, name)
 
     def __init__(self, *args, **kwargs):
         raise AttributeError("No constructor defined")
+
     __repr__ = _swig_repr
     if _newclass:
         allocate = staticmethod(_adaptagrams.GhostNode_allocate)
@@ -7387,14 +8236,21 @@ class GhostNode(DialectNode):
 
     def setMasquerade(self, doMasquerade):
         return _adaptagrams.GhostNode_setMasquerade(self, doMasquerade)
+
     __swig_destroy__ = _adaptagrams.delete_GhostNode
     __del__ = lambda self: None
+
+
 GhostNode_swigregister = _adaptagrams.GhostNode_swigregister
 GhostNode_swigregister(GhostNode)
 
+
 def GhostNode_allocate(node):
     return _adaptagrams.GhostNode_allocate(node)
+
+
 GhostNode_allocate = _adaptagrams.GhostNode_allocate
+
 
 class DialectEdge(_object):
     __swig_setmethods__ = {}
@@ -7404,6 +8260,7 @@ class DialectEdge(_object):
 
     def __init__(self, *args, **kwargs):
         raise AttributeError("No constructor defined")
+
     __repr__ = _swig_repr
     if _newclass:
         allocate = staticmethod(_adaptagrams.DialectEdge_allocate)
@@ -7492,28 +8349,44 @@ class DialectEdge(_object):
 
     def writeRoundedOrthoConnectorData(self):
         return _adaptagrams.DialectEdge_writeRoundedOrthoConnectorData(self)
+
+
 DialectEdge_swigregister = _adaptagrams.DialectEdge_swigregister
 DialectEdge_swigregister(DialectEdge)
 
+
 def DialectEdge_allocate(src, tgt):
     return _adaptagrams.DialectEdge_allocate(src, tgt)
+
+
 DialectEdge_allocate = _adaptagrams.DialectEdge_allocate
 
 
 def doHOLA(*args):
     return _adaptagrams.doHOLA(*args)
+
+
 doHOLA = _adaptagrams.doHOLA
+
 
 def buildGraphFromTglf(*args):
     return _adaptagrams.buildGraphFromTglf(*args)
+
+
 buildGraphFromTglf = _adaptagrams.buildGraphFromTglf
+
 
 def buildGraphFromTglfFile(filepath):
     return _adaptagrams.buildGraphFromTglfFile(filepath)
+
+
 buildGraphFromTglfFile = _adaptagrams.buildGraphFromTglfFile
+
 
 def writeStringToFile(s, filepath):
     return _adaptagrams.writeStringToFile(s, filepath)
+
+
 writeStringToFile = _adaptagrams.writeStringToFile
 AlignmentFlag_NONE = _adaptagrams.AlignmentFlag_NONE
 AlignmentFlag_HALIGN = _adaptagrams.AlignmentFlag_HALIGN
@@ -7521,13 +8394,21 @@ AlignmentFlag_VALIGN = _adaptagrams.AlignmentFlag_VALIGN
 AlignmentFlag_HINFEAS = _adaptagrams.AlignmentFlag_HINFEAS
 AlignmentFlag_VINFEAS = _adaptagrams.AlignmentFlag_VINFEAS
 
+
 def __and__(a, b):
     return _adaptagrams.__and__(a, b)
+
+
 __and__ = _adaptagrams.__and__
+
 
 def __ior__(a, b):
     return _adaptagrams.__ior__(a, b)
+
+
 __ior__ = _adaptagrams.__ior__
+
+
 class AlignmentTable(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, AlignmentTable, name, value)
@@ -7559,19 +8440,26 @@ class AlignmentTable(_object):
 
     def isMarkedInfeasible(self, uid, vid, flag):
         return _adaptagrams.AlignmentTable_isMarkedInfeasible(self, uid, vid, flag)
+
     __swig_setmethods__["state"] = _adaptagrams.AlignmentTable_state_set
     __swig_getmethods__["state"] = _adaptagrams.AlignmentTable_state_get
     if _newclass:
         state = _swig_property(_adaptagrams.AlignmentTable_state_get, _adaptagrams.AlignmentTable_state_set)
     __swig_destroy__ = _adaptagrams.delete_AlignmentTable
     __del__ = lambda self: None
+
+
 AlignmentTable_swigregister = _adaptagrams.AlignmentTable_swigregister
 AlignmentTable_swigregister(AlignmentTable)
 
 
 def manhattan(u, v):
     return _adaptagrams.manhattan(u, v)
+
+
 manhattan = _adaptagrams.manhattan
+
+
 class PotentialAlignment(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, PotentialAlignment, name, value)
@@ -7600,6 +8488,7 @@ class PotentialAlignment(_object):
 
     def addToGraph(self, G):
         return _adaptagrams.PotentialAlignment_addToGraph(self, G)
+
     __swig_setmethods__["u"] = _adaptagrams.PotentialAlignment_u_set
     __swig_getmethods__["u"] = _adaptagrams.PotentialAlignment_u_get
     if _newclass:
@@ -7619,7 +8508,9 @@ class PotentialAlignment(_object):
     __swig_setmethods__["removed"] = _adaptagrams.PotentialAlignment_removed_set
     __swig_getmethods__["removed"] = _adaptagrams.PotentialAlignment_removed_get
     if _newclass:
-        removed = _swig_property(_adaptagrams.PotentialAlignment_removed_get, _adaptagrams.PotentialAlignment_removed_set)
+        removed = _swig_property(
+            _adaptagrams.PotentialAlignment_removed_get, _adaptagrams.PotentialAlignment_removed_set
+        )
     __swig_setmethods__["prev"] = _adaptagrams.PotentialAlignment_prev_set
     __swig_getmethods__["prev"] = _adaptagrams.PotentialAlignment_prev_get
     if _newclass:
@@ -7630,13 +8521,19 @@ class PotentialAlignment(_object):
         next = _swig_property(_adaptagrams.PotentialAlignment_next_get, _adaptagrams.PotentialAlignment_next_set)
     __swig_destroy__ = _adaptagrams.delete_PotentialAlignment
     __del__ = lambda self: None
+
+
 PotentialAlignment_swigregister = _adaptagrams.PotentialAlignment_swigregister
 PotentialAlignment_swigregister(PotentialAlignment)
 
 
 def doNearAlignments(graph, atab, ignore, opts, reattempt=False):
     return _adaptagrams.doNearAlignments(graph, atab, ignore, opts, reattempt)
+
+
 doNearAlignments = _adaptagrams.doNearAlignments
+
+
 class OrthoHubLayoutOptions(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, OrthoHubLayoutOptions, name, value)
@@ -7646,11 +8543,16 @@ class OrthoHubLayoutOptions(_object):
     __swig_setmethods__["avoidFlatTriangles"] = _adaptagrams.OrthoHubLayoutOptions_avoidFlatTriangles_set
     __swig_getmethods__["avoidFlatTriangles"] = _adaptagrams.OrthoHubLayoutOptions_avoidFlatTriangles_get
     if _newclass:
-        avoidFlatTriangles = _swig_property(_adaptagrams.OrthoHubLayoutOptions_avoidFlatTriangles_get, _adaptagrams.OrthoHubLayoutOptions_avoidFlatTriangles_set)
+        avoidFlatTriangles = _swig_property(
+            _adaptagrams.OrthoHubLayoutOptions_avoidFlatTriangles_get,
+            _adaptagrams.OrthoHubLayoutOptions_avoidFlatTriangles_set,
+        )
     __swig_setmethods__["includeLinks"] = _adaptagrams.OrthoHubLayoutOptions_includeLinks_set
     __swig_getmethods__["includeLinks"] = _adaptagrams.OrthoHubLayoutOptions_includeLinks_get
     if _newclass:
-        includeLinks = _swig_property(_adaptagrams.OrthoHubLayoutOptions_includeLinks_get, _adaptagrams.OrthoHubLayoutOptions_includeLinks_set)
+        includeLinks = _swig_property(
+            _adaptagrams.OrthoHubLayoutOptions_includeLinks_get, _adaptagrams.OrthoHubLayoutOptions_includeLinks_set
+        )
 
     def __init__(self):
         this = _adaptagrams.new_OrthoHubLayoutOptions()
@@ -7658,10 +8560,14 @@ class OrthoHubLayoutOptions(_object):
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+
     __swig_destroy__ = _adaptagrams.delete_OrthoHubLayoutOptions
     __del__ = lambda self: None
+
+
 OrthoHubLayoutOptions_swigregister = _adaptagrams.OrthoHubLayoutOptions_swigregister
 OrthoHubLayoutOptions_swigregister(OrthoHubLayoutOptions)
+
 
 class OrthoHubLayout(_object):
     __swig_setmethods__ = {}
@@ -7679,8 +8585,11 @@ class OrthoHubLayout(_object):
 
     def layout(self, logger=None):
         return _adaptagrams.OrthoHubLayout_layout(self, logger)
+
     __swig_destroy__ = _adaptagrams.delete_OrthoHubLayout
     __del__ = lambda self: None
+
+
 OrthoHubLayout_swigregister = _adaptagrams.OrthoHubLayout_swigregister
 OrthoHubLayout_swigregister(OrthoHubLayout)
 
@@ -7692,6 +8601,8 @@ TreeRoutingType_CORE_ATTACHMENT = _adaptagrams.TreeRoutingType_CORE_ATTACHMENT
 TreeRoutingType_MONOTONIC = _adaptagrams.TreeRoutingType_MONOTONIC
 ExpansionEstimateMethod_SPACE = _adaptagrams.ExpansionEstimateMethod_SPACE
 ExpansionEstimateMethod_CONSTRAINTS = _adaptagrams.ExpansionEstimateMethod_CONSTRAINTS
+
+
 class HolaOpts(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, HolaOpts, name, value)
@@ -7701,63 +8612,103 @@ class HolaOpts(_object):
     __swig_setmethods__["defaultTreeGrowthDir"] = _adaptagrams.HolaOpts_defaultTreeGrowthDir_set
     __swig_getmethods__["defaultTreeGrowthDir"] = _adaptagrams.HolaOpts_defaultTreeGrowthDir_get
     if _newclass:
-        defaultTreeGrowthDir = _swig_property(_adaptagrams.HolaOpts_defaultTreeGrowthDir_get, _adaptagrams.HolaOpts_defaultTreeGrowthDir_set)
+        defaultTreeGrowthDir = _swig_property(
+            _adaptagrams.HolaOpts_defaultTreeGrowthDir_get, _adaptagrams.HolaOpts_defaultTreeGrowthDir_set
+        )
     __swig_setmethods__["treeLayoutScalar_nodeSep"] = _adaptagrams.HolaOpts_treeLayoutScalar_nodeSep_set
     __swig_getmethods__["treeLayoutScalar_nodeSep"] = _adaptagrams.HolaOpts_treeLayoutScalar_nodeSep_get
     if _newclass:
-        treeLayoutScalar_nodeSep = _swig_property(_adaptagrams.HolaOpts_treeLayoutScalar_nodeSep_get, _adaptagrams.HolaOpts_treeLayoutScalar_nodeSep_set)
+        treeLayoutScalar_nodeSep = _swig_property(
+            _adaptagrams.HolaOpts_treeLayoutScalar_nodeSep_get, _adaptagrams.HolaOpts_treeLayoutScalar_nodeSep_set
+        )
     __swig_setmethods__["treeLayoutScalar_rankSep"] = _adaptagrams.HolaOpts_treeLayoutScalar_rankSep_set
     __swig_getmethods__["treeLayoutScalar_rankSep"] = _adaptagrams.HolaOpts_treeLayoutScalar_rankSep_get
     if _newclass:
-        treeLayoutScalar_rankSep = _swig_property(_adaptagrams.HolaOpts_treeLayoutScalar_rankSep_get, _adaptagrams.HolaOpts_treeLayoutScalar_rankSep_set)
+        treeLayoutScalar_rankSep = _swig_property(
+            _adaptagrams.HolaOpts_treeLayoutScalar_rankSep_get, _adaptagrams.HolaOpts_treeLayoutScalar_rankSep_set
+        )
     __swig_setmethods__["preferConvexTrees"] = _adaptagrams.HolaOpts_preferConvexTrees_set
     __swig_getmethods__["preferConvexTrees"] = _adaptagrams.HolaOpts_preferConvexTrees_get
     if _newclass:
-        preferConvexTrees = _swig_property(_adaptagrams.HolaOpts_preferConvexTrees_get, _adaptagrams.HolaOpts_preferConvexTrees_set)
+        preferConvexTrees = _swig_property(
+            _adaptagrams.HolaOpts_preferConvexTrees_get, _adaptagrams.HolaOpts_preferConvexTrees_set
+        )
     __swig_setmethods__["peeledTreeRouting"] = _adaptagrams.HolaOpts_peeledTreeRouting_set
     __swig_getmethods__["peeledTreeRouting"] = _adaptagrams.HolaOpts_peeledTreeRouting_get
     if _newclass:
-        peeledTreeRouting = _swig_property(_adaptagrams.HolaOpts_peeledTreeRouting_get, _adaptagrams.HolaOpts_peeledTreeRouting_set)
+        peeledTreeRouting = _swig_property(
+            _adaptagrams.HolaOpts_peeledTreeRouting_get, _adaptagrams.HolaOpts_peeledTreeRouting_set
+        )
     __swig_setmethods__["wholeTreeRouting"] = _adaptagrams.HolaOpts_wholeTreeRouting_set
     __swig_getmethods__["wholeTreeRouting"] = _adaptagrams.HolaOpts_wholeTreeRouting_get
     if _newclass:
-        wholeTreeRouting = _swig_property(_adaptagrams.HolaOpts_wholeTreeRouting_get, _adaptagrams.HolaOpts_wholeTreeRouting_set)
+        wholeTreeRouting = _swig_property(
+            _adaptagrams.HolaOpts_wholeTreeRouting_get, _adaptagrams.HolaOpts_wholeTreeRouting_set
+        )
     __swig_setmethods__["orthoHubAvoidFlatTriangles"] = _adaptagrams.HolaOpts_orthoHubAvoidFlatTriangles_set
     __swig_getmethods__["orthoHubAvoidFlatTriangles"] = _adaptagrams.HolaOpts_orthoHubAvoidFlatTriangles_get
     if _newclass:
-        orthoHubAvoidFlatTriangles = _swig_property(_adaptagrams.HolaOpts_orthoHubAvoidFlatTriangles_get, _adaptagrams.HolaOpts_orthoHubAvoidFlatTriangles_set)
+        orthoHubAvoidFlatTriangles = _swig_property(
+            _adaptagrams.HolaOpts_orthoHubAvoidFlatTriangles_get, _adaptagrams.HolaOpts_orthoHubAvoidFlatTriangles_set
+        )
     __swig_setmethods__["useACAforLinks"] = _adaptagrams.HolaOpts_useACAforLinks_set
     __swig_getmethods__["useACAforLinks"] = _adaptagrams.HolaOpts_useACAforLinks_get
     if _newclass:
-        useACAforLinks = _swig_property(_adaptagrams.HolaOpts_useACAforLinks_get, _adaptagrams.HolaOpts_useACAforLinks_set)
+        useACAforLinks = _swig_property(
+            _adaptagrams.HolaOpts_useACAforLinks_get, _adaptagrams.HolaOpts_useACAforLinks_set
+        )
     __swig_setmethods__["routingScalar_crossingPenalty"] = _adaptagrams.HolaOpts_routingScalar_crossingPenalty_set
     __swig_getmethods__["routingScalar_crossingPenalty"] = _adaptagrams.HolaOpts_routingScalar_crossingPenalty_get
     if _newclass:
-        routingScalar_crossingPenalty = _swig_property(_adaptagrams.HolaOpts_routingScalar_crossingPenalty_get, _adaptagrams.HolaOpts_routingScalar_crossingPenalty_set)
+        routingScalar_crossingPenalty = _swig_property(
+            _adaptagrams.HolaOpts_routingScalar_crossingPenalty_get,
+            _adaptagrams.HolaOpts_routingScalar_crossingPenalty_set,
+        )
     __swig_setmethods__["routingScalar_segmentPenalty"] = _adaptagrams.HolaOpts_routingScalar_segmentPenalty_set
     __swig_getmethods__["routingScalar_segmentPenalty"] = _adaptagrams.HolaOpts_routingScalar_segmentPenalty_get
     if _newclass:
-        routingScalar_segmentPenalty = _swig_property(_adaptagrams.HolaOpts_routingScalar_segmentPenalty_get, _adaptagrams.HolaOpts_routingScalar_segmentPenalty_set)
+        routingScalar_segmentPenalty = _swig_property(
+            _adaptagrams.HolaOpts_routingScalar_segmentPenalty_get,
+            _adaptagrams.HolaOpts_routingScalar_segmentPenalty_set,
+        )
     __swig_setmethods__["treePlacement_favourCardinal"] = _adaptagrams.HolaOpts_treePlacement_favourCardinal_set
     __swig_getmethods__["treePlacement_favourCardinal"] = _adaptagrams.HolaOpts_treePlacement_favourCardinal_get
     if _newclass:
-        treePlacement_favourCardinal = _swig_property(_adaptagrams.HolaOpts_treePlacement_favourCardinal_get, _adaptagrams.HolaOpts_treePlacement_favourCardinal_set)
+        treePlacement_favourCardinal = _swig_property(
+            _adaptagrams.HolaOpts_treePlacement_favourCardinal_get,
+            _adaptagrams.HolaOpts_treePlacement_favourCardinal_set,
+        )
     __swig_setmethods__["treePlacement_favourExternal"] = _adaptagrams.HolaOpts_treePlacement_favourExternal_set
     __swig_getmethods__["treePlacement_favourExternal"] = _adaptagrams.HolaOpts_treePlacement_favourExternal_get
     if _newclass:
-        treePlacement_favourExternal = _swig_property(_adaptagrams.HolaOpts_treePlacement_favourExternal_get, _adaptagrams.HolaOpts_treePlacement_favourExternal_set)
+        treePlacement_favourExternal = _swig_property(
+            _adaptagrams.HolaOpts_treePlacement_favourExternal_get,
+            _adaptagrams.HolaOpts_treePlacement_favourExternal_set,
+        )
     __swig_setmethods__["treePlacement_favourIsolation"] = _adaptagrams.HolaOpts_treePlacement_favourIsolation_set
     __swig_getmethods__["treePlacement_favourIsolation"] = _adaptagrams.HolaOpts_treePlacement_favourIsolation_get
     if _newclass:
-        treePlacement_favourIsolation = _swig_property(_adaptagrams.HolaOpts_treePlacement_favourIsolation_get, _adaptagrams.HolaOpts_treePlacement_favourIsolation_set)
-    __swig_setmethods__["expansion_doCostlierDimensionFirst"] = _adaptagrams.HolaOpts_expansion_doCostlierDimensionFirst_set
-    __swig_getmethods__["expansion_doCostlierDimensionFirst"] = _adaptagrams.HolaOpts_expansion_doCostlierDimensionFirst_get
+        treePlacement_favourIsolation = _swig_property(
+            _adaptagrams.HolaOpts_treePlacement_favourIsolation_get,
+            _adaptagrams.HolaOpts_treePlacement_favourIsolation_set,
+        )
+    __swig_setmethods__[
+        "expansion_doCostlierDimensionFirst"
+    ] = _adaptagrams.HolaOpts_expansion_doCostlierDimensionFirst_set
+    __swig_getmethods__[
+        "expansion_doCostlierDimensionFirst"
+    ] = _adaptagrams.HolaOpts_expansion_doCostlierDimensionFirst_get
     if _newclass:
-        expansion_doCostlierDimensionFirst = _swig_property(_adaptagrams.HolaOpts_expansion_doCostlierDimensionFirst_get, _adaptagrams.HolaOpts_expansion_doCostlierDimensionFirst_set)
+        expansion_doCostlierDimensionFirst = _swig_property(
+            _adaptagrams.HolaOpts_expansion_doCostlierDimensionFirst_get,
+            _adaptagrams.HolaOpts_expansion_doCostlierDimensionFirst_set,
+        )
     __swig_setmethods__["expansion_estimateMethod"] = _adaptagrams.HolaOpts_expansion_estimateMethod_set
     __swig_getmethods__["expansion_estimateMethod"] = _adaptagrams.HolaOpts_expansion_estimateMethod_get
     if _newclass:
-        expansion_estimateMethod = _swig_property(_adaptagrams.HolaOpts_expansion_estimateMethod_get, _adaptagrams.HolaOpts_expansion_estimateMethod_set)
+        expansion_estimateMethod = _swig_property(
+            _adaptagrams.HolaOpts_expansion_estimateMethod_get, _adaptagrams.HolaOpts_expansion_estimateMethod_set
+        )
     __swig_setmethods__["do_near_align"] = _adaptagrams.HolaOpts_do_near_align_set
     __swig_getmethods__["do_near_align"] = _adaptagrams.HolaOpts_do_near_align_get
     if _newclass:
@@ -7769,27 +8720,39 @@ class HolaOpts(_object):
     __swig_setmethods__["nearAlignScalar_kinkWidth"] = _adaptagrams.HolaOpts_nearAlignScalar_kinkWidth_set
     __swig_getmethods__["nearAlignScalar_kinkWidth"] = _adaptagrams.HolaOpts_nearAlignScalar_kinkWidth_get
     if _newclass:
-        nearAlignScalar_kinkWidth = _swig_property(_adaptagrams.HolaOpts_nearAlignScalar_kinkWidth_get, _adaptagrams.HolaOpts_nearAlignScalar_kinkWidth_set)
+        nearAlignScalar_kinkWidth = _swig_property(
+            _adaptagrams.HolaOpts_nearAlignScalar_kinkWidth_get, _adaptagrams.HolaOpts_nearAlignScalar_kinkWidth_set
+        )
     __swig_setmethods__["nearAlignScalar_scope"] = _adaptagrams.HolaOpts_nearAlignScalar_scope_set
     __swig_getmethods__["nearAlignScalar_scope"] = _adaptagrams.HolaOpts_nearAlignScalar_scope_get
     if _newclass:
-        nearAlignScalar_scope = _swig_property(_adaptagrams.HolaOpts_nearAlignScalar_scope_get, _adaptagrams.HolaOpts_nearAlignScalar_scope_set)
+        nearAlignScalar_scope = _swig_property(
+            _adaptagrams.HolaOpts_nearAlignScalar_scope_get, _adaptagrams.HolaOpts_nearAlignScalar_scope_set
+        )
     __swig_setmethods__["nodePaddingScalar"] = _adaptagrams.HolaOpts_nodePaddingScalar_set
     __swig_getmethods__["nodePaddingScalar"] = _adaptagrams.HolaOpts_nodePaddingScalar_get
     if _newclass:
-        nodePaddingScalar = _swig_property(_adaptagrams.HolaOpts_nodePaddingScalar_get, _adaptagrams.HolaOpts_nodePaddingScalar_set)
+        nodePaddingScalar = _swig_property(
+            _adaptagrams.HolaOpts_nodePaddingScalar_get, _adaptagrams.HolaOpts_nodePaddingScalar_set
+        )
     __swig_setmethods__["preferredAspectRatio"] = _adaptagrams.HolaOpts_preferredAspectRatio_set
     __swig_getmethods__["preferredAspectRatio"] = _adaptagrams.HolaOpts_preferredAspectRatio_get
     if _newclass:
-        preferredAspectRatio = _swig_property(_adaptagrams.HolaOpts_preferredAspectRatio_get, _adaptagrams.HolaOpts_preferredAspectRatio_set)
+        preferredAspectRatio = _swig_property(
+            _adaptagrams.HolaOpts_preferredAspectRatio_get, _adaptagrams.HolaOpts_preferredAspectRatio_set
+        )
     __swig_setmethods__["preferredTreeGrowthDir"] = _adaptagrams.HolaOpts_preferredTreeGrowthDir_set
     __swig_getmethods__["preferredTreeGrowthDir"] = _adaptagrams.HolaOpts_preferredTreeGrowthDir_get
     if _newclass:
-        preferredTreeGrowthDir = _swig_property(_adaptagrams.HolaOpts_preferredTreeGrowthDir_get, _adaptagrams.HolaOpts_preferredTreeGrowthDir_set)
+        preferredTreeGrowthDir = _swig_property(
+            _adaptagrams.HolaOpts_preferredTreeGrowthDir_get, _adaptagrams.HolaOpts_preferredTreeGrowthDir_set
+        )
     __swig_setmethods__["putUlcAtOrigin"] = _adaptagrams.HolaOpts_putUlcAtOrigin_set
     __swig_getmethods__["putUlcAtOrigin"] = _adaptagrams.HolaOpts_putUlcAtOrigin_get
     if _newclass:
-        putUlcAtOrigin = _swig_property(_adaptagrams.HolaOpts_putUlcAtOrigin_get, _adaptagrams.HolaOpts_putUlcAtOrigin_set)
+        putUlcAtOrigin = _swig_property(
+            _adaptagrams.HolaOpts_putUlcAtOrigin_get, _adaptagrams.HolaOpts_putUlcAtOrigin_set
+        )
 
     def __init__(self):
         this = _adaptagrams.new_HolaOpts()
@@ -7797,8 +8760,11 @@ class HolaOpts(_object):
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+
     __swig_destroy__ = _adaptagrams.delete_HolaOpts
     __del__ = lambda self: None
+
+
 HolaOpts_swigregister = _adaptagrams.HolaOpts_swigregister
 HolaOpts_swigregister(HolaOpts)
 
@@ -7814,6 +8780,8 @@ CardinalDir_EAST = _adaptagrams.CardinalDir_EAST
 CardinalDir_SOUTH = _adaptagrams.CardinalDir_SOUTH
 CardinalDir_WEST = _adaptagrams.CardinalDir_WEST
 CardinalDir_NORTH = _adaptagrams.CardinalDir_NORTH
+
+
 class Compass(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, Compass, name, value)
@@ -7919,101 +8887,173 @@ class Compass(_object):
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+
     __swig_destroy__ = _adaptagrams.delete_Compass
     __del__ = lambda self: None
+
+
 Compass_swigregister = _adaptagrams.Compass_swigregister
 Compass_swigregister(Compass)
 
+
 def Compass_isVertical(d):
     return _adaptagrams.Compass_isVertical(d)
+
+
 Compass_isVertical = _adaptagrams.Compass_isVertical
+
 
 def Compass_isHorizontal(d):
     return _adaptagrams.Compass_isHorizontal(d)
+
+
 Compass_isHorizontal = _adaptagrams.Compass_isHorizontal
+
 
 def Compass_isVerticalCard(d):
     return _adaptagrams.Compass_isVerticalCard(d)
+
+
 Compass_isVerticalCard = _adaptagrams.Compass_isVerticalCard
+
 
 def Compass_isHorizontalCard(d):
     return _adaptagrams.Compass_isHorizontalCard(d)
+
+
 Compass_isHorizontalCard = _adaptagrams.Compass_isHorizontalCard
+
 
 def Compass_isInDim(d, dim):
     return _adaptagrams.Compass_isInDim(d, dim)
+
+
 Compass_isInDim = _adaptagrams.Compass_isInDim
+
 
 def Compass_isIncreasing(d):
     return _adaptagrams.Compass_isIncreasing(d)
+
+
 Compass_isIncreasing = _adaptagrams.Compass_isIncreasing
+
 
 def Compass_isDecreasing(d):
     return _adaptagrams.Compass_isDecreasing(d)
+
+
 Compass_isDecreasing = _adaptagrams.Compass_isDecreasing
+
 
 def Compass_isIncreasingCard(d):
     return _adaptagrams.Compass_isIncreasingCard(d)
+
+
 Compass_isIncreasingCard = _adaptagrams.Compass_isIncreasingCard
+
 
 def Compass_isDecreasingCard(d):
     return _adaptagrams.Compass_isDecreasingCard(d)
+
+
 Compass_isDecreasingCard = _adaptagrams.Compass_isDecreasingCard
+
 
 def Compass_sameDimension(d0, d1):
     return _adaptagrams.Compass_sameDimension(d0, d1)
+
+
 Compass_sameDimension = _adaptagrams.Compass_sameDimension
+
 
 def Compass_arePerpendicular(d0, d1):
     return _adaptagrams.Compass_arePerpendicular(d0, d1)
+
+
 Compass_arePerpendicular = _adaptagrams.Compass_arePerpendicular
+
 
 def Compass_compassDirection(*args):
     return _adaptagrams.Compass_compassDirection(*args)
+
+
 Compass_compassDirection = _adaptagrams.Compass_compassDirection
+
 
 def Compass_cardinalDirection(*args):
     return _adaptagrams.Compass_cardinalDirection(*args)
+
+
 Compass_cardinalDirection = _adaptagrams.Compass_cardinalDirection
+
 
 def Compass_isCardinal(d):
     return _adaptagrams.Compass_isCardinal(d)
+
+
 Compass_isCardinal = _adaptagrams.Compass_isCardinal
+
 
 def Compass_cardRotateCw90(d):
     return _adaptagrams.Compass_cardRotateCw90(d)
+
+
 Compass_cardRotateCw90 = _adaptagrams.Compass_cardRotateCw90
+
 
 def Compass_cardRotateAcw90(d):
     return _adaptagrams.Compass_cardRotateAcw90(d)
+
+
 Compass_cardRotateAcw90 = _adaptagrams.Compass_cardRotateAcw90
+
 
 def Compass_cardFlip(d):
     return _adaptagrams.Compass_cardFlip(d)
+
+
 Compass_cardFlip = _adaptagrams.Compass_cardFlip
+
 
 def Compass_dirToString(d):
     return _adaptagrams.Compass_dirToString(d)
+
+
 Compass_dirToString = _adaptagrams.Compass_dirToString
+
 
 def Compass_cardToString(d):
     return _adaptagrams.Compass_cardToString(d)
+
+
 Compass_cardToString = _adaptagrams.Compass_cardToString
+
 
 def Compass_cardinalComponents(d):
     return _adaptagrams.Compass_cardinalComponents(d)
+
+
 Compass_cardinalComponents = _adaptagrams.Compass_cardinalComponents
+
 
 def Compass_getRotationFunction(fromDir, toDir):
     return _adaptagrams.Compass_getRotationFunction(fromDir, toDir)
+
+
 Compass_getRotationFunction = _adaptagrams.Compass_getRotationFunction
+
 
 def Compass_getInplaceRotationFunction(fromDir, toDir):
     return _adaptagrams.Compass_getInplaceRotationFunction(fromDir, toDir)
+
+
 Compass_getInplaceRotationFunction = _adaptagrams.Compass_getInplaceRotationFunction
+
 
 def Compass_vectorSigns(d):
     return _adaptagrams.Compass_vectorSigns(d)
+
+
 Compass_vectorSigns = _adaptagrams.Compass_vectorSigns
 Compass.cwCards = _adaptagrams.cvar.Compass_cwCards
 Compass.acwCards = _adaptagrams.cvar.Compass_acwCards
@@ -8026,6 +9066,7 @@ Compass.rotateCw90 = _adaptagrams.cvar.Compass_rotateCw90
 Compass.flip = _adaptagrams.cvar.Compass_flip
 Compass.varDim = _adaptagrams.cvar.Compass_varDim
 Compass.constDim = _adaptagrams.cvar.Compass_constDim
+
 
 class LineSegment(_object):
     __swig_setmethods__ = {}
@@ -8067,6 +9108,7 @@ class LineSegment(_object):
 
     def coordOnWhichSide(self, z1):
         return _adaptagrams.LineSegment_coordOnWhichSide(self, z1)
+
     __swig_setmethods__["p0"] = _adaptagrams.LineSegment_p0_set
     __swig_getmethods__["p0"] = _adaptagrams.LineSegment_p0_get
     if _newclass:
@@ -8129,22 +9171,26 @@ class LineSegment(_object):
         length = _swig_property(_adaptagrams.LineSegment_length_get, _adaptagrams.LineSegment_length_set)
     __swig_destroy__ = _adaptagrams.delete_LineSegment
     __del__ = lambda self: None
+
+
 LineSegment_swigregister = _adaptagrams.LineSegment_swigregister
 LineSegment_swigregister(LineSegment)
 LineSegment.EPSILON = _adaptagrams.cvar.LineSegment_EPSILON
 
+
 class PeeledNode(GhostNode):
     __swig_setmethods__ = {}
     for _s in [GhostNode]:
-        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+        __swig_setmethods__.update(getattr(_s, "__swig_setmethods__", {}))
     __setattr__ = lambda self, name, value: _swig_setattr(self, PeeledNode, name, value)
     __swig_getmethods__ = {}
     for _s in [GhostNode]:
-        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+        __swig_getmethods__.update(getattr(_s, "__swig_getmethods__", {}))
     __getattr__ = lambda self, name: _swig_getattr(self, PeeledNode, name)
 
     def __init__(self, *args, **kwargs):
         raise AttributeError("No constructor defined")
+
     __repr__ = _swig_repr
     if _newclass:
         allocate = staticmethod(_adaptagrams.PeeledNode_allocate)
@@ -8152,12 +9198,18 @@ class PeeledNode(GhostNode):
         allocate = _adaptagrams.PeeledNode_allocate
     __swig_destroy__ = _adaptagrams.delete_PeeledNode
     __del__ = lambda self: None
+
+
 PeeledNode_swigregister = _adaptagrams.PeeledNode_swigregister
 PeeledNode_swigregister(PeeledNode)
 
+
 def PeeledNode_allocate(node):
     return _adaptagrams.PeeledNode_allocate(node)
+
+
 PeeledNode_allocate = _adaptagrams.PeeledNode_allocate
+
 
 class Stem(_object):
     __swig_setmethods__ = {}
@@ -8172,6 +9224,7 @@ class Stem(_object):
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+
     __swig_setmethods__["m_plain_leaf"] = _adaptagrams.Stem_m_plain_leaf_set
     __swig_getmethods__["m_plain_leaf"] = _adaptagrams.Stem_m_plain_leaf_get
     if _newclass:
@@ -8183,15 +9236,22 @@ class Stem(_object):
 
     def addSelfToGraph(self, H):
         return _adaptagrams.Stem_addSelfToGraph(self, H)
+
     __swig_destroy__ = _adaptagrams.delete_Stem
     __del__ = lambda self: None
+
+
 Stem_swigregister = _adaptagrams.Stem_swigregister
 Stem_swigregister(Stem)
 
 
 def makeStemsFromLeaves(leaves):
     return _adaptagrams.makeStemsFromLeaves(leaves)
+
+
 makeStemsFromLeaves = _adaptagrams.makeStemsFromLeaves
+
+
 class NodeBuckets(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, NodeBuckets, name, value)
@@ -8214,6 +9274,7 @@ class NodeBuckets(_object):
 
     def severNodes(self, nodes):
         return _adaptagrams.NodeBuckets_severNodes(self, nodes)
+
     __swig_setmethods__["m_graph"] = _adaptagrams.NodeBuckets_m_graph_set
     __swig_getmethods__["m_graph"] = _adaptagrams.NodeBuckets_m_graph_get
     if _newclass:
@@ -8228,13 +9289,19 @@ class NodeBuckets(_object):
         m_buckets = _swig_property(_adaptagrams.NodeBuckets_m_buckets_get, _adaptagrams.NodeBuckets_m_buckets_set)
     __swig_destroy__ = _adaptagrams.delete_NodeBuckets
     __del__ = lambda self: None
+
+
 NodeBuckets_swigregister = _adaptagrams.NodeBuckets_swigregister
 NodeBuckets_swigregister(NodeBuckets)
 
 
 def peel(G):
     return _adaptagrams.peel(G)
+
+
 peel = _adaptagrams.peel
+
+
 class EdgeSegment(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, EdgeSegment, name, value)
@@ -8257,6 +9324,7 @@ class EdgeSegment(_object):
 
     def addSep(self, m):
         return _adaptagrams.EdgeSegment_addSep(self, m)
+
     __swig_setmethods__["orientation"] = _adaptagrams.EdgeSegment_orientation_set
     __swig_getmethods__["orientation"] = _adaptagrams.EdgeSegment_orientation_get
     if _newclass:
@@ -8283,12 +9351,16 @@ class EdgeSegment(_object):
         closingNode = _swig_property(_adaptagrams.EdgeSegment_closingNode_get, _adaptagrams.EdgeSegment_closingNode_set)
     __swig_destroy__ = _adaptagrams.delete_EdgeSegment
     __del__ = lambda self: None
+
+
 EdgeSegment_swigregister = _adaptagrams.EdgeSegment_swigregister
 EdgeSegment_swigregister(EdgeSegment)
 
 EventType_CLOSE = _adaptagrams.EventType_CLOSE
 EventType_SUSTAIN = _adaptagrams.EventType_SUSTAIN
 EventType_OPEN = _adaptagrams.EventType_OPEN
+
+
 class Event(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, Event, name, value)
@@ -8305,6 +9377,7 @@ class Event(_object):
 
     def getNode(self):
         return _adaptagrams.Event_getNode(self)
+
     __swig_setmethods__["seg"] = _adaptagrams.Event_seg_set
     __swig_getmethods__["seg"] = _adaptagrams.Event_seg_get
     if _newclass:
@@ -8335,15 +9408,22 @@ class Event(_object):
 
     def y(self):
         return _adaptagrams.Event_y(self)
+
     __swig_destroy__ = _adaptagrams.delete_Event
     __del__ = lambda self: None
+
+
 Event_swigregister = _adaptagrams.Event_swigregister
 Event_swigregister(Event)
 
 
 def CompareActiveEvents(a, b):
     return _adaptagrams.CompareActiveEvents(a, b)
+
+
 CompareActiveEvents = _adaptagrams.CompareActiveEvents
+
+
 class OrthoPlanariserOptions(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, OrthoPlanariserOptions, name, value)
@@ -8353,7 +9433,10 @@ class OrthoPlanariserOptions(_object):
     __swig_setmethods__["generateConstraints"] = _adaptagrams.OrthoPlanariserOptions_generateConstraints_set
     __swig_getmethods__["generateConstraints"] = _adaptagrams.OrthoPlanariserOptions_generateConstraints_get
     if _newclass:
-        generateConstraints = _swig_property(_adaptagrams.OrthoPlanariserOptions_generateConstraints_get, _adaptagrams.OrthoPlanariserOptions_generateConstraints_set)
+        generateConstraints = _swig_property(
+            _adaptagrams.OrthoPlanariserOptions_generateConstraints_get,
+            _adaptagrams.OrthoPlanariserOptions_generateConstraints_set,
+        )
 
     def __init__(self):
         this = _adaptagrams.new_OrthoPlanariserOptions()
@@ -8361,10 +9444,14 @@ class OrthoPlanariserOptions(_object):
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+
     __swig_destroy__ = _adaptagrams.delete_OrthoPlanariserOptions
     __del__ = lambda self: None
+
+
 OrthoPlanariserOptions_swigregister = _adaptagrams.OrthoPlanariserOptions_swigregister
 OrthoPlanariserOptions_swigregister(OrthoPlanariserOptions)
+
 
 class OrthoPlanariser(_object):
     __swig_setmethods__ = {}
@@ -8379,6 +9466,7 @@ class OrthoPlanariser(_object):
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+
     __swig_destroy__ = _adaptagrams.delete_OrthoPlanariser
     __del__ = lambda self: None
 
@@ -8387,12 +9475,16 @@ class OrthoPlanariser(_object):
 
     def planarise(self):
         return _adaptagrams.OrthoPlanariser_planarise(self)
+
+
 OrthoPlanariser_swigregister = _adaptagrams.OrthoPlanariser_swigregister
 OrthoPlanariser_swigregister(OrthoPlanariser)
 
 RouteProcessing_NONE = _adaptagrams.RouteProcessing_NONE
 RouteProcessing_RECORD = _adaptagrams.RouteProcessing_RECORD
 RouteProcessing_REFINE_AND_RECORD = _adaptagrams.RouteProcessing_REFINE_AND_RECORD
+
+
 class RoutingAdapter(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, RoutingAdapter, name, value)
@@ -8418,6 +9510,7 @@ class RoutingAdapter(_object):
 
     def recordRoutes(self, refine=False):
         return _adaptagrams.RoutingAdapter_recordRoutes(self, refine)
+
     __swig_setmethods__["router"] = _adaptagrams.RoutingAdapter_router_set
     __swig_getmethods__["router"] = _adaptagrams.RoutingAdapter_router_get
     if _newclass:
@@ -8429,15 +9522,22 @@ class RoutingAdapter(_object):
     __swig_setmethods__["edgeIdToConnRef"] = _adaptagrams.RoutingAdapter_edgeIdToConnRef_set
     __swig_getmethods__["edgeIdToConnRef"] = _adaptagrams.RoutingAdapter_edgeIdToConnRef_get
     if _newclass:
-        edgeIdToConnRef = _swig_property(_adaptagrams.RoutingAdapter_edgeIdToConnRef_get, _adaptagrams.RoutingAdapter_edgeIdToConnRef_set)
+        edgeIdToConnRef = _swig_property(
+            _adaptagrams.RoutingAdapter_edgeIdToConnRef_get, _adaptagrams.RoutingAdapter_edgeIdToConnRef_set
+        )
     __swig_setmethods__["nodeIdToShapeRef"] = _adaptagrams.RoutingAdapter_nodeIdToShapeRef_set
     __swig_getmethods__["nodeIdToShapeRef"] = _adaptagrams.RoutingAdapter_nodeIdToShapeRef_get
     if _newclass:
-        nodeIdToShapeRef = _swig_property(_adaptagrams.RoutingAdapter_nodeIdToShapeRef_get, _adaptagrams.RoutingAdapter_nodeIdToShapeRef_set)
+        nodeIdToShapeRef = _swig_property(
+            _adaptagrams.RoutingAdapter_nodeIdToShapeRef_get, _adaptagrams.RoutingAdapter_nodeIdToShapeRef_set
+        )
     __swig_destroy__ = _adaptagrams.delete_RoutingAdapter
     __del__ = lambda self: None
+
+
 RoutingAdapter_swigregister = _adaptagrams.RoutingAdapter_swigregister
 RoutingAdapter_swigregister(RoutingAdapter)
+
 
 class LeaflessOrthoRouter(_object):
     __swig_setmethods__ = {}
@@ -8452,6 +9552,7 @@ class LeaflessOrthoRouter(_object):
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+
     __swig_destroy__ = _adaptagrams.delete_LeaflessOrthoRouter
     __del__ = lambda self: None
 
@@ -8460,25 +9561,41 @@ class LeaflessOrthoRouter(_object):
 
     def setShapeBufferDistanceIELScalar(self, a):
         return _adaptagrams.LeaflessOrthoRouter_setShapeBufferDistanceIELScalar(self, a)
+
     __swig_setmethods__["recordEachAttempt"] = _adaptagrams.LeaflessOrthoRouter_recordEachAttempt_set
     __swig_getmethods__["recordEachAttempt"] = _adaptagrams.LeaflessOrthoRouter_recordEachAttempt_get
     if _newclass:
-        recordEachAttempt = _swig_property(_adaptagrams.LeaflessOrthoRouter_recordEachAttempt_get, _adaptagrams.LeaflessOrthoRouter_recordEachAttempt_set)
+        recordEachAttempt = _swig_property(
+            _adaptagrams.LeaflessOrthoRouter_recordEachAttempt_get,
+            _adaptagrams.LeaflessOrthoRouter_recordEachAttempt_set,
+        )
     __swig_setmethods__["routingAttemptTglf"] = _adaptagrams.LeaflessOrthoRouter_routingAttemptTglf_set
     __swig_getmethods__["routingAttemptTglf"] = _adaptagrams.LeaflessOrthoRouter_routingAttemptTglf_get
     if _newclass:
-        routingAttemptTglf = _swig_property(_adaptagrams.LeaflessOrthoRouter_routingAttemptTglf_get, _adaptagrams.LeaflessOrthoRouter_routingAttemptTglf_set)
+        routingAttemptTglf = _swig_property(
+            _adaptagrams.LeaflessOrthoRouter_routingAttemptTglf_get,
+            _adaptagrams.LeaflessOrthoRouter_routingAttemptTglf_set,
+        )
+
+
 LeaflessOrthoRouter_swigregister = _adaptagrams.LeaflessOrthoRouter_swigregister
 LeaflessOrthoRouter_swigregister(LeaflessOrthoRouter)
 
 
 def reattachTrees(core, trees, opts, logger=None):
     return _adaptagrams.reattachTrees(core, trees, opts, logger)
+
+
 reattachTrees = _adaptagrams.reattachTrees
+
 
 def chooseBestPlacement(tps, opts):
     return _adaptagrams.chooseBestPlacement(tps, opts)
+
+
 chooseBestPlacement = _adaptagrams.chooseBestPlacement
+
+
 class TreePlacement(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, TreePlacement, name, value)
@@ -8555,10 +9672,14 @@ class TreePlacement(_object):
 
     def rootIsAlignedWith(self, dim, id):
         return _adaptagrams.TreePlacement_rootIsAlignedWith(self, dim, id)
+
     __swig_destroy__ = _adaptagrams.delete_TreePlacement
     __del__ = lambda self: None
+
+
 TreePlacement_swigregister = _adaptagrams.TreePlacement_swigregister
 TreePlacement_swigregister(TreePlacement)
+
 
 class Tree(_object):
     __swig_setmethods__ = {}
@@ -8621,11 +9742,12 @@ class Tree(_object):
 
     def addBufferNodesAndConstraints(self, G, bufferNodes):
         return _adaptagrams.Tree_addBufferNodesAndConstraints(self, G, bufferNodes)
+
     __swig_destroy__ = _adaptagrams.delete_Tree
     __del__ = lambda self: None
+
+
 Tree_swigregister = _adaptagrams.Tree_swigregister
 Tree_swigregister(Tree)
 
 # This file is compatible with both classic and new-style classes.
-
-
