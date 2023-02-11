@@ -249,12 +249,12 @@ class CompositeCell:
         #     y_size += 1
 
         # Now generate the cells
-        for x_index in range(x_size):
+        for y_index in range(y_size):
             # Create a new row
             cell_list.append([])
-            for y_index in range(y_size):
+            for x_index in range(x_size):
                 # Create a new cell
-                cell_list[x_index].append(PrimitiveCell(x_index, y_index, computed_dimension, []))
+                cell_list[y_index].append(PrimitiveCell(x_index, y_index, computed_dimension, []))
 
         # Next, generate the different pieces of
         # ports based on their presence and
