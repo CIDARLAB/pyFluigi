@@ -3,6 +3,7 @@ from __future__ import annotations
 from enum import Enum
 from queue import Queue
 from typing import Dict, List, NamedTuple
+from fluigi.parameters import SPACER_THRESHOLD
 
 from parchmint.component import Component
 from parchmint.port import Port
@@ -15,6 +16,14 @@ from fluigi.pnr.sfc.utils import get_closest_side
 
 class CompositeCell:
     def __init__(self, cell_list: List[List[PrimitiveCell]]) -> None:
+        """ Initializes the composite cell
+
+        Args:
+            cell_list (List[List[PrimitiveCell]]): List of lists of primitive cells that make up the composite cell
+
+        Raises:
+            ValueError: If the cell list is empty / the coordinates of the cells are incorrect
+        """        
         # Check to ensure all primitive cell indexes are correct
         for row_index in range(len(cell_list)):
             for column_index in range(len(cell_list[row_index])):
@@ -146,7 +155,7 @@ class CompositeCell:
             )
 
     @staticmethod
-    def from_parchmint_component(component: Component) -> CompositeCell:
+    def from_parchmint_component(component: Component, spread_ports_enabled:bool = True, insert_spacers_enabled:bool = True) -> CompositeCell:
         """ Generates a composite cell from a component
 
         Args:
@@ -156,6 +165,14 @@ class CompositeCell:
             CompositeCell: Composite cell generated from the component
         """
         
+        # TODO - Figure out if this the right way to do this.
+        # Currently setting the dimension to be the threshold / 
+        # We should change the spacer function to be a relaxer 
+        # eveywhere
+
+        computed_dimension = SPACER_THRESHOLD
+
+
         # Create a list of lists of primitive cells
         cell_list: List[List[PrimitiveCell]] = []
 
@@ -194,10 +211,10 @@ class CompositeCell:
 
         # horizontal and vertical side port lists to be used for spacer generation in the end
         horizontal_side_port_lists = [port for port in north_ports]
-        horizontal_side_port_lists.extend([port for port in south_ports])
+        horizontal_side_port_lists.extend([port for port in south_ports if port not in horizontal_side_port_lists])
 
         vertical_side_port_lists = [port for port in east_ports]
-        vertical_side_port_lists.extend([port for port in west_ports])
+        vertical_side_port_lists.extend([port for port in west_ports if port not in vertical_side_port_lists])
 
         horizontal_side_port_lists.sort(key=lambda port: port.x)
         vertical_side_port_lists.sort(key=lambda port: port.y)
@@ -214,11 +231,12 @@ class CompositeCell:
         # Y Size of the composite cell
         y_size = max([len(east_ports), len(west_ports)])
 
-        # Now check if the sizes is odd or even and increment if odd
-        if len(north_ports) % 2 == 1 or len(south_ports) % 2 == 1:
-            x_size += 1
-        if len(east_ports) % 2 == 1 or len(west_ports) % 2 == 1:
-            y_size += 1
+        # TODO: Test if this is needed anymore
+        # # Now check if the sizes is odd or even and increment if odd
+        # if len(north_ports) % 2 == 1 or len(south_ports) % 2 == 1:
+        #     x_size += 1
+        # if len(east_ports) % 2 == 1 or len(west_ports) % 2 == 1:
+        #     y_size += 1
 
         # Now generate the cells
         for x_index in range(x_size):
@@ -226,7 +244,7 @@ class CompositeCell:
             cell_list.append([])
             for y_index in range(y_size):
                 # Create a new cell
-                cell_list[x_index].append(PrimitiveCell(x_index, y_index, 1, []))
+                cell_list[x_index].append(PrimitiveCell(x_index, y_index, computed_dimension, []))
 
         # Next, generate the different pieces of
         # ports based on their presence and
@@ -256,23 +274,26 @@ class CompositeCell:
         for side, size, ports in staging_list:
             CompositeCell.__initialize_ports(cell_list, side, size, ports)
 
-            # Spread the ports outwards based on the relative distances
-            # between the ports. THRESHOLD doesn't matter here since we
-            # aren't yet doing the expansion with spacer blocks
-            spread_ports(
-                cell_list=cell_list, side=side, component=component, ports_list=ports
+            if spread_ports_enabled:
+                # Spread the ports outwards based on the relative distances
+                # between the ports. THRESHOLD doesn't matter here since we
+                # aren't yet doing the expansion with spacer blocks
+                spread_ports(
+                    cell_list=cell_list, side=side, component=component, ports_list=ports
+                )
+
+        if insert_spacers_enabled:
+            # Generate 'spacer' blocks with the space
+            # modulo THRESHOLD based on inter port
+            # distances
+            # Generate the spacers for the different sides
+            generate_spacers(
+                cell_list, top_port_list=north_ports, bottom_port_list=south_ports, is_horizontal=True
+            )
+            generate_spacers(
+                cell_list, top_port_list=east_ports, bottom_port_list=west_ports, is_horizontal=False
             )
 
-        # Generate 'spacer' blocks with the space
-        # modulo THRESHOLD based on inter port
-        # distances
-        # Generate the spacers for the different sides
-        generate_spacers(
-            cell_list, top_port_list=north_ports, bottom_port_list=south_ports, is_horizontal=True
-        )
-        generate_spacers(
-            cell_list, top_port_list=east_ports, bottom_port_list=west_ports, is_horizontal=False
-        )
         ret = CompositeCell(cell_list)
         return ret
 
