@@ -1,6 +1,7 @@
 import pytest
 from fluigi.pnr.sfc.primitivecell import ComponentSide, PrimitiveCell
 from parchmint.component import Component
+from parchmint.port import Port
 
 
 @pytest.fixture
@@ -119,3 +120,62 @@ def cell_test6():
 
 def generate_new_primitive(x, y):
     return PrimitiveCell(x_coord=x, y_coord=y, size=100, ports_exists=[])
+
+
+
+@pytest.fixture
+def comp1() -> Component:
+    comp1 = Component(
+        ID="comp1",
+        name="comp1",
+        xpos=0,
+        ypos=0,
+        xspan=1000,
+        yspan=10000,
+        ports_list=[
+            Port(
+                label="1",
+                layer="flow",
+                x = 500,
+                y = 0,
+            ),
+            Port(
+                label="2",
+                layer="flow",
+                x = 1000,
+                y = 500,
+            ),
+            Port(
+                label="3",
+                layer="flow",
+                x = 1000,
+                y = 5000,
+            ),
+            Port(
+                label="4",
+                layer="flow",
+                x = 1000,
+                y = 9500,
+            ),
+            Port(
+                label="5",
+                layer="flow",
+                x = 500,
+                y = 10000,
+            ),
+            Port(
+                label="6",
+                layer="flow",
+                x = 0,
+                y = 5000,
+            ),
+            Port(
+                label="7",
+                layer="flow",
+                x = 0,
+                y = 500,
+            ),
+        ]
+    )
+    return comp1
+

@@ -66,6 +66,16 @@ class CompositeCell:
         """        
         return self._cells
 
+    def activate_port(self, x: int, y:int, side:ComponentSide) -> None:
+        """ Activates a port on the composite cell
+
+        Args:
+            x (int): x coordinate of the port. 
+            y (int): y coordinate of the port. 
+            side (ComponentSide): side of the port.
+        """        
+        self._cells[y][x].activate_port(side)
+
     @staticmethod
     def __initialize_ports(
         cell_list: List[List[PrimitiveCell]],

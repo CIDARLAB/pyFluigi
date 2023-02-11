@@ -36,7 +36,9 @@ def to_polar(rectangle: Tuple[int, int, int, int], point: Tuple[int, int]) -> Tu
 def get_closest_side(component: Component, port: Port) -> Optional[ComponentSide]:
     """Finds the side of the component that is closest to the port
 
-    Returns the side of the component that is closest to the port, or None if the port is in the center of the component.
+    Returns the side of the component that is closest to the port, or None if the 
+    port is in the center of the component.
+    
     In the case of diagonals :
     NorthEast Diagonal : Returns NORTH
     SouthEast Diagonal : Returns EAST
@@ -52,24 +54,39 @@ def get_closest_side(component: Component, port: Port) -> Optional[ComponentSide
         Optional[ComponentSide]: Returns the side of the component that is closest to the port, or None if the port is in the center of the component
     """
     # Get the port coordinates in radial coordinates relative to the center of the component
-    r, theta = to_polar((0, 0, component.xspan, component.yspan), (port.x, port.y))
+    r, theta = to_polar((0, 0, component.xspan, component.yspan), (int(port.x), int(port.y)))
     
     # Check if the port is in the center
     if r == 0:
         return None
     
     #Convert negative angles to positive
-    if theta < 0:
-        theta += 360
+    def to_positive_angle(angle):
+        if angle < 0:
+            return angle + 360
+        return angle
+    
+    # Get the angles of the diagonals
+    _, NORTH_EAST_ANGLE = to_polar((0, 0, component.xspan, component.yspan), (component.xspan, 0))
+    _, NORTH_WEST_ANGLE = to_polar((0, 0, component.xspan, component.yspan), (0, 0))
+    _, SOUTH_WEST_ANGLE = to_polar((0, 0, component.xspan, component.yspan), (0, component.yspan))
+    _, SOUTH_EAST_ANGLE = to_polar((0, 0, component.xspan, component.yspan), (component.xspan, component.yspan))
+    
+    # Convert negative angles to positive
+    theta = to_positive_angle(theta)
+    NORTH_EAST_ANGLE = to_positive_angle(NORTH_EAST_ANGLE)
+    NORTH_WEST_ANGLE = to_positive_angle(NORTH_WEST_ANGLE)
+    SOUTH_WEST_ANGLE = to_positive_angle(SOUTH_WEST_ANGLE)
+    SOUTH_EAST_ANGLE = to_positive_angle(SOUTH_EAST_ANGLE)
 
     # Now if theta is between pi/4 and 3pi/4 return NORTH
-    if theta >= 45 and theta < 135:
+    if theta >= NORTH_EAST_ANGLE and theta < NORTH_WEST_ANGLE:
         return ComponentSide.NORTH 
-    elif theta >= 135 and theta < 225:
+    elif theta >= NORTH_WEST_ANGLE and theta < SOUTH_WEST_ANGLE:
         return ComponentSide.WEST
-    elif theta >= 225 and theta < 315:
+    elif theta >= SOUTH_WEST_ANGLE and theta < SOUTH_EAST_ANGLE:
         return ComponentSide.SOUTH  
-    elif theta >= 315 or theta < 45:
+    elif theta >= SOUTH_EAST_ANGLE or theta < NORTH_EAST_ANGLE:
         return ComponentSide.EAST
 
     

@@ -4,6 +4,7 @@ from parchmint.port import Port
 
 from fluigi.pnr.sfc.primitivecell import ComponentSide
 from fluigi.pnr.sfc.utils import get_closest_side, to_polar
+from tests.conftest import comp1
 
 
 @pytest.fixture
@@ -51,7 +52,7 @@ def test_to_polar(component, cardinal_ports, diagonal_ports):
 
 
 
-def test_get_closest_side(component, cardinal_ports, diagonal_ports):
+def test_get_closest_side(component, cardinal_ports, diagonal_ports, comp1: Component):
 
     # Extract the ports
     port_north, port_south, port_east, port_west = cardinal_ports
@@ -69,5 +70,20 @@ def test_get_closest_side(component, cardinal_ports, diagonal_ports):
     assert get_closest_side(component, port_southwest_corner) == ComponentSide.SOUTH
     assert get_closest_side(component, port_northwest_corner) == ComponentSide.WEST
 
+    # Test the comp1 definition
+    # The ports should be in the following sides:
+    # 1 - NORTH
+    # 2 - EAST
+    # 3 - EAST
+    # 4 - EAST
+    # 5 - SOUTH
+    # 6 - WEST
+    # 7 - WEST
 
-
+    assert get_closest_side(comp1, comp1.ports[0]) == ComponentSide.NORTH
+    assert get_closest_side(comp1, comp1.ports[1]) == ComponentSide.EAST
+    assert get_closest_side(comp1, comp1.ports[2]) == ComponentSide.EAST
+    assert get_closest_side(comp1, comp1.ports[3]) == ComponentSide.EAST
+    assert get_closest_side(comp1, comp1.ports[4]) == ComponentSide.SOUTH
+    assert get_closest_side(comp1, comp1.ports[5]) == ComponentSide.WEST
+    assert get_closest_side(comp1, comp1.ports[6]) == ComponentSide.WEST
