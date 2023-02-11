@@ -78,6 +78,11 @@ def ccell_comp4_ref():
     return ccell
 
 
+def test_initialize_port(cell_list1):
+    CompositeCell.__initialize_ports(cell_list1, ComponentSide.NORTH, [])
+    
+
+
 def test_from_parchmint_component(ccell_port_ref, ccell_comp1_ref, comp1: Component):
     # Create a simple square parchmint component with a single port in the center
 

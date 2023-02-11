@@ -80,7 +80,6 @@ class CompositeCell:
     def __initialize_ports(
         cell_list: List[List[PrimitiveCell]],
         side: ComponentSide,
-        size: int,
         ports_list: List[Port],
     ) -> None:
         """Activates the ports on a cell list
@@ -97,8 +96,10 @@ class CompositeCell:
         # First figure the size of the composite cell so that we know which index we have to loop
         # through to activate the ports
         is_vertical = False
-        if side is ComponentSide.EAST or size is ComponentSide.WEST:
+        size = len(cell_list[0])
+        if side is ComponentSide.EAST or side is ComponentSide.WEST:
             is_vertical = True
+            size = len(cell_list)
 
         # Next check if the size is odd or even combo and run the corresponding algorithm
         # Case 1 - Odd number of ports and odd size of composite cell - Center is the center, and expand outwards
@@ -274,15 +275,15 @@ class CompositeCell:
         # Then we need to repeat the process for all the sides
 
         staging_list = [
-            (ComponentSide.NORTH, x_size, north_ports),
-            (ComponentSide.EAST, y_size, east_ports),
-            (ComponentSide.SOUTH, x_size, south_ports),
-            (ComponentSide.WEST, y_size, west_ports),
+            (ComponentSide.NORTH, north_ports),
+            (ComponentSide.EAST, east_ports),
+            (ComponentSide.SOUTH, south_ports),
+            (ComponentSide.WEST, west_ports),
         ]
 
         # Now loop through all the sides and activate the ports
-        for side, size, ports in staging_list:
-            CompositeCell.__initialize_ports(cell_list, side, size, ports)
+        for side, ports in staging_list:
+            CompositeCell.__initialize_ports(cell_list, side, ports)
 
             if spread_ports_enabled:
                 # Spread the ports outwards based on the relative distances

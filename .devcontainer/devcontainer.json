@@ -40,13 +40,13 @@
 				"VisualStudioExptTeam.vscodeintellicode",
 				"GitHub.vscode-pull-request-github",
 				"ms-python.python"
-			],
-			"features": {
-				"ghcr.io/devcontainers-contrib/features/black:2": {},
-				"ghcr.io/devcontainers-contrib/features/isort:2": {},
-				"ghcr.io/devcontainers-contrib/features/poetry:2": {},
-				"ghcr.io/devcontainers-contrib/features/pylint:2": {}
-			}
+			]
 		}
+	},
+	"features": {
+		"ghcr.io/devcontainers-contrib/features/black:2": {},
+		"ghcr.io/devcontainers-contrib/features/isort:2": {},
+		"ghcr.io/devcontainers-contrib/features/poetry:2": {},
+		"ghcr.io/devcontainers-contrib/features/pylint:2": {}
 	}
 }
