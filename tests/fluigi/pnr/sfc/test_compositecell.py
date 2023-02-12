@@ -93,8 +93,22 @@ def ccell_comp4_ref():
     return ccell
 
 
-def test_initialize_port(cell_list1):
-    CompositeCell.__initialize_ports(cell_list1, ComponentSide.NORTH, [])
+def test_initialize_ports(cell_test1):
+    CompositeCell.initialize_ports(cell_test1, ComponentSide.NORTH, 
+        [
+            Port(label="1", layer="flow", x=0, y=0),
+            Port(label="2", layer="flow", x=100, y=0),
+            Port(label="3", layer="flow", x=500, y=0),
+            Port(label="4", layer="flow", x=1000, y=0),
+        ]
+    )
+
+    # Check that the ports are initialized correctly
+    assert [cell.north_port for cell in cell_test1[0]] == [1, 1, 0, 1, 1]
+
+
+    # Check for a all the different cases of ports and size
+    
 
 
 def test_from_parchmint_component(ccell_port_ref, ccell_comp1_ref, comp1: Component):

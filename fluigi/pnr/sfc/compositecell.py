@@ -35,6 +35,19 @@ class CompositeCell:
 
         self._cells = cell_list
 
+    def get_cell(self, x: int, y: int)->PrimitiveCell:
+        """Returns the cell at the given coordinates
+
+        Args:
+            x (int): x coordinate of the cell
+            y (int): y coordinate of the cell
+
+        Returns:
+            PrimiveCell: The cell at the given coordinates
+        """
+        return self._cells[y][x]
+
+
     def __eq__(self, __o: object) -> bool:
         if isinstance(__o, CompositeCell):
             # Check if types are correct
@@ -76,7 +89,7 @@ class CompositeCell:
         self._cells[y][x].activate_port(side)
 
     @staticmethod
-    def __initialize_ports(
+    def initialize_ports(
         cell_list: List[List[PrimitiveCell]],
         side: ComponentSide,
         ports_list: List[Port],
@@ -117,15 +130,15 @@ class CompositeCell:
             # [ ][ ][ ][ ][ ]
             # Activate the ports
             if is_vertical:
-                cell_list[0][center].activate_port(side)
-                for offset in range(1, center + 1):
-                    cell_list[0][center + offset].activate_port(side)
-                    cell_list[0][center - offset].activate_port(side)
-            else:
                 cell_list[center][0].activate_port(side)
                 for offset in range(1, center + 1):
                     cell_list[center + offset][0].activate_port(side)
                     cell_list[center - offset][0].activate_port(side)
+            else:
+                cell_list[center][0].activate_port(side)
+                for offset in range(1, center + 1):
+                    cell_list[0][center + offset].activate_port(side)
+                    cell_list[0][center - offset].activate_port(side)
 
         # Case 2
         elif size % 2 == 1 and len(ports_list) % 2 == 0:
@@ -135,12 +148,12 @@ class CompositeCell:
             # Activate the ports
             if is_vertical:
                 for offset in range(1, center + 1):
-                    cell_list[0][center + offset].activate_port(side)
-                    cell_list[0][center - offset].activate_port(side)
-            else:
-                for offset in range(1, center + 1):
                     cell_list[center + offset][0].activate_port(side)
                     cell_list[center - offset][0].activate_port(side)
+            else:
+                for offset in range(1, center + 1):
+                    cell_list[0][center + offset].activate_port(side)
+                    cell_list[0][center - offset].activate_port(side)
 
         # Case 4
         elif size % 2 == 0 and len(ports_list) % 2 == 0:
@@ -150,12 +163,12 @@ class CompositeCell:
             # Activate the ports
             if is_vertical:
                 for offset in range(0, center):
-                    cell_list[0][center + offset + 1].activate_port(side)
-                    cell_list[0][center - offset].activate_port(side)
-            else:
-                for offset in range(0, center):
                     cell_list[center + offset + 1][0].activate_port(side)
                     cell_list[center - offset][0].activate_port(side)
+            else:
+                for offset in range(0, center):
+                    cell_list[0][center + offset + 1].activate_port(side)
+                    cell_list[0][center - offset].activate_port(side)
 
         else:
             # Odd number of ports and even size of composite cell
@@ -281,7 +294,7 @@ class CompositeCell:
 
         # Now loop through all the sides and activate the ports
         for side, ports in staging_list:
-            CompositeCell.__initialize_ports(cell_list, side, ports)
+            CompositeCell.initialize_ports(cell_list, side, ports)
 
             if spread_ports_enabled:
                 # Spread the ports outwards based on the relative distances
