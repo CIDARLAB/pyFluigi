@@ -109,9 +109,17 @@ class CompositeCell:
         # through to activate the ports
         is_vertical = False
         size = len(cell_list[0])
-        if side is ComponentSide.EAST or side is ComponentSide.WEST:
+        change_index = 0
+        if side is ComponentSide.EAST:
             is_vertical = True
             size = len(cell_list)
+        if side is ComponentSide.WEST:
+            is_vertical = True
+            size = len(cell_list)
+            change_index = -1
+        if side is ComponentSide.SOUTH:
+            change_index = -1
+
 
         # Next check if the size is odd or even combo and run the corresponding algorithm
         # Case 1 - Odd number of ports and odd size of composite cell - Center is the center, and expand outwards
@@ -130,15 +138,15 @@ class CompositeCell:
             # [ ][ ][ ][ ][ ]
             # Activate the ports
             if is_vertical:
-                cell_list[center][0].activate_port(side)
+                cell_list[center][change_index].activate_port(side)
                 for offset in range(1, center + 1):
-                    cell_list[center + offset][0].activate_port(side)
-                    cell_list[center - offset][0].activate_port(side)
+                    cell_list[center + offset][change_index].activate_port(side)
+                    cell_list[center - offset][change_index].activate_port(side)
             else:
-                cell_list[center][0].activate_port(side)
-                for offset in range(1, center + 1):
-                    cell_list[0][center + offset].activate_port(side)
-                    cell_list[0][center - offset].activate_port(side)
+                cell_list[change_index][center].activate_port(side)
+                for offset in range(1, center):
+                    cell_list[change_index][center + offset].activate_port(side)
+                    cell_list[change_index][center - offset].activate_port(side)
 
         # Case 2
         elif size % 2 == 1 and len(ports_list) % 2 == 0:
@@ -148,12 +156,12 @@ class CompositeCell:
             # Activate the ports
             if is_vertical:
                 for offset in range(1, center + 1):
-                    cell_list[center + offset][0].activate_port(side)
-                    cell_list[center - offset][0].activate_port(side)
+                    cell_list[center + offset][change_index].activate_port(side)
+                    cell_list[center - offset][change_index].activate_port(side)
             else:
-                for offset in range(1, center + 1):
-                    cell_list[0][center + offset].activate_port(side)
-                    cell_list[0][center - offset].activate_port(side)
+                for offset in range(1, center+ 1):
+                    cell_list[change_index][center + offset].activate_port(side)
+                    cell_list[change_index][center - offset].activate_port(side)
 
         # Case 4
         elif size % 2 == 0 and len(ports_list) % 2 == 0:
@@ -163,17 +171,17 @@ class CompositeCell:
             # Activate the ports
             if is_vertical:
                 for offset in range(0, center):
-                    cell_list[center + offset + 1][0].activate_port(side)
-                    cell_list[center - offset][0].activate_port(side)
+                    cell_list[center + offset + 1][change_index].activate_port(side)
+                    cell_list[center - offset][change_index].activate_port(side)
             else:
                 for offset in range(0, center):
-                    cell_list[0][center + offset + 1].activate_port(side)
-                    cell_list[0][center - offset].activate_port(side)
+                    cell_list[change_index][center + offset + 1].activate_port(side)
+                    cell_list[change_index][center - offset].activate_port(side)
 
         else:
             # Odd number of ports and even size of composite cell
             # Not applicatble since we avoid this scenario
-            raise Exception("Odd number of ports and even size of composite cell is not applicable")
+            raise ValueError("Odd number of ports and even size of composite cell is not applicable")
 
     @staticmethod
     def from_parchmint_component(
@@ -253,12 +261,11 @@ class CompositeCell:
         # Y Size of the composite cell
         y_size = max([len(east_ports), len(west_ports)])
 
-        # TODO: Test if this is needed anymore
-        # # Now check if the sizes is odd or even and increment if odd
-        # if len(north_ports) % 2 == 1 or len(south_ports) % 2 == 1:
-        #     x_size += 1
-        # if len(east_ports) % 2 == 1 or len(west_ports) % 2 == 1:
-        #     y_size += 1
+        # Now check if the the ports are odd and the size is even
+        if (len(north_ports) % 2 == 1 or len(south_ports) % 2 == 1) and x_size%2 == 0:
+            x_size += 1
+        if (len(east_ports) % 2 == 1 or len(west_ports) % 2 == 1) and y_size%2 == 0:
+            y_size += 1
 
         # Now generate the cells
         for y_index in range(y_size):

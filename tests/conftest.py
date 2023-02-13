@@ -117,6 +117,21 @@ def cell_test6():
     return cell_list1
 
 
+@pytest.fixture
+def cell_test_even_x():
+    gnp = generate_new_primitive
+    cell_list1 = [
+        [gnp(0, 0), gnp(1, 0), gnp(2, 0), gnp(3, 0), gnp(4, 0), gnp(5, 0), gnp(6, 0), gnp(7, 0)],
+        [gnp(0, 1), gnp(1, 1), gnp(2, 1), gnp(3, 1), gnp(4, 1), gnp(5, 1), gnp(6, 1), gnp(7, 1)],
+        [gnp(0, 2), gnp(1, 2), gnp(2, 2), gnp(3, 2), gnp(4, 2), gnp(5, 2), gnp(6, 2), gnp(7, 2)],
+        [gnp(0, 3), gnp(1, 3), gnp(2, 3), gnp(3, 3), gnp(4, 3), gnp(5, 3), gnp(6, 3), gnp(7, 3)],
+        [gnp(0, 4), gnp(1, 4), gnp(2, 4), gnp(3, 4), gnp(4, 4), gnp(5, 4), gnp(6, 4), gnp(7, 4)],
+    ]
+
+    return cell_list1
+
+
+
 def generate_new_primitive(x, y):
     return PrimitiveCell(x_coord=x, y_coord=y, size=100, ports_exists=[])
 
@@ -176,3 +191,28 @@ def comp1() -> Component:
         ],
     )
     return comp1
+
+
+@pytest.fixture
+def north_ports():
+    # Create 4 ports in the north side
+    port_north_0 = Port("north_0", x=0, y=0)
+    port_north_1 = Port("north_1", x=250, y=0)
+    port_north_2 = Port("north_2", x=500, y=0)
+    port_north_3 = Port("north_3", x=750, y=0)
+    port_north_4 = Port("north_4", x=1000, y=0)
+
+    return [port_north_0, port_north_1, port_north_2, port_north_3, port_north_4]
+
+
+@pytest.fixture
+def east_ports():
+    # Create 4 ports in the north side
+    port_east_0 = Port("east_0", x=1000, y=0)
+    port_east_1 = Port("east_1", x=1000, y=250)
+    port_east_2 = Port("east_2", x=1000, y=500)
+    port_east_3 = Port("east_3", x=1000, y=750)
+    port_east_4 = Port("east_4", x=1000, y=1000)
+
+    return [port_east_0, port_east_1, port_east_2, port_east_3, port_east_4]
+
