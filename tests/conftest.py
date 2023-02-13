@@ -131,7 +131,6 @@ def cell_test_even_x():
     return cell_list1
 
 
-
 def generate_new_primitive(x, y):
     return PrimitiveCell(x_coord=x, y_coord=y, size=100, ports_exists=[])
 
@@ -215,4 +214,3 @@ def east_ports():
     port_east_4 = Port("east_4", x=1000, y=1000)
 
     return [port_east_0, port_east_1, port_east_2, port_east_3, port_east_4]
-

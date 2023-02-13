@@ -1,5 +1,6 @@
 import pytest
 from parchmint.port import Port
+from tests.conftest import east_ports, north_ports
 
 from fluigi.pnr.sfc.port_spread import (
     generate_bin_map,
@@ -8,9 +9,6 @@ from fluigi.pnr.sfc.port_spread import (
     try_shift_right,
 )
 from fluigi.pnr.sfc.primitivecell import ComponentSide
-
-from tests.conftest import east_ports, north_ports
-
 
 
 def test_try_shift_left():

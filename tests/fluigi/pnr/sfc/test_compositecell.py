@@ -1,7 +1,13 @@
 import pytest
 from parchmint.component import Component
 from parchmint.port import Port
-from tests.conftest import cell_test1, cell_test2, cell_test3, generate_new_primitive, cell_test_even_x
+from tests.conftest import (
+    cell_test1,
+    cell_test2,
+    cell_test3,
+    cell_test_even_x,
+    generate_new_primitive,
+)
 
 from fluigi.parameters import SPACER_THRESHOLD
 from fluigi.pnr.sfc.compositecell import CompositeCell
@@ -132,44 +138,45 @@ def test_initialize_ports(cell_test1, cell_test_even_x):
     # CASE 2. Odd number of ports and even number of cells
     # Check that the it raises an error
     with pytest.raises(ValueError):
-        CompositeCell.initialize_ports(cell_test_even_x, ComponentSide.NORTH,
+        CompositeCell.initialize_ports(
+            cell_test_even_x,
+            ComponentSide.NORTH,
             [
                 Port(label="1", layer="flow", x=1000, y=0),
                 Port(label="2", layer="flow", x=1000, y=100),
                 Port(label="3", layer="flow", x=1000, y=500),
-            ]
+            ],
         )
-
-    
-    
 
     # Check for a all the different cases of ports and size
     # CASE 3. Even number of ports and even number of cells
-    CompositeCell.initialize_ports(cell_test1, ComponentSide.SOUTH,
+    CompositeCell.initialize_ports(
+        cell_test1,
+        ComponentSide.SOUTH,
         [
             Port(label="1", layer="flow", x=0, y=1000),
             Port(label="2", layer="flow", x=100, y=1000),
             Port(label="3", layer="flow", x=500, y=1000),
-        ]
+        ],
     )
 
     # Check that the ports are initialized correctly
     assert [cell.south_port for cell in cell_test1[-1]] == [False, True, True, True, False]
 
     # CASE 4. Even number of ports and odd number of cells
-    CompositeCell.initialize_ports(cell_test1, ComponentSide.NORTH, 
+    CompositeCell.initialize_ports(
+        cell_test1,
+        ComponentSide.NORTH,
         [
             Port(label="1", layer="flow", x=0, y=0),
             Port(label="2", layer="flow", x=100, y=0),
             Port(label="3", layer="flow", x=500, y=0),
             Port(label="4", layer="flow", x=1000, y=0),
-        ]
+        ],
     )
 
     # Check that the ports are initialized correctly
     assert [cell.north_port for cell in cell_test1[0]] == [True, True, False, True, True]
-
-
 
 
 def test_from_parchmint_component(ccell_port_ref, ccell_comp1_ref_base, comp1: Component):

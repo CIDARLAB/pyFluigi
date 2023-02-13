@@ -35,7 +35,7 @@ class CompositeCell:
 
         self._cells = cell_list
 
-    def get_cell(self, x: int, y: int)->PrimitiveCell:
+    def get_cell(self, x: int, y: int) -> PrimitiveCell:
         """Returns the cell at the given coordinates
 
         Args:
@@ -46,7 +46,6 @@ class CompositeCell:
             PrimiveCell: The cell at the given coordinates
         """
         return self._cells[y][x]
-
 
     def __eq__(self, __o: object) -> bool:
         if isinstance(__o, CompositeCell):
@@ -120,7 +119,6 @@ class CompositeCell:
         if side is ComponentSide.SOUTH:
             change_index = -1
 
-
         # Next check if the size is odd or even combo and run the corresponding algorithm
         # Case 1 - Odd number of ports and odd size of composite cell - Center is the center, and expand outwards
         # Case 2 - Even number of ports and odd size of composite cell - Skip the center and expand outwards
@@ -159,7 +157,7 @@ class CompositeCell:
                     cell_list[center + offset][change_index].activate_port(side)
                     cell_list[center - offset][change_index].activate_port(side)
             else:
-                for offset in range(1, center+ 1):
+                for offset in range(1, center + 1):
                     cell_list[change_index][center + offset].activate_port(side)
                     cell_list[change_index][center - offset].activate_port(side)
 
@@ -262,9 +260,9 @@ class CompositeCell:
         y_size = max([len(east_ports), len(west_ports)])
 
         # Now check if the the ports are odd and the size is even
-        if (len(north_ports) % 2 == 1 or len(south_ports) % 2 == 1) and x_size%2 == 0:
+        if (len(north_ports) % 2 == 1 or len(south_ports) % 2 == 1) and x_size % 2 == 0:
             x_size += 1
-        if (len(east_ports) % 2 == 1 or len(west_ports) % 2 == 1) and y_size%2 == 0:
+        if (len(east_ports) % 2 == 1 or len(west_ports) % 2 == 1) and y_size % 2 == 0:
             y_size += 1
 
         # Now generate the cells
