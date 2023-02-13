@@ -30,6 +30,33 @@ def ccell_port_ref():
 
 
 @pytest.fixture
+def ccell_comp1_ref_base():
+    gpd = generate_new_primitive
+    ccell = CompositeCell(
+        [
+            [gpd(0, 0)],
+            [gpd(0, 1)],
+            [gpd(0, 2)],
+        ]
+    )
+
+    # Set the port (0,0)
+    ccell.activate_port(0, 0, ComponentSide.NORTH)
+    ccell.activate_port(0, 0, ComponentSide.WEST)
+    ccell.activate_port(0, 0, ComponentSide.EAST)
+
+    # Set the port (0,1)
+    ccell.activate_port(0, 1, ComponentSide.EAST)
+
+    # Set the port (0,2)
+    ccell.activate_port(0, 2, ComponentSide.SOUTH)
+    ccell.activate_port(0, 2, ComponentSide.WEST)
+    ccell.activate_port(0, 2, ComponentSide.EAST)
+
+    return ccell
+
+
+@pytest.fixture
 def ccell_comp1_ref():
     gpd = generate_new_primitive
     ccell = CompositeCell(
@@ -145,7 +172,7 @@ def test_initialize_ports(cell_test1, cell_test_even_x):
 
 
 
-def test_from_parchmint_component(ccell_port_ref, ccell_comp1_ref, comp1: Component):
+def test_from_parchmint_component(ccell_port_ref, ccell_comp1_ref_base, comp1: Component):
     # Create a simple square parchmint component with a single port in the center
 
     port_component = Component(
@@ -169,8 +196,8 @@ def test_from_parchmint_component(ccell_port_ref, ccell_comp1_ref, comp1: Compon
 
     assert ccell_port == ccell_port_ref
 
-    # ccell_comp1 = CompositeCell.from_parchmint_component(comp1, False, False)
-    # assert ccell_comp1 == ccell_comp1_ref
+    ccell_comp1 = CompositeCell.from_parchmint_component(comp1, False, False)
+    assert ccell_comp1 == ccell_comp1_ref_base
 
 
 def test_equals(cell_test1, cell_test2, cell_test3):
