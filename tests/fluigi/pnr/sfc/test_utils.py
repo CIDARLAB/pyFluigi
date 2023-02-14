@@ -69,7 +69,6 @@ def test_to_polar(component, cardinal_ports, diagonal_ports):
 
 
 def test_get_closest_side(component, cardinal_ports, diagonal_ports, comp1: Component):
-
     # Extract the ports
     port_north, port_south, port_east, port_west = cardinal_ports
     (

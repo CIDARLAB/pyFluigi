@@ -294,7 +294,6 @@ def utils_render_svg(
     input_files: List[str],
     outpath: Path,
 ):
-
     outpath = create_default_output_dir(outpath)
 
     parameters.OUTPUT_DIR = outpath

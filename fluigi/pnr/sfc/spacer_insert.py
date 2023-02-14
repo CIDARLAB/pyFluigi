@@ -315,21 +315,18 @@ def generate_spacers(
 
         # Set the min/max port sides and coordinates if both ports exist
         if top_right_ground_truth is True and bottom_right_ground_truth is False:
-
             # Check to make sure we have the port data
             if top_right_port is None:
                 raise ValueError("Top right port is None")
             current_port_max_coordinate = get_port_coordinate(top_right_port)
             current_port_min_coordinate = get_port_coordinate(top_right_port)
         elif top_right_ground_truth is False and bottom_right_ground_truth is True:
-
             # Check to make sure we have the port data
             if bottom_right_port is None:
                 raise ValueError("Bottom right port is None")
             current_port_max_coordinate = get_port_coordinate(bottom_right_port)
             current_port_min_coordinate = get_port_coordinate(bottom_right_port)
         elif top_right_ground_truth is True and bottom_right_ground_truth is True:
-
             # Check to make sure we have the port data
             if top_right_port is None:
                 raise ValueError("Top right port is None")

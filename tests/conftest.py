@@ -1,8 +1,8 @@
 import pytest
-from fluigi.parameters import SPACER_THRESHOLD
 from parchmint.component import Component
 from parchmint.port import Port
 
+from fluigi.parameters import SPACER_THRESHOLD
 from fluigi.pnr.sfc.primitivecell import ComponentSide, PrimitiveCell
 
 
@@ -191,6 +191,7 @@ def comp1() -> Component:
         ],
     )
     return comp1
+
 
 @pytest.fixture
 def comp2() -> Component:
