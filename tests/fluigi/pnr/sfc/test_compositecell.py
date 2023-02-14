@@ -91,7 +91,7 @@ def ccell_comp1_ref():
 
 
 @pytest.fixture
-def ccell_comp2_ref():
+def ccell_comp2_ref_base():
     gpd = generate_new_primitive
     ccell = CompositeCell(
         [
@@ -178,9 +178,30 @@ def test_initialize_ports(cell_test1, cell_test_even_x):
     # Check that the ports are initialized correctly
     assert [cell.north_port for cell in cell_test1[0]] == [True, True, False, True, True]
 
+    # CASE 5. Odd number of ports and odd number of cells
+    CompositeCell.initialize_ports(
+        cell_test1,
+        ComponentSide.WEST,
+        [
+            Port(label="1", layer="flow", x=0, y=0),
+            Port(label="2", layer="flow", x=0, y=100),
+            Port(label="3", layer="flow", x=0, y=500),
+        ],
+    )
 
-def test_from_parchmint_component(ccell_port_ref, ccell_comp1_ref_base, comp1: Component):
+    # Check that the ports are initialized correctly
+    assert [row[0].west_port for row in cell_test1] == [False, True, True, True, False]
+
+
+def test_from_parchmint_component(ccell_port_ref, ccell_comp1_ref_base,ccell_comp2_ref_base, comp1: Component, comp2: Component):
     # Create a simple square parchmint component with a single port in the center
+    
+    # Case 1
+    # ----X----
+    # |       |
+    # X       X
+    # |       |
+    # ----X----
 
     port_component = Component(
         ID="port",
@@ -203,8 +224,36 @@ def test_from_parchmint_component(ccell_port_ref, ccell_comp1_ref_base, comp1: C
 
     assert ccell_port == ccell_port_ref
 
+    # Case 2
+    # ----X----
+    # |       |
+    # X       X
+    # |       |
+    # ---------
+    # ---------
+    # |       |
+    # |       X
+    # |       |
+    # ---------
+    # ---------
+    # |       |
+    # X       X
+    # |       |
+    # ----X----
+
+
     ccell_comp1 = CompositeCell.from_parchmint_component(comp1, False, False)
     assert ccell_comp1 == ccell_comp1_ref_base
+
+    # Case 3
+
+    ccell_comp2 = CompositeCell.from_parchmint_component(comp2, False, False)
+
+    assert ccell_comp2 == ccell_comp2_ref_base
+
+
+
+
 
 
 def test_equals(cell_test1, cell_test2, cell_test3):
