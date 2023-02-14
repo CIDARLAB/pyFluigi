@@ -104,7 +104,7 @@ def place_and_route_mint(
 
     else:
         print("Unrecognized file Extension")
-        exit(0)
+        sys.exit(0)
 
     # If the render svg parameter flag is enabled, then just render the svg
     file_path = Path(input_file)
@@ -113,7 +113,7 @@ def place_and_route_mint(
             utils.render_svg(current_device, file_path.stem)
         else:
             print("File extension not supported")
-        exit(0)
+        sys.exit(0)
 
     add_spacing(current_device)
 
@@ -132,7 +132,7 @@ def place_and_route_mint(
     # TODO - Delete this later
     place_and_route_dropx(current_device)
 
-    exit(0)
+    sys.exit(0)
     # We exit the process if only convert is set to true
     # # Do Terminal Assignment
     # assign_single_port_terminals(current_device)
@@ -156,7 +156,7 @@ def place_and_route_mint(
             json.dump(current_device.to_parchmint_v1_x(), f)
 
         print("Completed Routing Operation, exiting...")
-        exit(0)
+        sys.exit(0)
 
     # Check if the device netlist is planar
     graph = current_device.G
@@ -197,10 +197,12 @@ def place_and_route_mint(
         with open(tnew, "w") as f:
             json.dump(par_device.to_parchmint_v1_x(), f)
 
-        print("Place and Route completed with errors, please check the terminal output for information")
-        exit(-1)
+        print(
+            "Place and Route completed with errors, please check the terminal output for information"
+        )
+        sys.exit(-1)
 
-    exit(0)
+    sys.exit(0)
 
     layout = Layout()
 
