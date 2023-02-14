@@ -64,6 +64,31 @@ def ccell_comp1_ref_base():
 
 
 @pytest.fixture
+def ccell_comp1_ref_base_90():
+    gpd = generate_new_primitive
+    ccell = CompositeCell(
+        [
+            [gpd(0, 0), gpd(1, 0), gpd(2, 0)],
+        ]
+    )
+
+    # Set the port (0,2)
+    ccell.activate_port(2, 0, ComponentSide.NORTH)
+    ccell.activate_port(2, 0, ComponentSide.EAST)
+    ccell.activate_port(2, 0, ComponentSide.SOUTH)
+
+    # Set the port (0,1)
+    ccell.activate_port(1, 0, ComponentSide.SOUTH)
+
+    # Set the port (0,2)
+    ccell.activate_port(0, 0, ComponentSide.NORTH)
+    ccell.activate_port(0, 0, ComponentSide.WEST)
+    ccell.activate_port(0, 0, ComponentSide.SOUTH)
+
+    return ccell
+
+
+@pytest.fixture
 def ccell_comp1_ref():
     gpd = generate_new_primitive
     ccell = CompositeCell(
@@ -124,7 +149,7 @@ def ccell_comp2_ref_base():
     ccell.activate_port(0, 0, ComponentSide.WEST)
     ccell.activate_port(0, 1, ComponentSide.WEST)
     ccell.activate_port(0, 2, ComponentSide.WEST)
-    
+
     return ccell
 
 
@@ -289,3 +314,10 @@ def test_equals(cell_test1, cell_test2, cell_test3):
     assert not CompositeCell(cell_test1) == CompositeCell(cell_test3)
 
     # TODO - Generate more test cases
+
+
+def test_rotate_clockwise(ccell_comp1_ref_base, ccell_comp1_ref_base_90):
+    
+    ccell_comp1_ref_base.rotate_clockwise()
+
+    assert ccell_comp1_ref_base == ccell_comp1_ref_base_90

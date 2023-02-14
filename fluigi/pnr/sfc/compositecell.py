@@ -47,6 +47,84 @@ class CompositeCell:
         """
         return self._cells[y][x]
 
+    
+    def rotate_clockwise(self) -> None:
+        """Rotates the composite cell clockwise (90 degrees)
+
+        Regenerates the cell_list completely and activates the ports accordingly
+        """        
+        # Move the reference to a backup variable
+        # Create a new list of lists
+        # The rows become the columns and the column become the rows
+        # All the individual ports also need to be rotated i.e. any port that has
+        # NORTH -> EAST
+        # EAST -> SOUTH
+        # SOUTH -> WEST
+        # WEST -> NORTH
+
+        # Create a new list of lists
+        backup_cells_list = self._cells
+        blueprint_cell = backup_cells_list[0][0]
+        # Get the dimensions of the list
+        rows = len(backup_cells_list)
+        columns = len(backup_cells_list[0])
+        # Create a new list of lists
+        new_rows = columns
+        new_columns = rows
+
+        # Create a new list of lists
+        cell_list = []
+        # Now generate the cells
+        for y_index in range(new_rows):
+            # Create a new row
+            cell_list.append([])
+            for x_index in range(new_columns):
+                # Create a new cell
+                cell_list[y_index].append(
+                    PrimitiveCell(
+                        x_index, 
+                        y_index, 
+                        blueprint_cell.dimension, 
+                        []
+                    )
+                )
+
+        # Generate a boolean array for the N, E, S, W sides
+        north_side = [cell.north_port for cell in backup_cells_list[0]]
+        south_side = [cell.south_port for cell in backup_cells_list[-1]]
+        east_side = [cell.east_port for cell in [row[-1] for row in backup_cells_list]]
+        west_side = [cell.west_port for cell in [row[0] for row in backup_cells_list]]
+
+        # Activate the east ports in the new cell list by looking at the north side of the old cell list
+        for index in range(len(north_side)):
+            # Check if true on the north side
+            if north_side[index]:
+                cell_list[index][-1].activate_port(ComponentSide.EAST)
+        
+        # Activate the south ports in the new cell list by looking at the east side of the old cell list
+        for index in range(len(east_side)):
+            # Check if true on the east side
+            if east_side[index]:
+                cell_list[-1][index].activate_port(ComponentSide.SOUTH)
+
+        # Activate the west ports in the new cell list by looking at the south side of the old cell list
+        for index in range(len(south_side)):
+            # Check if true on the south side
+            if south_side[index]:
+                cell_list[index][0].activate_port(ComponentSide.WEST)
+        
+        # Activate the north ports in the new cell list by looking at the west side of the old cell list
+        for index in range(len(west_side)):
+            # Check if true on the west side
+            if west_side[index]:
+                cell_list[0][index].activate_port(ComponentSide.NORTH)
+
+        # Assign the new cell list to the property
+        self._cells = cell_list
+            
+
+    
+    
     def __eq__(self, o: object) -> bool:
         if isinstance(o, CompositeCell):
             # Check if types are correct
