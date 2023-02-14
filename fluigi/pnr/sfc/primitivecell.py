@@ -158,7 +158,7 @@ class PrimitiveCell:
                 and self._west_port == __o.west_port
             )
         return False
-    
+
     def get_figure(self) -> List[str]:
         """Prints a primitive cell in the following format:
 
@@ -193,12 +193,7 @@ class PrimitiveCell:
             + (" " * 7)
             + (PORT_INDICATOR if self._east_port else EAST_BOUNDARY_INDICATOR)
         )
-        ret = [
-            top_row_string,
-            spacer_row_string,
-            middle_row_string,
-            bottom_row_string
-        ]
+        ret = [top_row_string, spacer_row_string, middle_row_string, bottom_row_string]
 
         return ret
 
@@ -231,7 +226,6 @@ class PrimitiveCell:
             self._south_port = False
         else:
             self._west_port = False
-
 
     def print_cell(self):
         """Prints a primitive cell in the following format:

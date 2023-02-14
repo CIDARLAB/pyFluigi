@@ -71,7 +71,6 @@ def place_and_route_mint(
     render_flag: bool,
     ignore_layout_constraints: bool,
 ):
-
     print("output dir:", outpath)
     print("Running File: " + str(input_file))
     if Path(input_file).exists() is False:

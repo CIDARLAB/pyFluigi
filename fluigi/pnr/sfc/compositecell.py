@@ -58,8 +58,8 @@ class CompositeCell:
                 # Check if the cells are the same
                 for i in range(len(self._cells)):
                     for j in range(len(self._cells[i])):
-                        if self.get_cell(j,i) != o.get_cell(j,i):
-                            print(f'Cell at ({i}, {j}) is not the same')
+                        if self.get_cell(j, i) != o.get_cell(j, i):
+                            print(f"Cell at ({i}, {j}) is not the same")
                             return False
 
                 # If we get here, then the cells are the same
@@ -137,11 +137,11 @@ class CompositeCell:
             # [ ][ ][ ][ ][ ]
             # Activate the ports
             if is_vertical:
-                for offset in range(0, len(ports_list)//2 + 1):
+                for offset in range(0, len(ports_list) // 2 + 1):
                     cell_list[center + offset][change_index].activate_port(side)
                     cell_list[center - offset][change_index].activate_port(side)
             else:
-                for offset in range(0, len(ports_list)//2 + 1):
+                for offset in range(0, len(ports_list) // 2 + 1):
                     cell_list[change_index][center + offset].activate_port(side)
                     cell_list[change_index][center - offset].activate_port(side)
 
@@ -152,11 +152,11 @@ class CompositeCell:
             # [ ][ ][ ][ ][ ]
             # Activate the ports
             if is_vertical:
-                for offset in range(1, len(ports_list)//2 + 1):
+                for offset in range(1, len(ports_list) // 2 + 1):
                     cell_list[center + offset][change_index].activate_port(side)
                     cell_list[center - offset][change_index].activate_port(side)
             else:
-                for offset in range(1, len(ports_list)//2 + 1):
+                for offset in range(1, len(ports_list) // 2 + 1):
                     cell_list[change_index][center + offset].activate_port(side)
                     cell_list[change_index][center - offset].activate_port(side)
 
@@ -167,15 +167,15 @@ class CompositeCell:
             # [ ][ ][ ][ ]
             # Activate the ports
             if is_vertical:
-                for offset in range(0, len(ports_list)//2):
+                for offset in range(0, len(ports_list) // 2):
                     cell_list[center + offset][change_index].activate_port(side)
                     cell_list[center - offset - 1][change_index].activate_port(side)
             else:
-                for offset in range(0, len(ports_list)//2):
+                for offset in range(0, len(ports_list) // 2):
                     cell_list[change_index][center + offset].activate_port(side)
                     cell_list[change_index][center - offset - 1].activate_port(side)
 
-        else: # Case 3
+        else:  # Case 3
             # Odd number of ports and even size of composite cell
             # Not applicatble since we avoid this scenario
             raise ValueError("Odd number of ports and even size of composite cell is not applicable")
@@ -321,12 +321,11 @@ class CompositeCell:
         """Prints the composite cell"""
 
         for row in self._cells:
-            
             top_row_string_full_row = ""
             spacer_row_string_full_row = ""
             middle_row_string_full_row = ""
             bottom_row_string_full_row = ""
-                   
+
             for cell in row:
                 # Get the strings for the cell
                 top_row_string, spacer_row_string, middle_row_string, bottom_row_string = cell.get_figure()
@@ -342,7 +341,6 @@ class CompositeCell:
             print(middle_row_string_full_row)
             print(spacer_row_string_full_row)
             print(bottom_row_string_full_row)
-
 
     def print_cell_indexes(self):
         """Prints the composite cell indexes"""

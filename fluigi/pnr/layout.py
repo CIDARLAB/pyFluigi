@@ -79,7 +79,6 @@ class Layout:
                 maxy = cell.y + cell.y_span
 
     def importMINTwithoutConstraints(self, device: MINTDevice) -> None:
-
         self.__original_device = device
 
         pcells = []
@@ -197,7 +196,6 @@ class Layout:
         raise Exception("Not Implemented")
 
     def route_nets(self, router_type: RouterAlgorithms = RouterAlgorithms.AARF) -> None:
-
         # Step 1 - generate the source and targets points for all the connections
         all_routes = []
         obstacle_check_vertices = []

@@ -44,7 +44,6 @@ class SALayout(Layout):
         self.pre_move_wirelength = 0
 
     def calc_init_cost(self) -> float:
-
         self.old_area = self.cur_area
         self.cur_area = self.calculate_area()
 

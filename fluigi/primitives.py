@@ -29,7 +29,6 @@ OLD_PRIMITIVES_CHECKLIST = []
 
 
 def get_defaults(mint: str):
-
     try:
         # python_object = json.loads(output.stdout.decode('utf-8'))
         params = {"mint": mint}
@@ -43,7 +42,6 @@ def get_defaults(mint: str):
 
 
 def get_dimensions(mint: str, params):
-
     try:
         req_params = {"mint": mint}
         req_params["params"] = json.dumps(params.data)
@@ -62,7 +60,6 @@ def get_dimensions(mint: str, params):
 
 
 def get_terminals(mint: str, params):
-
     try:
         req_params = {"mint": mint}
         req_params["params"] = json.dumps(params.data)

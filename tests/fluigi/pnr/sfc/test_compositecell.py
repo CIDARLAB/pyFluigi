@@ -1,4 +1,5 @@
 from typing import List
+
 import pytest
 from parchmint.component import Component
 from parchmint.port import Port
@@ -124,7 +125,7 @@ def ccell_comp2_ref_base():
     ccell.activate_port(0, 0, ComponentSide.WEST)
     ccell.activate_port(0, 1, ComponentSide.WEST)
     ccell.activate_port(0, 2, ComponentSide.WEST)
-    
+
     return ccell
 
 
@@ -151,7 +152,7 @@ def ccell_comp4_ref():
     return ccell
 
 
-def test_initialize_ports(cell_test1, cell_test_even_x:List[List[PrimitiveCell]]):
+def test_initialize_ports(cell_test1, cell_test_even_x: List[List[PrimitiveCell]]):
     # CASES: 1. Port is in the center of the cell
     #        2. Odd number of ports and even number of cells
     #        3. Even number of ports and even number of cells
@@ -219,9 +220,11 @@ def test_initialize_ports(cell_test1, cell_test_even_x:List[List[PrimitiveCell]]
     assert [row[0].west_port for row in cell_test1] == [False, True, True, True, False]
 
 
-def test_from_parchmint_component(ccell_port_ref, ccell_comp1_ref_base,ccell_comp2_ref_base, comp1: Component, comp2: Component):
+def test_from_parchmint_component(
+    ccell_port_ref, ccell_comp1_ref_base, ccell_comp2_ref_base, comp1: Component, comp2: Component
+):
     # Create a simple square parchmint component with a single port in the center
-    
+
     # Case 1
     # ----X----
     # |       |
@@ -267,7 +270,6 @@ def test_from_parchmint_component(ccell_port_ref, ccell_comp1_ref_base,ccell_com
     # |       |
     # ----X----
 
-
     ccell_comp1 = CompositeCell.from_parchmint_component(comp1, False, False)
     assert ccell_comp1 == ccell_comp1_ref_base
 
@@ -278,12 +280,7 @@ def test_from_parchmint_component(ccell_port_ref, ccell_comp1_ref_base,ccell_com
     assert ccell_comp2 == ccell_comp2_ref_base
 
 
-
-
-
-
 def test_equals(cell_test1, cell_test2, cell_test3):
-
     assert CompositeCell(cell_test1) == CompositeCell(cell_test2)
 
     assert not CompositeCell(cell_test1) == CompositeCell(cell_test3)

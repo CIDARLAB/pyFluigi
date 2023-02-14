@@ -53,7 +53,6 @@ def test_insert_vertical_spacer_column(cell_test1, cell_test5, cell_test6):
 
 
 def test_insert_horizontal_spacer_column(cell_test1, cell_test3, cell_test4):
-
     ccell1 = CompositeCell(cell_test1)
 
     ccell_ref = CompositeCell(cell_test3)

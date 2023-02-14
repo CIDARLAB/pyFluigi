@@ -75,7 +75,6 @@ def calc_position(
     sink_cell: CCell,
     sink_terminal: CTerminal,
 ) -> int:
-
     sx = source_terminal.x
     sy = source_terminal.y
 
@@ -118,7 +117,6 @@ def calc_position(
 
 
 def get_terminal(cell, label) -> CTerminal:
-
     # warning ! only access using for i in range pattern
     for i in range(len(cell.ports)):
         if cell.ports[i].label == label:
@@ -185,7 +183,6 @@ class AlgDataStorage:
                 self._data[param].append(None)
             self._data[param].append(data)
         else:
-
             self._data[param] = []
             # fill None's as padding
             for i in range(self._size - 1):

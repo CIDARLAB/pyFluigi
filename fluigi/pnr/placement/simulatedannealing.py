@@ -19,7 +19,6 @@ from fluigi.pnr.layout import Layout
 
 
 def generate_simulated_annealing_layout(layout: Layout):
-
     d = Device("TEST")
     d.addLayer("flow")
 

@@ -60,7 +60,6 @@ def assign_component_ports(mint_device: MINTDevice) -> None:
 
 
 def reduce_device_size(device: Device, design_padding: int) -> None:
-
     print("Reducing the Size of the device and adding device padding: {} um".format(design_padding))
     # Step 1 - First find the min_x, min_y, max_x, max_y of the design
     min_x = sys.maxsize
