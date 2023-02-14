@@ -44,12 +44,12 @@ class Layout:
 
     def apply_layout(self):
         device = self.__original_device
-        for ID in self.cells.keys():
+        for ID in self.cells:
             component = device.get_component(ID)
             cell = self.cells[ID]
             component.params.set_param("position", [cell.x, cell.y])
 
-        for ID in self.nets.keys():
+        for ID in self.nets:
             connection = device.get_connection(ID)
             net = self.nets[ID]
             for route in net.routes:

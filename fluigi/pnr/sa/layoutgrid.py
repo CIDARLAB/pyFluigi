@@ -93,7 +93,7 @@ class LayoutGrid:
             for j in range(minY, maxY):
                 key = (i, j)
                 # Initialize the array if key not present
-                if key not in layout_grid.keys():
+                if key not in layout_grid:
                     layout_grid[key] = []
 
                 cell_list = layout_grid[key]
@@ -118,7 +118,7 @@ class LayoutGrid:
         for i in range(minX, maxX):
             for j in range(minY, maxY):
                 key = (i, j)
-                if key not in self.layout_grid.keys():
+                if key not in self.layout_grid:
                     continue
                 cell_list = self.layout_grid[key]
                 for c in cell_list:
@@ -144,5 +144,5 @@ class LayoutGrid:
     def cleanup(self):
         self.c = None
         self.clear()
-        for k in self.layout_grid.keys():
+        for k in self.layout_grid:
             del self.layout_grid[k]
