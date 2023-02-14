@@ -137,13 +137,11 @@ class CompositeCell:
             # [ ][ ][ ][ ][ ]
             # Activate the ports
             if is_vertical:
-                cell_list[center][change_index].activate_port(side)
-                for offset in range(1, center):
+                for offset in range(0, len(ports_list)//2 + 1):
                     cell_list[center + offset][change_index].activate_port(side)
                     cell_list[center - offset][change_index].activate_port(side)
             else:
-                cell_list[change_index][center].activate_port(side)
-                for offset in range(1, center):
+                for offset in range(0, len(ports_list)//2 + 1):
                     cell_list[change_index][center + offset].activate_port(side)
                     cell_list[change_index][center - offset].activate_port(side)
 
@@ -154,11 +152,11 @@ class CompositeCell:
             # [ ][ ][ ][ ][ ]
             # Activate the ports
             if is_vertical:
-                for offset in range(1, center + 1):
+                for offset in range(1, len(ports_list)//2 + 1):
                     cell_list[center + offset][change_index].activate_port(side)
                     cell_list[center - offset][change_index].activate_port(side)
             else:
-                for offset in range(1, center + 1):
+                for offset in range(1, len(ports_list)//2 + 1):
                     cell_list[change_index][center + offset].activate_port(side)
                     cell_list[change_index][center - offset].activate_port(side)
 
@@ -169,15 +167,15 @@ class CompositeCell:
             # [ ][ ][ ][ ]
             # Activate the ports
             if is_vertical:
-                for offset in range(0, center-1):
-                    cell_list[center + offset + 1][change_index].activate_port(side)
-                    cell_list[center - offset][change_index].activate_port(side)
+                for offset in range(0, len(ports_list)//2):
+                    cell_list[center + offset][change_index].activate_port(side)
+                    cell_list[center - offset - 1][change_index].activate_port(side)
             else:
-                for offset in range(0, center-1):
-                    cell_list[change_index][center + offset + 1].activate_port(side)
-                    cell_list[change_index][center - offset].activate_port(side)
+                for offset in range(0, len(ports_list)//2):
+                    cell_list[change_index][center + offset].activate_port(side)
+                    cell_list[change_index][center - offset - 1].activate_port(side)
 
-        else:
+        else: # Case 3
             # Odd number of ports and even size of composite cell
             # Not applicatble since we avoid this scenario
             raise ValueError("Odd number of ports and even size of composite cell is not applicable")

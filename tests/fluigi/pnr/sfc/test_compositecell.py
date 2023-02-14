@@ -1,3 +1,4 @@
+from typing import List
 import pytest
 from parchmint.component import Component
 from parchmint.port import Port
@@ -126,7 +127,7 @@ def ccell_comp4_ref():
     return ccell
 
 
-def test_initialize_ports(cell_test1, cell_test_even_x):
+def test_initialize_ports(cell_test1, cell_test_even_x:List[List[PrimitiveCell]]):
     # CASES: 1. Port is in the center of the cell
     #        2. Odd number of ports and even number of cells
     #        3. Even number of ports and even number of cells
@@ -151,17 +152,18 @@ def test_initialize_ports(cell_test1, cell_test_even_x):
     # Check for a all the different cases of ports and size
     # CASE 3. Even number of ports and even number of cells
     CompositeCell.initialize_ports(
-        cell_test1,
+        cell_test_even_x,
         ComponentSide.SOUTH,
         [
             Port(label="1", layer="flow", x=0, y=1000),
             Port(label="2", layer="flow", x=100, y=1000),
             Port(label="3", layer="flow", x=500, y=1000),
+            Port(label="3", layer="flow", x=700, y=1000),
         ],
     )
 
     # Check that the ports are initialized correctly
-    assert [cell.south_port for cell in cell_test1[-1]] == [False, True, True, True, False]
+    assert [cell.south_port for cell in cell_test_even_x[-1]] == [False, False, True, True, True, True, False, False]
 
     # CASE 4. Even number of ports and odd number of cells
     CompositeCell.initialize_ports(
