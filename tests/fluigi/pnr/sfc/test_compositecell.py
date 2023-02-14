@@ -314,7 +314,6 @@ def test_equals(cell_test1, cell_test2, cell_test3):
 
 
 def test_rotate_clockwise(ccell_comp1_ref_base, ccell_comp1_ref_base_90):
-    
     ccell_comp1_ref_base.rotate_clockwise()
 
     assert ccell_comp1_ref_base == ccell_comp1_ref_base_90

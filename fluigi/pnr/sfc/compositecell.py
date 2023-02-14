@@ -47,12 +47,11 @@ class CompositeCell:
         """
         return self._cells[y][x]
 
-    
     def rotate_clockwise(self) -> None:
         """Rotates the composite cell clockwise (90 degrees)
 
         Regenerates the cell_list completely and activates the ports accordingly
-        """        
+        """
         # Move the reference to a backup variable
         # Create a new list of lists
         # The rows become the columns and the column become the rows
@@ -80,14 +79,7 @@ class CompositeCell:
             cell_list.append([])
             for x_index in range(new_columns):
                 # Create a new cell
-                cell_list[y_index].append(
-                    PrimitiveCell(
-                        x_index, 
-                        y_index, 
-                        blueprint_cell.dimension, 
-                        []
-                    )
-                )
+                cell_list[y_index].append(PrimitiveCell(x_index, y_index, blueprint_cell.dimension, []))
 
         # Generate a boolean array for the N, E, S, W sides
         north_side = [cell.north_port for cell in backup_cells_list[0]]
@@ -100,7 +92,7 @@ class CompositeCell:
             # Check if true on the north side
             if north_side[index]:
                 cell_list[index][-1].activate_port(ComponentSide.EAST)
-        
+
         # Activate the south ports in the new cell list by looking at the east side of the old cell list
         for index in range(len(east_side)):
             # Check if true on the east side
@@ -112,7 +104,7 @@ class CompositeCell:
             # Check if true on the south side
             if south_side[index]:
                 cell_list[index][0].activate_port(ComponentSide.WEST)
-        
+
         # Activate the north ports in the new cell list by looking at the west side of the old cell list
         for index in range(len(west_side)):
             # Check if true on the west side
@@ -121,10 +113,7 @@ class CompositeCell:
 
         # Assign the new cell list to the property
         self._cells = cell_list
-            
 
-    
-    
     def __eq__(self, o: object) -> bool:
         if isinstance(o, CompositeCell):
             # Check if types are correct
