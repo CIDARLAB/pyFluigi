@@ -101,6 +101,30 @@ def ccell_comp2_ref_base():
             [gpd(0, 2), gpd(1, 2), gpd(2, 2), gpd(3, 2), gpd(4, 2)],
         ]
     )
+    # Set the north ports in the first row
+    ccell.activate_port(0, 0, ComponentSide.NORTH)
+    ccell.activate_port(1, 0, ComponentSide.NORTH)
+    ccell.activate_port(2, 0, ComponentSide.NORTH)
+    ccell.activate_port(3, 0, ComponentSide.NORTH)
+    ccell.activate_port(4, 0, ComponentSide.NORTH)
+
+    # Set the south ports in the last row
+    ccell.activate_port(0, 2, ComponentSide.SOUTH)
+    ccell.activate_port(1, 2, ComponentSide.SOUTH)
+    ccell.activate_port(2, 2, ComponentSide.SOUTH)
+    ccell.activate_port(3, 2, ComponentSide.SOUTH)
+    ccell.activate_port(4, 2, ComponentSide.SOUTH)
+
+    # Set the east ports in the last column
+    ccell.activate_port(4, 0, ComponentSide.EAST)
+    ccell.activate_port(4, 1, ComponentSide.EAST)
+    ccell.activate_port(4, 2, ComponentSide.EAST)
+
+    # Set the west ports in the first column
+    ccell.activate_port(0, 0, ComponentSide.WEST)
+    ccell.activate_port(0, 1, ComponentSide.WEST)
+    ccell.activate_port(0, 2, ComponentSide.WEST)
+    
     return ccell
 
 
