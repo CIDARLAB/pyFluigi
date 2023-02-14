@@ -197,9 +197,7 @@ def place_and_route_mint(
         with open(tnew, "w") as f:
             json.dump(par_device.to_parchmint_v1_x(), f)
 
-        print(
-            "Place and Route completed with errors, please check the terminal output for information"
-        )
+        print("Place and Route completed with errors, please check the terminal output for information")
         sys.exit(-1)
 
     sys.exit(0)
