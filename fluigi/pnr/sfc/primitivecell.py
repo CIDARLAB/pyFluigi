@@ -158,38 +158,8 @@ class PrimitiveCell:
                 and self._west_port == __o.west_port
             )
         return False
-
-    def activate_port(self, side: ComponentSide) -> None:
-        """Sets the cell at the given coordinates to active
-
-        Args:
-           side (ComponentSide): The side of the composite cell to activate
-        """
-        if side is ComponentSide.NORTH:
-            self._north_port = True
-        elif side is ComponentSide.EAST:
-            self._east_port = True
-        elif side is ComponentSide.SOUTH:
-            self._south_port = True
-        else:
-            self._west_port = True
-
-    def deactivate_port(self, side: ComponentSide) -> None:
-        """Sets the cell at the given coordinates to deactivate
-
-        Args:
-           side (ComponentSide): The side of the composite cell to activate
-        """
-        if side is ComponentSide.NORTH:
-            self._north_port = False
-        elif side is ComponentSide.EAST:
-            self._east_port = False
-        elif side is ComponentSide.SOUTH:
-            self._south_port = False
-        else:
-            self._west_port = False
-
-    def print_cell(self):
+    
+    def get_figure(self) -> List[str]:
         """Prints a primitive cell in the following format:
 
         ----X----
@@ -223,9 +193,55 @@ class PrimitiveCell:
             + (" " * 7)
             + (PORT_INDICATOR if self._east_port else EAST_BOUNDARY_INDICATOR)
         )
+        ret = [
+            top_row_string,
+            spacer_row_string,
+            middle_row_string,
+            bottom_row_string
+        ]
 
-        print(top_row_string)
-        print(spacer_row_string)
-        print(middle_row_string)
-        print(spacer_row_string)
-        print(bottom_row_string)
+        return ret
+
+    def activate_port(self, side: ComponentSide) -> None:
+        """Sets the cell at the given coordinates to active
+
+        Args:
+           side (ComponentSide): The side of the composite cell to activate
+        """
+        if side is ComponentSide.NORTH:
+            self._north_port = True
+        elif side is ComponentSide.EAST:
+            self._east_port = True
+        elif side is ComponentSide.SOUTH:
+            self._south_port = True
+        else:
+            self._west_port = True
+
+    def deactivate_port(self, side: ComponentSide) -> None:
+        """Sets the cell at the given coordinates to deactivate
+
+        Args:
+           side (ComponentSide): The side of the composite cell to activate
+        """
+        if side is ComponentSide.NORTH:
+            self._north_port = False
+        elif side is ComponentSide.EAST:
+            self._east_port = False
+        elif side is ComponentSide.SOUTH:
+            self._south_port = False
+        else:
+            self._west_port = False
+
+
+    def print_cell(self):
+        """Prints a primitive cell in the following format:
+
+        ----X----
+        |       |
+        X       X
+        |       |
+        ----X----
+
+
+        """
+        [print(row) for row in self.get_figure()]

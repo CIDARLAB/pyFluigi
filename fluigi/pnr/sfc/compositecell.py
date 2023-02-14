@@ -47,18 +47,19 @@ class CompositeCell:
         """
         return self._cells[y][x]
 
-    def __eq__(self, __o: object) -> bool:
-        if isinstance(__o, CompositeCell):
+    def __eq__(self, o: object) -> bool:
+        if isinstance(o, CompositeCell):
             # Check if types are correct
-            if len(self._cells) == len(__o.cells):
+            if len(self._cells) == len(o.cells):
                 # Check if the dimensions are the same
                 for i in range(len(self._cells)):
-                    if len(self._cells[i]) != len(__o.cells[i]):
+                    if len(self._cells[i]) != len(o.cells[i]):
                         return False
                 # Check if the cells are the same
                 for i in range(len(self._cells)):
                     for j in range(len(self._cells[i])):
-                        if self._cells[i][j] != __o.cells[i][j]:
+                        if self.get_cell(j,i) != o.get_cell(j,i):
+                            print(f'Cell at ({i}, {j}) is not the same')
                             return False
 
                 # If we get here, then the cells are the same
@@ -112,10 +113,10 @@ class CompositeCell:
         if side is ComponentSide.EAST:
             is_vertical = True
             size = len(cell_list)
+            change_index = -1
         if side is ComponentSide.WEST:
             is_vertical = True
             size = len(cell_list)
-            change_index = -1
         if side is ComponentSide.SOUTH:
             change_index = -1
 
@@ -137,7 +138,7 @@ class CompositeCell:
             # Activate the ports
             if is_vertical:
                 cell_list[center][change_index].activate_port(side)
-                for offset in range(1, center + 1):
+                for offset in range(1, center):
                     cell_list[center + offset][change_index].activate_port(side)
                     cell_list[center - offset][change_index].activate_port(side)
             else:
@@ -168,11 +169,11 @@ class CompositeCell:
             # [ ][ ][ ][ ]
             # Activate the ports
             if is_vertical:
-                for offset in range(0, center):
+                for offset in range(0, center-1):
                     cell_list[center + offset + 1][change_index].activate_port(side)
                     cell_list[center - offset][change_index].activate_port(side)
             else:
-                for offset in range(0, center):
+                for offset in range(0, center-1):
                     cell_list[change_index][center + offset + 1].activate_port(side)
                     cell_list[change_index][center - offset].activate_port(side)
 
@@ -322,8 +323,28 @@ class CompositeCell:
         """Prints the composite cell"""
 
         for row in self._cells:
+            
+            top_row_string_full_row = ""
+            spacer_row_string_full_row = ""
+            middle_row_string_full_row = ""
+            bottom_row_string_full_row = ""
+                   
             for cell in row:
-                cell.print_cell()
+                # Get the strings for the cell
+                top_row_string, spacer_row_string, middle_row_string, bottom_row_string = cell.get_figure()
+                # Add the strings to the full row strings
+                top_row_string_full_row += top_row_string
+                spacer_row_string_full_row += spacer_row_string
+                middle_row_string_full_row += middle_row_string
+                bottom_row_string_full_row += bottom_row_string
+
+                # Print the full row strings
+            print(top_row_string_full_row)
+            print(spacer_row_string_full_row)
+            print(middle_row_string_full_row)
+            print(spacer_row_string_full_row)
+            print(bottom_row_string_full_row)
+
 
     def print_cell_indexes(self):
         """Prints the composite cell indexes"""

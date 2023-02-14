@@ -1,4 +1,5 @@
 import pytest
+from fluigi.parameters import SPACER_THRESHOLD
 from parchmint.component import Component
 from parchmint.port import Port
 
@@ -132,7 +133,7 @@ def cell_test_even_x():
 
 
 def generate_new_primitive(x, y):
-    return PrimitiveCell(x_coord=x, y_coord=y, size=100, ports_exists=[])
+    return PrimitiveCell(x_coord=x, y_coord=y, size=SPACER_THRESHOLD, ports_exists=[])
 
 
 @pytest.fixture
@@ -190,6 +191,116 @@ def comp1() -> Component:
         ],
     )
     return comp1
+
+@pytest.fixture
+def comp2() -> Component:
+    ret = Component(
+        ID="comp2",
+        name="comp2",
+        xpos=0,
+        ypos=0,
+        xspan=1000,
+        yspan=1000,
+        ports_list=[
+            Port(
+                label="1",
+                layer="flow",
+                x=10,
+                y=0,
+            ),
+            Port(
+                label="2",
+                layer="flow",
+                x=150,
+                y=0,
+            ),
+            Port(
+                label="3",
+                layer="flow",
+                x=250,
+                y=0,
+            ),
+            Port(
+                label="4",
+                layer="flow",
+                x=350,
+                y=0,
+            ),
+            Port(
+                label="5",
+                layer="flow",
+                x=450,
+                y=0,
+            ),
+            Port(
+                label="6",
+                layer="flow",
+                x=1000,
+                y=50,
+            ),
+            Port(
+                label="7",
+                layer="flow",
+                x=1000,
+                y=500,
+            ),
+            Port(
+                label="8",
+                layer="flow",
+                x=1000,
+                y=950,
+            ),
+            Port(
+                label="9",
+                layer="flow",
+                x=900,
+                y=1000,
+            ),
+            Port(
+                label="10",
+                layer="flow",
+                x=800,
+                y=1000,
+            ),
+            Port(
+                label="11",
+                layer="flow",
+                x=700,
+                y=1000,
+            ),
+            Port(
+                label="12",
+                layer="flow",
+                x=600,
+                y=1000,
+            ),
+            Port(
+                label="13",
+                layer="flow",
+                x=500,
+                y=1000,
+            ),
+            Port(
+                label="14",
+                layer="flow",
+                x=0,
+                y=950,
+            ),
+            Port(
+                label="15",
+                layer="flow",
+                x=0,
+                y=500,
+            ),
+            Port(
+                label="16",
+                layer="flow",
+                x=0,
+                y=50,
+            ),
+        ],
+    )
+    return ret
 
 
 @pytest.fixture
