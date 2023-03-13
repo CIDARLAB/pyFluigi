@@ -5,7 +5,15 @@
 		},
 		{
 			"path": "pylfr"
+		},
+		{
+			"path": "pylfr/pymint"
+		},
+		{
+			"path": "pylfr/pyparchmint"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"python.formatting.provider": "black"
+	}
 }
