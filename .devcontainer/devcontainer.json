@@ -24,11 +24,11 @@
 			"target": "/var/run/docker-host.sock",
 			"type": "bind"
 		},
-		{
-			"source": "/root/.cache/pypoetry/virtualenvs/",
-			"target": "/root/.cache/pypoetry/virtualenvs",
-			"type": "bind"
-		}
+		// {
+		// 	"source": "/root/.cache/pypoetry/virtualenvs/",
+		// 	"target": "/root/.cache/pypoetry/virtualenvs",
+		// 	"type": "bind"
+		// }
 	],
 	// Configure tool-specific properties.
 	// "customizations": {},
