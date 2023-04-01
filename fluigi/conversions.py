@@ -9,7 +9,12 @@ from fluigi.pnr.utils import assign_component_ports
 from fluigi.primitives import pull_defaults, pull_dimensions, pull_terminals, size_nodes
 
 
-def add_spacing(current_device: MINTDevice) -> None:
+def add_default_spacing(current_device: MINTDevice) -> None:
+    """Add the default spacing for the components and connections that dont have the default spacing
+
+    Args:
+        current_device (MINTDevice): the device that we need to check
+    """
     for component in current_device.device.components:
         if component.params.exists("componentSpacing") is False:
             component.params.set_param("componentSpacing", parameters.COMPONENT_SPACING)
@@ -20,21 +25,28 @@ def add_spacing(current_device: MINTDevice) -> None:
 
 
 def generate_device_from_mint(file_path: str, skip_constraints: bool = False) -> MINTDevice:
+    """Generate the device from MINT
+
+    Args:
+        file_path (str): file path (absolute)
+        skip_constraints (bool, optional): Skip generating the layout constraints. Defaults to False.
+
+    Raises:
+        ValueError: If no mint device is generated
+
+    Returns:
+        MINTDevice: device parsed from the mint
+    """
     current_device = MINTDevice.from_mint_file(file_path, skip_constraints)
     if current_device is None:
         raise ValueError("Error generating device from the MINT file !")
-    try:
-        pull_defaults(current_device.device)
-        pull_dimensions(current_device.device)
-        pull_terminals(current_device.device)
-        add_spacing(current_device)
-        size_nodes(current_device.device)
-    except Exception as e:
-        print("Error getting Primitive data: {}".format(e))
+    pull_defaults(current_device.device)
+    pull_dimensions(current_device.device)
+    pull_terminals(current_device.device)
+    add_default_spacing(current_device)
+    size_nodes(current_device.device)
     print(
-        "Setting Default MAX Dimensions to the device: ({}, {})".format(
-            parameters.DEVICE_X_DIM, parameters.DEVICE_Y_DIM
-        )
+        f"Setting Default MAX Dimensions to the device: ({parameters.DEVICE_X_DIM}, {parameters.DEVICE_Y_DIM})"
     )
     return current_device
 
@@ -65,11 +77,11 @@ def convert_to_parchmint(
 
         # Create new file in outpath with the same name as the current device
         outpath.mkdir(parents=True, exist_ok=True)
-        with open(str(outpath.joinpath(input_file.stem + ".json")), "w") as f:
-            print("Writing to file: {}".format(f.name))
+        with open(str(outpath.joinpath(input_file.stem + ".json")), "w", encoding="utf-8") as f:
+            print(f"Writing to file: {f.name}")
 
             json.dump(parchmint_text, f, indent=4)
 
         utils.printgraph(current_device.device.graph, current_device.device.name)
     else:
-        raise Exception("Unsupported file extension: {}".format(extension))
+        raise ValueError(f"Unsupported file extension: {extension}")

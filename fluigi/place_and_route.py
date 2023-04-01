@@ -11,7 +11,7 @@ from pymint import MINTDevice
 
 import fluigi.parameters as parameters
 import fluigi.utils as utils
-from fluigi.conversions import add_spacing
+from fluigi.conversions import add_default_spacing
 from fluigi.pnr.dropx import place_and_route_dropx
 from fluigi.pnr.layout import Layout, PlaceAndRouteAlgorithms, RouterAlgorithms
 from fluigi.pnr.placement.graph import (
@@ -40,25 +40,31 @@ faulthandler.enable()
 def generate_device_from_mint(file_path: str, skip_constraints: bool = False) -> MINTDevice:
     current_device = MINTDevice.from_mint_file(file_path, skip_constraints)
     if current_device is None:
-        raise Exception("Error generating device from the MINT file !")
+        raise ValueError("Error generating device from the MINT file !")
     try:
         # start_java_vm()
-        pull_defaults(current_device)
-        pull_dimensions(current_device)
-        pull_terminals(current_device)
+        pull_defaults(current_device.device)
+        pull_dimensions(current_device.device)
+        pull_terminals(current_device.device)
         # stop_java_vm()
-    except Exception as e:
-        print("Error getting Primitive data: {}".format(e))
+    except Exception as exception:
+        print(f"Error getting Primitive data: {exception}")
     print(
-        "Setting Default MAX Dimensions to the device: ({}, {})".format(
-            parameters.DEVICE_X_DIM, parameters.DEVICE_Y_DIM
-        )
+        f"Setting Default MAX Dimensions to the device: ({parameters.DEVICE_X_DIM}, {parameters.DEVICE_Y_DIM})"
     )
     return current_device
 
 
 def generate_device_from_parchmint(file_path: str) -> Device:
-    with open(file_path) as data_file:
+    """Generate fom a Parchmint JSON file
+
+    Args:
+        file_path (str): file path
+
+    Returns:
+        Device: Device that is read from the JSON
+    """    
+    with open(file_path, "r", encoding="utf-8") as data_file:
         text = data_file.read()
         device_json = json.loads(text)
         return Device(device_json)
@@ -85,14 +91,16 @@ def place_and_route_mint(
         path = Path(parameters.OUTPUT_DIR)
         path.mkdir(parents=True)
 
+    current_mint_device = None
     current_device = None
 
     extension = Path(input_file).suffix
     if extension == ".mint" or extension == ".uf":
-        current_device = generate_device_from_mint(input_file, ignore_layout_constraints)
+        current_mint_device = generate_device_from_mint(input_file, ignore_layout_constraints)
         # Set the device dimensions
-        current_device.params.set_param("x-span", parameters.DEVICE_X_DIM)
-        current_device.params.set_param("y-span", parameters.DEVICE_Y_DIM)
+        current_mint_device.device.params.set_param("x-span", parameters.DEVICE_X_DIM)
+        current_mint_device.device.params.set_param("y-span", parameters.DEVICE_Y_DIM)
+        current_device = current_mint_device.device
 
     elif extension == ".json":
         # Push it through the parchmint parser
@@ -101,6 +109,7 @@ def place_and_route_mint(
         # Set the device dimensions from the device
         parameters.DEVICE_X_DIM = current_device.params.get_param("x-span")
         parameters.DEVICE_Y_DIM = current_device.params.get_param("y-span")
+        current_mint_device = MINTDevice(current_device.name, current_device)
 
     else:
         print("Unrecognized file Extension")
@@ -115,22 +124,22 @@ def place_and_route_mint(
             print("File extension not supported")
         sys.exit(0)
 
-    add_spacing(current_device)
+    add_default_spacing(current_mint_device)
 
     # Decide if we want to delete this later on
-    size_nodes(current_device)
-    assign_component_ports(current_device)
+    size_nodes(current_mint_device)
+    assign_component_ports(current_mint_device)
 
-    temp_parchmint_file = os.path.join(parameters.OUTPUT_DIR, "{}_no_par.json".format(current_device.name))
-    with open(temp_parchmint_file, "w") as f:
-        json.dump(current_device.to_parchmint_v1_x(), f)
+    temp_parchmint_file = os.path.join(parameters.OUTPUT_DIR, f"{current_device.name}_no_par.json")
+    with open(temp_parchmint_file, "w", encoding="utf-8") as f:
+        json.dump(current_device.to_parchmint_v1_2(), f)
 
     # print(current_device.G.edges)
 
-    utils.printgraph(current_device.G, current_device.name + ".dot")
+    utils.printgraph(current_device.graph, current_device.name + ".dot")
 
     # TODO - Delete this later
-    place_and_route_dropx(current_device)
+    place_and_route_dropx(current_mint_device)
 
     sys.exit(0)
     # We exit the process if only convert is set to true

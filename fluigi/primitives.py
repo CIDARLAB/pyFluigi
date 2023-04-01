@@ -1,5 +1,6 @@
 import json
-from typing import Optional
+from typing import Dict, Optional, List
+from parchmint.params import Params
 
 import requests
 from parchmint.device import Device, ValveType
@@ -7,68 +8,76 @@ from parchmint.port import Port
 
 import fluigi.parameters as parameters
 
-# All the imports for the java pipe
-# import jpype
-# import jpype.imports
-
-# from jpype.types import *
-
-
-# java_path = parameters.FLUIGI_JAVA_PNR_JAR_PATH.resolve()
-# jpype.startJVM(classpath=[str(java_path)])
-
-# import java
-# from org.cidarlab.fluigi.fluigi import *
-
-
-# def stop_java_vm():
-#     jpype.shutdownJVM()
-
-
 OLD_PRIMITIVES_CHECKLIST = []
 
 
-def get_defaults(mint: str):
+def _get_defaults(mint: str) -> Optional[Dict]:
+    """Calls the rest api for pulling the data
+
+    Args:
+        mint (str): the mint string for the mint
+
+    Returns:
+        Dict: returns the object
+    """
     try:
         # python_object = json.loads(output.stdout.decode('utf-8'))
         params = {"mint": mint}
-        r = requests.get("{}/defaults".format(parameters.PRIMITIVE_SERVER_URI), params=params)
+        r = requests.get(f"{parameters.PRIMITIVE_SERVER_URI}/defaults", params=params, timeout=1000)
         python_object = r.json()
         return python_object
-    except Exception as e:
-        print("Could not retrieve default parameters for {}".format(mint))
-        print(e)
+    except Exception as exception:
+        print(f"Could not retrieve default parameters for {mint}, Exception: {exception}")
         return None
 
 
-def get_dimensions(mint: str, params):
+def _get_dimensions(mint: str, params: Params) -> Optional[Dict]:
+    """Calls the dimension respect
+
+    Args:
+        mint (str): mint type
+        params (Dict): data for the params
+
+    Returns:
+        Optional[Dict]: the dimension data
+    """
     try:
         req_params = {"mint": mint}
         req_params["params"] = json.dumps(params.data)
         r = requests.get(
-            "{}/dimensions".format(parameters.PRIMITIVE_SERVER_URI),
+            f"{parameters.PRIMITIVE_SERVER_URI}/dimensions",
             params=req_params,
+            timeout=1000
         )
 
         python_object = r.json()
         return python_object
 
-    except Exception as e:
-        print("Could not retrieve dimensions for {}".format(mint))
-        print(e)
+    except Exception as exception:
+        print(f"Could not retrieve dimensions for {mint}, Exception: {exception}")
         return None
 
 
-def get_terminals(mint: str, params):
+def _get_terminals(mint: str, params: Params) -> Optional[List]:
+    """ Calls the rest api
+
+    Args:
+        mint (str): type of the component
+        params (Params): params object
+
+    Returns:
+        Optional[Dict]: filled out data object
+    """
     try:
         req_params = {"mint": mint}
         req_params["params"] = json.dumps(params.data)
-        r = requests.get(
-            "{}/terminals".format(parameters.PRIMITIVE_SERVER_URI),
+        req = requests.get(
+            f"{parameters.PRIMITIVE_SERVER_URI}/terminals",
             params=req_params,
+            timeout=1000
         )
 
-        terminals = r.json()
+        terminals = req.json()
 
         python_object = []
 
@@ -79,32 +88,43 @@ def get_terminals(mint: str, params):
 
         return python_object
 
-    except Exception as e:
-        print("Could not retrieve dimensions for {}".format(mint))
-        print(e)
+    except Exception as exception:
+        print(f"Could not retrieve dimensions for {mint}, Exception: {exception}")
         return None
 
 
 def get_valve_type(mint: str) -> Optional[str]:
+    """Gets the valve type as a REST call
+
+    Args:
+        mint (str): MINT type string
+
+    Returns:
+        Optional[str]: the valve type
+    """
     try:
         # python_object = json.loads(output.stdout.decode('utf-8'))
         params = {"mint": mint}
-        r = requests.get("{}/valve_type".format(parameters.PRIMITIVE_SERVER_URI), params=params)
+        r = requests.get(f"{parameters.PRIMITIVE_SERVER_URI}/valve_type", params=params, timeout=1000)
         python_object = r.json()
         return python_object
-    except Exception as e:
-        print("Could not retrieve default parameters for {}".format(mint))
-        print(e)
+    except Exception as exception:
+        print(f"Could not retrieve default parameters for {mint}, Exception: {exception}")
         return None
 
 
 def pull_defaults(device: Device):
+    """Pull the default the params for all the components
+
+    Args:
+        device (Device): Device you want to pull the defaults for
+    """    
     print("Pulling Default Values of Components")
     for component in device.components:
         # print("comonent name {}".format(component.name))
-        defaults = get_defaults(component.entity)
+        defaults = _get_defaults(component.entity)
         if defaults is None:
-            print("Warning: Could not pull default values for {} of type :{}".format(component.name, component.entity))
+            print(f"Warning: Could not pull default values for {component.name} of type :{component.entity}")
             continue
 
         # Fills out all the missing params
@@ -121,9 +141,7 @@ def pull_defaults(device: Device):
         for param_key in component.params.data.keys():
             if param_key not in defaults.keys():
                 print(
-                    'Deleted unsupported param "{}" from component {} : {}'.format(
-                        param_key, component.ID, component.entity
-                    )
+                    f'Deleted unsupported param "{param_key}" from component {component.ID} : {component.entity}'
                 )
                 mark_for_delete.append(param_key)
 
@@ -132,12 +150,19 @@ def pull_defaults(device: Device):
 
 
 def pull_dimensions(device: Device):
+    """Pull the dimensions for the device
+
+    Pulls the dimensions from the 3DuF primitives server
+
+    Args:
+        device (Device): The device we need to pull the dimensions for
+    """
     print("Pulling Dimensions of Components")
     for component in device.components:
-        dims = get_dimensions(component.entity, component.params)
+        dims = _get_dimensions(component.entity, component.params)
 
         if dims is None:
-            print("Warning: Could not pull default values for {} of type :{}".format(component.name, component.entity))
+            print(f"Warning: Could not pull default values for {component.name} of type :{component.entity}")
             continue
 
         # Assign the xspan and yspan
@@ -147,24 +172,22 @@ def pull_dimensions(device: Device):
 
 
 def pull_terminals(device: Device):
+    """Pulls all the terminal information for all the components
+
+    Args:
+        device (Device): The device for which need to pull the info for
+    """
     print("Pulling Terminals of Components")
     for component in device.components:
-        terminals = get_terminals(component.entity, component.params)
+        terminals = _get_terminals(component.entity, component.params)
         if terminals is None:
-            print("Warning: Could not pull terminal data for {} of type: {}".format(component.name, component.entity))
+            print(f"Warning: Could not pull terminal data for {component.name} of type: {component.entity}")
         else:
             # Print warning if the terminal is outside of the x and y span of the component
             for terminal in terminals:
                 if terminal.x < 0 or terminal.x > component.xspan or terminal.y < 0 or terminal.y > component.yspan:
                     print(
-                        "Warning: Terminal {} ({}, {}) of component {} is outside of the span of the component ({}, {})".format(
-                            terminal.label,
-                            terminal.x,
-                            terminal.y,
-                            component.ID,
-                            component.xspan,
-                            component.yspan,
-                        )
+                        f"Warning: Terminal {terminal.label} ({terminal.x}, {terminal.y}) of component {component.ID} is outside of the span of the component ({component.xspan}, {component.yspan})"
                     )
             # Assign the terminals
             component.add_component_ports(terminals)
@@ -172,11 +195,16 @@ def pull_terminals(device: Device):
 
 
 def pull_valve_types(device: Device):
+    """Pull the valve types for the device
+
+    Args:
+        device (Device): Device we need to pull the valve type data from
+    """    
     print("Pulling Valve Type Information")
     for component in device.get_valves():
         type_info = get_valve_type(component.entity)
         if type_info is None:
-            print("Warning: Could not pull valve type data for {} of type: {}".format(component.name, component.entity))
+            print(f"Warning: Could not pull valve type data for {component.name} of type: {component.entity}")
         else:
             if type_info == "NORMALLY_OPEN":
                 device.update_valve_type(component, ValveType.NORMALLY_OPEN)
@@ -184,13 +212,16 @@ def pull_valve_types(device: Device):
                 device.update_valve_type(component, ValveType.NORMALLY_CLOSED)
             else:
                 print(
-                    "Warning: Found unknown valve type data for {} of type: {} - {}".format(
-                        component.name, component.entity, type_info
-                    )
+                    f"Warning: Found unknown valve type data for {component.name} of type: {component.entity} - {type_info}"
                 )
 
 
 def size_nodes(device: Device) -> None:
+    """Sizes the nodes to the right dimensions
+
+    Args:
+        device (Device): Device that we want to pull the node sizes for
+    """    
     for component in device.components:
         if component.entity == "NODE":
             # Find the connections to the nodes
