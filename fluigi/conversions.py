@@ -22,7 +22,7 @@ def add_spacing(current_device: MINTDevice) -> None:
 def generate_device_from_mint(file_path: str, skip_constraints: bool = False) -> MINTDevice:
     current_device = MINTDevice.from_mint_file(file_path, skip_constraints)
     if current_device is None:
-        raise Exception("Error generating device from the MINT file !")
+        raise ValueError("Error generating device from the MINT file !")
     try:
         pull_defaults(current_device.device)
         pull_dimensions(current_device.device)
