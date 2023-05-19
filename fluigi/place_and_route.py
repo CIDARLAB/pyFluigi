@@ -12,7 +12,8 @@ from pymint import MINTDevice
 import fluigi.parameters as parameters
 import fluigi.utils as utils
 from fluigi.conversions import add_default_spacing
-from fluigi.pnr.dropx import place_and_route_dropx
+
+# from fluigi.pnr.dropx import place_and_route_dropx
 from fluigi.pnr.layout import Layout, PlaceAndRouteAlgorithms, RouterAlgorithms
 from fluigi.pnr.placement.graph import (
     generateHOLALayout,
@@ -37,7 +38,9 @@ from fluigi.primitives import (  # stop_java_vm,
 faulthandler.enable()
 
 
-def generate_device_from_mint(file_path: str, skip_constraints: bool = False) -> MINTDevice:
+def generate_device_from_mint(
+    file_path: str, skip_constraints: bool = False
+) -> MINTDevice:
     current_device = MINTDevice.from_mint_file(file_path, skip_constraints)
     if current_device is None:
         raise ValueError("Error generating device from the MINT file !")
@@ -63,7 +66,7 @@ def generate_device_from_parchmint(file_path: str) -> Device:
 
     Returns:
         Device: Device that is read from the JSON
-    """    
+    """
     with open(file_path, "r", encoding="utf-8") as data_file:
         text = data_file.read()
         device_json = json.loads(text)
@@ -96,7 +99,9 @@ def place_and_route_mint(
 
     extension = Path(input_file).suffix
     if extension == ".mint" or extension == ".uf":
-        current_mint_device = generate_device_from_mint(input_file, ignore_layout_constraints)
+        current_mint_device = generate_device_from_mint(
+            input_file, ignore_layout_constraints
+        )
         # Set the device dimensions
         current_mint_device.device.params.set_param("x-span", parameters.DEVICE_X_DIM)
         current_mint_device.device.params.set_param("y-span", parameters.DEVICE_Y_DIM)
@@ -130,7 +135,9 @@ def place_and_route_mint(
     size_nodes(current_mint_device)
     assign_component_ports(current_mint_device)
 
-    temp_parchmint_file = os.path.join(parameters.OUTPUT_DIR, f"{current_device.name}_no_par.json")
+    temp_parchmint_file = os.path.join(
+        parameters.OUTPUT_DIR, f"{current_device.name}_no_par.json"
+    )
     with open(temp_parchmint_file, "w", encoding="utf-8") as f:
         json.dump(current_device.to_parchmint_v1_2(), f)
 
@@ -160,7 +167,9 @@ def place_and_route_mint(
 
         layout.apply_layout()
 
-        temp_parchmint_file = os.path.join(parameters.OUTPUT_DIR, "{}_only_route.json".format(current_device.name))
+        temp_parchmint_file = os.path.join(
+            parameters.OUTPUT_DIR, "{}_only_route.json".format(current_device.name)
+        )
         with open(temp_parchmint_file, "w") as f:
             json.dump(current_device.to_parchmint_v1_x(), f)
 
@@ -180,7 +189,9 @@ def place_and_route_mint(
     if current_device is None:
         raise Exception("Could not parse the device correctly")
 
-    temp_parchmint_file = os.path.join(parameters.OUTPUT_DIR, "{}_temp_par.json".format(current_device.name))
+    temp_parchmint_file = os.path.join(
+        parameters.OUTPUT_DIR, "{}_temp_par.json".format(current_device.name)
+    )
     with open(temp_parchmint_file, "w") as f:
         json.dump(current_device.to_parchmint_v1_x(), f)
 
@@ -194,7 +205,9 @@ def place_and_route_mint(
         reduce_device_size(par_device, parameters.DEVICE_PADDING)
         utils.render_svg(par_device, "_par")
 
-        tnew = parameters.OUTPUT_DIR.joinpath("{}_placed_and_routed.json".format(par_device.name))
+        tnew = parameters.OUTPUT_DIR.joinpath(
+            "{}_placed_and_routed.json".format(par_device.name)
+        )
         with open(tnew, "w") as f:
             json.dump(par_device.to_parchmint_v1_x(), f)
     else:
@@ -202,11 +215,15 @@ def place_and_route_mint(
         # reduce_device_size(par_device, parameters.DEVICE_PADDING)
         utils.render_svg(par_device, "_par_failed")
 
-        tnew = parameters.OUTPUT_DIR.joinpath("{}_placed_and_routed_failed.json".format(par_device.name))
+        tnew = parameters.OUTPUT_DIR.joinpath(
+            "{}_placed_and_routed_failed.json".format(par_device.name)
+        )
         with open(tnew, "w") as f:
             json.dump(par_device.to_parchmint_v1_x(), f)
 
-        print("Place and Route completed with errors, please check the terminal output for information")
+        print(
+            "Place and Route completed with errors, please check the terminal output for information"
+        )
         sys.exit(-1)
 
     sys.exit(0)
@@ -223,7 +240,9 @@ def place_and_route_mint(
 
     layout.apply_layout()
 
-    temp_parchmint_file = os.path.join(parameters.OUTPUT_DIR, "{}_placed_and_routed.json".format(current_device.name))
+    temp_parchmint_file = os.path.join(
+        parameters.OUTPUT_DIR, "{}_placed_and_routed.json".format(current_device.name)
+    )
     with open(temp_parchmint_file, "w") as f:
         json.dump(current_device.to_parchmint_v1_x(), f)
 
@@ -262,7 +281,9 @@ def place_and_route_mint(
     layout.ensureLegalCoordinates()
     # layout.print_layout()
 
-    temp_parchmint_file = os.path.join(parameters.OUTPUT_DIR, "{}_hola_par.json".format(current_device.name))
+    temp_parchmint_file = os.path.join(
+        parameters.OUTPUT_DIR, "{}_hola_par.json".format(current_device.name)
+    )
     with open(temp_parchmint_file, "w") as f:
         json.dump(current_device.to_parchmint_v1_x(), f)
 
