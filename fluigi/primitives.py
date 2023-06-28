@@ -1,10 +1,10 @@
 import json
-from typing import Dict, Optional, List
-from parchmint.params import Params
+from typing import Dict, List, Optional
 
 import requests
-from parchmint.device import Device, Device, ValveType, ValveType
-from parchmint.port import Port, Port
+from parchmint.device import Device, ValveType
+from parchmint.params import Params
+from parchmint.port import Port
 
 import fluigi.parameters as parameters
 
@@ -43,11 +43,7 @@ def _get_dimensions(mint: str, params: Params) -> Optional[Dict]:
     try:
         req_params = {"mint": mint}
         req_params["params"] = json.dumps(params.data)
-        r = requests.get(
-            f"{parameters.PRIMITIVE_SERVER_URI}/dimensions",
-            params=req_params,
-            timeout=1000
-        )
+        r = requests.get(f"{parameters.PRIMITIVE_SERVER_URI}/dimensions", params=req_params, timeout=1000)
 
         python_object = r.json()
         return python_object
@@ -58,7 +54,7 @@ def _get_dimensions(mint: str, params: Params) -> Optional[Dict]:
 
 
 def _get_terminals(mint: str, params: Params) -> Optional[List]:
-    """ Calls the rest api
+    """Calls the rest api
 
     Args:
         mint (str): type of the component
@@ -70,11 +66,7 @@ def _get_terminals(mint: str, params: Params) -> Optional[List]:
     try:
         req_params = {"mint": mint}
         req_params["params"] = json.dumps(params.data)
-        req = requests.get(
-            f"{parameters.PRIMITIVE_SERVER_URI}/terminals",
-            params=req_params,
-            timeout=1000
-        )
+        req = requests.get(f"{parameters.PRIMITIVE_SERVER_URI}/terminals", params=req_params, timeout=1000)
 
         terminals = req.json()
 
@@ -117,7 +109,7 @@ def pull_defaults(device: Device):
 
     Args:
         device (Device): Device you want to pull the defaults for
-    """    
+    """
     print("Pulling Default Values of Components")
     for component in device.components:
         # print("comonent name {}".format(component.name))
@@ -139,9 +131,7 @@ def pull_defaults(device: Device):
         mark_for_delete = []
         for param_key in component.params.data.keys():
             if param_key not in defaults.keys():
-                print(
-                    f'Deleted unsupported param "{param_key}" from component {component.ID} : {component.entity}'
-                )
+                print(f'Deleted unsupported param "{param_key}" from component {component.ID} : {component.entity}')
                 mark_for_delete.append(param_key)
 
         for param_key in mark_for_delete:
@@ -198,7 +188,7 @@ def pull_valve_types(device: Device):
 
     Args:
         device (Device): Device we need to pull the valve type data from
-    """    
+    """
     print("Pulling Valve Type Information")
     for component in device.get_valves():
         type_info = get_valve_type(component.entity)
@@ -220,7 +210,7 @@ def size_nodes(device: Device) -> None:
 
     Args:
         device (Device): Device that we want to pull the node sizes for
-    """    
+    """
     for component in device.components:
         if component.entity == "NODE":
             # Find the connections to the nodes

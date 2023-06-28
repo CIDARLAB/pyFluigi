@@ -131,7 +131,6 @@ def place_and_route_mint(
     with open(temp_parchmint_file, "w", encoding="utf-8") as f:
         json.dump(current_device.to_parchmint_v1_2(), f)
 
-
     utils.printgraph(current_device.graph, current_device.name + ".dot")
 
     # TODO - Delete this later
@@ -214,7 +213,6 @@ def place_and_route_mint(
     layout.place_and_route_design()
 
     layout.print_layout("preview")
-
 
     layout.apply_layout()
 

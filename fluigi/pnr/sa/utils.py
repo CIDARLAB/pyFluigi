@@ -146,7 +146,6 @@ def get_terminal_location(terminal: CTerminal, cell: CCell) -> TerminalLocation:
 
 
 def update_terminals(cell: CCell):
-
     for i, item in enumerate(cell.ports):
         item.compute_absolute_positions(cell.x, cell.y)
 

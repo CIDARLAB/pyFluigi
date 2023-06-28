@@ -1,4 +1,5 @@
 from __future__ import annotations
+
 from typing import Dict, List, Tuple
 
 from fluigi.parameters import DEVICE_X_DIM, DEVICE_Y_DIM, LAMBDA, SA_GRID_BLOCK_SIZE
