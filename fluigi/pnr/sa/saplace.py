@@ -25,7 +25,6 @@ class SAPlace:
         self.layout = salayout
         self.list_components = list(salayout.cells.values())
         self.seed = 0
-        # list_components = []
         self.rate_accept = 0.0
         self.temp = 0
         self.range_x = DEVICE_X_DIM / LAMBDA

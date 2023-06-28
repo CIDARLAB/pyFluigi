@@ -10,8 +10,7 @@ print("File Name: " + file_path)
 device = None
 
 with open(file_path) as data_file:
-    text = data_file.read()
-    device_json = json.loads(text)
+    device_json = json.load(data_file)
     device = Device(device_json)
 
 print("Checking for components with no dimensions:")

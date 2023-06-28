@@ -1,6 +1,4 @@
 from __future__ import annotations
-
-from math import ceil
 from typing import Dict, List, Tuple
 
 from fluigi.parameters import DEVICE_X_DIM, DEVICE_Y_DIM, LAMBDA, SA_GRID_BLOCK_SIZE
@@ -20,7 +18,7 @@ class LayoutGrid:
         super().__init__()
         self.x_offset_memory = 0
         self.y_offset_memory = 0
-        self.layout_grid: Dict[Tuple[int, int], List[CCell]] = dict()
+        self.layout_grid: Dict[Tuple[int, int], List[CCell]] = {}
         self.c = None
 
     def new_move(self, moved_cell: CCell, x: int, y: int) -> None:
@@ -93,7 +91,7 @@ class LayoutGrid:
             for j in range(minY, maxY):
                 key = (i, j)
                 # Initialize the array if key not present
-                if key not in layout_grid.keys():
+                if key not in layout_grid:
                     layout_grid[key] = []
 
                 cell_list = layout_grid[key]
@@ -102,8 +100,7 @@ class LayoutGrid:
     def calcualte_overlap(self) -> int:
         overlap_sum = 0
         for cell_list in list(self.layout_grid.values()):
-            for i in range(len(cell_list)):
-                c1 = cell_list[i]
+            for i, c1 in enumerate(cell_list):
                 for j in range(i + 1, len(cell_list)):
                     c2 = cell_list[j]
                     overlap_sum += overlap_area(c1, c2)
@@ -118,7 +115,7 @@ class LayoutGrid:
         for i in range(minX, maxX):
             for j in range(minY, maxY):
                 key = (i, j)
-                if key not in self.layout_grid.keys():
+                if key not in self.layout_grid:
                     continue
                 cell_list = self.layout_grid[key]
                 for c in cell_list:
@@ -126,7 +123,8 @@ class LayoutGrid:
                         overlap_sum += overlap_area(randc, c)
         return overlap_sum
 
-    def overlaps(self, c1: CCell, c2: CCell) -> bool:
+    @staticmethod
+    def overlaps(c1: CCell, c2: CCell) -> bool:
         if left_edge(c1) > right_edge(c2):
             return False
         elif right_edge(c1) < left_edge(c2):
@@ -144,5 +142,5 @@ class LayoutGrid:
     def cleanup(self):
         self.c = None
         self.clear()
-        for k in self.layout_grid.keys():
+        for k in self.layout_grid.copy().keys():
             del self.layout_grid[k]

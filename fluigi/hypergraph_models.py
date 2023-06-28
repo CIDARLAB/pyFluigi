@@ -54,7 +54,6 @@ class HyperGraph(nx.Graph):
         >>> G.add_edge((1, 2), weight=4)   # update data for key=0
         >>> G.add_edge((1, 3, 4), weight=7, capacity=15, length=342.7)
         """
-
         edge = set(edge)
         # set up attribute dict
         if attr_dict is None:
@@ -70,7 +69,7 @@ class HyperGraph(nx.Graph):
             if node not in self.adj:
                 self.adj[node] = {}
                 self.node[node] = {}
-            for v in set(edge) - set([node]):
+            for v in set(edge) - {node}:
                 datadict = self.adj[node].get(v, {})
                 datadict.update(attr_dict)
                 self.adj[node][v] = datadict

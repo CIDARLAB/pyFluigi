@@ -68,8 +68,8 @@ def try_shift_left(spread_array: List[bool], ideal_locations: Dict[int, int]) ->
     ports_sorted_list = list(ideal_locations.keys())
     ports_sorted_list.sort()
 
-    for cursor in range(len(spread_array)):
-        if spread_array[cursor] is True:
+    for cursor, item in enumerate(spread_array):
+        if item is True:
             # Get the bin_location from the binning data
             # Get the bin_location from the binning data
             # Check if no port data is available for th
@@ -165,7 +165,7 @@ def shift_furthest_fesible_point(array: List[bool], start_index: int, target_ind
         # loop downwards until you see another
         # for cursor=start_index; cursor>=target_index; i=-1:
         for cursor in range(start_index - 1, target_index - 1, -1):
-            if array[cursor] == True:
+            if array[cursor] is True:
                 # Found the furthest point set to
                 # right of furthest point and unset the start point
                 array[cursor + 1] = True
@@ -184,7 +184,7 @@ def shift_furthest_fesible_point(array: List[bool], start_index: int, target_ind
         # loop downwards until you see another
         # for cursor=start_index; cursor>=target_index; i=+1:
         for cursor in range(start_index + 1, target_index + 1, 1):
-            if array[cursor] == True:
+            if array[cursor] is True:
                 # Found the furthest point set to
                 # left of furthest point and unset the start point
                 array[cursor - 1] = True

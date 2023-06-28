@@ -68,7 +68,7 @@ def generateSpringLayout(layout: Layout):
     center_y = parameters.DEVICE_Y_DIM / 2
 
     # Scale the positions based on the spring layout
-    for cell_id in positions.keys():
+    for cell_id in positions:
         position = positions[cell_id]
         cell = layout.cells[cell_id]
         cell.x = int(center_x + position[0] * x_scale_factor)
@@ -78,8 +78,8 @@ def generateSpringLayout(layout: Layout):
 
 
 def generateHOLALayout(layout: Layout):
-    cell_node_map = dict()
-    net_edge_map = dict()
+    cell_node_map = {}
+    net_edge_map = {}
     hola_graph = adg.Graph()
 
     # First convert layout into a dialect graph
@@ -106,7 +106,7 @@ def generateHOLALayout(layout: Layout):
             net_edge_map[net] = edge
 
     print("Before HOLA:")
-    for cell in cell_node_map.keys():
+    for cell in cell_node_map:
         node_ref = cell_node_map[cell]
         bounding_box = node_ref.getBoundingBox()
         print("{}: x-{} y-{}".format(cell.ID, bounding_box.x, bounding_box.y))
@@ -121,7 +121,7 @@ def generateHOLALayout(layout: Layout):
     center_y = parameters.DEVICE_Y_DIM / 2
 
     print("After HOLA:")
-    for cell in cell_node_map.keys():
+    for cell in cell_node_map:
         node_ref = cell_node_map[cell]
         bounding_box = node_ref.getBoundingBox()
         print("Raw Version:")

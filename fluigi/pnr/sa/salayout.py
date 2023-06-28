@@ -95,12 +95,7 @@ class SALayout(Layout):
             source_cell = net.source
             # print("Source ID: {}".format(source_cell.id))
             source_terminal = net.source_terminal
-            # print(
-            #     "Source Terminal- {} ({}, {})".format(
-            #         source_terminal.label, source_terminal.x, source_terminal.y
-            #     )
-            # )
-            for i in range(len(net.sink_terminals)):
+            for i, sink_terminal in enumerate(net.sink_terminals):
                 sink_cell = net.sinks[i]
                 # print("Sink ID: {}".format(sink_cell.id))
                 sink_terminal = net.sink_terminals[i]
@@ -121,9 +116,8 @@ class SALayout(Layout):
         for net in list(self.nets.values()):
             source_cell = net.source
             source_terminal = net.source_terminal
-            for i in range(len(net.sink_terminals)):
+            for i, sink_terminal in enumerate(net.sink_terminals):
                 sink_cell = net.sinks[i]
-                sink_terminal = net.sink_terminals[i]
                 dist = manhattan_dist(source_terminal, sink_terminal)
                 penalty = calc_position(source_cell, source_terminal, sink_cell, sink_terminal)
                 wire_sum += dist + OVERLAP_PENALTY / 2 * penalty
@@ -141,7 +135,6 @@ class SALayout(Layout):
         Returns:
             int: [description]
         """
-
         min_left = min_top = sys.maxsize
         max_right = max_bottom = 0
 
@@ -166,8 +159,7 @@ class SALayout(Layout):
     def calculate_overlap(self) -> float:
         overlap_sum = 0
         cells = list(self.cells.values())
-        for i in range(len(cells)):
-            c1 = cells[i]
+        for i, c1 in enumerate(cells):
             for j in range(i + 1, len(cells)):
                 c2 = cells[j]
                 overlap_sum += overlap_area(c1, c2)

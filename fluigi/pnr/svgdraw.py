@@ -7,7 +7,7 @@ from fluigi.parameters import DEVICE_X_DIM, DEVICE_Y_DIM, OUTPUT_DIR
 PT_TO_UM = 1 / 352.778
 
 
-class SVGDraw(object):
+class SVGDraw:
     def __init__(self, filename: str, layout: Layout) -> None:
         self._file_path = OUTPUT_DIR.joinpath("{}.svg".format(filename))
         self._layout = layout

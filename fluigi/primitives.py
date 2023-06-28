@@ -3,8 +3,8 @@ from typing import Dict, Optional, List
 from parchmint.params import Params
 
 import requests
-from parchmint.device import Device, ValveType
-from parchmint.port import Port
+from parchmint.device import Device, Device, ValveType, ValveType
+from parchmint.port import Port, Port
 
 import fluigi.parameters as parameters
 
@@ -21,7 +21,6 @@ def _get_defaults(mint: str) -> Optional[Dict]:
         Dict: returns the object
     """
     try:
-        # python_object = json.loads(output.stdout.decode('utf-8'))
         params = {"mint": mint}
         r = requests.get(f"{parameters.PRIMITIVE_SERVER_URI}/defaults", params=params, timeout=1000)
         python_object = r.json()

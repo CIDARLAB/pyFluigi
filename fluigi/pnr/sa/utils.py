@@ -117,9 +117,9 @@ def calc_position(
 
 def get_terminal(cell, label) -> CTerminal:
     # warning ! only access using for i in range pattern
-    for i in range(len(cell.ports)):
-        if cell.ports[i].label == label:
-            return cell.ports[i]
+    for i, item in enumerate(cell.ports):
+        if item.label == label:
+            return item
     raise Exception("Could not find terminal in cell")
 
 
@@ -146,14 +146,9 @@ def get_terminal_location(terminal: CTerminal, cell: CCell) -> TerminalLocation:
 
 
 def update_terminals(cell: CCell):
-    # new_terminals = []
-    # print("Before Update", [(t.x, t.y) for t in cell.ports])
 
-    for i in range(len(cell.ports)):
-        # terminal = cell.ports[i]
-        # terminal.compute_absolute_positions(cell.x, cell.y)
-        # new_terminals.append(terminal)
-        cell.ports[i].compute_absolute_positions(cell.x, cell.y)
+    for i, item in enumerate(cell.ports):
+        item.compute_absolute_positions(cell.x, cell.y)
 
     # print("After Update", [(t.x, t.y) for t in cell.ports])
 
@@ -172,11 +167,11 @@ def move(c: CCell, delta_x: int, delta_y: int):
 class AlgDataStorage:
     def __init__(self) -> None:
         super().__init__()
-        self._data: Dict[str, List[Optional[float]]] = dict()
+        self._data: Dict[str, List[Optional[float]]] = {}
         self._size = 0
 
     def store_data(self, param, data):
-        if param in self._data.keys():
+        if param in self._data:
             current_len = len(self._data[param])
             for i in range(current_len, self._size - 1):
                 self._data[param].append(None)
@@ -194,7 +189,7 @@ class AlgDataStorage:
         self.pad_data()
         print(",".join(self._data.keys()))
         for i in range(self._size):
-            print(",".join([str(self._data[key][i]) for key in self._data.keys()]))
+            print(",".join([str(self._data[key][i]) for key in self._data]))
 
     def save_data(self):
         self.pad_data()
@@ -210,7 +205,7 @@ class AlgDataStorage:
         self.pad_data()
 
     def pad_data(self):
-        for key in self._data.keys():
+        for key in self._data:
             for i in range(len(self._data[key]), self._size):
                 self._data[key].append(None)
 

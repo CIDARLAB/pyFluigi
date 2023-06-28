@@ -9,7 +9,7 @@ jpype.startJVM(classpath=[jar_path])
 import java
 from org.cidarlab.fluigi.fluigi import *
 
-test = dict()
+test = {}
 test["flowChannelWidth"] = int(100)
 test["controlChannelWidth"] = int(50)
 test["chamberLength"] = int(100)

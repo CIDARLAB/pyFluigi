@@ -51,7 +51,7 @@ def check_ref_and_assign_port(source_ref, connection, device: Device, global_por
 
 def assign_component_ports(mint_device: MINTDevice) -> None:
     print("Starting terminal/port assignment ...")
-    global_port_assign_map = dict()
+    global_port_assign_map = {}
     for connection in mint_device.device.connections:
         source_ref = connection.source
         check_ref_and_assign_port(source_ref, connection, mint_device.device, global_port_assign_map)

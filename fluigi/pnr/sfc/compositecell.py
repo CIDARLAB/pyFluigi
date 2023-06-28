@@ -300,10 +300,10 @@ class CompositeCell:
         west_ports.sort(key=lambda port: port.y)
 
         # horizontal and vertical side port lists to be used for spacer generation in the end
-        horizontal_side_port_lists = [port for port in north_ports]
+        horizontal_side_port_lists = list(north_ports)
         horizontal_side_port_lists.extend([port for port in south_ports if port not in horizontal_side_port_lists])
 
-        vertical_side_port_lists = [port for port in east_ports]
+        vertical_side_port_lists = list(east_ports)
         vertical_side_port_lists.extend([port for port in west_ports if port not in vertical_side_port_lists])
 
         horizontal_side_port_lists.sort(key=lambda port: port.x)

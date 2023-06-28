@@ -206,12 +206,12 @@ def generate_spacers(
     is_horizontal: bool = True,
 ) -> None:
     # Make a copy of the north and south port list so that we can pop from them in the case checking
-    north_port_list_fifo: List[Port] = [port for port in top_port_list]
-    south_port_list_fifo: List[Port] = [port for port in bottom_port_list]
+    north_port_list_fifo: List[Port] = list(top_port_list)
+    south_port_list_fifo: List[Port] = list(bottom_port_list)
     attention_array_north = []
     attention_array_south = []
-    for index in range(len(cell_list[0])):
-        attention_array_north.append(cell_list[0][index].north_port)
+    for index, item in enumerate(cell_list[0]):
+        attention_array_north.append(item.north_port)
         attention_array_south.append(cell_list[-1][index].south_port)
 
     # Now for the spacer strategy
@@ -356,7 +356,7 @@ def generate_spacers(
         # Case 2.2:
         # [o][ ][ ][ ][ ][ ][ ]
         # [o][ ][ ][x][ ][ ][ ]
-        elif (
+        if (
             # Case 2.1:
             top_right_ground_truth is True
             and bottom_right_ground_truth is False
@@ -527,8 +527,6 @@ def generate_spacers(
                 and bottom_left_ground_truth is True
                 and top_left_ground_truth is False
             ):
-                # Generate all the spacer information from the state
-                pass
                 spacer_size = get_spacer_size(
                     previous_port_max_coordinate, current_port_min_coordinate, current_gap_size
                 )
@@ -560,8 +558,6 @@ def generate_spacers(
                 and top_left_ground_truth is False
                 and bottom_left_ground_truth is True
             ):
-                # Generate all the spacer information from the state
-                pass
                 spacer_size = get_spacer_size(
                     previous_port_max_coordinate, current_port_min_coordinate, current_gap_size
                 )
