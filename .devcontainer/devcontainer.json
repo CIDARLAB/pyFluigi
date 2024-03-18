@@ -47,7 +47,10 @@
 				"yzhang.markdown-all-in-one",
 				"VisualStudioExptTeam.vscodeintellicode",
 				"GitHub.vscode-pull-request-github",
-				"ms-python.python"
+				"ms-python.python",
+				"ms-python.black-formatter",
+				"ms-python.mypy-type-checker",
+				"ms-python.isort"
 			]
 		}
 	},

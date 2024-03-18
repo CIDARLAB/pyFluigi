@@ -15,5 +15,12 @@
 	],
 	"settings": {
 		"python.formatting.provider": "black"
+	},
+	"extensions": {
+		"recommendations": [
+			"ms-python.black-formatter",
+			"ms-python.mypy-type-checker",
+			"ms-python.isort"
+		]
 	}
 }
