@@ -1,0 +1,192 @@
+// Dumping File - tree_device_9_ref.lfr
+
+
+module tree_device_9_ref(
+    finput in1_dev0, in2_dev0, in3_dev0, in1_dev1, in2_dev1, in3_dev1, in1_dev2, in2_dev2, in3_dev2, in1_dev3, in2_dev3, in1_dev4, in2_dev4, in3_dev4, in1_dev5, in2_dev5, in3_dev5, in4_dev5, in5_dev5, in6_dev5, in1_dev6, in2_dev6, in3_dev6, in1_dev7, in2_dev7, in3_dev7, pico_in1_dev9, pico_in2_dev9, in3_dev10, in3_dev11, in3_dev12, dig2_dev13, pico_in2_dev14, pico_in3_dev14, pico_in4_dev14,
+    foutput out_dev14_0
+);
+
+flow out_dev0_0;
+flow out_dev0_1;
+flow merged_droplets_dev0;
+assign merged_droplets_dev0 = in1_dev0 % 100 + in2_dev0 % 50;
+flow injected_droplets_dev0;
+assign injected_droplets_dev0 = merged_droplets_dev0 + in3_dev0;
+assign out_dev0_1 = injected_droplets_dev0 - out_dev0_0;
+
+flow out_dev1_0;
+flow out_dev1_1;
+flow droplets_dev1, split1_dev1, split2_dev1;
+assign droplets_dev1 = in1_dev1%100;
+assign {split1_dev1, split2_dev1} = droplets_dev1/2;
+flow injected_droplets1_dev1, injected_droplets2_dev1;
+assign injected_droplets1_dev1 = split1_dev1 + in2_dev1;
+assign injected_droplets2_dev1 = split2_dev1 + in3_dev1;
+assign out_dev1_0 = injected_droplets1_dev1;
+assign out_dev1_1 = injected_droplets2_dev1;
+
+flow out_dev2_0;
+flow out_dev2_1;
+flow droplets_dev2, split1_dev2, split2_dev2;
+assign droplets_dev2 = in1_dev2%100;
+assign {split1_dev2, split2_dev2} = droplets_dev2/2;
+flow injected_droplets1_dev2, injected_droplets2_dev2;
+assign injected_droplets1_dev2 = split1_dev2 + in2_dev2;
+assign injected_droplets2_dev2 = split2_dev2 + in3_dev2;
+assign out_dev2_0 = injected_droplets1_dev2;
+assign out_dev2_1 = injected_droplets2_dev2;
+
+flow out_dev3_0;
+flow out_dev3_1;
+flow droplets1_dev3, droplets2_dev3, merged_droplets_dev3, incubated_droplets_dev3;
+assign droplets1_dev3 = in1_dev3%100;
+assign droplets2_dev3 = in2_dev3%200;
+assign merged_droplets_dev3 = droplets1_dev3 + droplets2_dev3;
+#MAP "MIXER" "~"
+assign incubated_droplets_dev3 = ~merged_droplets_dev3;
+assign out_dev3_0 = incubated_droplets_dev3 - out_dev3_1;
+
+flow out_dev4_0;
+flow out_dev4_1;
+flow droplets_dev4, split1_dev4, split2_dev4;
+assign droplets_dev4 = in1_dev4%100;
+assign {split1_dev4, split2_dev4} = droplets_dev4/2;
+flow injected_droplets1_dev4, injected_droplets2_dev4;
+assign injected_droplets1_dev4 = split1_dev4 + in2_dev4;
+assign injected_droplets2_dev4 = split2_dev4 + in3_dev4;
+assign out_dev4_0 = injected_droplets1_dev4;
+assign out_dev4_1 = injected_droplets2_dev4;
+
+flow out_dev5_0;
+flow out_dev5_1;
+flow out_dev5_2;
+flow in_mix_dev5;
+assign in_mix_dev5 = in1_dev5 + in2_dev5 + in3_dev5;
+flow droplets_dev5;
+assign droplets_dev5 = in_mix_dev5 % 100;
+flow injected_droplets_dev5;
+assign injected_droplets_dev5 = (in6_dev5 + (in5_dev5 + (in4_dev5 + droplets_dev5)));
+flow mixed_droplets_dev5;
+#MAP "MIXER" "~"
+assign mixed_droplets_dev5 = ~injected_droplets_dev5;
+flow temp_dev5;
+assign temp_dev5 = mixed_droplets_dev5 - out_dev5_1;
+assign out_dev5_2 = temp_dev5 - out_dev5_0;
+
+flow out_dev6_0;
+flow out_dev6_1;
+flow out_dev6_2;
+flow out_dev6_3;
+flow droplets_1_dev6, mix_1_dev6, pico_1_dev6, mix_2_dev6, sorted_trash_1_dev6, sorted_1_dev6, pico_2_dev6, mix_3_dev6, sorted_trash_2_dev6, sorted_2_dev6, splitter_1_dev6, splitter_2_dev6;
+assign droplets_1_dev6 = in1_dev6%100;
+#MAP "MIXER" "~"
+assign mix_1_dev6 = ~droplets_1_dev6;
+assign pico_1_dev6 = mix_1_dev6 + in2_dev6;
+#MAP "MIXER" "~"
+assign mix_2_dev6 = ~pico_1_dev6;
+assign sorted_1_dev6 = mix_2_dev6 - sorted_trash_1_dev6;
+assign pico_2_dev6 = sorted_1_dev6 + in3_dev6;
+#MAP "MIXER" "~"
+assign mix_3_dev6 = ~pico_2_dev6;
+assign sorted_2_dev6 = mix_3_dev6 - sorted_trash_2_dev6;
+assign {splitter_1_dev6, splitter_2_dev6} = sorted_2_dev6/2;
+assign out_dev6_0 = sorted_trash_1_dev6;
+assign out_dev6_1 = sorted_trash_2_dev6;
+assign out_dev6_2 = splitter_1_dev6;
+assign out_dev6_3 = splitter_2_dev6;
+
+flow out_dev7_0;
+flow out_dev7_1;
+flow input_mix_dev7;
+assign input_mix_dev7 = in1_dev7 + in2_dev7 + in3_dev7;
+flow [0:1] droplet_inputs_dev7;
+assign droplet_inputs_dev7 = ~input_mix_dev7;
+flow join_dev7;
+#MAP "MIXER" "~"
+assign join_dev7 = ~(droplet_inputs_dev7%100);
+assign out_dev7_1 = join_dev7 - out_dev7_0;
+
+flow out_dev8_0;
+flow out_dev8_1;
+flow base_droplets_dev8, injected_droplets_dev8, incubated_droplets_dev8, sorted_droplets_dev8, discarded_droplets_dev8;
+assign base_droplets_dev8 = out_dev0_0%100;
+assign injected_droplets_dev8 = base_droplets_dev8 + out_dev1_0;
+#MAP "MIXER" "~"
+assign incubated_droplets_dev8 = ~injected_droplets_dev8;
+assign sorted_droplets_dev8 = incubated_droplets_dev8 - discarded_droplets_dev8;
+assign out_dev8_0 = sorted_droplets_dev8;
+assign out_dev8_1 = discarded_droplets_dev8;
+
+flow out_dev9_0;
+flow out_dev9_1;
+flow merged_droplets_dev9, injected_droplets_dev9;
+assign merged_droplets_dev9 = out_dev2_0%100 + out_dev3_0%100;
+assign injected_droplets_dev9 = (pico_in1_dev9 + pico_in2_dev9) + merged_droplets_dev9;
+assign {out_dev9_0, out_dev9_1} = injected_droplets_dev9/2;
+
+flow out_dev10_0;
+flow out_dev10_1;
+storage [0:3] cell_traps_dev10;
+assign cell_traps_dev10 = out_dev4_0;
+assign out_dev10_0 = cell_traps_dev10;
+assign out_dev10_1 = out_dev4_0;
+
+flow out_dev11_0;
+flow out_dev11_1;
+storage [0:3] cell_traps_dev11;
+assign cell_traps_dev11 = out_dev6_0;
+assign out_dev11_0 = cell_traps_dev11;
+assign out_dev11_1 = out_dev6_0;
+
+flow out_dev12_0;
+flow out_dev12_1;
+flow out_dev12_2;
+flow out_dev12_3;
+flow droplets_1_dev12, mix_1_dev12, pico_1_dev12, mix_2_dev12, sorted_trash_1_dev12, sorted_1_dev12, pico_2_dev12, mix_3_dev12, sorted_trash_2_dev12, sorted_2_dev12, splitter_1_dev12, splitter_2_dev12;
+assign droplets_1_dev12 = out_dev8_0%100;
+#MAP "MIXER" "~"
+assign mix_1_dev12 = ~droplets_1_dev12;
+assign pico_1_dev12 = mix_1_dev12 + out_dev9_0;
+#MAP "MIXER" "~"
+assign mix_2_dev12 = ~pico_1_dev12;
+assign sorted_1_dev12 = mix_2_dev12 - sorted_trash_1_dev12;
+assign pico_2_dev12 = sorted_1_dev12 + in3_dev12;
+#MAP "MIXER" "~"
+assign mix_3_dev12 = ~pico_2_dev12;
+assign sorted_2_dev12 = mix_3_dev12 - sorted_trash_2_dev12;
+assign {splitter_1_dev12, splitter_2_dev12} = sorted_2_dev12/2;
+assign out_dev12_0 = sorted_trash_1_dev12;
+assign out_dev12_1 = sorted_trash_2_dev12;
+assign out_dev12_2 = splitter_1_dev12;
+assign out_dev12_3 = splitter_2_dev12;
+
+flow out_dev13_0;
+flow out_dev13_1;
+flow enc_plasmids_dev13, injected_dig_dev13, incubated_plasmids_dev13, digest_plasmids_dev13, discarded_droplets_dev13;
+assign enc_plasmids_dev13 = out_dev10_0%100;
+assign injected_dig_dev13 = enc_plasmids_dev13 + out_dev11_0 + dig2_dev13;
+#MAP "MIXER" "~"
+assign incubated_plasmids_dev13 = ~injected_dig_dev13;
+assign digest_plasmids_dev13 = incubated_plasmids_dev13 - discarded_droplets_dev13;
+assign out_dev13_0 = digest_plasmids_dev13;
+assign out_dev13_1 = discarded_droplets_dev13;
+
+flow out_dev14_1;
+flow out_dev14_2;
+flow out_dev14_3;
+flow pico_mix_dev14;
+assign pico_mix_dev14 = out_dev13_0 + pico_in2_dev14 + pico_in3_dev14 + pico_in4_dev14;
+flow droplets_dev14;
+assign droplets_dev14 = out_dev12_0%100;
+flow injected_droplets_dev14;
+assign injected_droplets_dev14 = droplets_dev14 + pico_mix_dev14;
+flow sort_keep_temp_dev14, sort_waste_temp_dev14;
+assign sort_keep_temp_dev14 = injected_droplets_dev14 - sort_waste_temp_dev14;
+assign out_dev14_0 = sort_keep_temp_dev14 - out_dev14_2;
+assign out_dev14_1 = sort_waste_temp_dev14 - out_dev14_3;
+
+endmodule
+
+
+
+

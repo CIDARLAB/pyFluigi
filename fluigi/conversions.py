@@ -84,5 +84,6 @@ def convert_to_parchmint(
             json.dump(parchmint_text, f, indent=4)
 
         utils.printgraph(mint_device.device.graph, mint_device.device.name)
+        print(mint_device.__dict__)
     else:
         raise ValueError(f"Unsupported file extension: {extension}")
