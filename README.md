@@ -132,7 +132,6 @@ Since none of the benchmarks will have all the component parameters and definiti
 cd <different-folder-anywhere>
 git clone -b primitives-server https://github.com/cidarlab/3duf primitives-server
 cd primitives-server
-git checkout primitives-server
 docker build -f primitives-server.Dockerfile -t primitives-server:latest .
 docker run -p 6060:6060 primitives-server
 ```
