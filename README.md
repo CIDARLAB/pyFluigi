@@ -168,13 +168,19 @@ fluigi --help
 ```
 
 
-### Step 6 - Running Benchmark Test Scripts (For full Fluigi Pipeline)
+### Step 6 - Running Benchmark Test Scripts
 
-
+From the main folder, run this command (For MINT->Json Pipeline):
 ```
-./scripts/convert.sh > covert-log_"`date +"%d-%m-%Y-%T"`".log 2>&1
+./scripts/convert.sh
 ```
 
+From the main folder, run this command (For LFR->MINT/Json Pipeline):
+```
+./scripts/lfr-compile.sh
+```
+
+Run Place and Routing algorithm
 ```
 ./scripts/par.sh > par-log_"`date +"%d-%m-%Y-%T"`".log 2>&1
 ```
