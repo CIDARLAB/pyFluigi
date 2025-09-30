@@ -144,6 +144,7 @@ The project comes packaged with VSCode Dev Container Support.
 2. Install the dev containers Plugin
 3. `cntrl+shift+P` for opening the command pallete and
 4.  Select `DevContainers: Open Folder in Container`
+5.  If a window pops up asking you to select a folder, select `pyFluigi`
 
 ### Step 5 - Python environment setup
 
